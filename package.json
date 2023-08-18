@@ -21,7 +21,13 @@
     "styled-components": "^6.0.7",
     "web-vitals": "^2.1.4"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YuriyPilipenkoKH/your-pet-project-frontend"
+  },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -46,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.0.0",
     "prop-types": "^15.8.1"
   }
 }
