@@ -54,7 +54,9 @@ export const Input = styled.input.withConfig({
     }
 `;
 
-export const ButtonSubmit = styled.button`
+export const ButtonSubmit = styled.button.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'loginButtom',
+})`
     width: 100%;
     padding: 10px 28px;
     border-radius: 40px;
@@ -104,7 +106,9 @@ export const LabelForRegistration = styled.label.withConfig({
     }
 `;
 
-export const LabelForLogin = styled.label`
+export const LabelForLogin = styled.label.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'login',
+})`
     position: relative;
     display: block;
     margin-bottom: ${({ login }) => (login ? '110px' : '40px')};
