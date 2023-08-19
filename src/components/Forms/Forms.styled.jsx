@@ -31,9 +31,7 @@ export const Title = styled.h3`
     }
 `;
 
-export const Input = styled.input.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'inputInLabel',
-})`
+export const Input = styled.input`
     display: block;
     width: 100%;
     border-radius: 40px;
@@ -48,8 +46,6 @@ export const Input = styled.input.withConfig({
     &:focus {
         outline: none;
     }
-
-    
 `;
 
 export const ButtonSubmit = styled.button.withConfig({
@@ -123,11 +119,9 @@ export const ShowPasswordButton = styled.button`
     top: 20%;
     left: 82%;
     @media screen and (min-width: 320px) {
-        top: 20%;
         left: 210px;
     }
     @media screen and (min-width: 768px) {
-        top: 20%;
         left: 400px;
     }
 `;
@@ -139,4 +133,38 @@ export const TextValidation = styled.p`
     color: var(--red);
     font-size: 12px;
     font-weight: 500;
+    display: none;
+    @media screen and (min-width: 768px) {
+        display: inline-block;
+    }
+`;
+
+export const IconCrossValidate = styled.button.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'iconPassowrd',
+})`
+    position: absolute;
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+    top: 20%;
+    left: ${({ iconPassowrd }) => (iconPassowrd ? '73%' : '82%')};
+    @media screen and (min-width: 320px) {
+        left: ${({ iconPassowrd }) => (iconPassowrd ? '180px' : '210px')};
+    }
+    @media screen and (min-width: 768px) {
+        left: ${({ iconPassowrd }) => (iconPassowrd ? '370px' : '400px')};
+    }
+`;
+export const IconOkey = styled.svg.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'iconPassowrd',
+})`
+    position: absolute;
+    top: 25%;
+    left: ${({ iconPassowrd }) => (iconPassowrd ? '73%' : '82%')};
+    @media screen and (min-width: 320px) {
+        left: ${({ iconPassowrd }) => (iconPassowrd ? '190px' : '220px')};
+    }
+    @media screen and (min-width: 768px) {
+        left: ${({ iconPassowrd }) => (iconPassowrd ? '380px' : '410px')};
+    }
 `;
