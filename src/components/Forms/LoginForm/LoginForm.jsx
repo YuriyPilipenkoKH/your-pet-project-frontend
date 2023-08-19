@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
     ButtonSubmit,
     Form,
@@ -19,18 +19,25 @@ import { object, string } from 'yup';
 
 const schema = object({
     email: string()
+        .required()
         .matches(
-            /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/,
-            'Enter a valid Email'
-        )
-        .required(),
-    password: string().matches(/.{7,}/, 'Enter a valid password').required(),
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/,
+            'Enter a valid email address'
+        ),
+    password: string()
+        .required()
+        .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/,
+            "Password: 1 lowercase, 1 uppercase, 1 digit, 6-16 characters."
+        ),
 }).required();
 
 export default function LoginForm() {
     const [show, setShow] = useState(false);
     const [isEmailValid, setIsEmailValid] = useState(false);
     const [isPasswordValid, setIsPasswordlValid] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const {
         register,
@@ -72,6 +79,7 @@ export default function LoginForm() {
                         aria-invalid={errors.email ? 'true' : 'false'}
                         placeholder="Email"
                         type="email"
+                        value={email}
                         style={{
                             border: errors.email
                                 ? '1px solid var(--red)'
@@ -85,6 +93,7 @@ export default function LoginForm() {
                                     e.target.value
                                 );
                             setIsEmailValid(isValid);
+                            setEmail(e.target.value);
                             if (isValid) {
                                 errors.email = undefined;
                             }
@@ -112,9 +121,7 @@ export default function LoginForm() {
                             <IconCrossValidate
                                 onClick={() => {
                                     setIsEmailValid(false);
-                                    reset({
-                                        email: '',
-                                    });
+                                    setEmail("");
                                 }}
                                 type="button"
                             >
@@ -128,6 +135,8 @@ export default function LoginForm() {
                         {...register('password')}
                         aria-invalid={errors.password ? 'true' : 'false'}
                         placeholder="Password"
+                        title='Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long.'
+                        value={password}
                         type={show ? 'text' : 'password'}
                         style={{
                             border: errors.password
@@ -139,6 +148,7 @@ export default function LoginForm() {
                         onChange={e => {
                             const isValid = /.{7,}/.test(e.target.value);
                             setIsPasswordlValid(isValid);
+                            setPassword(e.target.value);
                             if (isValid) {
                                 errors.password = undefined;
                             }
@@ -167,9 +177,7 @@ export default function LoginForm() {
                             <IconCrossValidate
                                 onClick={() => {
                                     setIsPasswordlValid(false);
-                                    reset({
-                                        password: '',
-                                    });
+                                    setPassword('')
                                 }}
                                 type="button"
                                 iconPassowrd

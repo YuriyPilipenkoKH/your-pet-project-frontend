@@ -19,21 +19,28 @@ import { object, string } from 'yup';
 
 const schema = object({
     name: string()
-        .matches(
-            /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-            'Enter a valid Name'
-        )
-        .required(),
+        .required()
+        .min(2, 'Name should be at least 2 characters')
+        .max(16, 'Name should not exceed 16 characters')
+        .matches(/^[a-zA-Z]+$/, 'Name should contain only letters'),
     email: string()
+        .required()
         .matches(
-            /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/,
-            'Enter a valid Email'
-        )
-        .required(),
-    password: string().matches(/.{7,}/, 'Enter a valid password').required(),
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/,
+            'Enter a valid email address'
+        ),
+    password: string()
+        .required()
+        .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/,
+            "Password: 1 lowercase, 1 uppercase, 1 digit, 6-16 characters."
+        ),
     confirmPassword: string()
-        .matches(/.{7,}/, 'Enter a valid password')
-        .required(),
+        .required()
+        .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/,
+            "Password: 1 lowercase, 1 uppercase, 1 digit, 6-16 characters."
+        ),
 }).required();
 
 export default function RegisterForm() {
@@ -44,6 +51,10 @@ export default function RegisterForm() {
     const [isPasswordValid, setIsPasswordlValid] = useState(false);
     const [isConfirmPasswordValid, setIsConfirmPasswordlValid] =
         useState(false);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const {
         register,
         handleSubmit,
@@ -81,11 +92,12 @@ export default function RegisterForm() {
             <form onSubmit={handleSubmit(deliveryData)}>
                 <Title>Registration</Title>
                 <LabelForRegistration>
-                <Input
+                    <Input
                         {...register('name')}
                         aria-invalid={errors.name ? 'true' : 'false'}
                         placeholder="Name"
                         type="text"
+                        value={name}
                         style={{
                             border: errors.name
                                 ? '1px solid var(--red)'
@@ -95,10 +107,11 @@ export default function RegisterForm() {
                         }}
                         onChange={e => {
                             const isValid =
-                            /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/.test(
+                                /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/.test(
                                     e.target.value
                                 );
                             setIsNameValid(isValid);
+                            setName(e.target.value);
                             if (isValid) {
                                 errors.name = undefined;
                             }
@@ -126,9 +139,7 @@ export default function RegisterForm() {
                             <IconCrossValidate
                                 onClick={() => {
                                     setIsNameValid(false);
-                                    reset({
-                                        name: '',
-                                    });
+                                    setName('');
                                 }}
                                 type="button"
                             >
@@ -138,11 +149,12 @@ export default function RegisterForm() {
                     )}
                 </LabelForRegistration>
                 <LabelForRegistration>
-                <Input
+                    <Input
                         {...register('email')}
                         aria-invalid={errors.email ? 'true' : 'false'}
                         placeholder="Email"
                         type="email"
+                        value={email}
                         style={{
                             border: errors.email
                                 ? '1px solid var(--red)'
@@ -156,6 +168,7 @@ export default function RegisterForm() {
                                     e.target.value
                                 );
                             setIsEmailValid(isValid);
+                            setEmail(e.target.value);
                             if (isValid) {
                                 errors.email = undefined;
                             }
@@ -183,9 +196,7 @@ export default function RegisterForm() {
                             <IconCrossValidate
                                 onClick={() => {
                                     setIsEmailValid(false);
-                                    reset({
-                                        email: '',
-                                    });
+                                    setEmail('');
                                 }}
                                 type="button"
                             >
@@ -200,6 +211,8 @@ export default function RegisterForm() {
                         {...register('password')}
                         aria-invalid={errors.password ? 'true' : 'false'}
                         placeholder="Password"
+                        value={password}
+                        title='Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long.'
                         type={showOne ? 'text' : 'password'}
                         style={{
                             border: errors.password
@@ -211,6 +224,7 @@ export default function RegisterForm() {
                         onChange={e => {
                             const isValid = /.{7,}/.test(e.target.value);
                             setIsPasswordlValid(isValid);
+                            setPassword(e.target.value);
                             if (isValid) {
                                 errors.password = undefined;
                             }
@@ -239,9 +253,7 @@ export default function RegisterForm() {
                             <IconCrossValidate
                                 onClick={() => {
                                     setIsPasswordlValid(false);
-                                    reset({
-                                        password: '',
-                                    });
+                                    setPassword('');
                                 }}
                                 type="button"
                                 iconPassowrd
@@ -250,7 +262,10 @@ export default function RegisterForm() {
                             </IconCrossValidate>
                         </>
                     )}
-                    <ShowPasswordButton type="button" onClick={handleClickShowOne}>
+                    <ShowPasswordButton
+                        type="button"
+                        onClick={handleClickShowOne}
+                    >
                         {iconEyes}
                     </ShowPasswordButton>
                 </LabelForRegistration>
@@ -260,10 +275,13 @@ export default function RegisterForm() {
                         aria-invalid={errors.confirmPassword ? 'true' : 'false'}
                         placeholder="Confirm password"
                         type={showTwo ? 'text' : 'password'}
+                        value={confirmPassword}
+                        title='Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long.'
                         style={{
                             border: errors.confirmPassword
                                 ? '1px solid var(--red)'
-                                : isConfirmPasswordValid && !errors.confirmPassword
+                                : isConfirmPasswordValid &&
+                                  !errors.confirmPassword
                                 ? '1px solid var(--green)'
                                 : '1px solid var(--blue)',
                         }}
@@ -273,6 +291,7 @@ export default function RegisterForm() {
                             if (isValid) {
                                 errors.confirmPassword = undefined;
                             }
+                            setConfirmPassword(e.target.value);
                         }}
                     ></Input>
                     {isConfirmPasswordValid && (
@@ -298,9 +317,7 @@ export default function RegisterForm() {
                             <IconCrossValidate
                                 onClick={() => {
                                     setIsConfirmPasswordlValid(false);
-                                    reset({
-                                        confirmPassword: '',
-                                    });
+                                    setConfirmPassword('');
                                 }}
                                 type="button"
                                 iconPassowrd
