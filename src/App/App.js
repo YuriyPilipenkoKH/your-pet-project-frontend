@@ -4,6 +4,11 @@ import { SharedLayout } from '../components/SharedLayout/SharedLayout';
 import { Container } from '../components/Container/Container';
 import RegisterForm from '../components/Forms/RegisterForm/RegisterForm';
 import LoginForm from '../components/Forms/LoginForm/LoginForm';
+import { NewsPage } from '../pages/Nwes';
+
+
+
+
 
 function App() {
   return (
@@ -13,8 +18,10 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/news" element={<NewsPage />} />
         </Route>
       </Routes>
+      
     </Container>
   );
 }
