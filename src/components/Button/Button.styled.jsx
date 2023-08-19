@@ -33,7 +33,6 @@ border: none;
 border-radius: 20px;
 padding: 8px 20px ;
 font-size: 16px;
-cursor: pointer;
 outline: none;
 
 transition: all 0.4s ease; 
@@ -338,7 +337,6 @@ padding: 12px 0;
 &>:hover {
   animation-duration: 0.1s;
   animation: ${rotate} 1s ease;   
-  cursor: pointer;
 
 }
 

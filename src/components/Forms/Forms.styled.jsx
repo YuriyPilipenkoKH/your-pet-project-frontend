@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import isPropValid from '@emotion/is-prop-valid';
+import styled from 'styled-components';
 
 export const Form = styled.div`
     padding: 40px 12px;
@@ -29,7 +30,9 @@ export const Title = styled.h3`
     }
 `;
 
-export const Input = styled.input`
+export const Input = styled.input.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'inputInLabel',
+})`
     display: block;
     width: 100%;
     border-radius: 40px;
@@ -40,10 +43,12 @@ export const Input = styled.input`
     letter-spacing: 0.64px;
     border: 1px solid var(--blue);
     position: relative;
-    margin-bottom: ${({ inputInLabel }) => (inputInLabel ? "0" : "14px")};
+    margin-bottom: ${({ inputInLabel }) => (inputInLabel ? '0' : '14px')};
+
     @media screen and (min-width: 768px) {
-        margin-bottom: ${({ inputInLabel }) => (inputInLabel ? "0" : "32px")};
+        margin-bottom: ${({ inputInLabel }) => (inputInLabel ? '0' : '32px')};
     }
+
     &:focus {
         outline: none;
     }
@@ -63,7 +68,7 @@ export const ButtonSubmit = styled.button`
     transition: background 500ms;
     margin-bottom: 8px;
     @media screen and (min-width: 768px) {
-        margin-bottom: ${({ loginButtom }) => (loginButtom ? "20px" : "16px")};
+        margin-bottom: ${({ loginButtom }) => (loginButtom ? '20px' : '16px')};
     }
     &:hover {
         background: linear-gradient(315deg, #419ef1 0%, #9bd0ff 100%);
@@ -83,26 +88,28 @@ export const LinkToForm = styled.a`
     text-decoration-line: underline;
 `;
 
-export const LabelForRegistration = styled.label`
+export const LabelForRegistration = styled.label.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'registration',
+})`
     position: relative;
     display: block;
-    margin-bottom: ${({ registration }) => (registration ? "40px" : "14px")};
+    margin-bottom: ${({ registration }) => (registration ? '40px' : '14px')};
     @media screen and (min-width: 768px) {
         margin-bottom: ${({ registration }) =>
-            registration ? "52px" : "32px"};
+            registration ? '52px' : '32px'};
     }
     @media screen and (min-width: 1280px) {
         margin-bottom: ${({ registration }) =>
-            registration ? "40px" : "32px"};
+            registration ? '40px' : '32px'};
     }
 `;
 
 export const LabelForLogin = styled.label`
     position: relative;
     display: block;
-    margin-bottom: ${({ login }) => (login ? "110px" : "40px")};
+    margin-bottom: ${({ login }) => (login ? '110px' : '40px')};
     @media screen and (min-width: 768px) {
-        margin-bottom: ${({ login }) => (login ? "60px" : "32px")};
+        margin-bottom: ${({ login }) => (login ? '60px' : '32px')};
     }
 `;
 
@@ -122,3 +129,5 @@ export const ShowPasswordButton = styled.button`
         left: 400px;
     }
 `;
+
+export const TextValidation = ``;

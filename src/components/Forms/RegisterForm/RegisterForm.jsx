@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import {
     ButtonSubmit,
     Form,
@@ -8,51 +8,114 @@ import {
     Question,
     ShowPasswordButton,
     Title,
-} from "../Forms.styled";
-import { iconEyes } from "../../../images/icons";
+} from '../Forms.styled';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { iconEyes } from '../../../images/icons';
+import { useForm } from 'react-hook-form';
+import { object, string } from 'yup';
+import { Link } from 'react-router-dom';
+
+const schema = object({
+    name: string()
+        .matches(
+            /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+            'Enter a valid Name'
+        )
+        .required(),
+    email: string()
+        .matches(
+            /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/,
+            'Enter a valid Email'
+        )
+        .required(),
+    password: string().matches(/.{7,}/, 'Enter a valid password').required(),
+}).required();
 
 export default function RegisterForm() {
+    const [showOne, setShowOne] = useState(false);
+    const [showTwo, setShowTwo] = useState(false);
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm({
+        defaultValues: {
+            name: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+        },
+        resolver: yupResolver(schema),
+    });
+    const inputInLabel={
+        inputInLabel: true,
+    }
+    const handleClickOne = () => setShowOne(!showOne);
+    const handleClickTwo = () => setShowTwo(!showTwo);
+    const deliveryDataUser = (name, email, password, confirmPassword) => {
+        // dispatch(
+        //     registerUser({
+        //         name,
+        //         email,
+        //         password,
+        //     })
+        // );
+    };
+    const deliveryData = data => {
+        console.log(321321)
+        const { name, email, password, confirmPassword } = data;
+        deliveryDataUser(name, email, password, confirmPassword);
+        reset();
+    };
+
     return (
         <Form>
-            <form>
+            <form onSubmit={handleSubmit(deliveryData)}>
                 <Title>Registration</Title>
-                <Input placeholder="Name" type="text"></Input>
-                <Input placeholder="Email" type="email"></Input>
+                <Input
+                    {...register('name')}
+                    aria-invalid={errors.name ? 'true' : 'false'}
+                    placeholder="Name"
+                    type="text"
+                ></Input>
+                {errors.name && <p> {errors.name.message} </p>}
+                <Input
+                    {...register('email')}
+                    aria-invalid={errors.email ? 'true' : 'false'}
+                    placeholder="Email"
+                    type="email"
+                ></Input>
+                {errors.email && <p> {errors.email.message} </p>}
+
                 <LabelForRegistration>
                     <Input
-                        inputInLabel
+                        {...register('password')}
+                        aria-invalid={errors.password ? 'true' : 'false'}
+                        inputInLabel={true}
                         placeholder="Password"
-                        type="password"
+                        type={showOne ? 'text' : 'password'}
                     ></Input>
-                    <ShowPasswordButton>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                        >
-                            <path
-                                d="M9.76406 5.29519C10.4664 5.10724 11.2123 5 12 5C18.3636 5 22 12 22 12C22 12 21.171 13.5958 19.612 15.2635M4.34912 8.77822C2.8152 10.4307 2 12 2 12C2 12 5.63636 19 12 19C12.8021 19 13.5608 18.8888 14.2744 18.6944M11.5 14.9585C10.4158 14.7766 9.52883 14.0132 9.17071 13M12.5 9.04148C13.7563 9.25224 14.7478 10.2437 14.9585 11.5M3 3L21 21"
-                                stroke="#54ADFF"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </ShowPasswordButton>
-                </LabelForRegistration>
-                <LabelForRegistration registration>
-                    <Input
-                        inputInLabel
-                        placeholder="Confirm password"
-                        type="password"
-                    ></Input>
-                    <ShowPasswordButton>
+                    {errors.password && <p style={{ textAlign: "left" }}> {errors.password.message} </p>}
+                    <ShowPasswordButton onClick={handleClickOne}>
                         {iconEyes}
                     </ShowPasswordButton>
                 </LabelForRegistration>
-                <ButtonSubmit>Registration</ButtonSubmit>
+                <LabelForRegistration registration={true}>
+                    <Input
+                        {...register('confirmPassword')}
+                        aria-invalid={errors.confirmPassword ? 'true' : 'false'}
+                        inputInLabel={true}
+                        placeholder="Confirm password"
+                        onChange={console.log(321321)}
+                        type={showTwo ? 'text' : 'password'}
+                    ></Input>
+                    {errors.confirmPassword && <p> {errors.confirmPassword.message} </p>}
+                    <ShowPasswordButton onClick={handleClickTwo}>
+                        {iconEyes}
+                    </ShowPasswordButton>
+                </LabelForRegistration>
+                <ButtonSubmit type='submit'>Registration</ButtonSubmit>
                 <Question>
                     Don't have an account?
                     {<LinkToForm href="fwefew"> Login</LinkToForm>}
