@@ -7,13 +7,13 @@ import {
     LinkToForm,
     Question,
     ShowPasswordButton,
+    TextValidation,
     Title,
 } from '../Forms.styled';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { iconEyes } from '../../../images/icons';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
-import { Link } from 'react-router-dom';
 
 const schema = object({
     name: string()
@@ -29,6 +29,7 @@ const schema = object({
         )
         .required(),
     password: string().matches(/.{7,}/, 'Enter a valid password').required(),
+    confirmPassword: string().matches(/.{7,}/, 'Enter a valid password').required(),
 }).required();
 
 export default function RegisterForm() {
@@ -48,9 +49,6 @@ export default function RegisterForm() {
         },
         resolver: yupResolver(schema),
     });
-    const inputInLabel={
-        inputInLabel: true,
-    }
     const handleClickOne = () => setShowOne(!showOne);
     const handleClickTwo = () => setShowTwo(!showTwo);
     const deliveryDataUser = (name, email, password, confirmPassword) => {
@@ -73,20 +71,26 @@ export default function RegisterForm() {
         <Form>
             <form onSubmit={handleSubmit(deliveryData)}>
                 <Title>Registration</Title>
+                <LabelForRegistration>
+
                 <Input
                     {...register('name')}
                     aria-invalid={errors.name ? 'true' : 'false'}
                     placeholder="Name"
                     type="text"
                 ></Input>
-                {errors.name && <p> {errors.name.message} </p>}
+                {errors.name && <TextValidation> {errors.name.message} </TextValidation>}
+                </LabelForRegistration>
+                <LabelForRegistration>
+
                 <Input
                     {...register('email')}
                     aria-invalid={errors.email ? 'true' : 'false'}
                     placeholder="Email"
                     type="email"
                 ></Input>
-                {errors.email && <p> {errors.email.message} </p>}
+                {errors.email && <TextValidation> {errors.email.message} </TextValidation>}
+                </LabelForRegistration>
 
                 <LabelForRegistration>
                     <Input
@@ -96,7 +100,7 @@ export default function RegisterForm() {
                         placeholder="Password"
                         type={showOne ? 'text' : 'password'}
                     ></Input>
-                    {errors.password && <p style={{ textAlign: "left" }}> {errors.password.message} </p>}
+                    {errors.password && <TextValidation style={{ textAlign: "left" }}> {errors.password.message} </TextValidation>}
                     <ShowPasswordButton onClick={handleClickOne}>
                         {iconEyes}
                     </ShowPasswordButton>
@@ -110,7 +114,7 @@ export default function RegisterForm() {
                         onChange={console.log(321321)}
                         type={showTwo ? 'text' : 'password'}
                     ></Input>
-                    {errors.confirmPassword && <p> {errors.confirmPassword.message} </p>}
+                    {errors.confirmPassword && <TextValidation style={{ textAlign: "left" }}> {errors.confirmPassword.message} </TextValidation>}
                     <ShowPasswordButton onClick={handleClickTwo}>
                         {iconEyes}
                     </ShowPasswordButton>
@@ -118,7 +122,7 @@ export default function RegisterForm() {
                 <ButtonSubmit type='submit'>Registration</ButtonSubmit>
                 <Question>
                     Don't have an account?
-                    {<LinkToForm href="fwefew"> Login</LinkToForm>}
+                    {<LinkToForm href="fwefew" to="/login"> Login</LinkToForm>}
                 </Question>
             </form>
         </Form>

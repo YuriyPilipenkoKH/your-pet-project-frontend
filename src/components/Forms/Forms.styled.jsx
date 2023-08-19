@@ -1,5 +1,6 @@
 import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Form = styled.div`
     padding: 40px 12px;
@@ -43,15 +44,12 @@ export const Input = styled.input.withConfig({
     letter-spacing: 0.64px;
     border: 1px solid var(--blue);
     position: relative;
-    margin-bottom: ${({ inputInLabel }) => (inputInLabel ? '0' : '14px')};
-
-    @media screen and (min-width: 768px) {
-        margin-bottom: ${({ inputInLabel }) => (inputInLabel ? '0' : '32px')};
-    }
 
     &:focus {
         outline: none;
     }
+
+    
 `;
 
 export const ButtonSubmit = styled.button.withConfig({
@@ -83,7 +81,7 @@ export const Question = styled.p`
     letter-spacing: 0.48px;
 `;
 
-export const LinkToForm = styled.a`
+export const LinkToForm = styled(Link)`
     color: var(--blue);
     font-size: 12px;
     letter-spacing: 0.48px;
@@ -134,4 +132,11 @@ export const ShowPasswordButton = styled.button`
     }
 `;
 
-export const TextValidation = ``;
+export const TextValidation = styled.p`
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 500;
+`;
