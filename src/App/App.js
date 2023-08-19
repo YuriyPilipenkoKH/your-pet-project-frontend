@@ -6,16 +6,16 @@ import RegisterForm from '../components/Forms/RegisterForm/RegisterForm';
 import LoginForm from '../components/Forms/LoginForm/LoginForm';
 
 function App() {
-  return (
-    <Container>
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
-          <Route path="/register" element={<RegisterForm />} />
-          <Route path="/login" element={<LoginForm />} />
-        </Route>
-      </Routes>
-    </Container>
-  );
+    return (
+        <Container>
+            <Routes>
+                <Route path="/" element={<SharedLayout />}>
+                    <Route index element={<Home />} />
+                    <Route index path='/register' element={<RegisterForm />} />
+                    <Route path="/login" element={<LoginForm />} />
+                </Route>
+            </Routes>
+        </Container>
+    );
 }
 export default App;
