@@ -1,5 +1,5 @@
 import styled, {  keyframes } from 'styled-components';
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const rotate = keyframes`
    0% {
@@ -18,7 +18,6 @@ export const rotate = keyframes`
 `
 
 
-
 export const buttonStyles =`
     
 font-family: inherit;
@@ -33,6 +32,7 @@ border: none;
 border-radius: 20px;
 padding: 8px 20px ;
 font-size: 16px;
+cursor: pointer;
 outline: none;
 
 transition: all 0.4s ease; 
@@ -80,19 +80,19 @@ overflow: hidden;
 export const hoverStylesB =`
 & >svg {
 
-  fill: var(--fone-color);
+  fill: var(--white);
   }
 
   &:hover  {
   transition: all 0.4s ease; 
   background: linear-gradient(to right, var( --gradient-bl), var(--gradient-br));
-  color: var(--fone-color);
+  color: var(--white);
  }
 
 `
 export const hoverStylesTrB =`
 border: 2px solid var(--blue);
-background-color: var(--fone-color);
+background-color: var(--white);
 color: var(--blue);
 
 transition: all 0.4s ease; 
@@ -104,12 +104,12 @@ transition: all 0.4s ease;
   &:hover  {
   transition: all 0.4s ease; 
   background: linear-gradient(to right, #88c7fc, #4da5f3);
-  color: var(--fone-color);
+  color: var(--white);
   border: 2px solid transparent;
 
   & >svg {
     transition: all 0.4s ease; 
-    fill: var(--fone-color);
+    fill: var(--white);
 }
  }
 
@@ -117,46 +117,45 @@ transition: all 0.4s ease;
 export const hoverStylesY =`
 & >svg {
 
-  fill: var(--fone-color);
+  fill: var(--white);
   }
 
   &:hover  {
   transition: all 0.4s ease; 
   background: linear-gradient(to right, var( --gradient-yl), var(--gradient-yr));
-  color: var(--fone-color);
+  color: var(--white);
  }
 }
 `
 
 export const StyledButton = styled.button`
 
-
-${buttonStyles} ;
- ${ripple} ;
+${buttonStyles} 
+ ${ripple} 
  
  background-color: var(--blue);
- color: var(--fone-color);
+ color: var(--white);
  transition: all 0.4s ease; 
 
 & >svg {
 
-  fill: var(--fone-color);
+  fill: var(--white);
   }
 
   &:hover  {
   transition: all 0.4s ease; 
   background: linear-gradient(to right, var( --gradient-bl), var(--gradient-br));
-  color: var(--fone-color);
+  color: var(--white);
  }
 
 `;
 
 export const StyledButtonTransparent = styled.button`
-${buttonStyles} ;
-${ripple} ;
+${buttonStyles} 
+${ripple} 
 
 border: 2px solid var(--blue);
-background-color: var(--fone-color);
+background-color: var(--white);
 color: var(--blue);
 transition: all 0.4s ease; 
 
@@ -167,12 +166,12 @@ transition: all 0.4s ease;
   &:hover  {
   transition: all 0.4s ease; 
   background: linear-gradient(to right, #88c7fc, #4da5f3);
-  color: var(--fone-color);
+  color: var(--white);
   border: 2px solid transparent;
 
   & >svg {
     transition: all 0.4s ease; 
-    fill: var(--fone-color);
+    fill: var(--white);
 }
  }
 
@@ -180,14 +179,14 @@ transition: all 0.4s ease;
 
 export const StyledLogButton = styled.button`
 
-${buttonStyles} ;
- ${ripple} ;
+${buttonStyles} 
+ ${ripple} 
  
  background-color: var(--yellow);
- color: var(--fone-color);
+ color: var(--white);
  width: 165px;
  
- ${hoverStylesY} ;
+ ${hoverStylesY} 
 `;
 
 export const StyledRegButton = styled.button`
@@ -195,12 +194,12 @@ ${buttonStyles}
  ${ripple} 
 
 border: 2px solid var(--yellow);
-background-color: var(--fone-color);
+background-color: var(--white);
 color: var(--yellow);
 width: 165px;
 transition: all 0.4s ease; 
 
-${hoverStylesY} ;
+${hoverStylesY} 
 
   /* &:hover  {
   border: 2px solid transparent;
@@ -214,7 +213,7 @@ ${ripple}
 
 border: 2px solid var(--blue);
 background-color: var(--blue);
-color: var(--fone-color);
+color: var(--white);
 width: 135px;
 
 ${hoverStylesB} 
@@ -244,7 +243,7 @@ ${ripple} ;
 
 border: 2px solid var(--blue);
 background-color: var(--blue);
-color: var(--fone-color);
+color: var(--white);
 width: 130px;
 
 ${hoverStylesB} ;
@@ -256,9 +255,9 @@ ${hoverStylesB} ;
 
 export const StyledContactButton = styled.button`
 
-${buttonStyles} ;
-${ripple} ;
-${hoverStylesTrB} ;
+${buttonStyles} 
+${ripple} 
+${hoverStylesTrB} 
 
 width: 152px;
 `;
@@ -269,10 +268,10 @@ ${buttonStyles}
 ${ripple} 
 ${hoverStylesTrB} 
 
-width: 152px;
+width: 248px;
+height: 38px;
+
 `;
-
-
 
 
 
@@ -280,53 +279,32 @@ export const StyledRadioButton = styled.button`
 ${buttonStyles} 
  ${ripple} 
 
- border: 2px solid var(--yellow);
-background-color: var(--fone-color);
-color: var(--yellow);
-width: 165px;
+
+background-color: var(--light-blue);
+color: var(--blue);
 transition: all 0.4s ease; 
 
-& >svg {
 
-  fill: var(--yellow);
-  }
-
-  &:hover  {
+&>active{
+  background-color: var(--blue);
+  color: var(--white);
   transition: all 0.4s ease; 
-  background: linear-gradient(to right, var( --gradient-yl), var(--gradient-yr));
-  color: var(--fone-color);
-  border: 2px solid transparent;
-
-  & >svg {
-    transition: all 0.4s ease; 
-    fill: var(--fone-color);
 }
- }
 
 `;
 
 
+export const StyledLink = styled(NavLink)`
 
+  transition:  color 1s ease-in-out;
+  font-weight: 600;
+  transition: 0.3s ease;
 
-
-
-
-// export const StyledLink = styled(NavLink)`
-
-
-//   transition:  color 1s ease-in-out;
-
-//   font-weight: 600;
-//   transition: 0.3s ease;
-
-
-
-//   &.active {
-//     color: #eee;
-//     background-color: var(--green);
-
-//   }
-// `;
+  &.active {
+    color: #eee;
+    background-color: var(--green);
+  }
+`;
 
 export const StyledLogo = styled.button`
 border: none;
@@ -337,8 +315,8 @@ padding: 12px 0;
 &>:hover {
   animation-duration: 0.1s;
   animation: ${rotate} 1s ease;   
+  cursor: pointer;
 
 }
-
 
 `
