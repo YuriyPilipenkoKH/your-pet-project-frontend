@@ -306,7 +306,7 @@ export const StyledLink = styled(NavLink)`
   }
 `;
 
-export const StyledLogo = styled.button`
+export const StyledLogo = styled(NavLink)`
 border: none;
 outline: none;
 background-color: transparent;

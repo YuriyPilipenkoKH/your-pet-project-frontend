@@ -1,5 +1,5 @@
 
-import { AuthNavWrap, LayoutWrap, LogoLink, SharedLayoutWrap } from "./SharedLayout.styled";
+import { AuthNavWrap, LayoutWrap,  SharedLayoutWrap } from "./SharedLayout.styled";
 
 import { iconLogo } from "../../images/icons";
 import { Suspense } from "react";
@@ -8,12 +8,13 @@ import { AuthNav } from "../AuthNav/AuthNav";
 import { ButtonBurger } from "../Nav/Nav.styled";
 import { Nav } from "../Nav/Nav";
 import { RxHamburgerMenu } from 'react-icons/rx';
+import { StyledLogo } from "../Button/Button.styled";
 
 export const SharedLayout = () => {
   return (
     <SharedLayoutWrap className="sharedLayout">
       <LayoutWrap className="layoutWrap">
-        <LogoLink to="/">{iconLogo}</LogoLink>
+        <StyledLogo to="/">{iconLogo}</StyledLogo>
         <Nav/>
         <AuthNavWrap>
           <AuthNav/>
