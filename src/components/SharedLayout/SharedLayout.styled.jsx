@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 
-export const SharedLayoutWrap = styled(NavLink)`
+export const SharedLayoutWrap = styled.header`
 width: 100%;
 `
 
