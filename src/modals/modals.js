@@ -6,6 +6,7 @@ import doggy from '../images/doggy.png';
 import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineLogout} from "react-icons/md";
 import { StyledLinkLog, StyledLinkReg } from "../components/AuthNav/AuthNav.styled";
+import { StyledLink } from "../components/Button/Button.styled";
 
 
 export const modal1 = {     
@@ -77,7 +78,7 @@ export const modal4 = {
         buttonColor: '#13d', 
         buttonText: 'confirm',
        
-        btn1: <Button>Go to profile {iconPawprint}</Button>,
+        btn1: <StyledLink to="/profile" exact="true" >Go to profile {iconPawprint}</StyledLink>,
         btn2:  null,
         btnsizem: '240px',
         btnsized: '240px',

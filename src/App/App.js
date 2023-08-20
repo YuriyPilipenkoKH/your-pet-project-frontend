@@ -5,6 +5,7 @@ import { Container } from '../components/Container/Container';
 import RegisterForm from '../components/Forms/RegisterForm/RegisterForm';
 import LoginForm from '../components/Forms/LoginForm/LoginForm';
 import { NewsPage } from '../pages/Nwes';
+import UserPage from '../pages/UserPage';
 
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/profile" element={<UserPage />} />
         </Route>
       </Routes>
       
