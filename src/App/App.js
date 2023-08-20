@@ -4,6 +4,7 @@ import { SharedLayout } from '../components/SharedLayout/SharedLayout';
 import { Container } from '../components/Container/Container';
 import RegisterForm from '../components/Forms/RegisterForm/RegisterForm';
 import LoginForm from '../components/Forms/LoginForm/LoginForm';
+import AddPetPage from '../pages/AddPetPage';
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<SharedLayout />}>
                     <Route index element={<Home />} />
+                    <Route index path='/add-pet' element={<AddPetPage />} />
                     <Route index path='/register' element={<RegisterForm />} />
                     <Route path="/login" element={<LoginForm />} />
                 </Route>
