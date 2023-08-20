@@ -269,9 +269,12 @@ export const ButtonOption = styled.button.withConfig({
 export const WrapperNextBackButton = styled.div`
     text-align: center;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    flex-direction: column-reverse;
+    @media screen and (min-width: 0px) and (max-width: 768px) {
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: column-reverse;
+    }
     gap: 2px;
     @media screen and (min-width: 768px) {
         gap: 10px;
