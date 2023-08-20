@@ -155,7 +155,7 @@ ${buttonStyles}
 ${ripple} 
 
 border: 2px solid var(--blue);
-background-color: var(--white);
+background-color: transparent;
 color: var(--blue);
 transition: all 0.4s ease; 
 
@@ -258,7 +258,7 @@ export const StyledContactButton = styled.button`
 ${buttonStyles} 
 ${ripple} 
 ${hoverStylesTrB} 
-
+background-color: transparent;
 width: 152px;
 `;
 
