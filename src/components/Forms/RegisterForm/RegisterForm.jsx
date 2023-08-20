@@ -1,31 +1,124 @@
-import React from "react";
+import React, { useState } from 'react';
 import {
     ButtonSubmit,
     Form,
+    IconCrossValidate,
+    IconOkey,
     Input,
     LabelForRegistration,
     LinkToForm,
     Question,
     ShowPasswordButton,
+    TextValidation,
     Title,
-} from "../Forms.styled";
-import { iconEyes } from "../../../images/icons";
+} from '../Forms.styled';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { IconCross, iconEyes } from '../../../images/icons';
+import { useForm } from 'react-hook-form';
+import { object, string } from 'yup';
+
+const schema = object({
+    name: string()
+        .required()
+        .min(2, 'Name should be at least 2 characters')
+        .max(16, 'Name should not exceed 16 characters')
+        .matches(/^[a-zA-Z]+$/, 'Name should contain only letters'),
+    email: string()
+        .required()
+        .matches(
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/,
+            'Enter a valid email address'
+        ),
+    password: string()
+        .required()
+        .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/,
+            "Password: 1 lowercase, 1 uppercase, 1 digit, 6-16 characters."
+        ),
+    confirmPassword: string()
+        .required()
+        .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/,
+            "Password: 1 lowercase, 1 uppercase, 1 digit, 6-16 characters."
+        ),
+}).required();
 
 export default function RegisterForm() {
+    const [showOne, setShowOne] = useState(false);
+    const [showTwo, setShowTwo] = useState(false);
+    const [isNameValid, setIsNameValid] = useState(false);
+    const [isEmailValid, setIsEmailValid] = useState(false);
+    const [isPasswordValid, setIsPasswordlValid] = useState(false);
+    const [isConfirmPasswordValid, setIsConfirmPasswordlValid] =
+        useState(false);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm({
+        defaultValues: {
+            name: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+        },
+        resolver: yupResolver(schema),
+    });
+    const handleClickShowOne = () => setShowOne(!showOne);
+    const handleClickShowTwo = () => setShowTwo(!showTwo);
+    const deliveryDataUser = (name, email, password, confirmPassword) => {
+        // dispatch(
+        //     registerUser({
+        //         name,
+        //         email,
+        //         password,
+        //     })
+        // );
+    };
+    const deliveryData = data => {
+        console.log(321321);
+        const { name, email, password, confirmPassword } = data;
+        deliveryDataUser(name, email, password, confirmPassword);
+        reset();
+    };
+
     return (
         <Form>
-            <form>
+            <form onSubmit={handleSubmit(deliveryData)}>
                 <Title>Registration</Title>
-                <Input placeholder="Name" type="text"></Input>
-                <Input placeholder="Email" type="email"></Input>
                 <LabelForRegistration>
                     <Input
-                        inputInLabel
-                        placeholder="Password"
-                        type="password"
+                        {...register('name')}
+                        aria-invalid={errors.name ? 'true' : 'false'}
+                        placeholder="Name"
+                        type="text"
+                        value={name}
+                        style={{
+                            border: errors.name
+                                ? '1px solid var(--red)'
+                                : isNameValid && !errors.name
+                                ? '1px solid var(--green)'
+                                : '1px solid var(--blue)',
+                        }}
+                        onChange={e => {
+                            const isValid =
+                                /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/.test(
+                                    e.target.value
+                                );
+                            setIsNameValid(isValid);
+                            setName(e.target.value);
+                            if (isValid) {
+                                errors.name = undefined;
+                            }
+                        }}
                     ></Input>
-                    <ShowPasswordButton>
-                        <svg
+                    {isNameValid && (
+                        <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
                             height="24"
@@ -33,29 +126,221 @@ export default function RegisterForm() {
                             fill="none"
                         >
                             <path
-                                d="M9.76406 5.29519C10.4664 5.10724 11.2123 5 12 5C18.3636 5 22 12 22 12C22 12 21.171 13.5958 19.612 15.2635M4.34912 8.77822C2.8152 10.4307 2 12 2 12C2 12 5.63636 19 12 19C12.8021 19 13.5608 18.8888 14.2744 18.6944M11.5 14.9585C10.4158 14.7766 9.52883 14.0132 9.17071 13M12.5 9.04148C13.7563 9.25224 14.7478 10.2437 14.9585 11.5M3 3L21 21"
-                                stroke="#54ADFF"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                d="M20.0001 7L9.0001 18L4 13"
+                                stroke="#00C3AD"
                             />
-                        </svg>
-                    </ShowPasswordButton>
+                        </IconOkey>
+                    )}
+                    {errors.name && (
+                        <>
+                            <TextValidation>
+                                {errors.name.message}
+                            </TextValidation>
+                            <IconCrossValidate
+                                onClick={() => {
+                                    setIsNameValid(false);
+                                    setName('');
+                                }}
+                                type="button"
+                            >
+                                {IconCross}
+                            </IconCrossValidate>
+                        </>
+                    )}
                 </LabelForRegistration>
-                <LabelForRegistration registration>
+                <LabelForRegistration>
                     <Input
-                        inputInLabel
-                        placeholder="Confirm password"
-                        type="password"
+                        {...register('email')}
+                        aria-invalid={errors.email ? 'true' : 'false'}
+                        placeholder="Email"
+                        type="email"
+                        value={email}
+                        style={{
+                            border: errors.email
+                                ? '1px solid var(--red)'
+                                : isEmailValid && !errors.email
+                                ? '1px solid var(--green)'
+                                : '1px solid var(--blue)',
+                        }}
+                        onChange={e => {
+                            const isValid =
+                                /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(
+                                    e.target.value
+                                );
+                            setIsEmailValid(isValid);
+                            setEmail(e.target.value);
+                            if (isValid) {
+                                errors.email = undefined;
+                            }
+                        }}
                     ></Input>
-                    <ShowPasswordButton>
+                    {isEmailValid && (
+                        <IconOkey
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                        >
+                            <path
+                                d="M20.0001 7L9.0001 18L4 13"
+                                stroke="#00C3AD"
+                            />
+                        </IconOkey>
+                    )}
+                    {errors.email && (
+                        <>
+                            <TextValidation>
+                                {errors.email.message}
+                            </TextValidation>
+                            <IconCrossValidate
+                                onClick={() => {
+                                    setIsEmailValid(false);
+                                    setEmail('');
+                                }}
+                                type="button"
+                            >
+                                {IconCross}
+                            </IconCrossValidate>
+                        </>
+                    )}
+                </LabelForRegistration>
+
+                <LabelForRegistration>
+                    <Input
+                        {...register('password')}
+                        aria-invalid={errors.password ? 'true' : 'false'}
+                        placeholder="Password"
+                        value={password}
+                        title='Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long.'
+                        type={showOne ? 'text' : 'password'}
+                        style={{
+                            border: errors.password
+                                ? '1px solid var(--red)'
+                                : isPasswordValid && !errors.password
+                                ? '1px solid var(--green)'
+                                : '1px solid var(--blue)',
+                        }}
+                        onChange={e => {
+                            const isValid = /.{7,}/.test(e.target.value);
+                            setIsPasswordlValid(isValid);
+                            setPassword(e.target.value);
+                            if (isValid) {
+                                errors.password = undefined;
+                            }
+                        }}
+                    ></Input>
+                    {isPasswordValid && (
+                        <IconOkey
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            iconPassowrd
+                        >
+                            <path
+                                d="M20.0001 7L9.0001 18L4 13"
+                                stroke="#00C3AD"
+                            />
+                        </IconOkey>
+                    )}
+                    {errors.password && (
+                        <>
+                            <TextValidation>
+                                {errors.password.message}
+                            </TextValidation>
+                            <IconCrossValidate
+                                onClick={() => {
+                                    setIsPasswordlValid(false);
+                                    setPassword('');
+                                }}
+                                type="button"
+                                iconPassowrd
+                            >
+                                {IconCross}
+                            </IconCrossValidate>
+                        </>
+                    )}
+                    <ShowPasswordButton
+                        type="button"
+                        onClick={handleClickShowOne}
+                    >
                         {iconEyes}
                     </ShowPasswordButton>
                 </LabelForRegistration>
-                <ButtonSubmit>Registration</ButtonSubmit>
+                <LabelForRegistration registration={true}>
+                    <Input
+                        {...register('confirmPassword')}
+                        aria-invalid={errors.confirmPassword ? 'true' : 'false'}
+                        placeholder="Confirm password"
+                        type={showTwo ? 'text' : 'password'}
+                        value={confirmPassword}
+                        title='Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long.'
+                        style={{
+                            border: errors.confirmPassword
+                                ? '1px solid var(--red)'
+                                : isConfirmPasswordValid &&
+                                  !errors.confirmPassword
+                                ? '1px solid var(--green)'
+                                : '1px solid var(--blue)',
+                        }}
+                        onChange={e => {
+                            const isValid = /.{7,}/.test(e.target.value);
+                            setIsConfirmPasswordlValid(isValid);
+                            if (isValid) {
+                                errors.confirmPassword = undefined;
+                            }
+                            setConfirmPassword(e.target.value);
+                        }}
+                    ></Input>
+                    {isConfirmPasswordValid && (
+                        <IconOkey
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            iconPassowrd
+                        >
+                            <path
+                                d="M20.0001 7L9.0001 18L4 13"
+                                stroke="#00C3AD"
+                            />
+                        </IconOkey>
+                    )}
+                    {errors.confirmPassword && (
+                        <>
+                            <TextValidation>
+                                {errors.confirmPassword.message}
+                            </TextValidation>
+                            <IconCrossValidate
+                                onClick={() => {
+                                    setIsConfirmPasswordlValid(false);
+                                    setConfirmPassword('');
+                                }}
+                                type="button"
+                                iconPassowrd
+                            >
+                                {IconCross}
+                            </IconCrossValidate>
+                        </>
+                    )}
+                    <ShowPasswordButton
+                        type="button"
+                        onClick={handleClickShowTwo}
+                    >
+                        {iconEyes}
+                    </ShowPasswordButton>
+                </LabelForRegistration>
+                <ButtonSubmit type="submit">Registration</ButtonSubmit>
                 <Question>
-                    Don't have an account?
-                    {<LinkToForm href="fwefew"> Login</LinkToForm>}
+                    Don't have an account?{' '}
+                    {
+                        <LinkToForm href="fwefew" to="/login">
+                            Login
+                        </LinkToForm>
+                    }
                 </Question>
             </form>
         </Form>

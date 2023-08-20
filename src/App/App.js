@@ -11,6 +11,7 @@ import { NewsPage } from '../pages/Nwes';
 
 
 function App() {
+
   return (
     <Container>
       <Routes>
@@ -24,5 +25,6 @@ function App() {
       
     </Container>
   );
+
 }
 export default App;
