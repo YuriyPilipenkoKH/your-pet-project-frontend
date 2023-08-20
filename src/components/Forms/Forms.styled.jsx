@@ -15,6 +15,8 @@ export const Form = styled.div.withConfig({
     width: 100%;
     @media screen and (min-width: 320px) {
         width: 280px;
+        padding: ${({ chooseOption }) => chooseOption && '20px 8px'};
+        width: ${({ chooseOption }) => chooseOption && '280px'};
     }
     @media screen and (min-width: 768px) {
         width: 608px;
@@ -186,19 +188,36 @@ export const ListSteps = styled.ul`
 `;
 
 export const ItemStep = styled.li`
-    margin-right: 16px;
+    margin-right: 12px;
     &:last-child {
         margin-right: 0px;
     }
-    width: calc((100% - 2 * 16px) / 3);
+    width: calc((100% - 2 * 12px) / 3);
+    @media screen and (min-width: 768px) {
+        margin-right: 12px;
+        width: calc((100% - 2 * 12px) / 3);
+    }
 `;
 
-export const TextStep = styled.p`
+export const TextStep = styled.p.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'currentStep' && prop !== 'stepNumber',
+})`
     color: var(--blue);
-    font-size: 16px;
+    font-size: 10px;
     font-weight: 500;
-    line-height: 26.5px;
     margin-bottom: 12px;
+    line-height: normal;
+    color: ${props =>
+        props.currentStep === props.stepNumber
+            ? 'var(--blue)'
+            : props.currentStep < props.stepNumber
+            ? 'var(--green)'
+            : 'var(--light-blue)'};
+    @media screen and (min-width: 768px) {
+        line-height: 26.5px;
+        font-size: 16px;
+    }
 `;
 
 export const Progres = styled.div.withConfig({
@@ -248,6 +267,13 @@ export const ButtonOption = styled.button.withConfig({
 `;
 
 export const WrapperNextBackButton = styled.div`
+    text-align: center;
     display: flex;
-    gap: 10px;
-`
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column-reverse;
+    gap: 2px;
+    @media screen and (min-width: 768px) {
+        gap: 10px;
+    }
+`;
