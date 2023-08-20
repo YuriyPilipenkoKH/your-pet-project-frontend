@@ -63,7 +63,7 @@ export const HomeTitle = styled.h1`
   }
 `;
 // Nwes
-export const NwesWrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,7 +81,7 @@ export const SearchWrapper = styled.div`
 `;
 
 
-export const TytleNwes = styled.h2`
+export const Tytle = styled.h2`
   font-size: 24px;
   font-weight: 700;
   line-height: 32.78px;

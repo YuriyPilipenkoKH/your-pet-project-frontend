@@ -2,14 +2,14 @@ import React from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { NewsCard } from '../components/News/NewsCard';
 import news from '../components/json/news.json';
-import { NwesPage, NwesWrapper, SearchContainer, SearchIcon, SearchInput, SearchWrapper, TytleNwes } from './pages.styled/Pages.styled';
+import { NwesPage, Wrapper, SearchContainer, SearchIcon, SearchInput, SearchWrapper, Tytle } from './pages.styled/Pages.styled';
 
 export const NewsPage = () => {
   const style = { color: "blue", fontSize: "1em" }
   return (
-    <NwesWrapper>
+    <Wrapper>
       <SearchWrapper>
-        <TytleNwes>News</TytleNwes>
+        <Tytle>News</Tytle>
         <SearchContainer class="search-container">
           <SearchInput type="text" name="search" placeholder="Search" />
           <SearchIcon class="search-icon">
@@ -29,6 +29,6 @@ export const NewsPage = () => {
           />
         ))}
       </NwesPage>
-    </NwesWrapper>
+    </Wrapper>
   );
 };
