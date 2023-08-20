@@ -207,7 +207,7 @@ ${hoverStylesY}
 
 `;
 
-export const StyledOutButton = styled.button`
+export const StyledOutButton = styled(NavLink)`
 ${buttonStyles} 
 ${ripple} 
 
