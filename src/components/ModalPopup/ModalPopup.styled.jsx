@@ -70,10 +70,9 @@ export const BtnContainer = styled.div`
     }
 
     @media screen and (min-width: 768px) {
-      /* position: absolute;
-      bottom: 22px;
-      right: 32px; */
-      flex-direction: row-reverse;
+
+      flex-direction: row;
+      /* flex-direction: ${props => props.type === 2 ? 'row' : 'row-reverse'}; */
       gap: 22px;
 
         &>button {
