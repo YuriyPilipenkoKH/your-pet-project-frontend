@@ -9,6 +9,7 @@ import { StyledLinkLog, StyledLinkReg } from "../components/AuthNav/AuthNav.styl
 import { StyledLink } from "../components/Button/Button.styled";
 
 
+
 export const modal1 = {     
         type: 1,
         widthm: '280px',
@@ -96,7 +97,7 @@ export const modal5 = {
         buttonColor: '#13d', 
         buttonText: 'confirm',
        
-        btn1:  <ButtonTransparent>Cacel</ButtonTransparent>,
+        btn1:  <ButtonTransparent >Cacel</ButtonTransparent>,
         btn2: <Button>Yes <MdOutlineLogout/> </Button>,
         btnsizem: '240px',
         btnsized: '130px',

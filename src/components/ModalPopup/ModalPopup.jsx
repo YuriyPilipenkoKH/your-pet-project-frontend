@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { RxCross2 } from "react-icons/rx";
-
-
+import { MdOutlineLogout} from "react-icons/md";
+import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BtnContainer,  BtnContainer3,  ContentWrapp,  ModalCategory,  ModalContainer, ModalContainer3, ModalImage, ModalOverlay, ModalText, ModalTitle, ModalTitle3, OnCloseButton, PetList } from './ModalPopup.styled';
+import { Button, ButtonTransparent, OutButton } from '../Button/Button';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -41,24 +42,37 @@ const props = {
     };
   }, [onClose]);
 
-  // const handlePictureClick = (e) => {
-  //   e.stopPropagation();
-  // };
 
 
-
-if (type === 1 || type === 2 || type === 4 || type === 5 ){
+if (type === 1  || type === 4  ){
   return  createPortal(
     <ModalOverlay className='modal-backdrop'>
       <ModalContainer 
       {...props}
-      // onClick={handlePictureClick}
       >
         <ModalTitle>{title}</ModalTitle>
         <ModalText>{text}</ModalText>
         <BtnContainer {...props}>
           {btn1}
           {btn2}
+        </BtnContainer >
+        <OnCloseButton onClick={onClose} ><RxCross2/></OnCloseButton>
+      </ModalContainer>
+    </ModalOverlay>,
+      modalRoot
+  );
+}
+if ( type === 2  ){
+  return  createPortal(
+    <ModalOverlay className='modal-backdrop'>
+      <ModalContainer 
+      {...props}
+      >
+        <ModalTitle>{title}</ModalTitle>
+        <ModalText>{text}</ModalText>
+        <BtnContainer {...props}>
+          <ButtonTransparent onClick={onClose}>Cacel</ButtonTransparent>
+          <Button onClick={onClose}>Yes <RiDeleteBin6Line/> </Button>,
         </BtnContainer >
         <OnCloseButton onClick={onClose} ><RxCross2/></OnCloseButton>
       </ModalContainer>
@@ -97,7 +111,23 @@ if (type === 3){
       modalRoot
   );
 }
-
+if (type === 5 ){
+  return  createPortal(
+    <ModalOverlay className='modal-backdrop'>
+      <ModalContainer 
+      {...props}
+      >
+        <ModalTitle>{title}</ModalTitle>
+        <BtnContainer {...props}>
+           <ButtonTransparent onClick={onClose}>Cacel</ButtonTransparent>
+           <OutButton  onClick={onClose}>  Yes <MdOutlineLogout/> </OutButton>
+        </BtnContainer >
+        <OnCloseButton onClick={onClose} ><RxCross2/></OnCloseButton>
+      </ModalContainer>
+    </ModalOverlay>,
+      modalRoot
+  );
+}
 
   };
   
