@@ -1,10 +1,13 @@
 
-import { Button, ButtonTransparent, LogButton, RegButton } from "../components/Button/Button";
+import { Button, ButtonTransparent, OutButton } from "../components/Button/Button";
 import { iconPawprint } from "../images/icons";
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import doggy from '../images/doggy.png';
 import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineLogout} from "react-icons/md";
+import { StyledLinkLog, StyledLinkReg } from "../components/AuthNav/AuthNav.styled";
+import { StyledLink } from "../components/Button/Button.styled";
+
 
 
 export const modal1 = {     
@@ -19,8 +22,10 @@ export const modal1 = {
         buttonColor: '#13d', 
         buttonText: 'confirm',
        
-        btn1: <LogButton>Log IN {iconPawprint}</LogButton>,
-        btn2:  <RegButton>Registration </RegButton>,
+        btn1:  <StyledLinkLog to="/login" exact="true">
+                        Log In {iconPawprint} </StyledLinkLog>,
+        btn2:   <StyledLinkReg to="/register" exact="true">
+                         Register   </StyledLinkReg>,
         btnsizem: '240px',
         btnsized: '165px',
 }
@@ -74,7 +79,7 @@ export const modal4 = {
         buttonColor: '#13d', 
         buttonText: 'confirm',
        
-        btn1: <Button>Go to profile {iconPawprint}</Button>,
+        btn1: <StyledLink to="/profile" exact="true" >Go to profile {iconPawprint}</StyledLink>,
         btn2:  null,
         btnsizem: '240px',
         btnsized: '240px',
@@ -93,7 +98,7 @@ export const modal5 = {
         buttonText: 'confirm',
        
         btn1:  <ButtonTransparent>Cacel</ButtonTransparent>,
-        btn2: <Button>Yes <MdOutlineLogout/> </Button>,
+        btn2: <OutButton  to="/" exact="true">Yes <MdOutlineLogout/> </OutButton>,
         btnsizem: '240px',
         btnsized: '130px',
 }

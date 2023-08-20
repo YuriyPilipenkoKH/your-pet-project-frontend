@@ -207,7 +207,7 @@ ${hoverStylesY}
 
 `;
 
-export const StyledOutButton = styled.button`
+export const StyledOutButton = styled(NavLink)`
 ${buttonStyles} 
 ${ripple} 
 
@@ -295,10 +295,23 @@ transition: all 0.4s ease;
 
 
 export const StyledLink = styled(NavLink)`
+${buttonStyles} 
+ ${ripple} 
 
-  transition:  color 1s ease-in-out;
-  font-weight: 600;
-  transition: 0.3s ease;
+ background-color: var(--blue);
+ color: var(--white);
+ transition: all 0.4s ease; 
+
+ & >svg {
+
+fill: var(--white);
+}
+
+&:hover  {
+  transition: all 0.4s ease; 
+  background: linear-gradient(to right, var( --gradient-bl), var(--gradient-br));
+  color: var(--white);
+ }
 
   &.active {
     color: #eee;
