@@ -11,12 +11,14 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { StyledLogo } from "../Button/Button.styled";
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 
+
 export const SharedLayout = () => {
 
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsOpenMenu(!isOpenMenu);
+    setIsOpen(!isOpen);
+   
   };
 
   return (
@@ -26,13 +28,10 @@ export const SharedLayout = () => {
         <Nav/>
         <AuthNavWrap>
           <AuthNav/>
-          
           <ButtonBurger onClick={toggleMenu}><RxHamburgerMenu/></ButtonBurger> 
           
-
-
         </AuthNavWrap>
-        {isOpenMenu && <MobileMenu/>}
+        <MobileMenu isOpen ={isOpen } onClose = {toggleMenu}  />
       </LayoutWrap>
       <Suspense>
           <Outlet />
