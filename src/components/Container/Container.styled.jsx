@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.div`
-    outline: 1p solid red;
     display: grid;
     place-items: center;
     grid-gap: 25px;
