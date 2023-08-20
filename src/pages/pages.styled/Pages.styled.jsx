@@ -110,7 +110,7 @@ export const SearchIcon = styled.span`
   top: 55%;
   right: 10px;
   transform: translateY(-50%);
-  /* padding-left: 10px; */
+  
   fill: var(--blue);
 `;
 export const SearchInput = styled.input`
@@ -125,7 +125,7 @@ export const SearchInput = styled.input`
   &::placeholder {
     font-size: 14px;
     line-height: 16.94px;
-    /* padding: 10px 0 10px 20px; */
+    
   }
 
   @media screen and (min-width: 768px) {
