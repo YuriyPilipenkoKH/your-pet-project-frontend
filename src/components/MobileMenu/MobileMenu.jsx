@@ -16,7 +16,7 @@ export  const MobileMenu = ({ isOpen, onClose }) => {
             </MenuHeader>
         <MenuContent>
             <AuthNav   onClose={onClose}/>
-            <Nav/>
+            <Nav  onClose={onClose}/>
         </MenuContent>
     </MenuWrapp>
   );
