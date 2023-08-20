@@ -68,9 +68,11 @@ export const BtnContainer = styled.div`
     flex-direction: column;
     gap: 12px;
 
-    &>button {
+    &>button, &>a {
         width: ${props => props.btnsizem};
     }
+    
+
 
     @media screen and (min-width: 768px) {
 
@@ -78,7 +80,7 @@ export const BtnContainer = styled.div`
       
       gap: 22px;
 
-        &>button {
+        &>button, &>a {
 
         width: ${props => props.btnsized};
         gap:  ${(props => props.type === 4) ? '20px' : '12px'};
@@ -92,7 +94,7 @@ export const BtnContainer3 = styled.div`
     flex-direction: column;
     gap: 12px;
 
-    &>button {
+    &>button,  &>a {
         width: 240px;
     }
 
@@ -103,7 +105,7 @@ export const BtnContainer3 = styled.div`
       flex-direction: row-reverse;
       gap: 22px;
 
-        &>button {
+        &>button,  &>a {
         width: 130px;
     }
   }
