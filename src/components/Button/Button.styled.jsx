@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import isPropValid from '@emotion/is-prop-valid';
-
+import { NavLink } from "react-router-dom";
 
 
 export const rotate = keyframes`
@@ -223,14 +223,14 @@ border: 2px solid var(--yellow);
 `;
 
 
-export const StyledOutButton = styled.button`
-    ${buttonStyles}
-    ${ripple} 
+// export const StyledOutButton = styled.button`
+//     ${buttonStyles}
+//     ${ripple} 
 
-border: 2px solid var(--blue);
-    background-color: var(--blue);
-    color: var(--fone-color);
-    width: 135px;
+// border: 2px solid var(--blue);
+//     background-color: var(--blue);
+//     color: var(--fone-color);
+//     width: 135px;
 
 export const StyledOutButton = styled(NavLink)`
 ${buttonStyles} 
