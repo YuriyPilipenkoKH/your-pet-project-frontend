@@ -1,5 +1,7 @@
-import styled, {  keyframes } from 'styled-components';
-import { NavLink } from "react-router-dom";
+import styled, { keyframes } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+
+
 
 export const rotate = keyframes`
    0% {
@@ -14,11 +16,10 @@ export const rotate = keyframes`
     100% {
       transform: rotate(0deg);
     }
+`;
 
-`
+export const buttonStyles = `
 
-
-export const buttonStyles =`
     
 font-family: inherit;
 font-weight: 600;
@@ -37,9 +38,9 @@ outline: none;
 
 transition: all 0.4s ease; 
 
-`
+`;
 
-export const ripple=`
+export const ripple = `
 position: relative;
 overflow: hidden;
 
@@ -75,9 +76,9 @@ overflow: hidden;
   
   }
 }
-`
+`;
 
-export const hoverStylesB =`
+export const hoverStylesB = `
 & >svg {
 
   fill: var(--white);
@@ -89,8 +90,8 @@ export const hoverStylesB =`
   color: var(--white);
  }
 
-`
-export const hoverStylesTrB =`
+`;
+export const hoverStylesTrB = `
 border: 2px solid var(--blue);
 background-color: var(--white);
 color: var(--blue);
@@ -113,8 +114,8 @@ transition: all 0.4s ease;
 }
  }
 
-`
-export const hoverStylesY =`
+`;
+export const hoverStylesY = `
 & >svg {
 
   fill: var(--white);
@@ -126,58 +127,73 @@ export const hoverStylesY =`
   color: var(--white);
  }
 }
-`
-
-export const StyledButton = styled.button`
-
-${buttonStyles} 
- ${ripple} 
- 
- background-color: var(--blue);
- color: var(--white);
- transition: all 0.4s ease; 
-
-& >svg {
-
-  fill: var(--white);
-  }
-
-  &:hover  {
-  transition: all 0.4s ease; 
-  background: linear-gradient(to right, var( --gradient-bl), var(--gradient-br));
-  color: var(--white);
- }
-
 `;
 
-export const StyledButtonTransparent = styled.button`
-${buttonStyles} 
-${ripple} 
+export const StyledButton = styled.button.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet',
+})`
+    ${buttonStyles};
+    ${ripple};
 
-border: 2px solid var(--blue);
-background-color: transparent;
-color: var(--blue);
-transition: all 0.4s ease; 
+    background-color: var(--blue);
+    color: var(--fone-color);
+    transition: all 0.4s ease;
+    width: ${({ addPet }) => addPet && '68%'};
 
-& >svg {
-  fill: var(--blue);
-  }
+    & > svg {
+        fill: var(--fone-color);
+    }
 
-  &:hover  {
-  transition: all 0.4s ease; 
-  background: linear-gradient(to right, #88c7fc, #4da5f3);
-  color: var(--white);
-  border: 2px solid transparent;
+    &:hover {
+        transition: all 0.4s ease;
+        background: linear-gradient(
+            to right,
+            var(--gradient-bl),
+            var(--gradient-br)
+        );
+        color: var(--fone-color);
+    }
+`;
 
-  & >svg {
-    transition: all 0.4s ease; 
-    fill: var(--white);
-}
- }
+export const StyledButtonTransparent = styled.button.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet',
+})`
+    ${buttonStyles};
+    ${ripple};
 
+    border: 2px solid var(--blue);
+    background-color: var(--fone-color);
+    color: var(--blue);
+    transition: all 0.4s ease;
+    border: ${({ addPet }) => addPet && "transparent" };
+    background-color: ${({ addPet }) => addPet && 'transparent'};
+
+    & > svg {
+        fill: var(--blue);
+    }
+
+    &:hover {
+        transition: all 0.4s ease;
+        background: linear-gradient(to right, #88c7fc, #4da5f3);
+        color: var(--fone-color);
+        border: 2px solid transparent;
+
+        & > svg {
+            transition: all 0.4s ease;
+            color: var(--fone-color);
+            fill: var(--white);
+            stroke: var(--white);
+        }
+    }
 `;
 
 export const StyledLogButton = styled.button`
+    ${buttonStyles};
+    ${ripple};
+
+    background-color: var(--yellow);
+    color: var(--fone-color);
+    width: 165px;
 
 ${buttonStyles} 
  ${ripple} 
@@ -190,22 +206,31 @@ ${buttonStyles}
 `;
 
 export const StyledRegButton = styled.button`
-${buttonStyles} 
- ${ripple} 
+    ${buttonStyles}
+    ${ripple} 
 
 border: 2px solid var(--yellow);
-background-color: var(--white);
-color: var(--yellow);
-width: 165px;
-transition: all 0.4s ease; 
+    background-color: var(--fone-color);
+    color: var(--yellow);
+    width: 165px;
+    transition: all 0.4s ease;
 
-${hoverStylesY} 
+    ${hoverStylesY};
 
-  /* &:hover  {
+    /* &:hover  {
   border: 2px solid transparent;
  } */
-
 `;
+
+
+export const StyledOutButton = styled.button`
+    ${buttonStyles}
+    ${ripple} 
+
+border: 2px solid var(--blue);
+    background-color: var(--blue);
+    color: var(--fone-color);
+    width: 135px;
 
 export const StyledOutButton = styled(NavLink)`
 ${buttonStyles} 
@@ -227,33 +252,47 @@ transform: rotate(180deg);
 }
 
 
+    ${hoverStylesB}
+
+    &:hover {
+        border: 2px solid transparent;
+    }
+    & > svg {
+        width: 24px;
+        transform: rotate(180deg);
+    }
 `;
 
 export const StyledFilterButton = styled.button`
-${buttonStyles} 
-${ripple} 
+    ${buttonStyles}
+    ${ripple} 
 ${hoverStylesTrB} 
 
 width: 152px;
 `;
 
 export const StyleAddToButton = styled.button`
-${buttonStyles} ;
-${ripple} ;
+    ${buttonStyles};
+    ${ripple};
 
-border: 2px solid var(--blue);
-background-color: var(--blue);
-color: var(--white);
-width: 130px;
+    border: 2px solid var(--blue);
+    background-color: var(--blue);
+    color: var(--fone-color);
+    width: 130px;
 
-${hoverStylesB} ;
 
-&:hover  {
-  border: 2px solid transparent;
-}
+    ${hoverStylesB};
+
+    &:hover {
+        border: 2px solid transparent;
+    }
 `;
 
 export const StyledContactButton = styled.button`
+    ${buttonStyles};
+    ${ripple};
+    ${hoverStylesTrB};
+
 
 ${buttonStyles} 
 ${ripple} 
@@ -263,21 +302,21 @@ width: 152px;
 `;
 
 export const StyledLearnButton = styled.button`
-
-${buttonStyles} 
-${ripple} 
+    ${buttonStyles}
+    ${ripple} 
 ${hoverStylesTrB} 
+
+
 
 width: 248px;
 height: 38px;
 
 `;
 
-
-
 export const StyledRadioButton = styled.button`
-${buttonStyles} 
- ${ripple} 
+    ${buttonStyles}
+    ${ripple} 
+
 
 
 background-color: var(--light-blue);
@@ -291,7 +330,23 @@ transition: all 0.4s ease;
   transition: all 0.4s ease; 
 }
 
+    &:hover {
+        transition: all 0.4s ease;
+        background: linear-gradient(
+            to right,
+            var(--gradient-yl),
+            var(--gradient-yr)
+        );
+        color: var(--fone-color);
+        border: 2px solid transparent;
+
+        & > svg {
+            transition: all 0.4s ease;
+            fill: var(--fone-color);
+        }
+    }
 `;
+
 
 
 export const StyledLink = styled(NavLink)`
@@ -333,3 +388,4 @@ padding: 12px 0;
 }
 
 `
+

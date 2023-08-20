@@ -96,3 +96,16 @@ export const IconCross = (
     </svg>
 );
 
+export const RawLeft = (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+    >
+        <path
+            d="M4 12L20 12M4 12L10 6M4 12L10 18"
+            stroke="#54ADFF"
+        />
+    </svg>
+);
