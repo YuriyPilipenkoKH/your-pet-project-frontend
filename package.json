@@ -24,6 +24,7 @@
     "redux-thunk": "^2.4.2",
     "styled-components": "^6.0.7",
     "web-vitals": "^2.1.4",
+    "yap": "^0.0.2",
     "yup": "^1.2.0"
   },
   "repository": {
@@ -57,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "gh-pages": "^6.0.0",
     "prop-types": "^15.8.1"
   }

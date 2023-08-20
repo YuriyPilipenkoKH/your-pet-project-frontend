@@ -88,3 +88,7 @@ img {
   border: 0;
   clip: rect(0 0 0 0);
 }
+
+.userContact + span{
+  color: var(--yellow);
+}
