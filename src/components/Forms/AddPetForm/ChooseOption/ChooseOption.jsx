@@ -27,7 +27,12 @@ export default function ChooseOption() {
                 {arraySteps.map((step, index) => {
                     return (
                         <ItemStep key={index}>
-                            <TextStep>{step}</TextStep>
+                            <TextStep
+                                currentStep={index + 1}
+                                stepNumber={stepNumber}
+                            >
+                                {step}
+                            </TextStep>
                             <Progres
                                 currentStep={index + 1}
                                 stepNumber={stepNumber}
@@ -44,7 +49,7 @@ export default function ChooseOption() {
                                 onClick={() => setActive(index + 1)}
                                 active={active}
                                 currentActive={index + 1}
-                                type='button'
+                                type="button"
                             >
                                 {step}
                             </ButtonOption>

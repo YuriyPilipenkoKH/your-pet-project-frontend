@@ -138,7 +138,12 @@ export const StyledButton = styled.button.withConfig({
     background-color: var(--blue);
     color: var(--fone-color);
     transition: all 0.4s ease;
-    width: ${({ addPet }) => addPet && '68%'};
+    width: ${({ addPet }) => addPet && '100%'};
+
+    @media screen and (min-width: 768px) {
+      width: ${({ addPet }) => addPet && '68%'};
+  }
+
 
     & > svg {
         fill: var(--fone-color);
