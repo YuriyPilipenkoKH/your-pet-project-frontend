@@ -8,11 +8,13 @@ import { OnCloseButton } from '../ModalPopup/ModalPopup.styled';
 import { RxCross2 } from "react-icons/rx";
 
 export  const MobileMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+    
+    const [isOpen, setIsOpen] = useState(false);
+    document.documentElement.setAttribute('data-menu', isOpen);
 
-  const toggleMenu = () => {
+    const toggleMenu = () => {
     setIsOpen(!isOpen);
-  };
+    };
 
   return (
     <MenuWrapp className="menu">
