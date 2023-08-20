@@ -120,7 +120,7 @@ if (type === 5 ){
         <ModalTitle>{title}</ModalTitle>
         <BtnContainer {...props}>
            <ButtonTransparent onClick={onClose}>Cacel</ButtonTransparent>
-           <OutButton  onClick={onClose}>  Yes <MdOutlineLogout/> </OutButton>
+           <OutButton  to="/" exact="true" onClick={onClose}>  Yes <MdOutlineLogout/> </OutButton>
         </BtnContainer >
         <OnCloseButton onClick={onClose} ><RxCross2/></OnCloseButton>
       </ModalContainer>

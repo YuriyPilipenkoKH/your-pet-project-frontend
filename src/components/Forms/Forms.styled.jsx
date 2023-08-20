@@ -2,24 +2,31 @@ import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const Form = styled.div`
+export const Form = styled.div.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'chooseOption',
+})`
     padding: 40px 12px;
     background: #fff;
     border-radius: 40px;
     box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
     text-align: center;
+    text-align: ${({ chooseOption }) => chooseOption && 'left'};
     margin: 0 auto;
     width: 100%;
     @media screen and (min-width: 320px) {
         width: 280px;
     }
     @media screen and (min-width: 768px) {
-        width: 600px;
+        width: 608px;
         padding: 60px 75px;
+        padding: ${({ chooseOption }) => chooseOption && '20px 32px'};
+        width: ${({ chooseOption }) => chooseOption && '458px'};
     }
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h3.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'chooseOption',
+})`
     font-family: Manrope;
     font-size: 24px;
     line-height: normal;
@@ -28,6 +35,9 @@ export const Title = styled.h3`
     margin-bottom: 20px;
     @media screen and (min-width: 768px) {
         font-size: 36px;
+        margin-bottom: 40px;
+        font-size: ${({ chooseOption }) => chooseOption && '28px'};
+        margin-bottom: ${({ chooseOption }) => chooseOption && '24px'};
     }
 `;
 
@@ -168,3 +178,76 @@ export const IconOkey = styled.svg.withConfig({
         left: ${({ iconPassowrd }) => (iconPassowrd ? '380px' : '410px')};
     }
 `;
+
+export const ListSteps = styled.ul`
+    display: flex;
+    width: 100%;
+    margin-bottom: 40px;
+`;
+
+export const ItemStep = styled.li`
+    margin-right: 16px;
+    &:last-child {
+        margin-right: 0px;
+    }
+    width: calc((100% - 2 * 16px) / 3);
+`;
+
+export const TextStep = styled.p`
+    color: var(--blue);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26.5px;
+    margin-bottom: 12px;
+`;
+
+export const Progres = styled.div.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'currentStep' && prop !== 'stepNumber',
+})`
+    width: 100%;
+    height: 8px;
+    background-color: ${props =>
+        props.currentStep === props.stepNumber
+            ? 'var(--blue)'
+            : props.currentStep < props.stepNumber
+            ? 'var(--green)'
+            : 'var(--light-blue)'};
+    border-radius: 8px;
+`;
+
+export const ListOption = styled.ul`
+    margin-bottom: 137px;
+`;
+
+export const ItemOption = styled.li`
+    margin-bottom: 12px;
+    &:last-child {
+        margin-bottom: 0px;
+    }
+`;
+
+export const ButtonOption = styled.button.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'active' && prop !== 'currentActive',
+})`
+    cursor: pointer;
+    padding: 8px 16px;
+    color: ${props =>
+        props.currentActive === props.active ? 'var(--white)' : 'var(--blue)'};
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.56px;
+    background-color: ${props =>
+        props.currentActive === props.active
+            ? 'var(--blue)'
+            : 'var(--light-blue)'};
+    border-color: transparent;
+    cursor: pointer;
+    border-radius: 40px;
+`;
+
+export const WrapperNextBackButton = styled.div`
+    display: flex;
+    gap: 10px;
+`

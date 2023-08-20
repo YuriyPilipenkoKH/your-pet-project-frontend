@@ -9,6 +9,7 @@ import { RxCross2 } from "react-icons/rx";
 
 export  const MobileMenu = () => {
     
+
     const [isOpen, setIsOpen] = useState(false);
     document.documentElement.setAttribute('data-menu', isOpen);
 
@@ -16,13 +17,15 @@ export  const MobileMenu = () => {
     setIsOpen(!isOpen);
     };
 
+
+
   return (
     <MenuWrapp className="menu">
         <StyledLogo to="/">{iconLogo}</StyledLogo>
         <AuthNav/>
         <Nav/>
   
-        <OnCloseButton  ><RxCross2/></OnCloseButton> 
+        <OnCloseButton onClick={toggleMenu} ><RxCross2/></OnCloseButton> 
     </MenuWrapp>
   );
 };
