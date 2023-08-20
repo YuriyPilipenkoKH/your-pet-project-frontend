@@ -8,7 +8,11 @@ import { BtnContainer,  BtnContainer3,  ContentWrapp,  ModalCategory,  ModalCont
 const modalRoot = document.querySelector('#modal-root');
 
 
-export const ModalPopup = ({ type, title, text, image, buttonColor, buttonText, btn1, btn2 , onClose } ) => {
+export const ModalPopup = ({ type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose } ) => {
+
+const props = {
+  type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized
+}
 
   useEffect(() => {
     const handleBackdropClick = (e) => {
@@ -42,21 +46,19 @@ export const ModalPopup = ({ type, title, text, image, buttonColor, buttonText, 
 
 
 
-if (type === 1 || type === 2 || type === 4 ){
+if (type === 1 || type === 2 || type === 4 || type === 5 ){
   return  createPortal(
     <ModalOverlay>
       <ModalContainer 
-      type = {type}
+      {...props}
       onClick={handlePictureClick}
-      // style={{height: type === 2 ? '350px' : '429px'}}
       >
-
         <ModalTitle>{title}</ModalTitle>
         <ModalText>{text}</ModalText>
-        <BtnContainer>
+        <BtnContainer {...props}>
           {btn1}
           {btn2}
-        </BtnContainer>
+        </BtnContainer >
         <OnCloseButton onClick={onClose} ><RxCross2/></OnCloseButton>
       </ModalContainer>
     </ModalOverlay>,

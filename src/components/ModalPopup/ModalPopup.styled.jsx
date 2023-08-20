@@ -13,11 +13,10 @@ export const ModalOverlay = styled.div`
 `;
 
 export const ModalContainer = styled.div`
-/* flex-direction: ${props => props.type === 2 ? 'row' : 'row-reverse'}; */
+
   width: 280px;
-  /* height: 445px; */
-  height: ${props => props.type === 2 ? '389px' : props => props.type === 4 ? '278px' : '429px'};
-  /* height: ${props => props.type === 4 ? '278px' : '429px'}; */
+  height: ${props => props.heightm} ;
+
   position: relative;
   display: grid;
   place-items: center;
@@ -25,12 +24,13 @@ export const ModalContainer = styled.div`
   background-color: var(--white);
   padding: 50px 20px;
   border-radius: 20px;
-  /* width: ${props => props.width};
-  height: ${props => props.height}; */
+
 
   @media screen and (min-width: 768px) {
     width: 608px;
-    height: ${props => props.type === 2 ? '389px' : props => props.type === 4 ? '278px' : '429px'};
+   
+    height: ${props => props.heightd} ;
+    
     padding: 50px 40px;
     border-radius: 40px;
   }
@@ -49,8 +49,7 @@ export const ModalContainer3 = styled.div`
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  /* width: ${props => props.width};
-  height: ${props => props.height}; */
+
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
@@ -69,18 +68,18 @@ export const BtnContainer = styled.div`
     gap: 12px;
 
     &>button {
-        width: 240px;
+        width: ${props => props.btnsizem};
     }
 
     @media screen and (min-width: 768px) {
 
       flex-direction: row;
-      /* flex-direction: ${props => props.type === 2 ? 'row' : 'row-reverse'}; */
+      
       gap: 22px;
 
         &>button {
-        /* width: 165px; */
-        width:  ${(props => props.type === 4) ? '250px' : '165px'};
+
+        width: ${props => props.btnsized};
         gap:  ${(props => props.type === 4) ? '20px' : '12px'};
     }
   }

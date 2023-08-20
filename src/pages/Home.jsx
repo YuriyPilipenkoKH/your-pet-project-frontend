@@ -1,7 +1,7 @@
-import { Button, ButtonTransparent, LogButton, OutButton } from "../components/Button/Button";
+import { Button, ButtonTransparent, ContactButton, LogButton, OutButton } from "../components/Button/Button";
 import { ModalPopup } from "../components/ModalPopup/ModalPopup";
-import { iconFilter, iconMenuHamburger, iconPawprint } from "../images/icons";
-import { modal1, modal2, modal3, modal4 } from "../modals/modals";
+import {  iconPawprint } from "../images/icons";
+import { modal1, modal2, modal3, modal4, modal5 } from "../modals/modals";
 import { HomeTitle, HomeWrapper } from "./pages.styled/Pages.styled";
 // import image from '../images/home_m.png';
 import { MdOutlineLogout} from "react-icons/md";
@@ -34,12 +34,12 @@ export default function Home() {
   setModals(modal1);
   onModalOpen(); 
   }}>   
-  Learn more {iconMenuHamburger}</Button>
+  Learn more </Button>
 
     <ButtonTransparent onClick={() => {
   setModals(modal2);
   onModalOpen(); 
-  }}>Learn more {iconFilter}</ButtonTransparent>
+  }}>Learn more </ButtonTransparent>
 
     <LogButton onClick={() => {
   setModals(modal3);
@@ -50,6 +50,11 @@ export default function Home() {
   setModals(modal4);
   onModalOpen(); 
   }}>  Logout<MdOutlineLogout/></OutButton>
+
+<ContactButton onClick={() => {
+  setModals(modal5);
+  onModalOpen(); 
+  }}>Contact</ContactButton>
 
 {showModal && (
         <ModalPopup {...modals} onClose ={onModalClose}  /> //  onClose ={onModalClose}   {...modal1} 
