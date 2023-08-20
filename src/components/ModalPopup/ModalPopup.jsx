@@ -16,7 +16,8 @@ const props = {
 
   useEffect(() => {
     const handleBackdropClick = (e) => {
-      if (e.target === e.currentTarget) {
+
+      if (e.target.classList.contains("modal-backdrop")) {
        return onClose();
       }
     };
@@ -40,18 +41,18 @@ const props = {
     };
   }, [onClose]);
 
-  const handlePictureClick = (e) => {
-    e.stopPropagation();
-  };
+  // const handlePictureClick = (e) => {
+  //   e.stopPropagation();
+  // };
 
 
 
 if (type === 1 || type === 2 || type === 4 || type === 5 ){
   return  createPortal(
-    <ModalOverlay>
+    <ModalOverlay className='modal-backdrop'>
       <ModalContainer 
       {...props}
-      onClick={handlePictureClick}
+      // onClick={handlePictureClick}
       >
         <ModalTitle>{title}</ModalTitle>
         <ModalText>{text}</ModalText>
@@ -67,7 +68,7 @@ if (type === 1 || type === 2 || type === 4 || type === 5 ){
 }
 if (type === 3){
   return  createPortal(
-    <ModalOverlay>
+    <ModalOverlay className='modal-backdrop'>
       <ModalContainer3  >
         {image && <ModalImage src={image.doggy} alt="Modal Image" />}
         <ModalCategory > {'in good hands'} </ModalCategory>
