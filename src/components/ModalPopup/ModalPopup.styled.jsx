@@ -13,8 +13,11 @@ export const ModalOverlay = styled.div`
 `;
 
 export const ModalContainer = styled.div`
+/* flex-direction: ${props => props.type === 2 ? 'row' : 'row-reverse'}; */
   width: 280px;
   /* height: 445px; */
+  height: ${props => props.type === 2 ? '389px' : props => props.type === 4 ? '278px' : '429px'};
+  /* height: ${props => props.type === 4 ? '278px' : '429px'}; */
   position: relative;
   display: grid;
   place-items: center;
@@ -27,7 +30,7 @@ export const ModalContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 608px;
-    height: 429px;
+    height: ${props => props.type === 2 ? '389px' : props => props.type === 4 ? '278px' : '429px'};
     padding: 50px 40px;
     border-radius: 40px;
   }
@@ -76,7 +79,9 @@ export const BtnContainer = styled.div`
       gap: 22px;
 
         &>button {
-        width: 165px;
+        /* width: 165px; */
+        width:  ${(props => props.type === 4) ? '250px' : '165px'};
+        gap:  ${(props => props.type === 4) ? '20px' : '12px'};
     }
   }
 `;

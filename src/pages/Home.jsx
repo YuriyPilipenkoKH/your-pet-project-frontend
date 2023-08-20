@@ -1,9 +1,10 @@
-import { Button, ButtonTransparent, LogButton } from "../components/Button/Button";
+import { Button, ButtonTransparent, LogButton, OutButton } from "../components/Button/Button";
 import { ModalPopup } from "../components/ModalPopup/ModalPopup";
 import { iconFilter, iconMenuHamburger, iconPawprint } from "../images/icons";
-import { modal1, modal2, modal3 } from "../modals/modals";
+import { modal1, modal2, modal3, modal4 } from "../modals/modals";
 import { HomeTitle, HomeWrapper } from "./pages.styled/Pages.styled";
 // import image from '../images/home_m.png';
+import { MdOutlineLogout} from "react-icons/md";
 import { useState } from "react";
 
 export default function Home() {
@@ -44,6 +45,11 @@ export default function Home() {
   setModals(modal3);
   onModalOpen(); 
   }}>Log IN {iconPawprint}</LogButton>
+
+<OutButton onClick={() => {
+  setModals(modal4);
+  onModalOpen(); 
+  }}>  Logout<MdOutlineLogout/></OutButton>
 
 {showModal && (
         <ModalPopup {...modals} onClose ={onModalClose}  /> //  onClose ={onModalClose}   {...modal1} 

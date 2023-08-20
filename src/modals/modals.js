@@ -49,3 +49,17 @@ export const modal3 = {
         btn1:  <ButtonTransparent>Contact</ButtonTransparent>,
         btn2: <Button>Add to <FaRegHeart/> </Button>,
 }
+
+export const modal4 = {     
+        type: 4,
+        width: '280px',
+        height: '278px', 
+        title: 'Congrats!',
+        text: 'Youre registration is success',
+        image: null,
+        buttonColor: '#13d', 
+        buttonText: 'confirm',
+       
+        btn1: <Button>Go to profile {iconPawprint}</Button>,
+        btn2:  null,
+}

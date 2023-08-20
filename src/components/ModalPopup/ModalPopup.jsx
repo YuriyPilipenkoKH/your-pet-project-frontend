@@ -42,12 +42,14 @@ export const ModalPopup = ({ type, title, text, image, buttonColor, buttonText, 
 
 
 
-if (type === 1 || type === 2 ){
+if (type === 1 || type === 2 || type === 4 ){
   return  createPortal(
     <ModalOverlay>
       <ModalContainer 
+      type = {type}
       onClick={handlePictureClick}
-      style={{height: type === 2 ? '350px' : '429px'}}>
+      // style={{height: type === 2 ? '350px' : '429px'}}
+      >
 
         <ModalTitle>{title}</ModalTitle>
         <ModalText>{text}</ModalText>
