@@ -9,6 +9,7 @@ import { StyledLinkLog, StyledLinkReg } from "../components/AuthNav/AuthNav.styl
 import { StyledLink } from "../components/Button/Button.styled";
 
 
+
 export const modal1 = {     
         type: 1,
         widthm: '280px',
