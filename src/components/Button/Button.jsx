@@ -19,7 +19,7 @@ export const RegButton = ({ children, ...props }) => {
 };
 
 export const OutButton = ({ children, ...props }) => {
-  return <StyledOutButton type='submit' {...props}> {children}</StyledOutButton>;
+  return <StyledOutButton  {...props}> {children}</StyledOutButton>;
 };
 
 export const FilterButton = ({ children, ...props }) => {

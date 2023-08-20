@@ -1,5 +1,5 @@
 
-import { Button, ButtonTransparent } from "../components/Button/Button";
+import { Button, ButtonTransparent, OutButton } from "../components/Button/Button";
 import { iconPawprint } from "../images/icons";
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import doggy from '../images/doggy.png';
@@ -97,8 +97,8 @@ export const modal5 = {
         buttonColor: '#13d', 
         buttonText: 'confirm',
        
-        btn1:  <ButtonTransparent >Cacel</ButtonTransparent>,
-        btn2: <Button>Yes <MdOutlineLogout/> </Button>,
+        btn1:  <ButtonTransparent>Cacel</ButtonTransparent>,
+        btn2: <OutButton  to="/" exact="true">Yes <MdOutlineLogout/> </OutButton>,
         btnsizem: '240px',
         btnsized: '130px',
 }
