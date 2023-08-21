@@ -141,7 +141,8 @@ export const StyledButton = styled.button.withConfig({
     width: ${({ addPet }) => addPet && '100%'};
 
     @media screen and (min-width: 768px) {
-      width: ${({ addPet, stepNumber }) => addPet && stepNumber > 1 ? '72%' : '68%'};
+      width: ${({ addPet, stepNumber }) => addPet && '68%'};
+      width: ${({ stepNumber }) => stepNumber > 1 && '72%'};
   }
 
 
