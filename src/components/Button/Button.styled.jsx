@@ -331,7 +331,7 @@ height: 38px;
 
 export const StyledRadioButton = styled.button`
     ${buttonStyles}
-    ${hoverStylesTrB} 
+    /* ${hoverStylesTrB}  */
 
 background-color: var(--light-blue);
 color: var(--blue);
@@ -340,9 +340,7 @@ border: none;
 height: 35px;
 font-size: 12px;
 
-&:hover{
-  border: none;
-}
+
 `;
 
 export const StyledFavButton = styled.button`

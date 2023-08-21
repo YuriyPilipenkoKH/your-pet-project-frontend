@@ -58,7 +58,11 @@ export default function Home() {
   }}>Contact</ContactButton>
 
   <AddToButton>Add Pet <AiOutlinePlus/></AddToButton>
-  <RadioButton>favorite ads</RadioButton>
+
+  <RadioButton>your pet</RadioButton>
+  <RadioButton>sell</RadioButton>
+  <RadioButton>lost/found</RadioButton>
+  <RadioButton>in good hands</RadioButton>
 
 {showModal && (
         <ModalPopup {...modals} onClose ={onModalClose}  /> //  onClose ={onModalClose}   {...modal1} 
