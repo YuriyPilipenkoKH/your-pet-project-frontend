@@ -60,7 +60,7 @@ export const EditInpuButton = styled.button`
 `;
 
 export const FormInput = styled(Field)`
-    width: calc(100vw - 40vw);
+    width: 190px;
     height: 28px;
     padding-top: 4px;
     padding-right: 12px;
@@ -75,9 +75,6 @@ export const FormInput = styled(Field)`
         cursor: pointer;
     }
 
-    @media screen and (min-width: 480px) {
-        width: 320px;
-    }
     @media screen and (min-width: 768px) {
         width: 255px;
         height: 32px};
