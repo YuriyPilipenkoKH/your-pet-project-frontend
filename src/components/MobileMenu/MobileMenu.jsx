@@ -1,32 +1,30 @@
 import React, { useState } from 'react';
 import { AuthNav } from '../AuthNav/AuthNav';
 import { Nav } from '../Nav/Nav';
-import { MenuWrapp } from './MobileMenu.styled';
+import { CloseButton, MenuContent, MenuHeader, MenuWrapp } from './MobileMenu.styled';
 import { StyledLogo } from '../Button/Button.styled';
 import { iconLogo } from '../../images/icons';
-import { OnCloseButton } from '../ModalPopup/ModalPopup.styled';
 import { RxCross2 } from "react-icons/rx";
+import { UserNav } from '../UserNav/UserNav';
 
-export  const MobileMenu = () => {
-    
-    // const [isOpen, setIsOpen] = useState(false);
-    // document.documentElement.setAttribute('data-menu', isOpen);
-
-    // const toggleMenu = () => {
-    // setIsOpen(!isOpen);
-    // };
-
-    
+export  const MobileMenu = ({ isOpen, onClose }) => {
+   const [mod, setMod] = useState(true)
+    const toggleMod = () => {
+        setMod(!mod)
+    }
 
   return (
-    <MenuWrapp className="menu">
-        <StyledLogo to="/">{iconLogo}</StyledLogo>
-        <AuthNav/>
-        <Nav/>
-  
-        <OnCloseButton  ><RxCross2/></OnCloseButton> 
+    <MenuWrapp className= {isOpen ? ['menu', 'active'].join(' ') : 'menu'} >
+            <MenuHeader>
+                <StyledLogo to="/"  onClick={toggleMod}>{iconLogo}</StyledLogo>
+               <CloseButton onClick={onClose} ><RxCross2/></CloseButton>
+            </MenuHeader>
+        <MenuContent>
+       {mod ? <AuthNav   onClose={onClose}/> :  <UserNav   onClose={onClose}/> }
+            <Nav  onClose={onClose}/>
+        </MenuContent>
     </MenuWrapp>
   );
 };
-
-// onClick={onClose}
+// <AuthNav   onClose={onClose}/>
+// <UserNav   onClose={onClose}/>

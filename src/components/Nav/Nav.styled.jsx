@@ -25,6 +25,7 @@ export const ButtonBurger = styled.button`
   border: none;
   background: transparent;
   padding: 0;
+  cursor: pointer;
 
   &> svg {
     width: 2em;
