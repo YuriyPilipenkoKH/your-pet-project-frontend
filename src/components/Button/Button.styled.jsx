@@ -130,7 +130,7 @@ export const hoverStylesY = `
 `;
 
 export const StyledButton = styled.button.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet',
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet' && prop !== 'stepNumber',
 })`
     ${buttonStyles};
     ${ripple};
@@ -141,7 +141,7 @@ export const StyledButton = styled.button.withConfig({
     width: ${({ addPet }) => addPet && '100%'};
 
     @media screen and (min-width: 768px) {
-      width: ${({ addPet }) => addPet && '68%'};
+      width: ${({ addPet, stepNumber }) => addPet && stepNumber > 1 ? '72%' : '68%'};
   }
 
     & > svg {
@@ -180,7 +180,6 @@ export const StyledButtonTransparent = styled.button.withConfig({
         transition: all 0.4s ease;
         background: linear-gradient(to right, #88c7fc, #4da5f3);
         color: var(--fone-color);
-        border: 2px solid transparent;
 
         & > svg {
             transition: all 0.4s ease;
