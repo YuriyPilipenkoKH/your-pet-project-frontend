@@ -6,7 +6,7 @@ import { StyledLogo } from '../Button/Button.styled';
 import { iconLogo } from '../../images/icons';
 import { RxCross2 } from "react-icons/rx";
 import { UserNav } from '../UserNav/UserNav';
-import { MainCard } from '../MainCard/MainCard';
+
 
 export  const MobileMenu = ({ isOpen, onClose }) => {
    const [mod, setMod] = useState(true)
