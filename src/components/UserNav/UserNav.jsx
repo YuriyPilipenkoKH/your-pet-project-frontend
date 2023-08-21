@@ -1,6 +1,5 @@
 
 import { MdOutlineLogout} from "react-icons/md";
-
 import { ProfileWrap, StyledLinkOut, UserWrap } from './UserNav.styled';
 import { iconUser } from '../../images/icons';
 

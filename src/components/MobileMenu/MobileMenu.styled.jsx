@@ -20,6 +20,10 @@ export const MenuWrapp = styled.div`
     left: 0;
   }
 
+  @media screen and (min-width: 1280px) {
+    display: none;
+  }
+
 `
 export const MenuHeader = styled.div`
     position: relative;
@@ -28,6 +32,10 @@ export const MenuHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-self: center ;
+
+    @media screen and (min-width: 768px) {
+        width: 768px;
+    }
 
 `
 
@@ -38,9 +46,12 @@ export const MenuContent = styled.div`
     padding: 40px;
     gap: 40px;
 
+
+
     &>.AuthNav,
     &>.UserNav{
-        display: grid;
+        display: flex;
+        flex-direction: column;
         gap: 12px;
         justify-self: center;
         align-items: center;
@@ -62,6 +73,22 @@ export const MenuContent = styled.div`
             }
         }
     }
+
+    @media screen and (min-width: 768px) {
+        grid-template-rows: 300px 100px ;
+
+    &>.AuthNav,
+    &>.UserNav{
+        position: absolute;
+        top: 25px;
+        left: 48%;
+        display: flex;
+        flex-direction: row;
+    }
+    
+  } 
+
+
 
 `
 
