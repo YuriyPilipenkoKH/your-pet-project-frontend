@@ -1,4 +1,4 @@
-
+import React, { useState } from 'react';
 import { AuthNavWrap, LayoutWrap,  SharedLayoutWrap } from "./SharedLayout.styled";
 
 import { iconLogo } from "../../images/icons";
@@ -9,8 +9,18 @@ import { ButtonBurger } from "../Nav/Nav.styled";
 import { Nav } from "../Nav/Nav";
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { StyledLogo } from "../Button/Button.styled";
+import { MobileMenu } from '../MobileMenu/MobileMenu';
+
 
 export const SharedLayout = () => {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+   
+  };
+
   return (
     <SharedLayoutWrap className="sharedLayout">
       <LayoutWrap className="layoutWrap">
@@ -18,10 +28,10 @@ export const SharedLayout = () => {
         <Nav/>
         <AuthNavWrap>
           <AuthNav/>
+          <ButtonBurger onClick={toggleMenu}><RxHamburgerMenu/></ButtonBurger> 
           
-          <ButtonBurger><RxHamburgerMenu/></ButtonBurger> 
         </AuthNavWrap>
-        
+        <MobileMenu isOpen ={isOpen } onClose = {toggleMenu}  />
       </LayoutWrap>
       <Suspense>
           <Outlet />
