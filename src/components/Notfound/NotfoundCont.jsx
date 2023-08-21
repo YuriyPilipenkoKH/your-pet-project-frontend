@@ -10,7 +10,7 @@ export const NotfoundContent = () => {
             <TitleNotfound className="notfound">
                 This page not found :(
             </TitleNotfound>
-            <Button to="/news">To main page {iconPawprint}</Button>
+            <Button to="/home">To main page {iconPawprint}</Button>
            
         </Wrapper>
     );

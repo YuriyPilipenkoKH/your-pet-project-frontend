@@ -29,7 +29,7 @@ export const NewsCard = (item) => {
         </NewsText>
         <WrapperData className="wrapper-data">
           <NewsDate className="news-card__date">{item.date}</NewsDate>
-          <NewsLink className="news-card__link">{item.NewsDateurl}</NewsLink>
+          <NewsLink  className="news-card__link" href="{item.NewsDateurl}" target="_blank"  rel="nofollow noopener" >Read more</NewsLink>
         </WrapperData>
       </NewsContent>
     </NewsCardWrapper>

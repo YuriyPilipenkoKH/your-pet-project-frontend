@@ -7,7 +7,7 @@ import CustomPagination from "../components/Pagination/Pagination";
 import { BsSearch } from 'react-icons/bs';
 import { NewsCard } from '../components/News/NewsCard';
 import news from '../components/json/news.json';
-import { NwesPage, Wrapper, SearchContainer, SearchIcon, SearchInput, SearchWrapper, Tytle } from './pages.styled/Pages.styled';
+import { NwesPage, Wrapper, SearchContainer, SearchIcon, SearchInput, SearchWrapper, Title } from './pages.styled/Pages.styled';
 import  Pagination  from '../components/Pagination/Pagination';
 
 
@@ -35,9 +35,9 @@ const handlePageChange = (page) => {
 };
 
   return (
-    <Wrapper>
-      <SearchWrapper>
-        <Tytle>News</Tytle>
+    <Wrapper class="wrapper">
+      <SearchWrapper class="search-wrapper">
+        <Title class="title">News</Title>
         <SearchContainer class="search-container">
           <SearchInput type="text" name="search" placeholder="Search" />
           <SearchIcon class="search-icon">

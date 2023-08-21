@@ -51,7 +51,7 @@ export const HomeWrapper = styled.div`
     }
   }
 `;
-// Home title
+// TitlePages
 export const HomeTitle = styled.h1`
   width: 280px;
   font-size: 32px;
@@ -88,7 +88,7 @@ export const SearchWrapper = styled.div`
 `;
 
 
-export const Tytle = styled.h2`
+export const Title = styled.h2`
   font-size: 24px;
   font-weight: 700;
   line-height: 32.78px;
