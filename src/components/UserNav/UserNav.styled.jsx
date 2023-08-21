@@ -8,6 +8,12 @@ export const UserWrap = styled.div`
    position: absolute;
     bottom: 20px;
     right: 50%;
+
+    @media screen and (min-width: 768px) {
+    position: relative;
+    justify-self: start;
+
+  }
 }
 
 `

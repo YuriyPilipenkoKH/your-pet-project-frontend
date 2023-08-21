@@ -66,6 +66,9 @@ export const MenuContent = styled.div`
         &>a{
             font-size: 32px;
             font-weight: 500;
+            @media screen and (min-width: 768px) {
+                font-size: 48px;
+            }
 
             &:hover{
                 color: var(--yellow);
