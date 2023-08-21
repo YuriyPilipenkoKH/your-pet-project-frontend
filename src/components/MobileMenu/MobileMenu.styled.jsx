@@ -88,9 +88,21 @@ export const MenuContent = styled.div`
         display: flex;
         flex-direction: row;
     }
+
+    &>.UserNav>.useravatar{
+        @media screen and (min-width: 768px) {
+            display: none;
+        }
+    }
+    &>.UserNav>.logout{
+        @media screen and (min-width: 768px) {
+            position: absolute;
+            top: 4px;
+            left: 200px;
+        }
+    }
     
   } 
-
 
 
 `

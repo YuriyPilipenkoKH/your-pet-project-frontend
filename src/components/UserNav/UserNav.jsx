@@ -6,7 +6,7 @@ import { iconUser } from '../../images/icons';
 export const UserNav = ({onClose}) => {
   return (
     <UserWrap className= "UserNav">
-      <ProfileWrap > {iconUser} {'John'} </ProfileWrap>
+      <ProfileWrap className= "useravatar" > {iconUser} {'John'} </ProfileWrap>
       <StyledLinkOut to="/" exact="true"  onClick={onClose} className='logout'>
         Log out <MdOutlineLogout/>
       </StyledLinkOut>
