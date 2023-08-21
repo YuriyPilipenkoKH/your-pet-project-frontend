@@ -282,6 +282,25 @@ export const StyleAddToButton = styled.button`
     &:hover {
         border: 2px solid transparent;
     }
+
+    @media screen and ( max-width: 767px ) {
+      position: fixed;
+      left: 60%;
+      bottom: 60px;
+
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      padding: 2px;
+      flex-direction: column-reverse;
+      font-size: 12px;
+      gap: 12px;
+
+      &>svg{
+        scale: 2;
+      }
+      
+    }
 `;
 
 export const StyledContactButton = styled.button`

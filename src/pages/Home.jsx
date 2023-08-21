@@ -1,10 +1,11 @@
-import { Button, ButtonTransparent, ContactButton, LogButton, OutButton } from "../components/Button/Button";
+import { AddToButton, Button, ButtonTransparent, ContactButton, LogButton, OutButton } from "../components/Button/Button";
 import { ModalPopup } from "../components/ModalPopup/ModalPopup";
 import {  iconFilter, iconPawprint } from "../images/icons";
 import { modal1, modal2, modal3, modal4, modal5 } from "../modals/modals";
 import { HomeTitle, HomeWrapper } from "./pages.styled/Pages.styled";
 // import image from '../images/home_m.png';
 import { MdOutlineLogout} from "react-icons/md";
+import { AiOutlinePlus} from "react-icons/ai";
 import { useState } from "react";
 
 export default function Home() {
@@ -55,6 +56,8 @@ export default function Home() {
   setModals(modal5);
   onModalOpen(); 
   }}>Contact</ContactButton>
+
+  <AddToButton>Add Pet <AiOutlinePlus/></AddToButton>
 
 {showModal && (
         <ModalPopup {...modals} onClose ={onModalClose}  /> //  onClose ={onModalClose}   {...modal1} 
