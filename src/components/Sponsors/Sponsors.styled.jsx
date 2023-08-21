@@ -5,7 +5,8 @@ export const SponsorCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  padding: 8px;
+  gap: 8px;
   width: 280px;
   height: 239px;
 
@@ -28,10 +29,11 @@ export const SponsorCardWrapper = styled.div`
 `;
 
 export const SponsorCardTitle = styled.a`
-display: flex;
-  /* font-size: 24px;
-  font-weight: 600;
-  text-align: left; */
+text-align: center;
+  font-weight: 700;
+  text-align: center; 
+  color: var(--blue);
+  height: 40px;
 `;
 
 export const WrapContent = styled.div`

@@ -1,47 +1,67 @@
-import {ImgWrap, Span, SponsorCardTitle, SponsorCardWrapper, SponsorContent, SponsorImage, SponsorText, TextWrap, WrapContent} from "./Sponsors.styled"
 
-const test = {
-    title: 'ЛКП “ЛЕВ”',
-    url: 'https://lkplev.com/',
-    addressUrl: 'https://goo.gl/maps/4xMfxtahHPfXeAYU8',
-    imageUrl:
-        'https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_289.png',
-    address: '79024, м.Львів, вул. Промислова 56',
-    workDays: null,
-    phone: '+380685354545',
-    email: null,
-};
+import {
+    ImgWrap,
+    Span,
+    SponsorCardTitle,
+    SponsorCardWrapper,
+    SponsorContent,
+    SponsorImage,
+    SponsorText,
+    TextWrap,
+    WrapContent,
+} from './Sponsors.styled';
 
-export const SponsorCard = item => {
+export const SponsorCard = ({ item }) => {
+  const workDay = item.workDay? item.workDay: "closed"
+    const email = item.email ? item.email : 'notemail@gmail.com';
+    const phone = item.phone ? item.phone : 'notphone';
+
     return (
-      
         <SponsorCardWrapper className="sponsors-card">
-        <SponsorCardTitle className="sponsors__title" href={test.url} target="_blank" rel="noopener noreferrer">{test.title}</SponsorCardTitle>
+            <SponsorCardTitle
+                className="sponsors__title"
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                {item.title}
+            </SponsorCardTitle>
             <WrapContent className="wrap-content">
-              <ImgWrap className="imgWrap">
-              <SponsorImage
-                  src={test.imageUrl}
-                  alt="News"
-                  className="sponsors__image"
-              />
-              </ImgWrap>
+                <ImgWrap className="imgWrap">
+                    <SponsorImage
+                        src={item.imageUrl}
+                        alt="Sponsor"
+                        className="sponsors__image"
+                    />
+                </ImgWrap>
 
-              <SponsorContent className="sponsors-content">
-                  <TextWrap className="text-wrap">
-                    <SponsorText className="sponsors__workDays">Time:</SponsorText><Span>{'test.workDays'}</Span>
-                  </TextWrap>
-                  <TextWrap className="text-wrap">
-                    <SponsorText className="sponsors__address">Adress:</SponsorText><Span>{'test.address'}</Span>
-                  </TextWrap>
-                  <TextWrap className="text-wrap">
-                    <SponsorText className="sponsors__email">Email:</SponsorText><Span>{'test.email'}</Span>
-                  </TextWrap>
-                  <TextWrap className="text-wrap">
-                    <SponsorText className="sponsors__phone">Phone:</SponsorText><Span>{'test.phone'}</Span>
-                  </TextWrap>
-              </SponsorContent>
+                <SponsorContent className="sponsors-content">
+                    <TextWrap className="text-wrap">
+                        <SponsorText className="sponsors__workDays">
+                            Time:
+                        </SponsorText>
+                        <Span> {workDay}</Span>
+                    </TextWrap>
+                    <TextWrap className="text-wrap">
+                        <SponsorText className="sponsors__address">
+                            Adress:
+                        </SponsorText>
+                        <Span>{item.address}</Span>
+                    </TextWrap>
+                    <TextWrap className="text-wrap">
+                        <SponsorText className="sponsors__email">
+                            Email:
+                        </SponsorText>
+                        <Span>{email}</Span>
+                    </TextWrap>
+                    <TextWrap className="text-wrap">
+                        <SponsorText className="sponsors__phone">
+                            Phone:
+                        </SponsorText>
+                        <Span>{phone}</Span>
+                    </TextWrap>
+                </SponsorContent>
             </WrapContent>
         </SponsorCardWrapper>
-      
     );
 };
