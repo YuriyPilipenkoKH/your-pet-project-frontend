@@ -363,6 +363,21 @@ transition: all 0.4s ease;
     }
 `;
 
+export const StyledFavButton = styled.button`
+
+${ripple} 
+${hoverStylesTrB} 
+
+display: grid;
+place-items: center;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+border: none;
+background-color: var(--light-blue);
+cursor: pointer;
+`
+
 
 
 export const StyledLink = styled(NavLink)`
