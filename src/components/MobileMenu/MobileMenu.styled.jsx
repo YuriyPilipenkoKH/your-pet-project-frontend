@@ -34,10 +34,12 @@ export const MenuHeader = styled.div`
 export const MenuContent = styled.div`
     display: grid;
     place-items: center;
+    grid-template-rows: 100px 200px ;
     padding: 40px;
     gap: 40px;
 
-    &>.AuthNav{
+    &>.AuthNav,
+    &>.UserNav{
         display: grid;
         gap: 12px;
         justify-self: center;

@@ -222,20 +222,11 @@ border: 2px solid var(--yellow);
 
     ${hoverStylesY};
 
-    /* &:hover  {
-  border: 2px solid transparent;
- } */
+
 `;
 
 
-// export const StyledOutButton = styled.button`
-//     ${buttonStyles}
-//     ${ripple} 
 
-// border: 2px solid var(--blue);
-//     background-color: var(--blue);
-//     color: var(--fone-color);
-//     width: 135px;
 
 export const StyledOutButton = styled(NavLink)`
 ${buttonStyles} 
@@ -245,6 +236,7 @@ border: 2px solid var(--blue);
 background-color: var(--blue);
 color: var(--white);
 width: 135px;
+transition: all 0.4s ease; 
 
 ${hoverStylesB} 
 
