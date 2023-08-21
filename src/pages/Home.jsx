@@ -1,6 +1,6 @@
 import { Button, ButtonTransparent, ContactButton, LogButton, OutButton } from "../components/Button/Button";
 import { ModalPopup } from "../components/ModalPopup/ModalPopup";
-import {  iconPawprint } from "../images/icons";
+import {  iconFilter, iconPawprint } from "../images/icons";
 import { modal1, modal2, modal3, modal4, modal5 } from "../modals/modals";
 import { HomeTitle, HomeWrapper } from "./pages.styled/Pages.styled";
 // import image from '../images/home_m.png';
@@ -39,7 +39,7 @@ export default function Home() {
     <ButtonTransparent onClick={() => {
   setModals(modal2);
   onModalOpen(); 
-  }}>Learn more </ButtonTransparent>
+  }}>Learn more {iconFilter} </ButtonTransparent>
 
     <LogButton onClick={() => {
   setModals(modal3);
