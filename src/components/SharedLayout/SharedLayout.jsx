@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import { AuthNavWrap, LayoutWrap,  SharedLayoutWrap } from "./SharedLayout.styled";
 
 import { iconLogo, iconLogoBig } from "../../images/icons";
