@@ -4,7 +4,7 @@ import { CloseButton, MenuContent, MenuHeader, MenuWrapp } from './MobileMenu.st
 import { StyledLogo } from '../Button/Button.styled';
 import { iconLogo } from '../../images/icons';
 import { RxCross2 } from "react-icons/rx";
-import { UserNav } from '../UserNav/UserNav';
+// import { UserNav } from '../UserNav/UserNav';
 
 export  const MobileMenu = ({ isOpen, onClose }) => {
     // console.log('isOpen',isOpen)
@@ -16,7 +16,7 @@ export  const MobileMenu = ({ isOpen, onClose }) => {
                <CloseButton onClick={onClose} ><RxCross2/></CloseButton>
             </MenuHeader>
         <MenuContent>
-            <UserNav   onClose={onClose}/>
+        <AuthNav   onClose={onClose}/>
             <Nav  onClose={onClose}/>
         </MenuContent>
     </MenuWrapp>

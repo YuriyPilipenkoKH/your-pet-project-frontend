@@ -1,5 +1,4 @@
 
-import { StyledLinkReg } from '../AuthNav/AuthNav.styled';
 import { MdOutlineLogout} from "react-icons/md";
 
 import { ProfileWrap, StyledLinkOut, UserWrap } from './UserNav.styled';
