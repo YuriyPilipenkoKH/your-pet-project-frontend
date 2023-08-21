@@ -5,7 +5,7 @@ import { Container } from '../components/Container/Container';
 import RegisterForm from '../components/Forms/RegisterForm/RegisterForm';
 import LoginForm from '../components/Forms/LoginForm/LoginForm';
 import AddPetPage from '../pages/AddPetPage';
-import { NewsPage } from '../pages/Nwes';
+import { NewsPage } from '../pages/News';
 import UserPage from '../pages/UserPage';
 
 function App() {
