@@ -123,6 +123,17 @@ export const LabelForLogin = styled.label.withConfig({
     }
 `;
 
+export const LabelForAdd = styled.label.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'yourPet',
+})`
+    position: relative;
+    display: block;
+    margin-bottom: ${({ yourPet }) => (yourPet ? '44px' : '20px')};
+    @media screen and (min-width: 768px) {
+        margin-bottom: ${({ yourPet }) => (yourPet ? '40px' : '24px')};
+    }
+`;
+
 export const ShowPasswordButton = styled.button`
     background-color: transparent;
     border-color: transparent;
@@ -138,9 +149,13 @@ export const ShowPasswordButton = styled.button`
     }
 `;
 
-export const TextValidation = styled.p`
+export const TextValidation = styled.p.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'addPet',
+})`
     position: absolute;
     top: 50px;
+    top: ${({ addPet }) => (addPet && "101%")};
     left: 20px;
     color: var(--red);
     font-size: 12px;
@@ -152,32 +167,42 @@ export const TextValidation = styled.p`
 `;
 
 export const IconCrossValidate = styled.button.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'iconPassowrd',
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'iconPassowrd' && prop !== 'addPet',
 })`
     position: absolute;
     background-color: transparent;
     border-color: transparent;
     cursor: pointer;
     top: 20%;
+    top: ${({ addPet }) => (addPet && "50%")};
     left: ${({ iconPassowrd }) => (iconPassowrd ? '73%' : '82%')};
     @media screen and (min-width: 320px) {
         left: ${({ iconPassowrd }) => (iconPassowrd ? '180px' : '210px')};
+        top: ${({ addPet }) => (addPet && "50%")};
     }
     @media screen and (min-width: 768px) {
+        top: ${({ addPet }) => (addPet && "55%")};
         left: ${({ iconPassowrd }) => (iconPassowrd ? '370px' : '400px')};
+        left: ${({ addPet }) => addPet && '345px'};
     }
 `;
 export const IconOkey = styled.svg.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'iconPassowrd',
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'iconPassowrd' && prop !== 'addPet',
 })`
     position: absolute;
     top: 25%;
     left: ${({ iconPassowrd }) => (iconPassowrd ? '73%' : '82%')};
+    top: ${({ addPet }) => (addPet && "50%")};
     @media screen and (min-width: 320px) {
         left: ${({ iconPassowrd }) => (iconPassowrd ? '190px' : '220px')};
+        top: ${({ addPet }) => (addPet && "50%")};
     }
     @media screen and (min-width: 768px) {
         left: ${({ iconPassowrd }) => (iconPassowrd ? '380px' : '410px')};
+        left: ${({ addPet }) => addPet && '350px'};
+        top: ${({ addPet }) => (addPet && "55%")};
     }
 `;
 
@@ -281,3 +306,16 @@ export const WrapperNextBackButton = styled.div`
     }
 `;
 
+export const TypeInput = styled.span`
+    color: var(--black);
+    display: inline-block;
+    font-size: 14px;
+    line-height: normal;
+    font-weight: 500;
+    margin-bottom: 4px;
+    @media screen and (min-width: 768px) {
+        font-size: 20px;
+        line-height: 26.5px;
+        margin-bottom: 8px;
+    }
+`;

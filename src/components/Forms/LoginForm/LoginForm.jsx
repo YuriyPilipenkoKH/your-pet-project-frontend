@@ -63,13 +63,14 @@ export default function LoginForm() {
     const reset = () => {
         setEmail('');
         setPassword('');
-        setIsEmailValid('');
-        setIsPasswordlValid('');
+        setIsEmailValid(false);
+        setIsPasswordlValid(false);
     };
     const deliveryData = data => {
         console.log(321321);
         console.log('you right');
         const { email, password } = data;
+        console.log(email, password);
         deliveryDataUser(email, password);
         reset();
     };
