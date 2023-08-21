@@ -28,7 +28,7 @@ const schema = object({
         .required()
         .matches(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/,
-            "Password: 1 lowercase, 1 uppercase, 1 digit, 6-16 characters."
+            'Password: 1 lowercase, 1 uppercase, 1 digit, 6-16 characters.'
         ),
 }).required();
 
@@ -42,7 +42,6 @@ export default function LoginForm() {
     const {
         register,
         handleSubmit,
-        reset,
         formState: { errors },
     } = useForm({
         defaultValues: {
@@ -60,6 +59,12 @@ export default function LoginForm() {
         //         password,
         //     })
         // );
+    };
+    const reset = () => {
+        setEmail('');
+        setPassword('');
+        setIsEmailValid('');
+        setIsPasswordlValid('');
     };
     const deliveryData = data => {
         console.log(321321);
@@ -121,7 +126,7 @@ export default function LoginForm() {
                             <IconCrossValidate
                                 onClick={() => {
                                     setIsEmailValid(false);
-                                    setEmail("");
+                                    setEmail('');
                                 }}
                                 type="button"
                             >
@@ -135,7 +140,7 @@ export default function LoginForm() {
                         {...register('password')}
                         aria-invalid={errors.password ? 'true' : 'false'}
                         placeholder="Password"
-                        title='Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long.'
+                        title="Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long."
                         value={password}
                         type={show ? 'text' : 'password'}
                         style={{
@@ -146,7 +151,10 @@ export default function LoginForm() {
                                 : '1px solid var(--blue)',
                         }}
                         onChange={e => {
-                            const isValid = /.{7,}/.test(e.target.value);
+                            const isValid =
+                                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/.test(
+                                    e.target.value
+                                );
                             setIsPasswordlValid(isValid);
                             setPassword(e.target.value);
                             if (isValid) {
@@ -177,7 +185,7 @@ export default function LoginForm() {
                             <IconCrossValidate
                                 onClick={() => {
                                     setIsPasswordlValid(false);
-                                    setPassword('')
+                                    setPassword('');
                                 }}
                                 type="button"
                                 iconPassowrd

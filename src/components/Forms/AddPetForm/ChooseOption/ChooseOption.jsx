@@ -1,67 +1,55 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     ButtonOption,
     Form,
     ItemOption,
-    ItemStep,
     ListOption,
-    ListSteps,
-    Progres,
-    TextStep,
     Title,
     WrapperNextBackButton,
 } from '../../Forms.styled';
 import { Button, ButtonTransparent } from '../../../Button/Button';
-import { iconPawprint } from '../../../../images/icons';
 import { BiArrowBack } from 'react-icons/bi';
+import { iconPawprint } from '../../../../images/icons';
 
-export default function ChooseOption() {
-    const [stepNumber, setStepNumber] = useState(1);
-    const [active, setActive] = useState(1);
-    const arraySteps = ['Choose  option', 'Personal details', 'More info'];
-    const arrayOption = ['your pet', 'sell', 'lost/found', 'in good hands'];
+export default function ChooseOption({
+    children,
+    active,
+    activeOption,
+    arrayOption,
+    nextForm, beforeForm, stepNumber 
+}) {
+    
     return (
         <Form chooseOption>
             <Title>Add pet</Title>
-            <ListSteps>
-                {arraySteps.map((step, index) => {
-                    return (
-                        <ItemStep key={index}>
-                            <TextStep
-                                currentStep={index + 1}
-                                stepNumber={stepNumber}
-                            >
-                                {step}
-                            </TextStep>
-                            <Progres
-                                currentStep={index + 1}
-                                stepNumber={stepNumber}
-                            />
-                        </ItemStep>
-                    );
-                })}
-            </ListSteps>
+            {children}
             <ListOption>
-                {arrayOption.map((step, index) => {
+                {arrayOption.map((option, index) => {
                     return (
                         <ItemOption key={index}>
                             <ButtonOption
-                                onClick={() => setActive(index + 1)}
+                                onClick={() => activeOption(index)}
                                 active={active}
                                 currentActive={index + 1}
                                 type="button"
                             >
-                                {step}
+                                {option}
                             </ButtonOption>
                         </ItemOption>
                     );
                 })}
             </ListOption>
             <WrapperNextBackButton>
-                <ButtonTransparent addPet>
-                    <BiArrowBack /> Сancel
+                <ButtonTransparent addPet onClick={() => beforeForm()}>
+                    <BiArrowBack /> {stepNumber > 1 ? 'Back' : 'Cancel'}
                 </ButtonTransparent>
-                <Button addPet>Next {iconPawprint}</Button>
+                <Button
+                    stepNumber={stepNumber}
+                    addPet
+                    onClick={() => nextForm()}
+                >
+                    {stepNumber > 2 ? 'Done' : 'Next'} {iconPawprint}
+                </Button>
             </WrapperNextBackButton>
         </Form>
     );

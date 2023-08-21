@@ -280,3 +280,4 @@ export const WrapperNextBackButton = styled.div`
         gap: 10px;
     }
 `;
+
