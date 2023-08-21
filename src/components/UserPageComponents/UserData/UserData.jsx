@@ -1,4 +1,4 @@
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik, Field } from 'formik'; // , ErrorMessage
 import {
     UserInfo,
     StylizedForm,
@@ -7,6 +7,8 @@ import {
     EditButton,
 } from './UserData.styled';
 import avatarDefault2x from '../../../images/Photo_default@2x.jpg';
+import UserDataForm from '../UserDataForm/UserDataForm';
+import { ReactComponent as Camera } from '../../../images/userPageIcons/camera.svg';
 
 const UserData = () => {
     const initialValues = {
@@ -36,14 +38,17 @@ const UserData = () => {
                         </label>
                         <ImageControls>
                             <EditButton type="button">
-                                {/* icons */}
+                                <Camera
+                                    stroke="#54ADFF"
+                                    style={{ marginRight: 8 }}
+                                />
                                 Edit photo
                             </EditButton>
                         </ImageControls>
                     </StylizedForm>
                 )}
             </Formik>
-            {/* forma */}
+            <UserDataForm />
         </UserInfo>
     );
 };
