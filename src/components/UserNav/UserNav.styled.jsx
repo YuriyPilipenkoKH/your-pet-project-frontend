@@ -3,13 +3,27 @@ import { NavLink } from 'react-router-dom';
 import { buttonStyles, hoverStylesB,  ripple } from '../Button/Button.styled';
 
 export const UserWrap = styled.div`
-    display: none;
-    
-    @media screen and (min-width: 768px) {
-      display: flex;
-      justify-self: flex-end;
-      gap: 20px;
-      
+
+&>.logout {
+   position: absolute;
+    bottom: 20px;
+    right: 50%;
+}
+
+`
+
+export const ProfileWrap = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 320px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--yellow);
+
+    &>svg{
+        fill: var(--yellow);
     }
 
 `

@@ -2,15 +2,14 @@
 import { StyledLinkReg } from '../AuthNav/AuthNav.styled';
 import { MdOutlineLogout} from "react-icons/md";
 
-import { StyledLinkOut, UserWrap } from './UserNav.styled';
+import { ProfileWrap, StyledLinkOut, UserWrap } from './UserNav.styled';
+import { iconUser } from '../../images/icons';
 
 export const UserNav = ({onClose}) => {
   return (
     <UserWrap className= "UserNav">
-      <StyledLinkReg >
-        Register
-      </StyledLinkReg>
-      <StyledLinkOut to="/" exact="true"  onClick={onClose}>
+      <ProfileWrap > {iconUser} {'John'} </ProfileWrap>
+      <StyledLinkOut to="/" exact="true"  onClick={onClose} className='logout'>
         Log out <MdOutlineLogout/>
       </StyledLinkOut>
     </UserWrap>
