@@ -168,7 +168,7 @@ export const StyledButtonTransparent = styled.button.withConfig({
     ${ripple};
 
     border: 2px solid var(--blue);
-    background-color: var(--fone-color);
+    background-color: transparent;
     color: var(--blue);
     transition: all 0.4s ease;
     border: ${({ addPet }) => addPet && "transparent" };
@@ -224,8 +224,6 @@ border: 2px solid var(--yellow);
 
 
 `;
-
-
 
 
 export const StyledOutButton = styled(NavLink)`
@@ -356,6 +354,8 @@ border-radius: 50%;
 border: none;
 background-color: var(--light-blue);
 cursor: pointer;
+
+
 `
 
 

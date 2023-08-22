@@ -15,7 +15,7 @@ export default function NoticesFilters() {
                 
                 className= "FilterBtn"
             >
-                Filter {iconFilter}{' '}
+                Filter {iconFilter}
             </ButtonTransparent>
             <FavButton className='filround'> {iconFilter}</FavButton>
             <AddToButton>
