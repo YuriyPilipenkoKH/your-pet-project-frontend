@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import {  Route, Routes} from 'react-router-dom';
 import Home from '../pages/Home';
 import { SharedLayout } from '../components/SharedLayout/SharedLayout';
 import { Container } from '../components/Container/Container';
@@ -9,8 +9,7 @@ import { NewsPage } from '../pages/News';
 import UserPage from '../pages/UserPage';
 import { TestPage } from '../pages/TestPage/TestPage';
 
-function App() {
-
+const App=()=> {
  
 
   return (
