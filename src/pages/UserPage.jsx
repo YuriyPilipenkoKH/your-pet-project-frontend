@@ -1,4 +1,5 @@
 import UserData from '../components/UserPageComponents/UserData/UserData';
+import PetsData from '../components/UserPageComponents/PetsData/PetsData';
 import {
     UserPageWrapper,
     MainContent,
@@ -20,10 +21,7 @@ const UserPage = () => {
                     </Card>
                 </div>
                 <div style={{ position: 'relative', width: '100%' }}>
-                    <TitleWrap>
-                        <Title>My pets:</Title>
-                    </TitleWrap>
-                    <p>pets info wrapper</p>
+                    <PetsData/>
                 </div>
             </MainContent>
         </UserPageWrapper>
