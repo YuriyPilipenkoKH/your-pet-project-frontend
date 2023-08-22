@@ -4,7 +4,7 @@ import {
     Form,
     IconCrossValidate,
     IconOkey,
-    Input,
+    InputForAuthorization,
     LabelForRegistration,
     LinkToForm,
     Question,
@@ -102,7 +102,7 @@ export default function RegisterForm() {
             <form onSubmit={handleSubmit(deliveryData)}>
                 <Title>Registration</Title>
                 <LabelForRegistration>
-                    <Input
+                    <InputForAuthorization
                         {...register('name')}
                         aria-invalid={errors.name ? 'true' : 'false'}
                         placeholder="Name"
@@ -126,7 +126,7 @@ export default function RegisterForm() {
                                 errors.name = undefined;
                             }
                         }}
-                    ></Input>
+                    ></InputForAuthorization>
                     {isNameValid && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
@@ -159,7 +159,7 @@ export default function RegisterForm() {
                     )}
                 </LabelForRegistration>
                 <LabelForRegistration>
-                    <Input
+                    <InputForAuthorization
                         {...register('email')}
                         aria-invalid={errors.email ? 'true' : 'false'}
                         placeholder="Email"
@@ -183,7 +183,7 @@ export default function RegisterForm() {
                                 errors.email = undefined;
                             }
                         }}
-                    ></Input>
+                    ></InputForAuthorization>
                     {isEmailValid && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
@@ -217,7 +217,7 @@ export default function RegisterForm() {
                 </LabelForRegistration>
 
                 <LabelForRegistration>
-                    <Input
+                    <InputForAuthorization
                         {...register('password')}
                         aria-invalid={errors.password ? 'true' : 'false'}
                         placeholder="Password"
@@ -239,7 +239,7 @@ export default function RegisterForm() {
                                 errors.password = undefined;
                             }
                         }}
-                    ></Input>
+                    ></InputForAuthorization>
                     {isPasswordValid && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
@@ -280,7 +280,7 @@ export default function RegisterForm() {
                     </ShowPasswordButton>
                 </LabelForRegistration>
                 <LabelForRegistration registration={true}>
-                    <Input
+                    <InputForAuthorization
                         {...register('confirmPassword')}
                         aria-invalid={errors.confirmPassword ? 'true' : 'false'}
                         placeholder="Confirm password"
@@ -303,7 +303,7 @@ export default function RegisterForm() {
                             }
                             setConfirmPassword(e.target.value);
                         }}
-                    ></Input>
+                    ></InputForAuthorization>
                     {(isConfirmPasswordValid && !errors.confirmPassword) && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"

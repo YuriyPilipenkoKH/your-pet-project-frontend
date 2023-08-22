@@ -4,7 +4,7 @@ import {
     Form,
     IconCrossValidate,
     IconOkey,
-    Input,
+    InputForAuthorization,
     LabelForLogin,
     LinkToForm,
     Question,
@@ -80,7 +80,7 @@ export default function LoginForm() {
             <form onSubmit={handleSubmit(deliveryData)}>
                 <Title>Login</Title>
                 <LabelForLogin>
-                    <Input
+                    <InputForAuthorization
                         {...register('email')}
                         aria-invalid={errors.email ? 'true' : 'false'}
                         placeholder="Email"
@@ -104,7 +104,7 @@ export default function LoginForm() {
                                 errors.email = undefined;
                             }
                         }}
-                    ></Input>
+                    ></InputForAuthorization>
                     {isEmailValid && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +137,7 @@ export default function LoginForm() {
                     )}
                 </LabelForLogin>
                 <LabelForLogin login={true}>
-                    <Input
+                    <InputForAuthorization
                         {...register('password')}
                         aria-invalid={errors.password ? 'true' : 'false'}
                         placeholder="Password"
@@ -162,7 +162,7 @@ export default function LoginForm() {
                                 errors.password = undefined;
                             }
                         }}
-                    ></Input>
+                    ></InputForAuthorization>
                     {isPasswordValid && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"

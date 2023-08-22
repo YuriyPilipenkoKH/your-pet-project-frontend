@@ -3,7 +3,7 @@ import {
     Form,
     IconCrossValidate,
     IconOkey,
-    Input,
+    InputForAddPet,
     LabelForAdd,
     TextValidation,
     Title,
@@ -107,13 +107,13 @@ export default function PersonalDetails({
     };
 
     return (
-        <Form chooseOption>
+        <Form addPet>
             <Title>Add pet for sale</Title>
             {children}
             <form onSubmit={handleSubmit(deliveryData)}>
                 <LabelForAdd>
                     <TypeInput>Title of add</TypeInput>
-                    <Input
+                    <InputForAddPet
                         {...register('title')}
                         aria-invalid={errors.title ? 'true' : 'false'}
                         placeholder="Title of add"
@@ -136,7 +136,7 @@ export default function PersonalDetails({
                                 errors.title = undefined;
                             }
                         }}
-                    ></Input>
+                    ></InputForAddPet>
                     {isTitleValid && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
@@ -172,7 +172,7 @@ export default function PersonalDetails({
                 </LabelForAdd>
                 <LabelForAdd>
                     <TypeInput>Pet’s name</TypeInput>
-                    <Input
+                    <InputForAddPet
                         {...register('name')}
                         aria-invalid={errors.name ? 'true' : 'false'}
                         placeholder="Type name pet"
@@ -196,7 +196,7 @@ export default function PersonalDetails({
                                 errors.name = undefined;
                             }
                         }}
-                    ></Input>
+                    ></InputForAddPet>
                     {isNameValid && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +232,7 @@ export default function PersonalDetails({
                 </LabelForAdd>
                 <LabelForAdd>
                     <TypeInput>Date of birth</TypeInput>
-                    <Input
+                    <InputForAddPet
                         {...register('birth')}
                         aria-invalid={errors.birth ? 'true' : 'false'}
                         placeholder="Type date of birth"
@@ -256,7 +256,7 @@ export default function PersonalDetails({
                                 errors.birth = undefined;
                             }
                         }}
-                    ></Input>
+                    ></InputForAddPet>
                     {isBirthValid && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
@@ -292,7 +292,7 @@ export default function PersonalDetails({
                 </LabelForAdd>
                 <LabelForAdd yourPet>
                     <TypeInput>Type</TypeInput>
-                    <Input
+                    <InputForAddPet
                         {...register('typePet')}
                         aria-invalid={errors.typePet ? 'true' : 'false'}
                         placeholder="Type of pet"
@@ -316,7 +316,7 @@ export default function PersonalDetails({
                                 errors.typePet = undefined;
                             }
                         }}
-                    ></Input>
+                    ></InputForAddPet>
                     {isTypeValid && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
