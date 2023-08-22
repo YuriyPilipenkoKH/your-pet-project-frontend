@@ -4,8 +4,9 @@ import NoticesCategoriesNav from '../components/NoticesCategoriesNav/NoticesCate
 import NoticesFilters from '../components/NoticesFilters/NoticesFilters'
 import { NoticesPageWrap } from './pages.styled/NoticesPage.styled'
 import { MainCard } from '../components/MainCard/MainCard'
-import { NewsCard } from '../components/News/NewsCard'
+
 import news from '../components/json/news.json';
+import { NwesPage } from './pages.styled/Pages.styled'
 
 
 
@@ -19,14 +20,14 @@ export default function NoticesPage() {
       <NoticesCategoriesNav/>
       <NoticesFilters/>
       </NoticesPageWrap>
-      <MainCard className="main-card">
+      <NwesPage className="notice-page">
         {news.map((item, index) => (
-          <NewsCard
+          <MainCard
             key={index}
             
           />
         ))}
-      </MainCard>
+      </NwesPage>
       </>
   )
 }

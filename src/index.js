@@ -15,10 +15,7 @@ root.render(
     store={store}
     >
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter 
-        basename 
-        = "your-pet-project-frontend"
-         >
+        <BrowserRouter  basename= "/your-pet-project-frontend" >
           <App />
         </BrowserRouter>
       </PersistGate>
