@@ -1,7 +1,7 @@
 import { AddToButton, Button, ButtonTransparent, ContactButton, LogButton, OutButton, RadioButton } from "../../components/Button/Button";
 import { iconFilter, iconPawprint } from "../../images/icons";
 import { modal1, modal2, modal3, modal4, modal5 } from "../../modals/modals";
-import { HomeTitle, HomeWrapper } from "../pages.styled/Pages.styled"
+import { HomeTitle,  TestWrapp } from "../pages.styled/Pages.styled"
 import { useState } from "react";
 
 import { MdOutlineLogout} from "react-icons/md";
@@ -25,7 +25,7 @@ export const TestPage =()=> {
     
 
     return(
-        <HomeWrapper style={{display: 'flex', flexDirection: 'column', gap: '16px',  }}>
+        <TestWrapp >
             <HomeTitle> Test Page</HomeTitle>
 
             <Button onClick={() => {
@@ -66,6 +66,6 @@ export const TestPage =()=> {
     )}
       
             
-        </HomeWrapper>
+        </TestWrapp>
     )
 }
