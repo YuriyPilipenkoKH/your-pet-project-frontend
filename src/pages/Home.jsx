@@ -8,7 +8,7 @@ import { MdOutlineLogout} from "react-icons/md";
 import { AiOutlinePlus} from "react-icons/ai";
 import { useState } from "react";
 
-export default function Home() {
+ const Home =()=> {
 
   const [showModal, setShowModal] = useState(false);
   const [modals, setModals] = useState(modal1)
@@ -71,3 +71,5 @@ export default function Home() {
     </HomeWrapper>
   );
 }
+
+export default Home
