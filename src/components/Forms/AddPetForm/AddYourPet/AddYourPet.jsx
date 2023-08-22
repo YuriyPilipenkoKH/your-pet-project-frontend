@@ -9,7 +9,7 @@ export default function AddYourPet({
     stepNumber,
 }) {
     return (    
-        <div>
+        <>
             {stepNumber === 2 && (
                 <PersonalDetails
                     children={children}
@@ -26,6 +26,6 @@ export default function AddYourPet({
                     stepNumber={stepNumber}
                 />
             )}
-        </div>
+        </>
     );
 }
