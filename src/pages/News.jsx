@@ -13,9 +13,9 @@ export const NewsPage = () => {
         <StyledLink to="/test" >
         <TytleNwes>News</TytleNwes>
         </StyledLink>
-        <SearchContainer class="search-container">
+        <SearchContainer className="search-container">
           <SearchInput type="text" name="search" placeholder="Search" />
-          <SearchIcon class="search-icon">
+          <SearchIcon className="search-icon">
             <BsSearch style = { style } />
           </SearchIcon>
         </SearchContainer>
