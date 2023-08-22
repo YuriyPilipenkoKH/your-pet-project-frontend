@@ -331,37 +331,32 @@ height: 38px;
 
 export const StyledRadioButton = styled.button`
     ${buttonStyles}
-    ${ripple} 
-
-
+    /* ${hoverStylesTrB}  */
 
 background-color: var(--light-blue);
 color: var(--blue);
 transition: all 0.4s ease; 
+border: none;
+height: 35px;
+font-size: 12px;
 
 
-&>active{
-  background-color: var(--blue);
-  color: var(--white);
-  transition: all 0.4s ease; 
-}
-
-    &:hover {
-        transition: all 0.4s ease;
-        background: linear-gradient(
-            to right,
-            var(--gradient-yl),
-            var(--gradient-yr)
-        );
-        color: var(--fone-color);
-        border: 2px solid transparent;
-
-        & > svg {
-            transition: all 0.4s ease;
-            fill: var(--fone-color);
-        }
-    }
 `;
+
+export const StyledFavButton = styled.button`
+
+${ripple} 
+${hoverStylesTrB} 
+
+display: grid;
+place-items: center;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+border: none;
+background-color: var(--light-blue);
+cursor: pointer;
+`
 
 
 

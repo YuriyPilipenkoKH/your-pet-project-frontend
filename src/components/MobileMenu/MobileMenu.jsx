@@ -7,6 +7,7 @@ import { iconLogo } from '../../images/icons';
 import { RxCross2 } from "react-icons/rx";
 import { UserNav } from '../UserNav/UserNav';
 
+
 export  const MobileMenu = ({ isOpen, onClose }) => {
    const [mod, setMod] = useState(true)
     const toggleMod = () => {
@@ -20,9 +21,10 @@ export  const MobileMenu = ({ isOpen, onClose }) => {
                <CloseButton onClick={onClose} ><RxCross2/></CloseButton>
             </MenuHeader>
         <MenuContent>
-       {mod ? <AuthNav   onClose={onClose}/> :  <UserNav   onClose={onClose}/> }
+            {mod ? <AuthNav   onClose={onClose}/> :  <UserNav   onClose={onClose}/> }
             <Nav  onClose={onClose}/>
         </MenuContent>
+
     </MenuWrapp>
   );
 };
