@@ -28,8 +28,9 @@ const App=()=> {
           <Route path='/add-pet' element={<AddPetPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/profile" element={<UserPage />} />
-          <Route path="/our friends" element={<SponsorsPage />} />
-          <Route path="/find pet" element={<NotfoundPage />} />
+          <Route path="/friends" element={<SponsorsPage />} />
+          
+          <Route path="*" element={<NotfoundPage />} />
 
           <Route path="/notices" element={<NoticesPage />} />
 
