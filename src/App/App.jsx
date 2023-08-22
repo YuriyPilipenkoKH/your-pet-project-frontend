@@ -1,16 +1,19 @@
-import { Route, Routes } from 'react-router-dom';
+import {  Route, Routes} from 'react-router-dom';
 import Home from '../pages/Home';
 import { SharedLayout } from '../components/SharedLayout/SharedLayout';
 import { Container } from '../components/Container/Container';
 import RegisterForm from '../components/Forms/RegisterForm/RegisterForm';
 import LoginForm from '../components/Forms/LoginForm/LoginForm';
 import AddPetPage from '../pages/AddPetPage';
-import { NewsPage } from '../pages/Nwes';
+import { NewsPage } from '../pages/News';
 import UserPage from '../pages/UserPage';
+import { TestPage } from '../pages/TestPage/TestPage';
+
 import NoticesPage from '../pages/NoticesPage';
+import { TestPage } from '../pages/TestPage/TestPage';
 
-function App() {
 
+const App=()=> {
  
 
   return (
@@ -23,7 +26,14 @@ function App() {
           <Route path='/add-pet' element={<AddPetPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/profile" element={<UserPage />} />
+
           <Route path="/notices" element={<NoticesPage />} />
+
+
+
+
+          <Route path="/test" element={<TestPage />} />
+
         </Route>
       </Routes>
     </Container>

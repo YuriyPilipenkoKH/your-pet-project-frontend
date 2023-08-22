@@ -16,9 +16,10 @@ export default function ChooseOption({
     active,
     activeOption,
     arrayOption,
-    nextForm, beforeForm, stepNumber 
+    nextForm,
+    beforeForm,
+    stepNumber,
 }) {
-    
     return (
         <Form chooseOption>
             <Title>Add pet</Title>

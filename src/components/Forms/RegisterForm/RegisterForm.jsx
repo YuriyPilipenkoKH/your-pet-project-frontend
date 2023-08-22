@@ -84,10 +84,10 @@ export default function RegisterForm() {
         setEmail('');
         setPassword('');
         setConfirmPassword('');
-        setIsNameValid('');
-        setIsEmailValid('');
-        setIsPasswordlValid('');
-        setIsConfirmPasswordlValid('');
+        setIsNameValid(false);
+        setIsEmailValid(false);
+        setIsPasswordlValid(false);
+        setIsConfirmPasswordlValid(false);
     }
     const deliveryData = data => {
         console.log(321321);

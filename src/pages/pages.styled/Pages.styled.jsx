@@ -137,3 +137,16 @@ export const SearchInput = styled.input`
   }
   }
 `;
+
+export const TestWrapp = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: 19px;
+
+  &>button{
+    max-width: 160px;
+  }
+
+
+`

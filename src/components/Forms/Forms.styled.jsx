@@ -2,6 +2,13 @@ import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import bgImgD from '../../images/form-bg-d.png';
+import bgImgD2 from '../../images/form-bg-d@2x.png';
+import bgImgM from '../../images/form-bg-m.png';
+import bgImgM2 from '../../images/form-bg-m@2x.png';
+import bgImgT from '../../images/form-bg-t.png';
+import bgImgT2 from '../../images/form-bg-m@2x.png';
+
 export const Form = styled.div.withConfig({
     shouldForwardProp: prop => isPropValid(prop) && prop !== 'chooseOption',
 })`
@@ -24,6 +31,44 @@ export const Form = styled.div.withConfig({
         padding: ${({ chooseOption }) => chooseOption && '20px 32px'};
         width: ${({ chooseOption }) => chooseOption && '458px'};
     }
+
+    height: 600px;
+    background-image: url("${bgImgM}");
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url('${bgImgM2}');
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 80px 20px 0 20px;
+    height: 1024px;
+    background-image: url('${bgImgT}');
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('${bgImgT2}');
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding: 0px 20px 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 768px;
+    background-image: url('${bgImgD}');
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('${bgImgD2}');
+    }
+  }
+
+
 `;
 
 export const Title = styled.h3.withConfig({
@@ -123,6 +168,17 @@ export const LabelForLogin = styled.label.withConfig({
     }
 `;
 
+export const LabelForAdd = styled.label.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'yourPet',
+})`
+    position: relative;
+    display: block;
+    margin-bottom: ${({ yourPet }) => (yourPet ? '44px' : '20px')};
+    @media screen and (min-width: 768px) {
+        margin-bottom: ${({ yourPet }) => (yourPet ? '40px' : '24px')};
+    }
+`;
+
 export const ShowPasswordButton = styled.button`
     background-color: transparent;
     border-color: transparent;
@@ -138,9 +194,13 @@ export const ShowPasswordButton = styled.button`
     }
 `;
 
-export const TextValidation = styled.p`
+export const TextValidation = styled.p.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'addPet',
+})`
     position: absolute;
     top: 50px;
+    top: ${({ addPet }) => (addPet && "101%")};
     left: 20px;
     color: var(--red);
     font-size: 12px;
@@ -152,32 +212,42 @@ export const TextValidation = styled.p`
 `;
 
 export const IconCrossValidate = styled.button.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'iconPassowrd',
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'iconPassowrd' && prop !== 'addPet',
 })`
     position: absolute;
     background-color: transparent;
     border-color: transparent;
     cursor: pointer;
     top: 20%;
+    top: ${({ addPet }) => (addPet && "50%")};
     left: ${({ iconPassowrd }) => (iconPassowrd ? '73%' : '82%')};
     @media screen and (min-width: 320px) {
         left: ${({ iconPassowrd }) => (iconPassowrd ? '180px' : '210px')};
+        top: ${({ addPet }) => (addPet && "50%")};
     }
     @media screen and (min-width: 768px) {
+        top: ${({ addPet }) => (addPet && "55%")};
         left: ${({ iconPassowrd }) => (iconPassowrd ? '370px' : '400px')};
+        left: ${({ addPet }) => addPet && '345px'};
     }
 `;
 export const IconOkey = styled.svg.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'iconPassowrd',
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'iconPassowrd' && prop !== 'addPet',
 })`
     position: absolute;
     top: 25%;
     left: ${({ iconPassowrd }) => (iconPassowrd ? '73%' : '82%')};
+    top: ${({ addPet }) => (addPet && "50%")};
     @media screen and (min-width: 320px) {
         left: ${({ iconPassowrd }) => (iconPassowrd ? '190px' : '220px')};
+        top: ${({ addPet }) => (addPet && "50%")};
     }
     @media screen and (min-width: 768px) {
         left: ${({ iconPassowrd }) => (iconPassowrd ? '380px' : '410px')};
+        left: ${({ addPet }) => addPet && '350px'};
+        top: ${({ addPet }) => (addPet && "55%")};
     }
 `;
 
@@ -281,3 +351,16 @@ export const WrapperNextBackButton = styled.div`
     }
 `;
 
+export const TypeInput = styled.span`
+    color: var(--black);
+    display: inline-block;
+    font-size: 14px;
+    line-height: normal;
+    font-weight: 500;
+    margin-bottom: 4px;
+    @media screen and (min-width: 768px) {
+        font-size: 20px;
+        line-height: 26.5px;
+        margin-bottom: 8px;
+    }
+`;
