@@ -22,12 +22,12 @@ export const StyledTab = styled.div`
 `
 
 export const CategoryWrapp = styled.div`
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 0 16px 16px 0;
     height: 32px;
-    padding: 10px 17px;
+    padding: 10px 20px;
     background-color: var(--light-blue);
     font-size: 12px;
     font-weight: 600;

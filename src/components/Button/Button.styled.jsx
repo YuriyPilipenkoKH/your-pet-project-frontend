@@ -294,6 +294,7 @@ export const StyleAddToButton = styled.button`
       flex-direction: column-reverse;
       font-size: 12px;
       gap: 12px;
+      z-index: 12;
 
       &>svg{
         scale: 2;

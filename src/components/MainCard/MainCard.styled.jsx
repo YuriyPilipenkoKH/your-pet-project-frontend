@@ -8,7 +8,9 @@ import bgImgT from '../../images/cat-t.png';
 import bgImgT2 from '../../images/cat-m@2x.png';
 
 export const CardWrapper = styled.div`
-    display: grid;
+    display: flex ;
+
+    flex-direction: column;
     gap: 20px;
     width: 280px;
     height: 458px;
@@ -48,15 +50,52 @@ export const CardWrapper = styled.div`
     }
 
 `
+
+
+export const Im = styled.div`
+
+    /* grid-row-start: 1;
+    grid-row-end: 3; */
+`
+
+
+
 export const ImgWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
-    grid-template-rows: auto 32px  ;
+    grid-template-rows: 40px auto 32px  ;
+    grid-row-gap: 16px;
     grid-template-areas:
-    'top 0 fav'
+    'top top fav'
+    '. . del'
     't1 t2 t3'  ;
 
+    &>.category{
+      grid-area: top;
+      max-width: 130px;
+      justify-self: start;
+    }
+    &>.fav{
+      grid-area: fav;
+      justify-self: end;
+    }
+    &>.del{
+      grid-area: del;
+      justify-self: end;
+    }
+    &>.tab1{
+      grid-area: t1;
+      
+    }
+    &>.tab2{
+      grid-area: t2;
+    }
+    &>.tab3{
+      grid-area: t3;
+    }
+
+    
     width: 280px;
     height: 288px;
     padding: 16px 8px 16px 0;
@@ -104,29 +143,6 @@ export const ImgWrapper = styled.div`
   }
 
 
-  &>.category{
-      grid-area: top;
-      grid-column-start: 1;
-      grid-column-end: 3;
-      max-width: 130px;
-      justify-self: start;
-  /* grid-row-start: 1;
-  grid-row-end: 3; */
-    }
-    &>.fav{
-      grid-area: fav;
-      justify-self: end;
-    }
-    &>.tab1{
-      grid-area: t1;
-      align-self: end;
-    }
-    &>.tab2{
-      grid-area: t2;
-    }
-    &>.tab3{
-      grid-area: t3;
-    }
 `
 export const CardTitle = styled.div`
     font-size: 24px;
