@@ -13,18 +13,19 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-items: flex-start;
 
-  &>button {
+  &>button,
+  &>a {
     margin: 0 auto;
-    margin-top: 280px;
+    margin-top: 250px;
     background-color: var(--blue);
     color: var(--white);
     width: 248px;
 
     @media screen and (min-width: 768px) {
-        margin-top: 500px;
+        margin-top: 400px;
     }
     @media screen and (min-width: 1280px) {
-        margin-top: 550px;
+        margin-top: 560px;
     }
 
 

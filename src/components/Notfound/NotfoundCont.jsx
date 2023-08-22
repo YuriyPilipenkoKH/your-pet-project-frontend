@@ -1,7 +1,7 @@
 import React from 'react';
 import {  TitleNotfound, Wrapper } from './NotfoundCont.styled';
-import { Button } from '../Button/Button';
 import { iconPawprint } from '../../images/icons';
+import { StyledLink } from '../Button/Button.styled';
 
 export const NotfoundContent = () => {
     return (
@@ -10,7 +10,7 @@ export const NotfoundContent = () => {
             <TitleNotfound className="notfound">
                 This page not found :(
             </TitleNotfound>
-            <Button to="/profile">To main page {iconPawprint}</Button>
+            <StyledLink to="/profile">To main page {iconPawprint}</StyledLink>
            
         </Wrapper>
     );
