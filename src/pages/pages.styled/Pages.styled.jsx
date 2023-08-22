@@ -196,7 +196,8 @@ export const Notfound = styled.div`
     background-image: url('${bgImgNotfoundM}');
     background-repeat: no-repeat;
     background-position: center;
-    background-position: bottom -100px right -50px;
+    background-size: cover;
+
 
     @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -205,7 +206,7 @@ export const Notfound = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-   
+   width: 768px;
     height: 1024px;
     background-image: url('${bgImgNotfoundT}');
 
@@ -217,7 +218,7 @@ export const Notfound = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-
+    width: 1280px;
     height: 768px;
     background-image: url('${bgImgNotfoundD}');
 

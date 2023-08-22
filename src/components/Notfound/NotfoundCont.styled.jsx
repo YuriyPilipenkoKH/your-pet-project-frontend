@@ -10,14 +10,23 @@ export const NotfoundWrap = styled.div`
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-items: flex-start;
+
   &>button {
     margin: 0 auto;
- margin-top: 280px;
+    margin-top: 280px;
     background-color: var(--blue);
     color: var(--white);
     width: 248px;
+
+    @media screen and (min-width: 768px) {
+        margin-top: 500px;
+    }
+    @media screen and (min-width: 1280px) {
+        margin-top: 550px;
+    }
+
 
 }
     
