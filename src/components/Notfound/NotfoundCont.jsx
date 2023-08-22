@@ -1,6 +1,5 @@
 import React from 'react';
 import {  TitleNotfound, Wrapper } from './NotfoundCont.styled';
-import { Button } from '../Button/Button';
 import { iconPawprint } from '../../images/icons';
 import { StyledLink } from '../Button/Button.styled';
 
