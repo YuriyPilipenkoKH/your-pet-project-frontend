@@ -17,7 +17,7 @@ export default function NoticesFilters() {
             >
                 Filter {iconFilter}
             </ButtonTransparent>
-            <FavButton className='filround'> {iconFilter}</FavButton>
+            <FavButton  className='filround'> {iconFilter}</FavButton>
             <AddToButton>
                 Add Pet <AiOutlinePlus />
             </AddToButton>

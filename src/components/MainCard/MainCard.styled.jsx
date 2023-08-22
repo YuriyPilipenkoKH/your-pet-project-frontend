@@ -17,7 +17,7 @@ export const CardWrapper = styled.div`
     padding: 0 0 24px;
     background-color: var(--white);
     border-radius: 0 0 40px 40px;
-    box-shadow: var(-shadow-default);
+    box-shadow: var(--shadow-default);
     transition: all 0.4s ease;
 
     @media screen and (min-width: 768px) {
@@ -32,7 +32,7 @@ export const CardWrapper = styled.div`
 
     &:hover,
     &:focus {
-        box-shadow: var(-shadow-hover); 
+        box-shadow: var(--shadow-hover); 
         scale: 1.01;
         outline: none;
     }
@@ -79,10 +79,12 @@ export const ImgWrapper = styled.div`
     &>.fav{
       grid-area: fav;
       justify-self: end;
+      transform: translateX(-8px);
     }
     &>.del{
       grid-area: del;
       justify-self: end;
+      transform: translateX(-8px);
     }
     &>.tab1{
       grid-area: t1;
