@@ -14,6 +14,8 @@ import bgImgNotfoundD from '../../images/notfound-bg-d.png';
 import bgImgNotfoundD2 from '../../images/notfound-bg-d@2x.png';
 import bgImgNotfoundT from '../../images/notfound-bg-t.png';
 import bgImgNotfoundT2 from '../../images/notfound-bg-t@2x.png';
+
+
 // Home
 export const HomeWrapper = styled.div`
   height: 600px;
@@ -195,12 +197,13 @@ export const Notfound = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     background-position: bottom -100px right -50px;
-    
+
     @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     background-image: url('${bgImgNotfoundM2}');
   }
+
   @media screen and (min-width: 768px) {
    
     height: 1024px;
@@ -224,4 +227,5 @@ export const Notfound = styled.div`
       background-image: url('${bgImgNotfoundD2}');
     }
   }
+
 `;
