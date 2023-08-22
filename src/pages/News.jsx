@@ -10,7 +10,7 @@ export const NewsPage = () => {
   return (
     <NwesWrapper>
       <SearchWrapper>
-        <StyledLink to="/test" >
+        <StyledLink to="/test" style={{background: 'transparent'}}>
         <TytleNwes>News</TytleNwes>
         </StyledLink>
         <SearchContainer className="search-container">
