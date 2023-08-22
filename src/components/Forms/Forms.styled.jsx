@@ -31,44 +31,6 @@ export const Form = styled.div.withConfig({
         padding: ${({ addPet }) => addPet && '20px 32px'};
         width: ${({ addPet }) => addPet && '458px'};
     }
-
-    height: 600px;
-    background-image: url("${bgImgM}");
-
-    @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    background-image: url('${bgImgM2}');
-  }
-
-  @media screen and (min-width: 768px) {
-    padding: 80px 20px 0 20px;
-    height: 1024px;
-    background-image: url('${bgImgT}');
-
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url('${bgImgT2}');
-    }
-  }
-
-  @media screen and (min-width: 1280px) {
-    padding: 0px 20px 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    height: 768px;
-    background-image: url('${bgImgD}');
-
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url('${bgImgD2}');
-    }
-  }
-
-
 `;
 
 export const Title = styled.h3.withConfig({
@@ -153,7 +115,7 @@ export const Textarea = styled.textarea`
     line-height: 150%;
     letter-spacing: 0.64px;
     border: 1px solid var(--blue);
-    scrollbar-color:  var(--blue) transparent; /* Колір повзунка (голубий) і фону скроллу */
+    scrollbar-color: var(--blue) transparent; /* Колір повзунка (голубий) і фону скроллу */
     overflow-y: scroll;
 
     &::-webkit-scrollbar {
@@ -163,8 +125,8 @@ export const Textarea = styled.textarea`
         left: 5px;
     }
     &::-webkit-scrollbar-thumb {
-        background-color:  var(--green);
-        border-radius: 50px; 
+        background-color: var(--green);
+        border-radius: 50px;
         height: 5px;
         left: 5px;
     }

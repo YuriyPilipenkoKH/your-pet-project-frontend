@@ -5,6 +5,7 @@ import AddYourPet from './AddYourPet/AddYourPet';
 import AddSellPet from './AddSellPet/AddSellPet';
 import AddLostPet from './AddLostPet/AddLostPet';
 import AddInGoodHandsPet from './AddInGoodHandsPet/AddInGoodHandsPet';
+import { HomeWrapperTwo } from '../../../pages/pages.styled/Pages.styled';
 
 export default function AddPetForm() {
     const [stepNumber, setStepNumber] = useState(1);
@@ -21,7 +22,7 @@ export default function AddPetForm() {
     const arraySteps = ['Choose  option', 'Personal details', 'More info'];
     const arrayOption = ['your pet', 'sell', 'lost/found', 'in good hands'];
     return (
-        <div>
+        <HomeWrapperTwo>
             {stepNumber === 1 && (
                 <ChooseOption
                     active={active}
@@ -93,6 +94,6 @@ export default function AddPetForm() {
                             />
                         </AddInGoodHandsPet>
                     )}
-        </div>
+        </HomeWrapperTwo>
     );
 }
