@@ -16,6 +16,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { IconCross, iconEyes } from '../../../images/icons';
 import { useForm } from 'react-hook-form';
 import { object, string, ref } from 'yup';
+import { useDispatch } from 'react-redux';
+import { authOperations } from 'redux/auth';
 
 const schema = object({
     name: string()
@@ -44,6 +46,7 @@ const schema = object({
 }).required();
 
 export default function RegisterForm() {
+    const dispatch = useDispatch();
     const [showOne, setShowOne] = useState(false);
     const [showTwo, setShowTwo] = useState(false);
     const [isNameValid, setIsNameValid] = useState(false);
@@ -70,14 +73,10 @@ export default function RegisterForm() {
     });
     const handleClickShowOne = () => setShowOne(!showOne);
     const handleClickShowTwo = () => setShowTwo(!showTwo);
+
     const deliveryDataUser = (name, email, password, confirmPassword) => {
-        // dispatch(
-        //     registerUser({
-        //         name,
-        //         email,
-        //         password,
-        //     })
-        // );
+    
+        dispatch(authOperations.register({name,email,password,}));
     };
     const reset = () => {
         setName('');
@@ -91,8 +90,9 @@ export default function RegisterForm() {
     }
     const deliveryData = data => {
         console.log(321321);
+        
         // const { name, email, password, confirmPassword } = data;
-        // deliveryDataUser(name, email, password, confirmPassword);
+        deliveryDataUser(name, email, password, confirmPassword);
         reset();
         console.log(321321)
     };
