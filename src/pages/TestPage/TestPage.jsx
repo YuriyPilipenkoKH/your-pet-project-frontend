@@ -25,7 +25,7 @@ export const TestPage =()=> {
     
 
     return(
-        <HomeWrapper>
+        <HomeWrapper style={{display: 'flex', flexDirection: 'column', gap: '16px',  }}>
             <HomeTitle> Test Page</HomeTitle>
 
             <Button onClick={() => {
