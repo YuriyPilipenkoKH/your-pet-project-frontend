@@ -7,6 +7,13 @@ import bgImgM2 from '../../images/home-bg-m@2x.png';
 import bgImgT from '../../images/home-bg-t.png';
 import bgImgT2 from '../../images/home-bg-m@2x.png';
 
+
+import bgImgNotfoundM from '../../images/notfound-bg-m.png';
+import bgImgNotfoundM2 from '../../images/notfound-bg-m@2x.png';
+// import bgImgNotfoundD from '../../images/notfound-bg-d.png';
+// import bgImgNotfoundD2 from '../../images/notfound-bg-d@2x.png';
+// import bgImgNotfoundT from '../../images/notfound-bg-t.png';
+// import bgImgNotfoundT2 from '../../images/notfound-bg-t@2x.png';
 // Home
 export const HomeWrapper = styled.div`
   height: 600px;
@@ -150,3 +157,47 @@ export const TestWrapp = styled.div`
 
 
 `
+//SponsorWrap
+export const SponsorWrap = styled.div`
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+
+`
+export const TitleSponsor = styled.h2`
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32.78px;
+  text-align: center;
+  color: #000000;
+  @media screen and (min-width: 768px) {
+    font-size: 48px;
+    line-height: 65.57px;
+  }
+`;
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 44px;
+`;
+//Notfound
+export const Notfound = styled.div`
+    
+    height: 600px;
+    width: 320px;
+    background-image: url('${bgImgNotfoundM}');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position: bottom -100px right -50px;
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url('${bgImgNotfoundM2}');
+  }
+`;

@@ -10,6 +10,8 @@ import UserPage from '../pages/UserPage';
 import { TestPage } from '../pages/TestPage/TestPage';
 
 import NoticesPage from '../pages/NoticesPage';
+import { SponsorsPage } from '../pages/Sponsors';
+import { NotfoundPage } from '../pages/NotFound';
 
 
 
@@ -26,6 +28,8 @@ const App=()=> {
           <Route path='/add-pet' element={<AddPetPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/profile" element={<UserPage />} />
+          <Route path="/our friends" element={<SponsorsPage />} />
+          <Route path="/find pet" element={<NotfoundPage />} />
 
           <Route path="/notices" element={<NoticesPage />} />
 
