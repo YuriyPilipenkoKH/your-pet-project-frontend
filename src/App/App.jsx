@@ -7,6 +7,7 @@ import LoginForm from '../components/Forms/LoginForm/LoginForm';
 import AddPetPage from '../pages/AddPetPage';
 import { NewsPage } from '../pages/Nwes';
 import UserPage from '../pages/UserPage';
+import NoticesPage from '../pages/NoticesPage';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path='/add-pet' element={<AddPetPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/profile" element={<UserPage />} />
+          <Route path="/notices" element={<NoticesPage />} />
         </Route>
       </Routes>
     </Container>
