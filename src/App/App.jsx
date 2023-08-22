@@ -10,7 +10,7 @@ import UserPage from '../pages/UserPage';
 import { TestPage } from '../pages/TestPage/TestPage';
 
 import NoticesPage from '../pages/NoticesPage';
-import { TestPage } from '../pages/TestPage/TestPage';
+
 
 
 const App=()=> {
