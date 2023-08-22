@@ -1,8 +1,10 @@
 // import { useState } from 'react';
 import { Formik } from 'formik';
-import { UserForm } from './UserDataForm.styled';
+import { UserForm, Logout } from './UserDataForm.styled';
 import fields from './fieldsValidation';
 import UserDataItem from '../UserDataItem/UserDataItem';
+// import { OutButton } from '../../Button/Button';
+import { ReactComponent as LogoutIcon } from '../../../images/userPageIcons/logout.svg';
 
 const UserDataForm = () => {
     // const [initialState, setInitialState] = useState({
@@ -13,11 +15,13 @@ const UserDataForm = () => {
     //     city: '',
     // });
 
-    const initialState = {username: '',
+    const initialState = {
+        username: '',
         email: '',
         birthday: '',
         phone: '',
-        city: '',}
+        city: '',
+    };
 
     return (
         <Formik
@@ -38,7 +42,17 @@ const UserDataForm = () => {
                             {...field}
                         />
                     ))}
-                    {/* <Logout /> */}
+                    <Logout
+                        style={{
+                            // backgroundColor: 'white',
+                            // color: '#888888',
+                            // borderColor: 'transparent',
+                        }}
+                    >
+                        {/* <LogoutIcon stroke="#54ADFF" /> */}
+                        <LogoutIcon />
+                        Log out
+                    </Logout>
                 </UserForm>
             )}
         </Formik>
