@@ -7,13 +7,21 @@ import bgImgM2 from '../../images/home-bg-m@2x.png';
 import bgImgT from '../../images/home-bg-t.png';
 import bgImgT2 from '../../images/home-bg-m@2x.png';
 
+import FormBgImgD from '../../images/form-bg-d.png';
+import FormBgImgD2 from '../../images/form-bg-d@2x.png';
+import FormBgImgM from '../../images/form-bg-m.png';
+import FormBgImgM2 from '../../images/form-bg-m@2x.png';
+import FormBgImgT from '../../images/form-bg-t.png';
+import FormBgImgT2 from '../../images/form-bg-m@2x.png';
 
 import bgImgNotfoundM from '../../images/notfound-bg-m.png';
 import bgImgNotfoundM2 from '../../images/notfound-bg-m@2x.png';
-// import bgImgNotfoundD from '../../images/notfound-bg-d.png';
-// import bgImgNotfoundD2 from '../../images/notfound-bg-d@2x.png';
-// import bgImgNotfoundT from '../../images/notfound-bg-t.png';
-// import bgImgNotfoundT2 from '../../images/notfound-bg-t@2x.png';
+import bgImgNotfoundD from '../../images/notfound-bg-d.png';
+import bgImgNotfoundD2 from '../../images/notfound-bg-d@2x.png';
+import bgImgNotfoundT from '../../images/notfound-bg-t.png';
+import bgImgNotfoundT2 from '../../images/notfound-bg-t@2x.png';
+
+
 // Home
 export const HomeWrapper = styled.div`
   height: 600px;
@@ -50,6 +58,44 @@ export const HomeWrapper = styled.div`
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: url('${bgImgD2}');
+    }
+  }
+`;
+export const HomeWrapperTwo = styled.div`
+  height: 600px;
+  background-image: url("${FormBgImgM}");
+  padding: 0px 20px 0 20px;
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url('${FormBgImgM2}');
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 40px 20px 0 20px;
+    height: 1024px;
+    background-image: url('${FormBgImgT}');
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('${FormBgImgT2}');
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding: 20px 20px 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 768px;
+    background-image: url('${FormBgImgD}');
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('${FormBgImgD2}');
     }
   }
 `;
@@ -194,10 +240,37 @@ export const Notfound = styled.div`
     background-image: url('${bgImgNotfoundM}');
     background-repeat: no-repeat;
     background-position: center;
-    background-position: bottom -100px right -50px;
+    background-size: cover;
+
+
     @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     background-image: url('${bgImgNotfoundM2}');
   }
+
+  @media screen and (min-width: 768px) {
+   width: 768px;
+    height: 1024px;
+    background-image: url('${bgImgNotfoundT}');
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('${bgImgNotfoundT2}');
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+    height: 768px;
+    background-image: url('${bgImgNotfoundD}');
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('${bgImgNotfoundD2}');
+    }
+  }
+
 `;

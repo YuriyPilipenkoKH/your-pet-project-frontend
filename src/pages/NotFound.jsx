@@ -5,7 +5,7 @@ import { Notfound } from "./pages.styled/Pages.styled";
 
 export const NotfoundPage = () => {
     return (
-        <Notfound NotfoundWrap className="notfoundWrap">
+        <Notfound  className="notfoundWrap">
             
             <NotfoundContent/>
             

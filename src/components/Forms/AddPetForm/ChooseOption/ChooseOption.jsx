@@ -21,7 +21,7 @@ export default function ChooseOption({
     stepNumber,
 }) {
     return (
-        <Form chooseOption>
+        <Form addPet>
             <Title>Add pet</Title>
             {children}
             <ListOption>
