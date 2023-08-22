@@ -22,7 +22,7 @@ export default function AddPetForm() {
     const arraySteps = ['Choose  option', 'Personal details', 'More info'];
     const arrayOption = ['your pet', 'sell', 'lost/found', 'in good hands'];
     return (
-        <HomeWrapperTwo>
+        <>
             {stepNumber === 1 && (
                 <ChooseOption
                     active={active}
@@ -94,6 +94,6 @@ export default function AddPetForm() {
                             />
                         </AddInGoodHandsPet>
                     )}
-        </HomeWrapperTwo>
+        </>
     );
 }
