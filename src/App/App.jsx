@@ -9,6 +9,10 @@ import { NewsPage } from '../pages/News';
 import UserPage from '../pages/UserPage';
 import { TestPage } from '../pages/TestPage/TestPage';
 
+import NoticesPage from '../pages/NoticesPage';
+
+
+
 const App=()=> {
  
 
@@ -23,9 +27,13 @@ const App=()=> {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/profile" element={<UserPage />} />
 
+          <Route path="/notices" element={<NoticesPage />} />
+
+
 
 
           <Route path="/test" element={<TestPage />} />
+
         </Route>
       </Routes>
     </Container>
