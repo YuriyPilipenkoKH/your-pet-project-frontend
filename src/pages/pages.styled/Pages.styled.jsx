@@ -17,8 +17,8 @@ import bgImgNotfoundM2 from '../../images/notfound-bg-m@2x.png';
 // Home
 export const HomeWrapper = styled.div`
   height: 600px;
-  background-image: url('${bgImgM}');
-  padding: 20px;
+  background-image: url("${bgImgM}");
+  padding: 40px 20px 0 20px;
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -27,6 +27,7 @@ export const HomeWrapper = styled.div`
   }
 
   @media screen and (min-width: 768px) {
+    padding: 80px 20px 0 20px;
     height: 1024px;
     background-image: url('${bgImgT}');
 
@@ -38,6 +39,7 @@ export const HomeWrapper = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
+    padding: 0px 20px 0 20px;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -53,16 +55,13 @@ export const HomeWrapper = styled.div`
 `;
 // TitlePages
 export const HomeTitle = styled.h1`
-  width: 280px;
   font-size: 32px;
   font-weight: 700;
   color: #000000;
   @media screen and (min-width: 768px) {
     width: 588px;
     font-size: 68px;
-    font-weight: 600;
-  }
-
+  };
   @media screen and (min-width: 1280px) {
     width: 500px;
     font-size: 68px;
@@ -70,6 +69,33 @@ export const HomeTitle = styled.h1`
   }
 `;
 // Nwes
+export const TitleNwes = styled.h2`
+  font-size: 32px;
+  font-weight: 700;
+  color: #000000;
+  @media screen and (min-width: 768px) {
+    width: 588px;
+    font-size: 68px;
+  };
+  @media screen and (min-width: 1280px) {
+    width: 500px;
+    font-size: 68px;
+    font-weight: 800;
+  }
+`;
+
+
+export const NwesWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -146,6 +172,7 @@ export const SearchInput = styled.input`
   }
 `;
 
+
 export const SponsorWrap = styled.div`
    display: flex;
   align-items: center;
@@ -170,3 +197,17 @@ export const Notfound = styled.div`
     background-image: url('${bgImgNotfoundM2}');
   }
 `;
+
+export const TestWrapp = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: 19px;
+
+  &>button{
+    max-width: 160px;
+  }
+
+
+`
+

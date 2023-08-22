@@ -15,14 +15,17 @@ import {
 import { yupResolver } from '@hookform/resolvers/yup';
 import { IconCross, iconEyes } from '../../../images/icons';
 import { useForm } from 'react-hook-form';
-import { object, string } from 'yup';
+import { object, string, ref } from 'yup';
 
 const schema = object({
     name: string()
         .required()
         .min(2, 'Name should be at least 2 characters')
         .max(16, 'Name should not exceed 16 characters')
-        .matches(/^[a-zA-Z]+$/, 'Name should contain only letters'),
+        .matches(
+            /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+            'Name should contain only letters'
+        ),
     email: string()
         .required()
         .matches(
@@ -33,14 +36,11 @@ const schema = object({
         .required()
         .matches(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/,
-            "Password: 1 lowercase, 1 uppercase, 1 digit, 6-16 characters."
+            'Password: 1 lowercase, 1 uppercase, 1 digit, 6-16 characters.'
         ),
     confirmPassword: string()
         .required()
-        .matches(
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/,
-            "Password: 1 lowercase, 1 uppercase, 1 digit, 6-16 characters."
-        ),
+        .oneOf([ref('password')], 'Passwords do not match'),
 }).required();
 
 export default function RegisterForm() {
@@ -58,7 +58,6 @@ export default function RegisterForm() {
     const {
         register,
         handleSubmit,
-        reset,
         formState: { errors },
     } = useForm({
         defaultValues: {
@@ -80,11 +79,22 @@ export default function RegisterForm() {
         //     })
         // );
     };
+    const reset = () => {
+        setName('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+        setIsNameValid(false);
+        setIsEmailValid(false);
+        setIsPasswordlValid(false);
+        setIsConfirmPasswordlValid(false);
+    }
     const deliveryData = data => {
         console.log(321321);
-        const { name, email, password, confirmPassword } = data;
-        deliveryDataUser(name, email, password, confirmPassword);
+        // const { name, email, password, confirmPassword } = data;
+        // deliveryDataUser(name, email, password, confirmPassword);
         reset();
+        console.log(321321)
     };
 
     return (
@@ -164,7 +174,7 @@ export default function RegisterForm() {
                         }}
                         onChange={e => {
                             const isValid =
-                                /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(
+                                /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(
                                     e.target.value
                                 );
                             setIsEmailValid(isValid);
@@ -212,7 +222,7 @@ export default function RegisterForm() {
                         aria-invalid={errors.password ? 'true' : 'false'}
                         placeholder="Password"
                         value={password}
-                        title='Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long.'
+                        title="Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long."
                         type={showOne ? 'text' : 'password'}
                         style={{
                             border: errors.password
@@ -222,7 +232,7 @@ export default function RegisterForm() {
                                 : '1px solid var(--blue)',
                         }}
                         onChange={e => {
-                            const isValid = /.{7,}/.test(e.target.value);
+                            const isValid =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/.test(e.target.value);
                             setIsPasswordlValid(isValid);
                             setPassword(e.target.value);
                             if (isValid) {
@@ -276,7 +286,7 @@ export default function RegisterForm() {
                         placeholder="Confirm password"
                         type={showTwo ? 'text' : 'password'}
                         value={confirmPassword}
-                        title='Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long.'
+                        title="Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long."
                         style={{
                             border: errors.confirmPassword
                                 ? '1px solid var(--red)'
@@ -286,7 +296,7 @@ export default function RegisterForm() {
                                 : '1px solid var(--blue)',
                         }}
                         onChange={e => {
-                            const isValid = /.{7,}/.test(e.target.value);
+                            const isValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/.test(e.target.value);
                             setIsConfirmPasswordlValid(isValid);
                             if (isValid) {
                                 errors.confirmPassword = undefined;
@@ -294,7 +304,7 @@ export default function RegisterForm() {
                             setConfirmPassword(e.target.value);
                         }}
                     ></Input>
-                    {isConfirmPasswordValid && (
+                    {(isConfirmPasswordValid && !errors.confirmPassword) && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"

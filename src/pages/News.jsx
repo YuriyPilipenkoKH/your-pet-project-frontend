@@ -7,10 +7,9 @@ import CustomPagination from "../components/Pagination/Pagination";
 import { BsSearch } from 'react-icons/bs';
 import { NewsCard } from '../components/News/NewsCard';
 import news from '../components/json/news.json';
-import { NwesPage, Wrapper, SearchContainer, SearchIcon, SearchInput, SearchWrapper, Title } from './pages.styled/Pages.styled';
 import  Pagination  from '../components/Pagination/Pagination';
-
-
+import { NwesPage, NwesWrapper, SearchContainer, SearchIcon, SearchInput, SearchWrapper, TitleNwes } from './pages.styled/Pages.styled';
+import { StyledLink } from '../components/Button/Button.styled';
 
 
 export const NewsPage = () => {
@@ -35,12 +34,18 @@ const handlePageChange = (page) => {
 };
 
   return (
-    <Wrapper class="wrapper">
-      <SearchWrapper class="search-wrapper">
-        <Title class="title">News</Title>
-        <SearchContainer class="search-container">
+
+    
+ 
+    <NwesWrapper>
+      <SearchWrapper>
+        <StyledLink to="/test" style={{background: 'transparent'}}>
+        <TitleNwes>News</TitleNwes>
+        </StyledLink>
+        <SearchContainer className="search-container">
+
           <SearchInput type="text" name="search" placeholder="Search" />
-          <SearchIcon class="search-icon">
+          <SearchIcon className="search-icon">
             <BsSearch style = { style } />
           </SearchIcon>
         </SearchContainer>
@@ -64,7 +69,8 @@ const handlePageChange = (page) => {
           onPageChange={handlePageChange}
         />
       </Pagination>
+      </NwesWrapper>
      
-    </Wrapper>
+    
   );
 };

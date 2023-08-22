@@ -1,13 +1,13 @@
 import { iconPawprint } from '../../images/icons';
 import { AuthBtnWrap, StyledLinkLog, StyledLinkReg } from './AuthNav.styled';
 
-export const AuthNav = () => {
+export const AuthNav = ({onClose}) => {
   return (
-    <AuthBtnWrap>
-      <StyledLinkLog to="/login" exact="true">
+    <AuthBtnWrap className= "AuthNav">
+      <StyledLinkLog to="/login" exact="true"  onClick={onClose}>
         Log In {iconPawprint}
       </StyledLinkLog>
-      <StyledLinkReg to="/register" exact="true">
+      <StyledLinkReg to="/register" exact="true"  onClick={onClose}>
         Register
       </StyledLinkReg>
     </AuthBtnWrap>
