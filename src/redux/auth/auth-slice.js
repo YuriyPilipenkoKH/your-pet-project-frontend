@@ -90,7 +90,7 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.user = {};
       state.registrationSuccessful = false;
-      state.token = null;
+      state.token = "";
       state.isLoggedIn = false;
       state.user.favorite = [];
     })
