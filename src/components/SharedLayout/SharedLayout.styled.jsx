@@ -8,7 +8,7 @@ export const SharedLayoutWrap = styled.header`
 
 export const LogoLink = styled(NavLink)`
     width: 116px;
-    @media screen and (min-width: 768px) {
+
         width: 162px;
     }
 `;
