@@ -218,12 +218,23 @@ export const TestWrapp = styled.div`
 `
 //SponsorWrap
 export const SponsorWrap = styled.div`
-   display: flex;
+   /* display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
+  display: grid;
   gap: 20px;
+  place-items: center;
+
+    @media screen and (min-width: 768px) {
+   grid-template-columns: repeat(2, 1fr);
+  }
+
+      @media screen and (min-width: 1280px) {
+   grid-template-columns: repeat(3, 1fr);
+  }
+
 
 `
 export const TitleSponsor = styled.h2`
