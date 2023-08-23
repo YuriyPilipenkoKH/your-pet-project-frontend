@@ -1,21 +1,25 @@
 import React from 'react'
-import { TytleNwes,SearchWrapper,SearchContainer,SearchIcon,SearchInput } from './NoticesSearch.styled'
+import { TytleNwes,SearchWrapper,SearchIcon,SearchInput } from './NoticesSearch.styled'
 import { BsSearch } from 'react-icons/bs'
+import { SearchForm } from 'pages/pages.styled/Pages.styled'
+import { FormButton } from 'components/Button/Button'
 
 
 export default function NoticesSearch() {
-  const style = { color: "blue", fontSize: "1em" }
+
 
 
   return (
     <SearchWrapper>
       <TytleNwes>Find your favorite pet</TytleNwes>
-      <SearchContainer className="search-container">
-      <SearchInput type="text" name="search" placeholder="Search" />
-          <SearchIcon className="search-icon">
-            <BsSearch style = { style } />
-          </SearchIcon>
-      </SearchContainer>
+      <SearchForm className="search-form">
+          <SearchInput type="text" name="search" placeholder="Search" />
+          <FormButton >
+            <SearchIcon className="search-icon">
+              <BsSearch style = { {color: "#54adff"} }/>
+            </SearchIcon>
+          </FormButton>
+        </SearchForm>
       </SearchWrapper>
 
 

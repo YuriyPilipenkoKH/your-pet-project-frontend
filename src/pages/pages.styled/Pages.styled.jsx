@@ -164,6 +164,7 @@ export const SearchForm = styled.form`
     position: absolute;
     top: 2px;
     right: 0;
+
     
   }
 `;
@@ -177,15 +178,19 @@ export const SearchInput = styled.input`
   width: 280px;
   height: 44px;
   font-size: 16px;
-  padding-left: 0 30px;
+  padding: 0 30px;
   border: 1px solid var(--blue);
   border-radius:50px;
-  cursor: pointer;
   color: var(--blue);
+
   &::placeholder {
     font-size: 14px;
     line-height: 16.94px;
     
+  }
+
+  &:focus {
+    outline: 1px solid var(--blue);
   }
 
   @media screen and (min-width: 768px) {

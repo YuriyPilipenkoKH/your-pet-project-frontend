@@ -41,12 +41,15 @@ export const SearchInput = styled.input`
   padding-left: 20px;
   border: 1px solid var(--blue);
   border-radius:50px;
-  cursor: pointer;
+  
   color: var(--blue);
   &::placeholder {
     font-size: 14px;
     line-height: 16.94px;
     
+  }
+    &:focus {
+    outline: 1px solid var(--blue);
   }
 
   @media screen and (min-width: 768px) {

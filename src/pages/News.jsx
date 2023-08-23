@@ -7,7 +7,7 @@ import { StyledLink } from '../components/Button/Button.styled';
 import { FormButton } from 'components/Button/Button';
 
 export const NewsPage = () => {
-  const style = { color: "blue", fontSize: "1em" }
+
   return (
     <NewsWrapper>
       <SearchWrapper>
@@ -18,7 +18,7 @@ export const NewsPage = () => {
           <SearchInput type="text" name="search" placeholder="Search" />
           <FormButton >
             <SearchIcon className="search-icon">
-              <BsSearch style = { style } />
+              <BsSearch style = { {color: "#54adff"} } />
             </SearchIcon>
           </FormButton>
         </SearchForm>

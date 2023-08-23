@@ -17,8 +17,8 @@ export default function NoticesPage() {
     <>
     <NoticesSearch/>
       <NoticesPageWrap >
-      <NoticesCategoriesNav/>
-      <NoticesFilters/>
+         <NoticesCategoriesNav/>
+         <NoticesFilters/>
       </NoticesPageWrap>
       <NewsContainer className="notice-container">
         {news.map((item, index) => (
