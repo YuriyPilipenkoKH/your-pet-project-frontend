@@ -32,10 +32,16 @@ const App = () => {
                 <Route path="/" element={<SharedLayout />}>
                     <Route index element={<Home />} />
 
-                    {/* <Route path="/register" element={<RegisterPage />} /> */}
-                    <Route path="/register"element={<PublicRoute redirectTo="/notices" component={<RegisterPage />}/>}/>
-                        
-                    {/* <Route path="/login" element={<LoginPage />} /> */}
+                    <Route
+                        path="/register"
+                        element={
+                            <PublicRoute
+                                redirectTo="/notices"
+                                component={<RegisterPage />}
+                            />
+                        }
+                    />
+
                     <Route
                         path="/login"
                         element={
@@ -46,7 +52,6 @@ const App = () => {
                         }
                     />
 
-                    {/* <Route path="/login" element={<LoginPage />} /> */}
                     <Route
                         path="/add-pet"
                         element={
@@ -66,16 +71,13 @@ const App = () => {
                         }
                     />
 
-                    {/* <Route path="/add-pet" element={<AddPetPage />} /> */}
-
                     <Route path="/news" element={<NewsPage />} />
-                    {/* <Route path="/profile" element={<UserPage />} />/ */}
+
                     <Route path="/friends" element={<SponsorsPage />} />
-                    <Route  path="/login" element={<LoginPage />} />
-                    
+                    <Route path="/login" element={<LoginPage />} />
+
                     <Route path="/notices" element={<NoticesPage />} />
-                    {/* <Route index element={<Navigate to="sell" replace />} /> */}
-                    {/* <Route path=":categoryName" element={<NoticesCategoriesList />} /> */}
+
                     <Route />
                     <Route path="/test" element={<TestPage />} />
                     <Route path="*" element={<NotfoundPage />} />
