@@ -9,6 +9,10 @@ export const NavWrap = styled.div`
       
     }
 
+    &>a.active {
+      color: var(--yellow);
+    }
+
 `
 
 export const StyledLink = styled(NavLink)`
@@ -16,9 +20,8 @@ export const StyledLink = styled(NavLink)`
   color: var(--black);
   text-decoration:none;
   font-size: 20px;
-  font-weight:500;
-  &:active{
-  color: var(--yellow);}
+  font-weight: 600;
+
 `
 export const ButtonBurger = styled.button`
 
