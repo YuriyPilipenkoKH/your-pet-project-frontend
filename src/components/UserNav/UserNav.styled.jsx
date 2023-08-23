@@ -4,6 +4,22 @@ import { buttonStyles, hoverStylesB,  ripple } from '../Button/Button.styled';
 
 export const UserWrap = styled.div`
 
+
+&.UserNav {
+  display: none;
+  /* @media screen and(min-width: 767px) {
+    display: none;
+
+  } */
+  
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+  }
+}
+
+
 /* &>.logout {
    position: absolute;
     bottom: 20px;
@@ -12,7 +28,6 @@ export const UserWrap = styled.div`
     @media screen and (min-width: 768px) {
     position: relative;
     justify-self: start;
-
   }
 } */
 
