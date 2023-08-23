@@ -77,7 +77,15 @@ export default function RegisterForm() {
 
     const deliveryDataUser = (name, email, password) => {
     
-        dispatch(authOperations.register({name,email,password}));
+
+        dispatch(authOperations.register({name,email,password}))
+        // .unwrap().then(originalPromiseResult => {
+            // Notify.success(`${originalPromiseResult.user.name} welcome back!`);
+        //   })
+        //   .catch(() => {
+            // Notify.failure('Incorrect login or password');
+        //   });;
+
     };
     const reset = () => {
         setName('');

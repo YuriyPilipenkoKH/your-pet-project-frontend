@@ -55,7 +55,16 @@ export default function LoginForm() {
     });
     const handleClickShow = () => setShow(!show);
     const deliveryDataUser = (email, password) => {
-        dispatch(authOperations.logIn({ email, password }));
+
+        dispatch(authOperations.logIn({email,password})).then((d)=>console.log(d))
+        // dispatch(
+        //     registerUser({
+        //         name,
+        //         email,
+        //         password,
+        //     })
+        // );
+
     };
     const reset = () => {
         setEmail('');

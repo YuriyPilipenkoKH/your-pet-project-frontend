@@ -3,15 +3,14 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://your-pet-shw3.onrender.com';
 
-// Utility to add JWT
-const setAuthHeader = (token )=> {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  };
-  
-  // Utility to remove JWT
-  const clearAuthHeader = () => {
-    axios.defaults.headers.common.Authorization = '';
-  };
+const token = {
+    set(token) {
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    },
+    unset() {
+        axios.defaults.headers.common.Authorization = '';
+    },
+};
 
 const register = createAsyncThunk(
     'auth/register',
@@ -22,7 +21,7 @@ const register = createAsyncThunk(
                 credentials
             );
             // console.log(data);
-            setAuthHeader(data.token);
+            token.set(data.token);
             // Notify.info('Something went wrong. Please, try again later.');
             return data;
         } catch (error) {
@@ -34,7 +33,7 @@ const register = createAsyncThunk(
 const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     try {
         const { data } = await axios.post('/users/auth/login', credentials);
-        setAuthHeader(data.token);
+        token.set(data.token);
         return data;
     } catch (error) {
         //   Notify.info('Something went wrong. Please, try again later.');
@@ -43,7 +42,7 @@ const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
 });
 
 const fetchCurrentUser = createAsyncThunk(
-    'auth/update',
+    'auth/current',
     async (_, thunkAPI) => {
         const state = thunkAPI.getState();
         const persistedToken = state.auth.token;
@@ -55,7 +54,7 @@ const fetchCurrentUser = createAsyncThunk(
 
         // token.set(persistedToken);
         try {
-            const { data } = await axios.get('/users/update');
+            const { data } = await axios.get('/users/current');
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -66,7 +65,7 @@ const fetchCurrentUser = createAsyncThunk(
 const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     try {
         await axios.post('/users/logout');
-        clearAuthHeader();
+        token.unset();
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }
