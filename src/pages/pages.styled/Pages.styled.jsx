@@ -224,7 +224,7 @@ export const SponsorWrap = styled.div`
   flex-direction: row;
   flex-wrap: wrap; */
   display: grid;
-  gap: 20px;
+  gap: 32px;
   place-items: center;
 
     @media screen and (min-width: 768px) {
