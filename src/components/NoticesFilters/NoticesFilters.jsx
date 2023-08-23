@@ -1,5 +1,5 @@
 import React from 'react';
-import { AddToButton, ButtonTransparent } from '../Button/Button';
+import { AddToButton, ButtonTransparent, FavButton } from '../Button/Button';
 import { iconFilter } from '../../images/icons';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { FilterWrapper } from './NoticesFilters.styled';
