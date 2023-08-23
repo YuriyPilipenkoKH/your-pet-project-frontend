@@ -108,7 +108,7 @@ export default function PersonalDetails({
 
     return (
         <Form addPet>
-            <Title>Add pet for sale</Title>
+            <Title>Add in good hands</Title>
             {children}
             <form onSubmit={handleSubmit(deliveryData)}>
                 <LabelForAdd>

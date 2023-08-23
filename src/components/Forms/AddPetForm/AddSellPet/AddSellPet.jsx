@@ -1,5 +1,6 @@
 import React from 'react';
 import PersonalDetails from './PersonalDetails/PersonalDetails';
+import MoreInfo from './MoreInfo/MoreInfo';
 
 export default function AddSellPet({
     children,
@@ -7,12 +8,24 @@ export default function AddSellPet({
     beforeForm,
     stepNumber,
 }) {
-    return (
-        <PersonalDetails
-            children={children}
-            nextForm={nextForm}
-            beforeForm={beforeForm}
-            stepNumber={stepNumber}
-        />
+    return (    
+        <>
+            {stepNumber === 2 && (
+                <PersonalDetails
+                    children={children}
+                    nextForm={nextForm}
+                    beforeForm={beforeForm}
+                    stepNumber={stepNumber}
+                />
+            )}
+            {stepNumber === 3 && (
+                <MoreInfo
+                    children={children}
+                    nextForm={nextForm}
+                    beforeForm={beforeForm}
+                    stepNumber={stepNumber}
+                />
+            )}
+        </>
     );
 }

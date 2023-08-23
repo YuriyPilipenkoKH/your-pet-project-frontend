@@ -17,7 +17,7 @@ import { IconCross, iconEyes } from '../../../images/icons';
 import { useForm } from 'react-hook-form';
 import { object, string, ref } from 'yup';
 import { useDispatch } from 'react-redux';
-import { authOperations } from 'redux/auth';
+// import { authOperations } from 'redux/auth';
 
 const schema = object({
     name: string()
@@ -42,8 +42,9 @@ const schema = object({
         ),
     confirmPassword: string()
         .required()
-        .oneOf([ref('password')], 'Passwords do not match'),
+        .oneOf([ref('password', undefined, yup => yup.trim())], 'Passwords do not match'),
 }).required();
+
 
 export default function RegisterForm() {
     const dispatch = useDispatch();
@@ -74,9 +75,9 @@ export default function RegisterForm() {
     const handleClickShowOne = () => setShowOne(!showOne);
     const handleClickShowTwo = () => setShowTwo(!showTwo);
 
-    const deliveryDataUser = (name, email, password, confirmPassword) => {
+    const deliveryDataUser = (name, email, password) => {
     
-        dispatch(authOperations.register({name,email,password,}));
+        // dispatch(authOperations.register({name,email,password}));
     };
     const reset = () => {
         setName('');
@@ -90,9 +91,8 @@ export default function RegisterForm() {
     }
     const deliveryData = data => {
         console.log(321321);
-        
-        // const { name, email, password, confirmPassword } = data;
-        deliveryDataUser(name, email, password, confirmPassword);
+        const { name, email, password } = data;
+        deliveryDataUser(name, email, password);
         reset();
         console.log(321321)
     };

@@ -107,9 +107,7 @@ export default function MoreInfo({
                     <ImageWrapper>
                         <InputUploadImage
                             {...register('imageURL')}
-                            aria-invalid={
-                                errors.imageURL ? 'true' : 'false'
-                            }
+                            aria-invalid={errors.imageURL ? 'true' : 'false'}
                             type="file"
                             required
                             onChange={handleImageChange}
@@ -166,6 +164,10 @@ export default function MoreInfo({
                             );
                             setIsComentValid(isValid);
                             setComent(e.target.value);
+                            const textarea = e.target;
+                            textarea.style.height = 'auto';
+                            textarea.style.height =
+                            textarea.scrollHeight + 'px';
                             if (isValid) {
                                 errors.coment = undefined;
                             }

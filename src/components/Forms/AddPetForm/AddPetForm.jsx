@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ChooseOption from './ChooseOption/ChooseOption';
 import ListProgresSteps from './ListSteps/ListProgresSteps';
 import AddYourPet from './AddYourPet/AddYourPet';
 import AddSellPet from './AddSellPet/AddSellPet';
 import AddLostPet from './AddLostPet/AddLostPet';
 import AddInGoodHandsPet from './AddInGoodHandsPet/AddInGoodHandsPet';
-import { HomeWrapperTwo } from '../../../pages/pages.styled/Pages.styled';
 
 export default function AddPetForm() {
     const [stepNumber, setStepNumber] = useState(1);
