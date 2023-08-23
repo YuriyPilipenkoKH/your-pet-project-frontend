@@ -1,5 +1,6 @@
 import { Form } from 'formik';
-// import { CheckIcon, CrossIcon } from 'shared/utils/icons';
+import { ReactComponent as CheckIcon } from '../../../images/userPageIcons/check.svg';
+import { ReactComponent as CrossIcon } from '../../../images/userPageIcons/cross-small.svg';
 import styled from 'styled-components';
 
 export const UserInfo = styled.div`
@@ -74,12 +75,12 @@ export const EditButton = styled.button`
     }
 `;
 
-// export const Cross = styled(CrossIcon)`
-//     stroke: ${({ theme }) => theme.colors.red};
-//     margin-right: ${({ theme }) => theme.space[3] + 'px'};
-// `;
+export const Cross = styled(CrossIcon)`
+    stroke: #F43F5E;
+    margin-right: 8px};
+`;
 
-// export const Check = styled(CheckIcon)`
-//     color: ${({ theme }) => theme.colors.green};
-//     margin-right: ${({ theme }) => theme.space[3] + 'px'};
-// `;
+export const Check = styled(CheckIcon)`
+    color: #00c3ad;
+    margin-right: 8px;
+`;
