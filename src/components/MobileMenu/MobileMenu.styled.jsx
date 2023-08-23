@@ -94,13 +94,13 @@ export const MenuContent = styled.div`
             display: none;
         }
     }
-    &>.UserNav>.logout{
+    /* &>.UserNav>.logout{
         @media screen and (min-width: 768px) {
             position: absolute;
             top: 4px;
             left: 200px;
         }
-    }
+    } */
     
   } 
 

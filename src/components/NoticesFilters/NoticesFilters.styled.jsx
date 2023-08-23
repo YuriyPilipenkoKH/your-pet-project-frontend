@@ -24,7 +24,8 @@ export const FilterWrapper = styled.div`
 
   &>.filround{
     display:flex;  
-    
+    justify-content: center;
+    align-items: center;
     @media screen and (min-width: 768px) {
    display:none;
 };
