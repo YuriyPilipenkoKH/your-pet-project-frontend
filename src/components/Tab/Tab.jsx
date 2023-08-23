@@ -1,10 +1,10 @@
 import { StyledTab } from "./Tab.styled"
 
 
-export const Tab = ( {icon, text}) => {
+export const Tab = ({icon, text, className}) => {
 
 return(
-    <StyledTab>
+    <StyledTab className = {className}>
         {icon}
         {text}
     </StyledTab>

@@ -10,65 +10,27 @@ import bgImgT from '../../images/form-bg-t.png';
 import bgImgT2 from '../../images/form-bg-m@2x.png';
 
 export const Form = styled.div.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'chooseOption',
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet',
 })`
     padding: 40px 12px;
     background: #fff;
     border-radius: 40px;
     box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
     text-align: center;
-    text-align: ${({ chooseOption }) => chooseOption && 'left'};
+    text-align: ${({ addPet }) => addPet && 'left'};
     margin: 0 auto;
     width: 100%;
     @media screen and (min-width: 320px) {
         width: 280px;
-        padding: ${({ chooseOption }) => chooseOption && '20px 8px'};
-        width: ${({ chooseOption }) => chooseOption && '280px'};
+        padding: ${({ addPet }) => addPet && '20px 8px'};
+        width: ${({ addPet }) => addPet && '280px'};
     }
     @media screen and (min-width: 768px) {
         width: 608px;
         padding: 60px 75px;
-        padding: ${({ chooseOption }) => chooseOption && '20px 32px'};
-        width: ${({ chooseOption }) => chooseOption && '458px'};
+        padding: ${({ addPet }) => addPet && '20px 32px'};
+        width: ${({ addPet }) => addPet && '458px'};
     }
-
-    height: 600px;
-    background-image: url("${bgImgM}");
-
-    @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    background-image: url('${bgImgM2}');
-  }
-
-  @media screen and (min-width: 768px) {
-    padding: 80px 20px 0 20px;
-    height: 1024px;
-    background-image: url('${bgImgT}');
-
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url('${bgImgT2}');
-    }
-  }
-
-  @media screen and (min-width: 1280px) {
-    padding: 0px 20px 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    height: 768px;
-    background-image: url('${bgImgD}');
-
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url('${bgImgD2}');
-    }
-  }
-
-
 `;
 
 export const Title = styled.h3.withConfig({
@@ -88,7 +50,7 @@ export const Title = styled.h3.withConfig({
     }
 `;
 
-export const Input = styled.input`
+export const InputForAddPet = styled.input`
     display: block;
     width: 100%;
     border-radius: 40px;
@@ -98,7 +60,84 @@ export const Input = styled.input`
     line-height: 150%;
     letter-spacing: 0.64px;
     border: 1px solid var(--blue);
-    position: relative;
+    @media screen and (max-width: 768px) {
+        padding: '8px 16px';
+        font-size: '14px';
+    }
+
+    &:focus {
+        outline: none;
+    }
+`;
+
+export const InputForAuthorization = styled.input`
+    display: block;
+    width: 100%;
+    border-radius: 40px;
+    padding: 12px 16px;
+    color: var(--grey);
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.64px;
+    border: 1px solid var(--blue);
+
+    &:focus {
+        outline: none;
+    }
+`;
+
+export const InputUploadImage = styled.input`
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+    outline: none;
+    background-color: blue;
+    position: absolute;
+    opacity: 0;
+    width: 112px;
+    height: 112px;
+    @media screen and (min-width: 768px) {
+        width: 182px;
+        height: 182px;
+    }
+`;
+
+export const Textarea = styled.textarea`
+    display: block;
+    width: 100%;
+    border-radius: 40px;
+    font-family: Manrope;
+    padding: 8px 16px;
+    color: var(--grey);
+    resize: none;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.64px;
+    border: 1px solid var(--blue);
+    scrollbar-color: var(--blue) transparent; /* Колір повзунка (голубий) і фону скроллу */
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 5px; /* ширина скроллбара */
+        height: 5px;
+        border-radius: 50px;
+        left: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--green);
+        border-radius: 50px;
+        height: 5px;
+        left: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent; /* Фоновий колір трека скроллбара */
+    }
+
+    @media screen and (min-width: 768px) {
+        padding: 12px 16px;
+    }
 
     &:focus {
         outline: none;
@@ -169,13 +208,19 @@ export const LabelForLogin = styled.label.withConfig({
 `;
 
 export const LabelForAdd = styled.label.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'yourPet',
+    shouldForwardProp: prop =>
+        isPropValid(prop) &&
+        prop !== 'yourPet' &&
+        prop !== 'coment' &&
+        prop !== 'image',
 })`
     position: relative;
     display: block;
     margin-bottom: ${({ yourPet }) => (yourPet ? '44px' : '20px')};
+    margin-bottom: ${({ coment }) => coment && '24px'};
     @media screen and (min-width: 768px) {
         margin-bottom: ${({ yourPet }) => (yourPet ? '40px' : '24px')};
+        margin-bottom: ${({ coment }) => coment && '17px'};
     }
 `;
 
@@ -195,12 +240,11 @@ export const ShowPasswordButton = styled.button`
 `;
 
 export const TextValidation = styled.p.withConfig({
-    shouldForwardProp: prop =>
-        isPropValid(prop) && prop !== 'addPet',
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet',
 })`
     position: absolute;
     top: 50px;
-    top: ${({ addPet }) => (addPet && "101%")};
+    top: ${({ addPet }) => addPet && '101%'};
     left: 20px;
     color: var(--red);
     font-size: 12px;
@@ -220,14 +264,14 @@ export const IconCrossValidate = styled.button.withConfig({
     border-color: transparent;
     cursor: pointer;
     top: 20%;
-    top: ${({ addPet }) => (addPet && "50%")};
+    top: ${({ addPet }) => addPet && '50%'};
     left: ${({ iconPassowrd }) => (iconPassowrd ? '73%' : '82%')};
     @media screen and (min-width: 320px) {
         left: ${({ iconPassowrd }) => (iconPassowrd ? '180px' : '210px')};
-        top: ${({ addPet }) => (addPet && "50%")};
+        top: ${({ addPet }) => addPet && '50%'};
     }
     @media screen and (min-width: 768px) {
-        top: ${({ addPet }) => (addPet && "55%")};
+        top: ${({ addPet }) => addPet && '55%'};
         left: ${({ iconPassowrd }) => (iconPassowrd ? '370px' : '400px')};
         left: ${({ addPet }) => addPet && '345px'};
     }
@@ -239,15 +283,15 @@ export const IconOkey = styled.svg.withConfig({
     position: absolute;
     top: 25%;
     left: ${({ iconPassowrd }) => (iconPassowrd ? '73%' : '82%')};
-    top: ${({ addPet }) => (addPet && "50%")};
+    top: ${({ addPet }) => addPet && '50%'};
     @media screen and (min-width: 320px) {
         left: ${({ iconPassowrd }) => (iconPassowrd ? '190px' : '220px')};
-        top: ${({ addPet }) => (addPet && "50%")};
+        top: ${({ addPet }) => addPet && '50%'};
     }
     @media screen and (min-width: 768px) {
         left: ${({ iconPassowrd }) => (iconPassowrd ? '380px' : '410px')};
         left: ${({ addPet }) => addPet && '350px'};
-        top: ${({ addPet }) => (addPet && "55%")};
+        top: ${({ addPet }) => addPet && '55%'};
     }
 `;
 
@@ -351,16 +395,50 @@ export const WrapperNextBackButton = styled.div`
     }
 `;
 
-export const TypeInput = styled.span`
+export const TypeInput = styled.span.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addImage',
+})`
     color: var(--black);
     display: inline-block;
     font-size: 14px;
     line-height: normal;
     font-weight: 500;
     margin-bottom: 4px;
+    width: ${({ addImage }) => addImage && '33%'};
     @media screen and (min-width: 768px) {
         font-size: 20px;
         line-height: 26.5px;
         margin-bottom: 8px;
+    }
+`;
+
+export const LabelForAddImage = styled.div`
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 16px;
+    margin-bottom: 24px;
+`;
+
+export const ImageWrapper = styled.div`
+    position: relative;
+`;
+
+export const PlusImage = styled.svg`
+    width: 112px;
+    height: 112px;
+    @media screen and (min-width: 768px) {
+        width: 182px;
+        height: 182px;
+    }
+`;
+
+export const ImagePet = styled.img`
+    width: 112px;
+    height: 112px;
+    border-radius: 20px;
+    @media screen and (min-width: 768px) {
+        width: 182px;
+        height: 182px;
     }
 `;

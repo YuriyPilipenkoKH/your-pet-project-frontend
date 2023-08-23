@@ -22,11 +22,12 @@ export const FilterWrapper = styled.div`
 };
   }
 
-  /* &>.filround{
-    display:flex;
+
+  &>.filround{
+    display:flex;  
     justify-content: center;
-    margin-left: auto;
-    
+    align-items: center;
+
     @media screen and (min-width: 768px) {
    display:none;
 };
