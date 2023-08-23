@@ -115,7 +115,7 @@ export const HomeTitle = styled.h1`
   }
 `;
 // Nwes
-export const NwesWrapper = styled.div`
+export const NewsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -145,7 +145,7 @@ export const TytleNwes = styled.h2`
   }
 `;
 
-export const NwesPage = styled.div`
+export const NewsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

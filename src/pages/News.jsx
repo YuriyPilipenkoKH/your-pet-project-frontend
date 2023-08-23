@@ -2,13 +2,13 @@ import React from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { NewsCard } from '../components/News/NewsCard';
 import news from '../components/json/news.json';
-import { NwesPage, NwesWrapper, SearchContainer, SearchIcon, SearchInput, SearchWrapper, TytleNwes } from './pages.styled/Pages.styled';
+import {  NewsContainer, NewsWrapper,  SearchContainer, SearchIcon, SearchInput, SearchWrapper, TytleNwes } from './pages.styled/Pages.styled';
 import { StyledLink } from '../components/Button/Button.styled';
 
 export const NewsPage = () => {
   const style = { color: "blue", fontSize: "1em" }
   return (
-    <NwesWrapper>
+    <NewsWrapper>
       <SearchWrapper>
         <StyledLink to="/test" style={{background: 'transparent'}}>
         <TytleNwes>News</TytleNwes>
@@ -20,7 +20,7 @@ export const NewsPage = () => {
           </SearchIcon>
         </SearchContainer>
       </SearchWrapper>
-      <NwesPage className="news-page">
+      <NewsContainer className="NewsContainer">
         {news.map((item, index) => (
           <NewsCard
             key={index}
@@ -31,7 +31,7 @@ export const NewsPage = () => {
             url={item.url}
           />
         ))}
-      </NwesPage>
-    </NwesWrapper>
+      </NewsContainer>
+    </NewsWrapper>
   );
 };

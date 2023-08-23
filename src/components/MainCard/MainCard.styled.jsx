@@ -85,6 +85,10 @@ export const ImgWrapper = styled.div`
       grid-area: del;
       justify-self: end;
       transform: translateX(-8px);
+
+      &>svg{
+        fill:#777;
+      }
     }
     &>.tab1{
       grid-area: t1;
