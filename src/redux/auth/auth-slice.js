@@ -5,7 +5,7 @@ import  authOperations  from './auth-operations';
 
 const initialState = {
     user: { 
-      name: "",
+      name: null,
       email: null,
       imageURL: "",
       city: "",

@@ -5,7 +5,7 @@ import { CloseButton, MenuContent, MenuHeader, MenuWrapp } from './MobileMenu.st
 import { StyledLogo } from '../Button/Button.styled';
 import { iconLogo, iconUser } from '../../images/icons';
 import { RxCross2 } from "react-icons/rx";
-import { UserNav } from '../UserNav/UserNav';
+
 import { ProfileWrap, StyledLinkOut } from 'components/UserNav/UserNav.styled';
 import { useDispatch, useSelector } from "react-redux";
 import { authOperations, authSelectors } from 'redux/auth';
@@ -36,7 +36,7 @@ const {isLoggedIn} = useAuth()
                  </StyledLinkOut>
                </>  }
 
-               < Nav />
+               < Nav onClose={onClose}/>
         </MenuContent>
 
     </MenuWrapp>
