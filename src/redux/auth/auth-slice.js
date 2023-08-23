@@ -32,11 +32,11 @@ const authSlice = createSlice({
         state.error = null;
     })
     .addCase(authOperations.register.fulfilled,(state, {payload})=>{
-      const { user, accessToken } = payload;
+      const { user, token } = payload;
       state.isLoading = false;
       state.user = user;
       state.registrationSuccessful = true;
-      state.token = accessToken;
+      state.token = token;
       state.isLoggedIn = true;
       state.error = null
     })
@@ -50,10 +50,10 @@ const authSlice = createSlice({
       state.error = null;
     })
     .addCase(authOperations.logIn.fulfilled,(state, {payload})=>{
-      const { user, accessToken } = payload;
+      const { user, token } = payload;
         state.isLoading = false;
         state.user = user;
-        state.token = accessToken;
+        state.token = token;
         state.isLoggedIn = true;
         state.user.favorite = user.favorite;
     })
