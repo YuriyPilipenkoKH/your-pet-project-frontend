@@ -7,15 +7,25 @@ export const UserWrap = styled.div`
 
 &.UserNav {
   display: none;
-  /* @media screen and(min-width: 767px) {
-    display: none;
 
-  } */
-  
+
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: row-reverse;
-    gap: 10px;
+    gap: 20px;
+
+    &>.logout{
+    display: none;
+  }
+  
+  }
+  @media screen and (min-width: 1280px) {
+
+
+    &>.logout{
+    display: flex;
+  }
+  
   }
 }
 
