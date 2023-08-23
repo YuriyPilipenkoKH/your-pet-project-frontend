@@ -20,6 +20,7 @@ import { authReducer } from './auth';
 const authPersistConfig = {
     key: 'auth',
     storage,
+   
     whitelist: ['token'],
 };
 

@@ -2,9 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import  authOperations  from './auth-operations';
 
 
+
 const initialState = {
     user: { 
-      name: null,
+      name: "",
       email: null,
       imageURL: "",
       city: "",
@@ -68,13 +69,16 @@ const authSlice = createSlice({
       state.error = null;
     })
     .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
-      
+      console.log(action);
       state.isLoading = false;
-      state.registrationSuccessful = false;
-      state.user = action.payload.user;
+      state.user = action.payload;
+      state.registrationSuccessful = true;
+      
       state.isLoggedIn = true;
-      state.user.favorite = action.payload.user.favorite;
+      state.error = null
+      
     })
+    
     .addCase(authOperations.fetchCurrentUser.rejected, (state, action) => {
       state.isLoading = false;
       state.token = null;
@@ -94,9 +98,9 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.user.favorite = [];
     })
-    .addCase(authOperations.logOut.rejected, (state, { payload }) => {
+    .addCase(authOperations.logOut.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = payload;
+      state.error = action.payload;
     })
     // fetchUser
 

@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 import authSelectors from 'redux/auth/auth-selectors';
 
 
-const PublickRoute = ({ component: Component, redirectTo = '/' }) => {
+const PublicRoute = ({ component: Component, redirectTo = '/' }) => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
     // const { isLoggedIn, token } = useSelector(selectAuth);
 
@@ -14,4 +14,4 @@ const PublickRoute = ({ component: Component, redirectTo = '/' }) => {
   
 };
 
-export default PublickRoute;
+export default PublicRoute;
