@@ -116,6 +116,8 @@ transition: all 0.4s ease;
 
 `;
 export const hoverStylesY = `
+
+
 & >svg {
 
   fill: var(--white);
@@ -128,6 +130,16 @@ export const hoverStylesY = `
  }
 }
 `;
+
+export const gridBtnStyles=`
+display: grid;
+place-items: center;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+border: none;
+cursor: pointer;
+`
 
 export const StyledButton = styled.button.withConfig({
     shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet' && prop !== 'stepNumber',
@@ -294,6 +306,7 @@ export const StyleAddToButton = styled.button`
       flex-direction: column-reverse;
       font-size: 12px;
       gap: 12px;
+      z-index: 12;
 
       &>svg{
         scale: 2;
@@ -345,16 +358,13 @@ export const StyledFavButton = styled.button`
 
 ${ripple} 
 ${hoverStylesTrB} 
+${gridBtnStyles} 
 
-display: grid;
-place-items: center;
-width: 40px;
-height: 40px;
-border-radius: 50%;
-border: none;
 background-color: var(--light-blue);
-cursor: pointer;
+`
+export const StyledFormButton = styled.button`
 
+${gridBtnStyles} 
 
 `
 

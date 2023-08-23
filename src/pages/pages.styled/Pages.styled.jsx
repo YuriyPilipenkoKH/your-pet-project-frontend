@@ -115,7 +115,7 @@ export const HomeTitle = styled.h1`
   }
 `;
 // Nwes
-export const NwesWrapper = styled.div`
+export const NewsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -145,7 +145,7 @@ export const TytleNwes = styled.h2`
   }
 `;
 
-export const NwesPage = styled.div`
+export const NewsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,30 +154,43 @@ export const NwesPage = styled.div`
   gap: 32px;
 `;
 
-export const SearchContainer = styled.div`
+export const SearchForm = styled.form`
   position: relative;
+  
+  &>button {
+    
+    padding: 8px;
+    background-color: transparent;
+    position: absolute;
+    top: 2px;
+    right: 0;
+
+    
+  }
 `;
 export const SearchIcon = styled.span`
-  position: absolute;
-  top: 55%;
-  right: 10px;
-  transform: translateY(-50%);
-  
-  fill: var(--blue);
+
+    fill: var(--blue);
+ 
 `;
+
 export const SearchInput = styled.input`
   width: 280px;
   height: 44px;
   font-size: 16px;
-  padding-left: 20px;
+  padding: 0 30px;
   border: 1px solid var(--blue);
   border-radius:50px;
-  cursor: pointer;
   color: var(--blue);
+
   &::placeholder {
     font-size: 14px;
     line-height: 16.94px;
     
+  }
+
+  &:focus {
+    outline: 1px solid var(--blue);
   }
 
   @media screen and (min-width: 768px) {
