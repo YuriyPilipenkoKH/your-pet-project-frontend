@@ -5,7 +5,7 @@ import NoticesFilters from '../components/NoticesFilters/NoticesFilters'
 import { NoticesPageWrap } from './pages.styled/NoticesPage.styled'
 import { MainCard } from '../components/MainCard/MainCard'
 
-import news from '../components/json/news.json';
+import news from '../utils/json/news.json';
 import { NewsContainer} from './pages.styled/Pages.styled'
 
 

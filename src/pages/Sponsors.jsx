@@ -1,5 +1,5 @@
 import React from 'react';
-import sponsors from '../components/json/sponsors.json';
+import sponsors from '../utils/json/sponsors.json';
 
 import { SponsorWrap, TitleSponsor, Wrapper, } from './pages.styled/Pages.styled';
 import { SponsorCard } from '../components/Sponsors/SponsorsCard';

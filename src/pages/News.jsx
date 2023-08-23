@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { NewsCard } from '../components/News/NewsCard';
-import news from '../components/json/news.json';
+import news from '../utils/json/news.json';
 import {  NewsContainer, NewsWrapper,  SearchContainer, SearchIcon, SearchInput, SearchWrapper, TytleNwes } from './pages.styled/Pages.styled';
 import { StyledLink } from '../components/Button/Button.styled';
 
