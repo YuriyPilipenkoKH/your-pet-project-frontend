@@ -1,6 +1,8 @@
 import React from 'react'
-import { RadioButton } from '../Button/Button'
+import { FavButton, RadioButton } from '../Button/Button'
 import { NavWrap, NavWrapper } from '../../pages/pages.styled/NoticesPage.styled'
+import { iconFilter } from '../../images/icons'
+import { BtnWrap } from './NoticesCategoriesNav.styled'
 
 export default function NoticesCategoriesNav() {
   return (
@@ -8,6 +10,10 @@ export default function NoticesCategoriesNav() {
       <NavWrapper >
       <RadioButton>sell</RadioButton>
       <RadioButton>lost/found</RadioButton>
+      <BtnWrap>
+      <FavButton className='filround'> {iconFilter}</FavButton>
+      </BtnWrap>
+      
       </NavWrapper>
       <RadioButton >in good hands</RadioButton>
       
