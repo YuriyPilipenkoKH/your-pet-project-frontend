@@ -70,10 +70,6 @@ export const MenuContent = styled.div`
                 font-size: 48px;
             }
 
-            &:hover{
-                color: var(--yellow);
-                font-weight: 700px;
-            }
         }
     }
 
