@@ -50,15 +50,16 @@ const App = () => {
                     <Route path="/news" element={<NewsPage />} />
                     <Route path="/profile" element={<UserPage />} />
                     <Route path="/friends" element={<SponsorsPage />} />
-                    <Route path="*" element={<NotfoundPage />} />
+                    
 
-                    <Route path="/login" element={<PrivateRoute redirectTo="/notices" component={<LoginPage />}/>}/>
+                    <Route path="/login" element={<PrivateRoute redirectTo="/" component={<LoginPage />}/>}/>
                        
                     <Route path="/notices" element={<NoticesPage />} />
                     {/* <Route index element={<Navigate to="sell" replace />} /> */}
                     {/* <Route path=":categoryName" element={<NoticesCategoriesList />} /> */}
                     <Route />
                     <Route path="/test" element={<TestPage />} />
+                    <Route path="*" element={<NotfoundPage />} />
                 </Route>
             </Routes>
         </Container>
