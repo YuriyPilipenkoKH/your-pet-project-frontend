@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Form,
     IconCrossValidate,
@@ -16,6 +16,7 @@ import { IconCross, iconPawprint } from '../../../../../images/icons';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
+import { useLocalStorage } from 'hooks/useLocalStaoreage';
 
 const schema = object({
     name: string()
@@ -47,13 +48,14 @@ export default function PersonalDetails({
     nextForm,
     beforeForm,
     stepNumber,
+    deliveryDataPet
 }) {
     const [isNameValid, setIsNameValid] = useState(false);
     const [isBirthValid, setIsBirthValid] = useState(false);
     const [isTypeValid, setIsTypeValid] = useState(false);
-    const [name, setName] = useState('');
-    const [birth, setBirth] = useState('');
-    const [typePet, setTypePet] = useState('');
+    const [name, setName] = useLocalStorage('nameYourPet', '');
+    const [birth, setBirth] = useLocalStorage('birthYourPet', '');
+    const [typePet, setTypePet] = useLocalStorage('typePetYourPet', '');
     const {
         register,
         handleSubmit,
@@ -66,16 +68,7 @@ export default function PersonalDetails({
         },
         resolver: yupResolver(schema),
     });
-    const deliveryDataUser = data => {
-        console.log(data);
-        // dispatch(
-        //     registerUser({
-        //         name,
-        //         email,
-        //         password,
-        //     })
-        // );
-    };
+
     const reset = () => {
         setName('');
         setBirth('');
@@ -87,11 +80,8 @@ export default function PersonalDetails({
     const deliveryData = data => {
         console.log(321321);
         console.log('you right');
-        deliveryDataUser(data);
-        console.log(data.name);
+        deliveryDataPet(data);
         nextForm();
-
-        // console.log(stepNumber)
         reset();
     };
 

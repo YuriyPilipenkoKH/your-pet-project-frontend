@@ -19,12 +19,12 @@ import { Button, ButtonTransparent } from '../../../../Button/Button';
 import { BiArrowBack } from 'react-icons/bi';
 import {
     IconCross,
-    PlusPhoto,
     iconPawprint,
 } from '../../../../../images/icons';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
+import { useLocalStorage } from 'hooks/useLocalStaoreage';
 
 const schema = object({
     coment: string()
@@ -38,13 +38,13 @@ const schema = object({
 
 export default function MoreInfo({
     children,
-    nextForm,
     beforeForm,
     stepNumber,
+    deliveryDataPet
 }) {
     const [isComentValid, setIsComentValid] = useState(false);
-    const [coment, setComent] = useState('');
-    const [imageURL, setImageURL] = useState('');
+    const [coment, setComent] = useLocalStorage('comentYourPet', "");
+    const [imageURL, setImageURL] = useLocalStorage('imageUrlYourPet', "");
     const [imageError, setImageError] = useState(null);
     const {
         register,
@@ -64,6 +64,7 @@ export default function MoreInfo({
 
     const handleImageChange = e => {
         const file = e.target.files[0];
+        console.log(file);
         if (file) {
             // Check file size
             if (file.size > 3 * 1024 * 1024) {
@@ -74,23 +75,16 @@ export default function MoreInfo({
             }
         }
     };
-
-    const deliveryDataUser = data => {
-        console.log(data);
-        // dispatch(
-        //     registerUser({
-        //         name,
-        //         email,
-        //         password,
-        //     })
-        // );
-    };
     const reset = () => {
         setComent('');
         setIsComentValid(false);
+        setImageURL("");
+        setImageError(null); 
     };
     const deliveryData = data => {
-        console.log(data);
+        const { imageURL, coment } = data;
+        const image = imageURL[0]
+        deliveryDataPet({coment, image });
         reset();
     };
 
@@ -107,10 +101,9 @@ export default function MoreInfo({
                     <ImageWrapper>
                         <InputUploadImage
                             {...register('imageURL')}
-                            aria-invalid={
-                                errors.imageURL ? 'true' : 'false'
-                            }
+                            aria-invalid={errors.imageURL ? 'true' : 'false'}
                             type="file"
+                            accept=".png, .jpg, .jpeg, .webp"
                             required
                             onChange={handleImageChange}
                         ></InputUploadImage>
@@ -166,6 +159,10 @@ export default function MoreInfo({
                             );
                             setIsComentValid(isValid);
                             setComent(e.target.value);
+                            const textarea = e.target;
+                            textarea.style.height = 'auto';
+                            textarea.style.height =
+                            textarea.scrollHeight + 'px';
                             if (isValid) {
                                 errors.coment = undefined;
                             }

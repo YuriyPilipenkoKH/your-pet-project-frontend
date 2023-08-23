@@ -55,6 +55,7 @@ export default function LoginForm() {
     });
     const handleClickShow = () => setShow(!show);
     const deliveryDataUser = (email, password) => {
+
         dispatch(authOperations.logIn({email,password})).then((d)=>console.log(d))
         // dispatch(
         //     registerUser({
@@ -63,6 +64,7 @@ export default function LoginForm() {
         //         password,
         //     })
         // );
+
     };
     const reset = () => {
         setEmail('');
@@ -71,10 +73,7 @@ export default function LoginForm() {
         setIsPasswordlValid(false);
     };
     const deliveryData = data => {
-        console.log(321321);
-        console.log('you right');
         const { email, password } = data;
-        console.log(email, password);
         deliveryDataUser(email, password);
         reset();
     };
@@ -218,4 +217,3 @@ export default function LoginForm() {
         </Form>
     );
 }
-

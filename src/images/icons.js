@@ -140,6 +140,35 @@ export const iconEyes = (
     </svg>
 );
 
+export const iconFemale = (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+    >
+        <path
+            d="M12 13C14.7614 13 17 10.7614 17 8C17 5.23858 14.7614 3 12 3C9.23858 3 7 5.23858 7 8C7 10.7614 9.23858 13 12 13ZM12 13L12 21M9 18L15 18"
+            stroke="#F43F5E"
+        />
+    </svg>
+);
+export const iconMale = (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+    >
+        <path
+            d="M12 11C9.23858 11 7 13.2386 7 16C7 18.7614 9.23858 21 12 21C14.7614 21 17 18.7614 17 16C17 13.2386 14.7614 11 12 11ZM12 11V3M12 3L16 7M12 3L8 7"
+            stroke="#54ADFF"
+        />
+    </svg>
+);
+
 export const IconCross = (
     <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -160,22 +189,6 @@ export const RawLeft = (
         viewBox="0 0 24 24"
     >
         <path d="M4 12L20 12M4 12L10 6M4 12L10 18" stroke="#54ADFF" />
-    </svg>
-);
-
-export const PlusPhoto = (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="182"
-        height="182"
-        viewBox="0 0 182 182"
-        fill="none"
-    >
-        <rect width="182" height="182" rx="40" fill="#CCE4FB" />
-        <path
-            d="M92 115V91M92 91V67M92 91H116.375M92 91H67.625"
-            stroke="#54ADFF"
-        />
     </svg>
 );
 

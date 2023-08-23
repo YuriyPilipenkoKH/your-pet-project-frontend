@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ChooseOption from './ChooseOption/ChooseOption';
 import ListProgresSteps from './ListSteps/ListProgresSteps';
 import AddYourPet from './AddYourPet/AddYourPet';
 import AddSellPet from './AddSellPet/AddSellPet';
 import AddLostPet from './AddLostPet/AddLostPet';
 import AddInGoodHandsPet from './AddInGoodHandsPet/AddInGoodHandsPet';
-import { HomeWrapperTwo } from '../../../pages/pages.styled/Pages.styled';
+import { useLocalStorage } from 'hooks/useLocalStaoreage';
 
 export default function AddPetForm() {
-    const [stepNumber, setStepNumber] = useState(1);
-    const [active, setActive] = useState(1);
+    const [stepNumber, setStepNumber] = useLocalStorage('stepNumber', 1);
+    const [active, setActive] = useLocalStorage('active', 1);
     const nextForm = () => {
         setStepNumber(stepNumber + 1);
     };

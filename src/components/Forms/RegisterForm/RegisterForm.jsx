@@ -42,8 +42,9 @@ const schema = object({
         ),
     confirmPassword: string()
         .required()
-        .oneOf([ref('password')], 'Passwords do not match'),
+        .oneOf([ref('password', undefined, yup => yup.trim())], 'Passwords do not match'),
 }).required();
+
 
 export default function RegisterForm() {
     const dispatch = useDispatch();
@@ -74,8 +75,9 @@ export default function RegisterForm() {
     const handleClickShowOne = () => setShowOne(!showOne);
     const handleClickShowTwo = () => setShowTwo(!showTwo);
 
-    const deliveryDataUser = (name, email, password, confirmPassword) => {
+    const deliveryDataUser = (name, email, password) => {
     
+
         dispatch(authOperations.register({name,email,password}))
         // .unwrap().then(originalPromiseResult => {
             // Notify.success(`${originalPromiseResult.user.name} welcome back!`);
@@ -83,6 +85,7 @@ export default function RegisterForm() {
         //   .catch(() => {
             // Notify.failure('Incorrect login or password');
         //   });;
+
     };
     const reset = () => {
         setName('');
@@ -96,9 +99,8 @@ export default function RegisterForm() {
     }
     const deliveryData = data => {
         console.log(321321);
-        
-        // const { name, email, password, confirmPassword } = data;
-        deliveryDataUser(name, email, password, confirmPassword);
+        const { name, email, password } = data;
+        deliveryDataUser(name, email, password);
         reset();
         console.log(321321)
     };

@@ -142,7 +142,7 @@ cursor: pointer;
 `
 
 export const StyledButton = styled.button.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet' && prop !== 'stepNumber',
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet' && prop !== 'stepNumber' && prop !== 'addPetMoreInformation',
 })`
     ${buttonStyles};
     ${ripple};
@@ -153,8 +153,9 @@ export const StyledButton = styled.button.withConfig({
     width: ${({ addPet }) => addPet && '100%'};
 
     @media screen and (min-width: 768px) {
-      width: ${({ addPet, stepNumber }) => addPet && '68%'};
+      width: ${({ addPet }) => addPet && '68%'};
       width: ${({ stepNumber }) => stepNumber > 1 && '72%'};
+      width: ${({ addPetMoreInformation }) => addPetMoreInformation && '38%'};
   }
 
 
