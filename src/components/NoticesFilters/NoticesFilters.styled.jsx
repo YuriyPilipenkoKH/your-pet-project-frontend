@@ -32,6 +32,6 @@ export const FilterWrapper = styled.div`
    display:none;
 };
 
-  } */
+  } 
 `;
 

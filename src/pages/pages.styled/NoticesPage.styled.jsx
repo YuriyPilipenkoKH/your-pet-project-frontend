@@ -46,3 +46,13 @@ padding:0 20px;
 
   }
 `;
+
+export const NoticeContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 32px;
+
+`
