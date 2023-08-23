@@ -115,7 +115,9 @@ export const InputUploadImage = styled.input`
     }
 `;
 
-export const Textarea = styled.textarea`
+export const Textarea = styled.textarea.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'withOutPrice',
+})`
     display: block;
     width: 100%;
     border-radius: 20px;
@@ -131,6 +133,9 @@ export const Textarea = styled.textarea`
     border: 1px solid var(--blue);
     overflow-y: hidden;
     overflow-x: hidden;
+    @media screen and (min-width: 768px) {
+        min-height: ${({ withOutPrice }) => (withOutPrice && "182px")};
+    }
 
     &:focus {
         outline: none;
@@ -236,11 +241,12 @@ export const ShowPasswordButton = styled.button`
 `;
 
 export const TextValidation = styled.p.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet',
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet' && prop !== 'activeSex',
 })`
     position: absolute;
     top: 50px;
     top: ${({ addPet }) => addPet && '101%'};
+    top: ${({ activeSex }) => activeSex && '25%'};
     left: 20px;
     color: var(--red);
     font-size: 12px;
@@ -364,7 +370,11 @@ export const ListOption = styled.ul.withConfig({
     margin-bottom: 137px;
     display: ${({ addPetMoreInformation }) => addPetMoreInformation && 'flex'};
     margin-bottom: ${({ addPetMoreInformation }) =>
+        addPetMoreInformation && '10px'};
+        @media screen and (min-width: 768px) {
+            margin-bottom: ${({ addPetMoreInformation }) =>
         addPetMoreInformation && '35px'};
+        }
 `;
 
 export const ItemOption = styled.li.withConfig({
@@ -453,7 +463,6 @@ export const ButtonSex = styled.button.withConfig({
                 return 'var(--grey)';
             }
         }};
-          
 `;
 
 export const SvgForMoreInformation = styled.svg.withConfig({
@@ -504,8 +513,8 @@ export const TypeInput = styled.span.withConfig({
     font-weight: 500;
     margin-bottom: 4px;
     width: ${({ addImage }) => addImage && '33%'};
-    width: ${({ addPetMoreInformation }) => addPetMoreInformation && '100%'};
     @media screen and (min-width: 768px) {
+        width: ${({ addPetMoreInformation }) => addPetMoreInformation && '100%'};
         font-size: 20px;
         line-height: 26.5px;
         margin-bottom: 8px;
@@ -517,13 +526,16 @@ export const LabelForAddImage = styled.div.withConfig({
         isPropValid(prop) && prop !== 'addPetMoreInformation',
 })`
     display: flex;
-    display: ${({ addPetMoreInformation }) => addPetMoreInformation && 'block'};
     align-items: center;
     position: relative;
     gap: 16px;
     margin-bottom: 24px;
     margin-bottom: ${({ addPetMoreInformation }) =>
         addPetMoreInformation && '0'};
+    @media screen and (min-width: 768px) {
+        display: ${({ addPetMoreInformation }) =>
+            addPetMoreInformation && 'block'};
+    }
 `;
 
 export const ImageWrapper = styled.div`
@@ -553,12 +565,12 @@ export const WrapperForMoreInformation = styled.div.withConfig({
     shouldForwardProp: prop =>
         isPropValid(prop) && prop !== 'addPetMoreInformation',
 })`
-    display: flex;
     gap: 80px;
     @media screen and (min-width: 768px) {
         gap: 45px;
         margin-bottom: ${({ addPetMoreInformation }) =>
             addPetMoreInformation && '60px'};
+        display: flex;
     }
     @media screen and (min-width: 1280px) {
         gap: 80px;
@@ -575,6 +587,8 @@ export const WrapperForProgresMoreInformation = styled.div`
 `;
 
 export const WrapperForInputInMoreInformationOne = styled.div`
+    width: 100%;
+    position: relative;
     @media screen and (min-width: 768px) {
         width: 32%;
     }
@@ -583,7 +597,7 @@ export const WrapperForInputInMoreInformationOne = styled.div`
     }
 `;
 export const WrapperForInputInMoreInformationTwo = styled.div`
-    width: 59%;
+    width: 100%;
     @media screen and (min-width: 768px) {
         width: 62%;
     }

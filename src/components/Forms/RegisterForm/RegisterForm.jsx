@@ -17,7 +17,7 @@ import { IconCross, iconEyes } from '../../../images/icons';
 import { useForm } from 'react-hook-form';
 import { object, string, ref } from 'yup';
 import { useDispatch } from 'react-redux';
-// import { authOperations } from 'redux/auth';
+import { authOperations } from 'redux/auth';
 
 const schema = object({
     name: string()
@@ -77,7 +77,7 @@ export default function RegisterForm() {
 
     const deliveryDataUser = (name, email, password) => {
     
-        // dispatch(authOperations.register({name,email,password}));
+        dispatch(authOperations.register({name,email,password}));
     };
     const reset = () => {
         setName('');

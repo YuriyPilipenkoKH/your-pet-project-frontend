@@ -17,7 +17,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { useDispatch } from 'react-redux';
-// import { authOperations } from 'redux/auth';
+import { authOperations } from 'redux/auth';
 
 const schema = object({
     email: string()
@@ -55,7 +55,7 @@ export default function LoginForm() {
     });
     const handleClickShow = () => setShow(!show);
     const deliveryDataUser = (email, password) => {
-        // dispatch(authOperations.logIn({email,password}))
+        dispatch(authOperations.logIn({ email, password }));
     };
     const reset = () => {
         setEmail('');
@@ -208,4 +208,3 @@ export default function LoginForm() {
         </Form>
     );
 }
-

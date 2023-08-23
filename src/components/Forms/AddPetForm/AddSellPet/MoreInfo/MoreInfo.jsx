@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
-    ButtonOption,
     ButtonSex,
     Form,
     IconCrossValidate,
@@ -35,6 +34,7 @@ import {
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
+import { useLocalStorage } from 'hooks/useLocalStaoreage';
 
 const schema = object({
     coment: string()
@@ -59,16 +59,22 @@ const schema = object({
         ),
 }).required();
 
-export default function MoreInfo({ children, beforeForm, stepNumber }) {
+export default function MoreInfo({
+    children,
+    beforeForm,
+    stepNumber,
+    deliveryDataPet,
+}) {
     const [isComentValid, setIsComentValid] = useState(false);
-    const [coment, setComent] = useState('');
+    const [coment, setComent] = useLocalStorage('comentSell', '');
     const [isLocationValid, setIsLocationValid] = useState(false);
-    const [location, setLocation] = useState('');
+    const [location, setLocation] = useLocalStorage('locationSell', '');
     const [isPriceValid, setIsPriceValid] = useState(false);
-    const [price, setPrice] = useState('');
-    const [imageURL, setImageURL] = useState('');
+    const [price, setPrice] = useLocalStorage('priceSell', '');
+    const [imageURL, setImageURL] = useLocalStorage('imageUrlSell', '');
     const [imageError, setImageError] = useState(null);
-    const [active, setActive] = useState('');
+    const [activeError, setActiveError] = useState(null);
+    const [active, setActive] = useLocalStorage('activeSell', '');
     const {
         register,
         handleSubmit,
@@ -83,10 +89,6 @@ export default function MoreInfo({ children, beforeForm, stepNumber }) {
         resolver: yupResolver(schema),
     });
 
-    useEffect(() => {
-        console.log(imageURL);
-    }, [imageURL]);
-
     const handleImageChange = e => {
         const file = e.target.files[0];
         if (file) {
@@ -99,16 +101,6 @@ export default function MoreInfo({ children, beforeForm, stepNumber }) {
         }
     };
 
-    const deliveryDataUser = data => {
-        console.log(data);
-        // dispatch(
-        //     registerUser({
-        //         name,
-        //         email,
-        //         password,
-        //     })
-        // );
-    };
     const reset = () => {
         setComent('');
         setIsComentValid(false);
@@ -116,9 +108,18 @@ export default function MoreInfo({ children, beforeForm, stepNumber }) {
         setIsLocationValid(false);
         setPrice('');
         setIsPriceValid(false);
+        setImageError(null);
+        setImageURL('');
+        setActive('');
     };
     const deliveryData = data => {
-        console.log(data);
+        if (active === '') {
+            setActiveError('Sex required');
+            return;
+        }
+        const { imageURL, coment, price } = data;
+        const image = imageURL[0]
+        deliveryDataPet({coment, image, active, price });
         reset();
     };
 
@@ -154,10 +155,15 @@ export default function MoreInfo({ children, beforeForm, stepNumber }) {
                                     onClick={() => setActive('male')}
                                     type="button"
                                 >
-                                    {iconMale}  Male
+                                    {iconMale} Male
                                 </ButtonSex>
                             </ItemOption>
                         </ListOption>
+                        {activeError && (
+                            <TextValidation activeSex>
+                                {activeError}
+                            </TextValidation>
+                        )}
                         <LabelForAddImage addPetMoreInformation>
                             <TypeInput addImage addPetMoreInformation>
                                 Load the pet’s image:

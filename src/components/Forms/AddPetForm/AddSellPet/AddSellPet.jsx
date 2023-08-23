@@ -1,6 +1,7 @@
 import React from 'react';
 import PersonalDetails from './PersonalDetails/PersonalDetails';
 import MoreInfo from './MoreInfo/MoreInfo';
+import { useLocalStorage } from 'hooks/useLocalStaoreage';
 
 export default function AddSellPet({
     children,
@@ -8,6 +9,12 @@ export default function AddSellPet({
     beforeForm,
     stepNumber,
 }) {
+    const [pet, setPet] = useLocalStorage("dataSellPet", {});
+    const deliveryDataPet = data => {
+        setPet(prevState => {
+            return { ...prevState, ...data };
+        });
+    };
     return (    
         <>
             {stepNumber === 2 && (
@@ -16,6 +23,7 @@ export default function AddSellPet({
                     nextForm={nextForm}
                     beforeForm={beforeForm}
                     stepNumber={stepNumber}
+                    deliveryDataPet={deliveryDataPet}
                 />
             )}
             {stepNumber === 3 && (
@@ -24,6 +32,7 @@ export default function AddSellPet({
                     nextForm={nextForm}
                     beforeForm={beforeForm}
                     stepNumber={stepNumber}
+                    deliveryDataPet={deliveryDataPet}
                 />
             )}
         </>
