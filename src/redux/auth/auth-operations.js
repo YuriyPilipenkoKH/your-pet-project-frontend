@@ -5,10 +5,10 @@ axios.defaults.baseURL = 'https://your-pet-shw3.onrender.com';
 
 const token = {
     set(token) {
-        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+        axios.defaults.headers.common.Authorization = `Bearer  + ${token}`;
     },
     unset() {
-        axios.defaults.headers.common.Authorization = "";
+        axios.defaults.headers.common.Authorization = '';
     },
 };
 
@@ -21,7 +21,7 @@ const register = createAsyncThunk(
                 credentials
             );
             // console.log(data);
-            token.set(data.token);
+            setAuthHeader(data.token);
             // Notify.info('Something went wrong. Please, try again later.');
             return data;
         } catch (error) {
@@ -33,7 +33,7 @@ const register = createAsyncThunk(
 const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     try {
         const { data } = await axios.post('/users/auth/login', credentials);
-        token.set(data.token);
+        setAuthHeader(data.token);
         return data;
     } catch (error) {
         //   Notify.info('Something went wrong. Please, try again later.');
@@ -52,7 +52,7 @@ const fetchCurrentUser = createAsyncThunk(
             return thunkAPI.rejectWithValue();
         }
 
-        token.set(persistedToken);
+        // token.set(persistedToken);
         try {
             const { data } = await axios.get('/users/current');
             return data;
@@ -65,7 +65,7 @@ const fetchCurrentUser = createAsyncThunk(
 const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     try {
         await axios.post('/users/logout');
-        token.unset();
+        clearAuthHeader();
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }
