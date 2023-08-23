@@ -154,22 +154,30 @@ export const NewsContainer = styled.div`
   gap: 32px;
 `;
 
-export const SearchContainer = styled.div`
+export const SearchForm = styled.form`
   position: relative;
+  
+  &>button {
+    
+    padding: 8px;
+    background-color: transparent;
+    position: absolute;
+    top: 2px;
+    right: 0;
+    
+  }
 `;
 export const SearchIcon = styled.span`
-  position: absolute;
-  top: 55%;
-  right: 10px;
-  transform: translateY(-50%);
-  
-  fill: var(--blue);
+
+    fill: var(--blue);
+ 
 `;
+
 export const SearchInput = styled.input`
   width: 280px;
   height: 44px;
   font-size: 16px;
-  padding-left: 20px;
+  padding-left: 0 30px;
   border: 1px solid var(--blue);
   border-radius:50px;
   cursor: pointer;

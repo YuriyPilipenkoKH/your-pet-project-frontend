@@ -2,8 +2,9 @@ import React from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { NewsCard } from '../components/News/NewsCard';
 import news from '../utils/json/news.json';
-import {  NewsContainer, NewsWrapper,  SearchContainer, SearchIcon, SearchInput, SearchWrapper, TytleNwes } from './pages.styled/Pages.styled';
+import {  NewsContainer, NewsWrapper,  SearchForm, SearchIcon, SearchInput, SearchWrapper, TytleNwes } from './pages.styled/Pages.styled';
 import { StyledLink } from '../components/Button/Button.styled';
+import { FormButton } from 'components/Button/Button';
 
 export const NewsPage = () => {
   const style = { color: "blue", fontSize: "1em" }
@@ -13,12 +14,14 @@ export const NewsPage = () => {
         <StyledLink to="/test" style={{background: 'transparent'}}>
         <TytleNwes>News</TytleNwes>
         </StyledLink>
-        <SearchContainer className="search-container">
+        <SearchForm className="search-form">
           <SearchInput type="text" name="search" placeholder="Search" />
-          <SearchIcon className="search-icon">
-            <BsSearch style = { style } />
-          </SearchIcon>
-        </SearchContainer>
+          <FormButton >
+            <SearchIcon className="search-icon">
+              <BsSearch style = { style } />
+            </SearchIcon>
+          </FormButton>
+        </SearchForm>
       </SearchWrapper>
       <NewsContainer className="NewsContainer">
         {news.map((item, index) => (
