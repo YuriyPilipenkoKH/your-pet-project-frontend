@@ -10,11 +10,14 @@ import { Nav } from "../Nav/Nav";
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { StyledLogo } from "../Button/Button.styled";
 import { MobileMenu } from '../MobileMenu/MobileMenu';
+import { useAuth } from "hooks/useAuth";
+import { UserNav } from "components/UserNav/UserNav";
 
 
 export const SharedLayout = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const isMobile = windowWidth <= 768;
+  const {isLoggedIn} = useAuth()
 
   useEffect(() => {
     const handleResize = () => {
@@ -41,7 +44,8 @@ export const SharedLayout = () => {
         <StyledLogo to="/">{isMobile ? iconLogo : iconLogoBig}</StyledLogo>
         <Nav/>
         <AuthNavWrap>
-          <AuthNav/>
+        {isLoggedIn ?<UserNav/>  : <AuthNav/>}
+          
           <ButtonBurger onClick={toggleMenu}><RxHamburgerMenu/></ButtonBurger> 
           
         </AuthNavWrap>

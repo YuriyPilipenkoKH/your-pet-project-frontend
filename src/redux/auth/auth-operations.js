@@ -41,15 +41,6 @@ const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     }
 });
 
-const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
-    try {
-      await axios.post('/users/logout');
-      token.unset();
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  });
-
 const fetchCurrentUser = createAsyncThunk(
     'auth/update',
     async (_, thunkAPI) => {
@@ -71,11 +62,34 @@ const fetchCurrentUser = createAsyncThunk(
     }
 );
 
+const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+    try {
+        await axios.post('/users/logout');
+        token.unset();
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+    }
+});
+
+// const fetchUser = createAsyncThunk("user/fetch", async (_, thunkAPI) => {
+//     try {
+//         await axios.get('/user/fetch');
+//         token.unset();
+//     } catch (error) {
+//         return thunkAPI.rejectWithValue(error.message);
+//     }
+// });
+
+
 const operations = {
     register,
     logIn,
     fetchCurrentUser,
     logOut,
+    // fetchUser
+    // fetchUpdateAvatar
+    // fetchDeleteUserPet
+    // fetchDeleteUserPet
 };
 
 export default operations;
