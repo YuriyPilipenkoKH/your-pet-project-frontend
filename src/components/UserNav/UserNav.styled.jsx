@@ -4,7 +4,7 @@ import { buttonStyles, hoverStylesB,  ripple } from '../Button/Button.styled';
 
 export const UserWrap = styled.div`
 
-&>.logout {
+/* &>.logout {
    position: absolute;
     bottom: 20px;
     right: 50%;
@@ -14,7 +14,7 @@ export const UserWrap = styled.div`
     justify-self: start;
 
   }
-}
+} */
 
 `
 
