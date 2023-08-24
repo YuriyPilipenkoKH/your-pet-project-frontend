@@ -70,17 +70,16 @@ const App = () => {
                             />
                         }
                     />
+                    <Route path="/notices" element={<NoticesPage />} />
 
                     <Route path="/news" element={<NewsPage />} />
 
                     <Route path="/friends" element={<SponsorsPage />} />
-                    <Route path="/login" element={<LoginPage />} />
 
-                    <Route path="/notices" element={<NoticesPage />} />
 
-                    <Route />
-                    <Route path="/test" element={<TestPage />} />
                     <Route path="*" element={<NotfoundPage />} />
+                    <Route path="/test" element={<TestPage />} />
+                    
                 </Route>
             </Routes>
         </Container>
