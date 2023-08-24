@@ -9,6 +9,9 @@ export const NavWrap = styled.div`
     display: none;
       
     }
+    @media screen and (min-width: 1280px) {
+      flex-direction: row;
+    }
 
     &>a.active {
       color: var(--yellow);
@@ -35,7 +38,7 @@ export const ButtonBurger = styled.button`
     width: 2em;
     height: 2em;
   color: var(--yellow);
-  @media screen and (min-width: 1279px) {
+  @media screen and (min-width: 1280px) {
       display: none;
       
     }
