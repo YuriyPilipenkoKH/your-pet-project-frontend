@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
 export const NavWrapper = styled.div`
-   display:flex;
-    /* flex-wrap: wrap; */
-    /* justify-content: flex-start; */
-    /* margin-left: auto; */
-    /* max-width: 210px; */
+  display: flex;
+  flex-direction: column;
     gap: 8px;
  
   @media screen and (min-width: 768px) {
@@ -18,9 +15,13 @@ export const NavWrapper = styled.div`
 `;
 
 export const NavWrap = styled.div`
- display:none;
-    margin-top: 8px;
-    margin-bottom: 24px;
+ /* display:none; */
+    /* margin-top: 8px;
+    margin-bottom: 24px; */
+   display:flex;
+   flex-direction:column;
+     justify-content: flex-start;
+    /* max-width: 210px; */
      gap: 8px;
 
   

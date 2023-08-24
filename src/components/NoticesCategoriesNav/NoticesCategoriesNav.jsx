@@ -8,17 +8,17 @@ export default function NoticesCategoriesNav() {
   return (
     <>
       <NavWrapper >
-        
+
       <BtnWrap>
         <RadioButton>sell</RadioButton>
         <RadioButton>lost/found</RadioButton>
         <RadioButton >in good hands</RadioButton>
       {/* <FavButton className='filround'> {iconFilter}</FavButton> */}
+        {/* <RadioButton>favorite ads</RadioButton> */}
+        {/* <RadioButton>my ads</RadioButton> */}
       </BtnWrap>
                  
       <NavWrap >
-      {/* <RadioButton>favorite ads</RadioButton> */}
-      {/* <RadioButton>my ads</RadioButton> */}
       </NavWrap>
 
       </NavWrapper>

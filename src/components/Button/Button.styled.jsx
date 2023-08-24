@@ -298,7 +298,7 @@ export const StyleAddToButton = styled.button`
     @media screen and ( max-width: 767px ) {
       position: fixed;
       left: 60%;
-      bottom: 60px;
+      bottom: 290px;
 
       width: 80px;
       height: 80px;
@@ -307,7 +307,7 @@ export const StyleAddToButton = styled.button`
       flex-direction: column-reverse;
       font-size: 12px;
       gap: 12px;
-      z-index: 12;
+      z-index: 5;
 
       &>svg{
         scale: 2;
