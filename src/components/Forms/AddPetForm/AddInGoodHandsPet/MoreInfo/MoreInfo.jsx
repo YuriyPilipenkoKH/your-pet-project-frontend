@@ -112,7 +112,7 @@ export default function MoreInfo({
         deliveryDataPet({
             comments: coment,
             petAvatar: image,
-            category: 'in good hands',
+            category: 'in-good-hands',
             location,
             sex: active,
         });
