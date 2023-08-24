@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import {
-getUsername,
+  getUsername,
   getIsLoggedIn,
   getRefreshing,
   getIsFetching,
