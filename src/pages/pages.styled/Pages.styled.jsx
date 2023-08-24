@@ -214,7 +214,6 @@ export const TestWrapp = styled.div`
     max-width: 160px;
   }
 
-
 `
 //SponsorWrap
 export const SponsorWrap = styled.div`
@@ -298,3 +297,9 @@ export const Notfound = styled.div`
   }
 
 `;
+
+export const CommonWrapper = styled.div`
+  display: grid;
+  gap: 24px;
+
+`

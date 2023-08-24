@@ -7,6 +7,7 @@ export const NavWrapper = styled.div`
  
   @media screen and (min-width: 768px) {
     gap: 12px;
+  
   };
   
   @media screen and (min-width: 1280px) {
@@ -41,12 +42,13 @@ display: flex;
   
  @media screen and (min-width: 768px) {
     display:flex;
-    align-items: baseline
+    align-items: baseline;
+      padding: 0 32px;
   };
   
   @media screen and (min-width: 1280px) {
    margin-top:40px;
-
+padding: 0 16px;
   }
 `;
 
