@@ -46,6 +46,10 @@ useEffect(() => {
          key={index}
          title ={ item.title}
          photo ={ item.petFotoURL}
+         sex ={ item.sex}
+         category ={ item.category}
+         name ={ item.name}
+         place ={ item.place}
           />
         ))}
       </NoticeContainer>
