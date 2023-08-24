@@ -56,14 +56,7 @@ export default function LoginForm() {
     const handleClickShow = () => setShow(!show);
     const deliveryDataUser = (email, password) => {
 
-        dispatch(authOperations.logIn({email,password})).then((d)=>console.log(d))
-        // dispatch(
-        //     registerUser({
-        //         name,
-        //         email,
-        //         password,
-        //     })
-        // );
+        dispatch(authOperations.logIn({email,password}))
 
     };
     const reset = () => {
@@ -108,7 +101,7 @@ export default function LoginForm() {
                             }
                         }}
                     ></InputForAuthorization>
-                    {isEmailValid && (
+                    {isEmailValid && !errors.email && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -166,7 +159,7 @@ export default function LoginForm() {
                             }
                         }}
                     ></InputForAuthorization>
-                    {isPasswordValid && (
+                    {isPasswordValid && !errors.password && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"

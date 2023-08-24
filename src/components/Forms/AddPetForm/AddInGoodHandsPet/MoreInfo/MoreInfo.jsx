@@ -103,7 +103,6 @@ export default function MoreInfo({
         setActive('');
     };
     const deliveryData = data => {
-        console.log(1321)
         if (active === '') {
             setActiveError('Sex required');
             return;

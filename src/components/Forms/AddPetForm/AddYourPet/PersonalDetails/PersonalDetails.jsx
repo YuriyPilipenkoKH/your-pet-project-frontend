@@ -78,8 +78,6 @@ export default function PersonalDetails({
         setIsTypeValid(false);
     };
     const deliveryData = data => {
-        console.log(321321);
-        console.log('you right');
         deliveryDataPet(data);
         nextForm();
         reset();
