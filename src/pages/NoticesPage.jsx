@@ -45,6 +45,7 @@ useEffect(() => {
        <MainCard
          key={index}
          title ={ item.title}
+         photo ={ item.petFotoURL}
           />
         ))}
       </NoticeContainer>
