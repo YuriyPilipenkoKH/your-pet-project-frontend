@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { ReactComponent as Spinner } from '../../images/react.svg';
+import { ReactComponent as Spinner } from '../../images/react+node.svg';
 
 
 const rotate = keyframes`
@@ -13,6 +13,10 @@ const rotate = keyframes`
 `
 
 export const StyledSpinner = styled(Spinner)`
+    &>svg{
+      scale: 0.5;
+      fill: var(--blue);
+    }
     
     animation:${rotate} 2s linear infinite;
 `
@@ -26,5 +30,8 @@ export const Wrap= styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10;
+    /* z-index: 10; */
+    &>svg{
+      scale: 0.5;
+    }
 `
