@@ -32,8 +32,6 @@ const authSlice = createSlice({
       state.isLoading = true;
         state.error = null;
     })
-
-   
       
 
     .addCase(authOperations.register.fulfilled,(state, action)=>{
@@ -80,8 +78,7 @@ const authSlice = createSlice({
       // console.log(action);
       state.isLoading = false;
       state.user = action.payload;
-      state.registrationSuccessful = true;
-      
+           
       state.isLoggedIn = true;
       state.error = null
       state.isRefreshing =false;

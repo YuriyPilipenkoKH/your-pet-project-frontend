@@ -11,6 +11,7 @@ export const ModalOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 7;
 `;
 
 export const ModalContainer = styled.div`
@@ -25,6 +26,7 @@ export const ModalContainer = styled.div`
   background-color: var(--white);
   padding: 50px 20px;
   border-radius: 20px;
+  z-index: 8;
 
 
   @media screen and (min-width: 768px) {

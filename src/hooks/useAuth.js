@@ -5,7 +5,8 @@ import {
   getRefreshing,
   getIsFetching,
   getToken,
-  getIsLoading
+  getIsLoading,
+  getRegistrationSuccessful
   
 } from '../redux/auth/auth-selectors';
 
@@ -19,5 +20,6 @@ export const useAuth = () => {
     isLoading: useSelector(getIsLoading),
     isFetching: useSelector(getIsFetching),
     token: useSelector(getToken),
+    registrationSuccessful: useSelector(getRegistrationSuccessful),
   };
 };
