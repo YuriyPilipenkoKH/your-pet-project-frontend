@@ -9,11 +9,13 @@ import {
   NewsTitle,
   WrapperData,
 } from './News.styled';
+import { format } from 'date-fns';
 
 
 
 
 export const NewsCard = (item) => {
+  const formatedDate = format(new Date(item.date), 'dd/MM/yyyy');
   
   return (
     <NewsCardWrapper className="news-card">
@@ -28,8 +30,8 @@ export const NewsCard = (item) => {
           {item.text}
         </NewsText>
         <WrapperData className="wrapper-data">
-          <NewsDate className="news-card__date">{item.date}</NewsDate>
-          <NewsLink className="news-card__link">{'Read more'}</NewsLink>
+          <NewsDate className="news-card__date">{formatedDate}</NewsDate>
+          <NewsLink href={item.url} className="news-card__link">{'Read more'}</NewsLink>
         </WrapperData>
       </NewsContent>
     </NewsCardWrapper>
