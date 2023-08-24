@@ -11,7 +11,7 @@ export const NavWrapper = styled.div`
   };
   
   @media screen and (min-width: 1280px) {
-   
+   flex-direction:row;
   }
 `;
 
@@ -21,7 +21,8 @@ export const NavWrap = styled.div`
     margin-bottom: 24px; */
    display:flex;
    flex-direction:column;
-     justify-content: flex-start;
+   justify-content: flex-start;
+   flex-wrap: wrap;
     /* max-width: 210px; */
      gap: 8px;
 
@@ -47,7 +48,7 @@ display: flex;
   };
   
   @media screen and (min-width: 1280px) {
-   margin-top:40px;
+
 padding: 0 16px;
   }
 `;

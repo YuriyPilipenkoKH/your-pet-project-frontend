@@ -3,9 +3,10 @@ import { NavLink } from "react-router-dom";
 
 export const NavWrap = styled.div`
     display: flex;
+    flex-direction: column;
     gap: 20px;
     @media screen and (max-width: 1279px) {
-      display: none;
+    display: none;
       
     }
 

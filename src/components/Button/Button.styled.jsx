@@ -298,7 +298,7 @@ export const StyleAddToButton = styled.button`
     @media screen and ( max-width: 767px ) {
       position: fixed;
       left: 60%;
-      bottom: 290px;
+      bottom: 200px;
 
       width: 80px;
       height: 80px;
