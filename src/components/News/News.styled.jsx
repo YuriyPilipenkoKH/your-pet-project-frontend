@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 
 export const NewsCardWrapper = styled.div`
   position: relative;
@@ -80,7 +79,7 @@ export const NewsDate = styled.p`
   margin: 0;
 `;
 
-export const NewsLink = styled(NavLink)`
+export const NewsLink = styled.a`
   font-size: 16px;
   color: var(--blue);
   text-decoration: none;
