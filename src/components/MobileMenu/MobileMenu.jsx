@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AuthNav } from '../AuthNav/AuthNav';
 import { Nav } from '../Nav/Nav';
 import { CloseButton, MenuContent, MenuHeader, MenuWrapp } from './MobileMenu.styled';

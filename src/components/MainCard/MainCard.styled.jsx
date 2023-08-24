@@ -154,6 +154,8 @@ export const CardTitle = styled.div`
     font-size: 24px;
     font-weight: 700;
     padding: 0 20px;
+    height: 66px;
+    overflow: hidden;
 
 
 `
