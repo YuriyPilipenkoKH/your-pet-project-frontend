@@ -4,7 +4,7 @@ import { ButtonTransparent, FavButton } from "../Button/Button"
 import { Tab } from "../Tab/Tab"
 import { CardTitle, CardWrapper, ImgWrapper } from "./MainCard.styled"
 import { CategoryWrapp } from "../Tab/Tab.styled";
-import { modal1 } from 'modals/modals';
+import { modal1, modal3 } from 'modals/modals';
 import { useAuth } from 'hooks/useAuth';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 
@@ -32,6 +32,11 @@ const checkRoute = () => {
         // navigate('/add-pet')
      }   
 }
+
+const onLearnMore = () => {
+  setModals(modal3);
+  setShowModal(true);
+}
 //===========================
 
 
@@ -50,7 +55,7 @@ return(
       </ImgWrapper>
 
       <CardTitle>Сute kitty looking for a home</CardTitle>
-      <ButtonTransparent>Learn more</ButtonTransparent>
+      <ButtonTransparent  onClick={onLearnMore}>Learn more</ButtonTransparent>
       {showModal && (
        <ModalPopup {...modals} onClose ={onModalClose}  /> //  onClose ={onModalClose}   {...modal1} 
    )}
