@@ -14,7 +14,14 @@ import styled from 'styled-components';
    /* display:none; */
    max-width: 350px;
 };
-
-
   
+  &>button {
+
+    &:active,
+    &:focus {
+    background-color: var(--blue);
+    color: var(--white);
+  }
+  }
 `;
+

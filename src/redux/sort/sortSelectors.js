@@ -1,0 +1,1 @@
+export const getSorted =  state => state.sort
