@@ -3,11 +3,10 @@ import {ReactComponent as PlusSmallIcon} from '../../images/addPetBtnIcons/plus-
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { Btn } from './AddPetButton.styled';
 
-const AddPetBtn = () => {
+const AddPetBtn = ({ state }) => {
     const [screenWidth] = useWindowSize();
-
     return (
-        <Btn>
+        <Btn to={`/add-pet`} state={ state }>
             {screenWidth < 768 && <PlusIcon />}
             Add Pet
             {screenWidth >= 768 && <PlusSmallIcon />}

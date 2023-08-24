@@ -2,13 +2,13 @@ import { PetsHeader, Title, NoPetsMessageWrapper } from "./PetsData.styled";
 import AddPetBtn from "../../AddPetButton/AddPetButton";
 import PetsList from "../PetsList/PetsList";
 
-const PetsData = () => {
+const PetsData = ({ state }) => {
     return (
         <>
             <PetsHeader>
                 <Title>My pets:</Title>
                 {/* <AddPetBtn text="Add pet" path="/add-pet" isFixed={false} /> */}
-                <AddPetBtn />
+                <AddPetBtn state={state} />
             </PetsHeader>
             {/* <NoPetsMessageWrapper>
                 <p>There are no animals added yet. Click button to add</p>

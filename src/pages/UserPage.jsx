@@ -7,8 +7,10 @@ import {
     Title,
     Card,
 } from './pages.styled/UserPage.styled';
+import { useLocation } from 'react-router-dom';
 
 const UserPage = () => {
+    const location = useLocation();
     return (
         <UserPageWrapper>
             <MainContent>
@@ -21,7 +23,7 @@ const UserPage = () => {
                     </Card>
                 </div>
                 <div style={{ position: 'relative', width: '100%' }}>
-                    <PetsData/>
+                    <PetsData state={{ from: location }}/>
                 </div>
             </MainContent>
         </UserPageWrapper>
