@@ -7,7 +7,7 @@ import { CategoryWrapp } from "../Tab/Tab.styled";
 
 
 
-export const MainCard = ( ) => {
+export const MainCard = ({title}) => {
 
 return(
     <CardWrapper>
@@ -23,7 +23,7 @@ return(
 
       </ImgWrapper>
 
-      <CardTitle>Сute kitty looking for a home</CardTitle>
+      <CardTitle>{title}</CardTitle>
       <ButtonTransparent>Learn more</ButtonTransparent>
     </CardWrapper>
 )
