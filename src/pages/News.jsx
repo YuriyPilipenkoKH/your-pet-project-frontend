@@ -25,9 +25,8 @@ export const NewsPage = () => {
     const endOffset = itemOffset + cardsPerPage;
     console.log(`Loading items from ${itemOffset} to ${endOffset}`);
     const currentItems = news.slice(itemOffset, endOffset);
-    const [numButtons, setNumButtons] = useState(5); // Початкова кількість кнопок - 5
+    const [numButtons, setNumButtons] = useState(5); 
 
-    // Визначаємо кількість кнопок в залежності від ширини екрана
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth <= 768) {
@@ -37,13 +36,10 @@ export const NewsPage = () => {
             }
         };
         
-        // Встановлюємо початкову кількість кнопок при завантаженні сторінки
         handleResize();
 
-        // Додаємо слухач події ресайзу для відстеження змін ширини екрана
         window.addEventListener('resize', handleResize);
 
-        // Прибираємо слухач події при виході з компонента
         return () => {
             window.removeEventListener('resize', handleResize);
         };
@@ -58,7 +54,6 @@ export const NewsPage = () => {
         setActive(selectedPage + 1);
     };
 
-    // Генеруємо кнопки для переключення сторінок
     const pageButtons = [];
     for (let i = 0; i < numButtons; i++) {
         const pageNumber = itemOffset / cardsPerPage + i + 1;
