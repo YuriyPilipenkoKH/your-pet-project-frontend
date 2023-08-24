@@ -78,7 +78,7 @@ export default function MoreInfo({
         deliveryDataPet({
             comments: coment,
             petAvatar: image,
-            category: 'my ads',
+            category: 'my-ads',
         });
         reset();
     };
