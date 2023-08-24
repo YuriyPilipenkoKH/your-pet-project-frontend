@@ -3,10 +3,14 @@ import { NavLink } from "react-router-dom";
 
 export const NavWrap = styled.div`
     display: flex;
+    flex-direction: column;
     gap: 20px;
     @media screen and (max-width: 1279px) {
-      display: none;
+    display: none;
       
+    }
+    @media screen and (min-width: 1280px) {
+      flex-direction: row;
     }
 
     &>a.active {
@@ -34,7 +38,7 @@ export const ButtonBurger = styled.button`
     width: 2em;
     height: 2em;
   color: var(--yellow);
-  @media screen and (min-width: 1279px) {
+  @media screen and (min-width: 1280px) {
       display: none;
       
     }

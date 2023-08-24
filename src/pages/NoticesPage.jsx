@@ -1,33 +1,32 @@
-import React from 'react'
+
 import NoticesSearch from '../components/NoticesSearch/NoticesSearch'
 import NoticesCategoriesNav from '../components/NoticesCategoriesNav/NoticesCategoriesNav'
 import NoticesFilters from '../components/NoticesFilters/NoticesFilters'
-import { NoticesPageWrap } from './pages.styled/NoticesPage.styled'
+import { NoticeContainer, NoticesPageWrap } from './pages.styled/NoticesPage.styled'
 import { MainCard } from '../components/MainCard/MainCard'
-
 import news from '../utils/json/news.json';
-import { NewsContainer} from './pages.styled/Pages.styled'
-
-
-
+import { CommonWrapper } from './pages.styled/Pages.styled'
 
 
 export default function NoticesPage() {
+
+
+  
   return (
-    <>
+    <CommonWrapper>
     <NoticesSearch/>
       <NoticesPageWrap >
          <NoticesCategoriesNav/>
-         <NoticesFilters/>
+         <NoticesFilters  />
       </NoticesPageWrap>
-      <NewsContainer className="notice-container">
+      <NoticeContainer className="notice-container">
         {news.map((item, index) => (
           <MainCard
             key={index}
             
           />
         ))}
-      </NewsContainer>
-      </>
+      </NoticeContainer>
+    </CommonWrapper>
   )
 }

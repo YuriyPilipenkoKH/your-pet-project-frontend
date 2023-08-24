@@ -214,16 +214,26 @@ export const TestWrapp = styled.div`
     max-width: 160px;
   }
 
-
 `
 //SponsorWrap
 export const SponsorWrap = styled.div`
-   display: flex;
+   /* display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-wrap: wrap; */
+  display: grid;
+  gap: 32px;
+  place-items: center;
+
+    @media screen and (min-width: 768px) {
+   grid-template-columns: repeat(2, 1fr);
+  }
+
+      @media screen and (min-width: 1280px) {
+   grid-template-columns: repeat(3, 1fr);
+  }
+
 
 `
 export const TitleSponsor = styled.h2`
@@ -287,3 +297,9 @@ export const Notfound = styled.div`
   }
 
 `;
+
+export const CommonWrapper = styled.div`
+  display: grid;
+  gap: 24px;
+
+`
