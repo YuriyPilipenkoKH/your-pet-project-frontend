@@ -8,7 +8,7 @@ import { useAuth } from 'hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 
-export default function NoticesFilters() {
+export default function NoticesFilters({ state }) {
     const [showModal, setShowModal] = useState(false);
     const [modals, setModals] = useState(modal1)
     const {isLoggedIn} = useAuth()
@@ -27,7 +27,7 @@ export default function NoticesFilters() {
             }
          else
          {
-            navigate('/add-pet')
+            navigate('/add-pet', { state: state })
          }   
     }
 

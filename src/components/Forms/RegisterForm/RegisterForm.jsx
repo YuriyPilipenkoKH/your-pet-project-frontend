@@ -15,7 +15,7 @@ import {
 import { yupResolver } from '@hookform/resolvers/yup';
 import { IconCross, iconEyes } from '../../../images/icons';
 import { useForm } from 'react-hook-form';
-import { object, string, ref } from 'yup';
+import { object, string } from 'yup';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
 
