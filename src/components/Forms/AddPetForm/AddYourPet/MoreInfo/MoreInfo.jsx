@@ -78,7 +78,7 @@ export default function MoreInfo({
     const deliveryData = data => {
         const { imageURL, coment } = data;
         const image = imageURL[0]
-        deliveryDataPet({coment, image });
+        deliveryDataPet({ comments: coment, petAvatar: image });
         reset();
     };
 
