@@ -73,7 +73,7 @@ export const ImgWrapper = styled.div`
 
     &>.category{
       grid-area: top;
-      max-width: 130px;
+      width: 130px;
       justify-self: start;
     }
     &>.fav{

@@ -15,13 +15,11 @@ import styled from 'styled-components';
    max-width: 350px;
 };
   
-  &>button {
-
-    &:active,
-    &:focus {
+  &>button.active {
+   
     background-color: var(--blue);
     color: var(--white);
-  }
+ 
   }
 `;
 
