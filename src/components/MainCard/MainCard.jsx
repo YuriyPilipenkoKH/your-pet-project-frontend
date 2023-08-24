@@ -55,9 +55,9 @@ return(
       </ImgWrapper>
 
       <CardTitle>Сute kitty looking for a home</CardTitle>
-      <ButtonTransparent  onClick={onLearnMore}>Learn more</ButtonTransparent>
+      <ButtonTransparent  onClick={onLearnMore} >Learn more</ButtonTransparent>
       {showModal && (
-       <ModalPopup {...modals} onClose ={onModalClose}  /> //  onClose ={onModalClose}   {...modal1} 
+       <ModalPopup {...modals} onClose ={onModalClose} checkRoute ={checkRoute}  /> //  onClose ={onModalClose}   {...modal1} 
    )}
     </CardWrapper>
 )
