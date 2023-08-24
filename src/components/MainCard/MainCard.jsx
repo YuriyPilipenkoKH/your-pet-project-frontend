@@ -10,7 +10,7 @@ import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 
 
 
-export const MainCard = ( ) => {
+export const MainCard = ({title} ) => {
 
 //===========================
 const [showModal, setShowModal] = useState(false);
@@ -54,7 +54,7 @@ return(
 
       </ImgWrapper>
 
-      <CardTitle>Сute kitty looking for a home</CardTitle>
+      <CardTitle>  {title} </CardTitle>
       <ButtonTransparent  onClick={onLearnMore} >Learn more</ButtonTransparent>
       {showModal && (
        <ModalPopup {...modals} onClose ={onModalClose} checkRoute ={checkRoute}  /> //  onClose ={onModalClose}   {...modal1} 
