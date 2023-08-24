@@ -112,7 +112,7 @@ export default function MoreInfo({
         deliveryDataPet({
             comments: coment,
             petAvatar: image,
-            category: 'lost/found',
+            category: 'lost-found',
             location,
             sex: active,
         });
