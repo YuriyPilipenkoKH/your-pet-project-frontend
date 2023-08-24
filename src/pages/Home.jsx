@@ -1,4 +1,5 @@
 
+import Loader from "components/Loader/Loader";
 import { HomeTitle, HomeWrapper } from "./pages.styled/Pages.styled";
 
 
@@ -8,7 +9,7 @@ import { HomeTitle, HomeWrapper } from "./pages.styled/Pages.styled";
   return (
     <HomeWrapper>
       <HomeTitle> Take good care of your small pets</HomeTitle>
-      
+      {/* <Loader></Loader> */}
 
     </HomeWrapper>
   );
