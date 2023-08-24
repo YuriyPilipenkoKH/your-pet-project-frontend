@@ -73,6 +73,8 @@ const authSlice = createSlice({
     .addCase(authOperations.fetchCurrentUser.pending, (state, action) => {
       state.isLoading = true;
       state.error = null;
+      state.isRefreshing = true;
+
     })
     .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
       console.log(action);
@@ -82,6 +84,7 @@ const authSlice = createSlice({
       
       state.isLoggedIn = true;
       state.error = null
+      state.isRefreshing =false;
       
     })
     
@@ -89,6 +92,7 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.token = null;
       state.error = action.payload;
+      state.isRefreshing =false;
     })
 
     // logout

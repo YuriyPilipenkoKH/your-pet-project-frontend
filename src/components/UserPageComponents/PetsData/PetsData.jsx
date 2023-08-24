@@ -1,4 +1,4 @@
-import { PetsHeader, Title, NoPetsMessageWrapper } from "./PetsData.styled";
+import { PetsHeader, Title } from "./PetsData.styled";
 import AddPetBtn from "../../AddPetButton/AddPetButton";
 import PetsList from "../PetsList/PetsList";
 

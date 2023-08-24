@@ -36,7 +36,7 @@ const App = () => {
                         path="/register"
                         element={
                             <PublicRoute
-                                redirectTo="/notices"
+                                redirectTo="/profile"
                                 component={<RegisterPage />}
                             />
                         }
@@ -46,7 +46,7 @@ const App = () => {
                         path="/login"
                         element={
                             <PublicRoute
-                                redirectTo="/notices"
+                                redirectTo="/profile"
                                 component={<LoginPage />}
                             />
                         }
@@ -70,17 +70,16 @@ const App = () => {
                             />
                         }
                     />
+                    <Route path="/notices" element={<NoticesPage />} />
 
                     <Route path="/news" element={<NewsPage />} />
 
                     <Route path="/friends" element={<SponsorsPage />} />
-                    <Route path="/login" element={<LoginPage />} />
 
-                    <Route path="/notices" element={<NoticesPage />} />
 
-                    <Route />
-                    <Route path="/test" element={<TestPage />} />
                     <Route path="*" element={<NotfoundPage />} />
+                    <Route path="/test" element={<TestPage />} />
+                    
                 </Route>
             </Routes>
         </Container>
