@@ -17,10 +17,7 @@ import {
 } from '../../../Forms.styled';
 import { Button, ButtonTransparent } from '../../../../Button/Button';
 import { BiArrowBack } from 'react-icons/bi';
-import {
-    IconCross,
-    iconPawprint,
-} from '../../../../../images/icons';
+import { IconCross, iconPawprint } from '../../../../../images/icons';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
@@ -40,11 +37,11 @@ export default function MoreInfo({
     children,
     beforeForm,
     stepNumber,
-    deliveryDataPet
+    deliveryDataPet,
 }) {
     const [isComentValid, setIsComentValid] = useState(false);
-    const [coment, setComent] = useLocalStorage('comentYourPet', "");
-    const [imageURL, setImageURL] = useLocalStorage('imageUrlYourPet', "");
+    const [coment, setComent] = useLocalStorage('comentYourPet', '');
+    const [imageURL, setImageURL] = useLocalStorage('imageUrlYourPet', '');
     const [imageError, setImageError] = useState(null);
     const {
         register,
@@ -72,13 +69,17 @@ export default function MoreInfo({
     const reset = () => {
         setComent('');
         setIsComentValid(false);
-        setImageURL("");
-        setImageError(null); 
+        setImageURL('');
+        setImageError(null);
     };
     const deliveryData = data => {
         const { imageURL, coment } = data;
-        const image = imageURL[0]
-        deliveryDataPet({coment, image });
+        const image = imageURL[0];
+        deliveryDataPet({
+            comments: coment,
+            petAvatar: image,
+            category: 'my ads',
+        });
         reset();
     };
 
@@ -156,7 +157,7 @@ export default function MoreInfo({
                             const textarea = e.target;
                             textarea.style.height = 'auto';
                             textarea.style.height =
-                            textarea.scrollHeight + 'px';
+                                textarea.scrollHeight + 'px';
                             if (isValid) {
                                 errors.coment = undefined;
                             }

@@ -20,6 +20,7 @@ export default function AddYourPet({
             return { ...prevState, ...data };
         });
         if (stepNumber === 3) {
+            
             navigate(backLinkLocation.current)
             clearStepNumber();
         }

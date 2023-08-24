@@ -117,9 +117,16 @@ export default function MoreInfo({
             setActiveError('Sex required');
             return;
         }
-        const { imageURL, coment, price } = data;
-        const image = imageURL[0]
-        deliveryDataPet({coment, image, active, price });
+        const { imageURL, coment } = data;
+        const image = imageURL[0];
+        deliveryDataPet({
+            comments: coment,
+            petAvatar: image,
+            category: 'my ads',
+            location,
+            sex: active,
+            price,
+        });
         reset();
     };
 

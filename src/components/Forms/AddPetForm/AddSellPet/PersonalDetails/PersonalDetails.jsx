@@ -90,7 +90,8 @@ export default function PersonalDetails({
         setIsTypeValid(false);
     };
     const deliveryData = data => {
-        deliveryDataPet(data);
+        const { name, birth, typePet, title } = data;
+        deliveryDataPet({ name, birthday: birth, type: typePet, title });
         nextForm();
         reset();
     };
