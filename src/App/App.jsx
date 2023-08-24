@@ -36,7 +36,7 @@ const App = () => {
                         path="/register"
                         element={
                             <PublicRoute
-                                redirectTo="/notices"
+                                redirectTo="/profile"
                                 component={<RegisterPage />}
                             />
                         }
@@ -46,7 +46,7 @@ const App = () => {
                         path="/login"
                         element={
                             <PublicRoute
-                                redirectTo="/notices"
+                                redirectTo="/profile"
                                 component={<LoginPage />}
                             />
                         }
