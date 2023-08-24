@@ -77,7 +77,7 @@ const authSlice = createSlice({
 
     })
     .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
-      console.log(action);
+      // console.log(action);
       state.isLoading = false;
       state.user = action.payload;
       state.registrationSuccessful = true;

@@ -18,7 +18,7 @@ export default function NoticesPage() {
 
   const dispatch = useDispatch();
 const noticesList = useSelector(getNoticesList)
-console.log(noticesList);
+
 
 
 useEffect(() => {

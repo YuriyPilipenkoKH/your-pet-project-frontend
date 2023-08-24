@@ -29,7 +29,7 @@ const noticesSlice = createSlice({
                 store.loading = true;
               })
              .addCase(noticesOperations.fetchAllNotices.fulfilled, (store, { payload }) => {
-              console.log(payload);
+            //   console.log(payload);
                 store.loading = false;
                 store.list = payload;
               })
