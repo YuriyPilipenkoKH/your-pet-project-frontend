@@ -20,7 +20,7 @@ const register = createAsyncThunk(
                 '/users/auth/register',
                 credentials
             );
-            // console.log(data);
+            
             token.set(data.token);
             // Notify.info('Something went wrong. Please, try again later.');
             return data;
@@ -52,7 +52,7 @@ const fetchCurrentUser = createAsyncThunk(
             return thunkAPI.rejectWithValue();
         }
 
-        // token.set(persistedToken);
+        token.set(persistedToken);
         try {
             const { data } = await axios.get('/users/current');
             return data;
@@ -71,14 +71,24 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     }
 });
 
-// const fetchUser = createAsyncThunk("user/fetch", async (_, thunkAPI) => {
-//     try {
-//         await axios.get('/user/fetch');
-//         token.unset();
-//     } catch (error) {
-//         return thunkAPI.rejectWithValue(error.message);
-//     }
-// });
+const fetchUpdateUser = createAsyncThunk(
+    "user/update",
+    async ({ token, fieldToUpdate, newValue }, { rejectWithValue }) => {
+      try {
+        await axios.patch('/user/update', {
+          fieldToUpdate,
+          newValue,
+          token
+        });
+        const result = { fieldToUpdate, newValue, token };
+        return result;
+      } catch (error) {
+        return rejectWithValue(error.message);
+      }
+    }
+  );
+
+  
 
 
 const operations = {
@@ -86,8 +96,8 @@ const operations = {
     logIn,
     fetchCurrentUser,
     logOut,
-    // fetchUser
-    // fetchUpdateAvatar
+    fetchUpdateUser
+   
     // fetchDeleteUserPet
     // fetchDeleteUserPet
 };

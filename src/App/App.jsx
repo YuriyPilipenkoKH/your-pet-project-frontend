@@ -19,9 +19,11 @@ import { useEffect } from 'react';
 import { authOperations } from 'redux/auth';
 import PublicRoute from 'routes/PublicRoute';
 
+
+
 const App = () => {
     const dispatch = useDispatch();
-
+   
     useEffect(() => {
         dispatch(authOperations.fetchCurrentUser());
     }, [dispatch]);
@@ -46,12 +48,12 @@ const App = () => {
                         path="/login"
                         element={
                             <PublicRoute
-                                redirectTo="/notices"
+                                redirectTo="/"
                                 component={<LoginPage />}
                             />
                         }
                     />
-
+                     {/* <Route path="/add-pet" element={<AddPetPage />} /> */}
                     <Route
                         path="/add-pet"
                         element={
@@ -61,6 +63,7 @@ const App = () => {
                             />
                         }
                     />
+                    
                     <Route
                         path="/profile"
                         element={
