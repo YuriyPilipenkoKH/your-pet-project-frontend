@@ -58,15 +58,9 @@ export default function MoreInfo({
         resolver: yupResolver(schema),
     });
 
-    useEffect(() => {
-        console.log(imageURL);
-    }, [imageURL]);
-
     const handleImageChange = e => {
         const file = e.target.files[0];
-        console.log(file);
         if (file) {
-            // Check file size
             if (file.size > 3 * 1024 * 1024) {
                 setImageError('Image size should be less than 3MB');
             } else {

@@ -40,9 +40,6 @@ const schema = object({
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/,
             'Password: 1 lowercase, 1 uppercase, 1 digit, 6-16 characters.'
         ),
-    confirmPassword: string()
-        .required()
-        .oneOf([ref('password', undefined, yup => yup.trim())], 'Passwords do not match'),
 }).required();
 
 
@@ -59,6 +56,7 @@ export default function RegisterForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [confirmPasswordError, setConfirmPasswordError] = useState('');
     const {
         register,
         handleSubmit,
@@ -76,8 +74,6 @@ export default function RegisterForm() {
     const handleClickShowTwo = () => setShowTwo(!showTwo);
 
     const deliveryDataUser = (name, email, password) => {
-    
-
         dispatch(authOperations.register({name,email,password}))
         // .unwrap().then(originalPromiseResult => {
             // Notify.success(`${originalPromiseResult.user.name} welcome back!`);
@@ -98,11 +94,13 @@ export default function RegisterForm() {
         setIsConfirmPasswordlValid(false);
     }
     const deliveryData = data => {
-        console.log(321321);
+        if (data.password !== confirmPassword) {
+            setConfirmPasswordError("'Passwords do not match'")
+            return;
+        }
         const { name, email, password } = data;
         deliveryDataUser(name, email, password);
         reset();
-        console.log(321321)
     };
 
     return (
@@ -135,7 +133,7 @@ export default function RegisterForm() {
                             }
                         }}
                     ></InputForAuthorization>
-                    {isNameValid && (
+                    {isNameValid && !errors.name && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -192,7 +190,7 @@ export default function RegisterForm() {
                             }
                         }}
                     ></InputForAuthorization>
-                    {isEmailValid && (
+                    {isEmailValid && !errors.email && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -248,7 +246,7 @@ export default function RegisterForm() {
                             }
                         }}
                     ></InputForAuthorization>
-                    {isPasswordValid && (
+                    {isPasswordValid && !errors.password && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -290,16 +288,16 @@ export default function RegisterForm() {
                 <LabelForRegistration registration={true}>
                     <InputForAuthorization
                         {...register('confirmPassword')}
-                        aria-invalid={errors.confirmPassword ? 'true' : 'false'}
+                        aria-invalid={confirmPasswordError ? 'true' : 'false'}
                         placeholder="Confirm password"
                         type={showTwo ? 'text' : 'password'}
                         value={confirmPassword}
                         title="Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long."
                         style={{
-                            border: errors.confirmPassword
+                            border: confirmPasswordError
                                 ? '1px solid var(--red)'
                                 : isConfirmPasswordValid &&
-                                  !errors.confirmPassword
+                                  !confirmPasswordError
                                 ? '1px solid var(--green)'
                                 : '1px solid var(--blue)',
                         }}
@@ -307,12 +305,12 @@ export default function RegisterForm() {
                             const isValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/.test(e.target.value);
                             setIsConfirmPasswordlValid(isValid);
                             if (isValid) {
-                                errors.confirmPassword = undefined;
+                                setConfirmPasswordError("");
                             }
                             setConfirmPassword(e.target.value);
                         }}
                     ></InputForAuthorization>
-                    {(isConfirmPasswordValid && !errors.confirmPassword) && (
+                    {(isConfirmPasswordValid && !confirmPasswordError) && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -327,10 +325,10 @@ export default function RegisterForm() {
                             />
                         </IconOkey>
                     )}
-                    {errors.confirmPassword && (
+                    {confirmPasswordError && (
                         <>
                             <TextValidation>
-                                {errors.confirmPassword.message}
+                                {confirmPasswordError}
                             </TextValidation>
                             <IconCrossValidate
                                 onClick={() => {
