@@ -109,7 +109,13 @@ export default function MoreInfo({
         }
         const { imageURL, coment } = data;
         const image = imageURL[0];
-        deliveryDataPet({ coment, image, active });
+        deliveryDataPet({
+            comments: coment,
+            petAvatar: image,
+            category: 'my ads',
+            location,
+            sex: active,
+        });
         reset();
     };
 
