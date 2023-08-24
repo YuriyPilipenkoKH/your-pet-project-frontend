@@ -54,8 +54,20 @@ export const ProfileWrap = styled.div`
     color: var(--yellow);
 
     &>svg{
-        fill: var(--yellow);
+          fill: var(--yellow);
+      }
+
+    &>a {
+      background: none !important;
+      padding: 10px;
+
+      &>svg{
+          fill: var(--yellow);
+      }
     }
+
+
+
 
 `
 export const StyledLinkOut = styled(NavLink)`

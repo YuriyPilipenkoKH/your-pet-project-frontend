@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export const NavWrapper = styled.div`
    display:flex;
-    margin-top: 20px;
-    margin-bottom: 8px;
-     gap: 8px;
-     margin-right:12px;
+    /* flex-wrap: wrap; */
+    /* justify-content: flex-start; */
+    /* margin-left: auto; */
+    /* max-width: 210px; */
+    gap: 8px;
  
   @media screen and (min-width: 768px) {
     gap: 12px;
@@ -34,6 +35,7 @@ export const NavWrap = styled.div`
 
 export const NoticesPageWrap = styled.div`
 padding:0 20px;
+display: flex;
 
   
  @media screen and (min-width: 768px) {
