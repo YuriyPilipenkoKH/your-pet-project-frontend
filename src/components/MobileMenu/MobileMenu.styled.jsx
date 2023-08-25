@@ -27,7 +27,8 @@ export const MenuWrapp = styled.div`
 `
 export const MenuHeader = styled.div`
     position: relative;
-    width: 320px;
+    
+    width: 100%;
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
@@ -46,6 +47,9 @@ export const MenuContent = styled.div`
     padding: 40px;
     gap: 40px;
 
+@media screen and (max-width: 319px) {
+                padding: 40px 4px;
+            }
 
 
     &>.AuthNav,
@@ -66,6 +70,10 @@ export const MenuContent = styled.div`
         &>a{
             font-size: 32px;
             font-weight: 500;
+            @media screen and (max-width: 319px) {
+                font-size: calc(0.7vw + 1.2rem );
+            }
+
             @media screen and (min-width: 768px) {
                 font-size: 48px;
             }

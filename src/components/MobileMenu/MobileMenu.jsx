@@ -22,11 +22,11 @@ const {isLoggedIn} = useAuth()
 
   return (
     <MenuWrapp className= {isOpen ? ['menu', 'active'].join(' ') : 'menu'} >
-            <MenuHeader>
+            <MenuHeader className='MenuHeader'>
                 <StyledLogo to="/" onClick={()=>console.log(name)}  >{iconLogo}</StyledLogo>
                <CloseButton onClick={onClose} ><RxCross2/></CloseButton>
             </MenuHeader>
-        <MenuContent>
+        <MenuContent className='MenuContent'>
             {!isLoggedIn 
             ? <AuthNav   onClose={onClose}/> 
             :   <>
