@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authOperations, authSelectors } from 'redux/auth';
 import { MdOutlineLogout} from "react-icons/md";
 import { useAuth } from 'hooks/useAuth';
+import { toggleSell } from 'redux/sort/sortSlice';
 
 
 export  const MobileMenu = ({ isOpen, onClose }) => {
@@ -18,6 +19,11 @@ export  const MobileMenu = ({ isOpen, onClose }) => {
 const {isLoggedIn} = useAuth()
   const name = useSelector(authSelectors.getUsername);
    const dispatch = useDispatch();
+   const signOut = () => {
+    dispatch(toggleSell())
+    dispatch(authOperations.logOut())
+
+  }
 
 
   return (
@@ -31,7 +37,7 @@ const {isLoggedIn} = useAuth()
             ? <AuthNav   onClose={onClose}/> 
             :   <>
                   <ProfileWrap className= "useravatar" > {iconUser} {name} </ProfileWrap>
-                 <StyledLinkOut to="/" exact="true"  onClick={() => dispatch(authOperations.logOut())}            className='logout'>
+                 <StyledLinkOut to="/" exact="true"  onClick={signOut} className='logout'>
                    Log out <MdOutlineLogout/>
                  </StyledLinkOut>
                </>  }

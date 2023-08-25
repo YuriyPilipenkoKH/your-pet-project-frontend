@@ -73,6 +73,8 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 
 
 
+
+
 // const fetchUser = createAsyncThunk("user/fetch", async (_, thunkAPI) => {
 //     try {
 //         await axios.get('/user/fetch');

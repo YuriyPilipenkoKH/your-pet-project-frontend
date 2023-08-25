@@ -24,7 +24,10 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  
+  reducers: {
+    // ... other reducers
+
+  },
   extraReducers:builder=> {
     builder
     // register
@@ -105,6 +108,8 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.user.favorite = [];
       state.isRefreshing =true;
+
+      
     })
     .addCase(authOperations.logOut.rejected, (state, action) => {
       state.isLoading = false;
