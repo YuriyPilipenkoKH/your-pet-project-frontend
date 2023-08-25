@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import { AddToButton, ButtonTransparent, FavButton } from '../Button/Button';
-import { iconFilter } from '../../images/icons';
+import { arrowD, iconFilter } from '../../images/icons';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { FilterWrapper } from './NoticesFilters.styled';
+import { DropdownMenu, FilterWrapper, FiltersBtn } from './NoticesFilters.styled';
 import { modal1 } from 'modals/modals';
 import { useAuth } from 'hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
@@ -32,6 +32,7 @@ export default function NoticesFilters({ state }) {
     }
 
     return (
+        <>
         <FilterWrapper className="NoticesFilters" >
             <ButtonTransparent className= "FilterBtn" >
                 Filter {iconFilter}
@@ -42,8 +43,15 @@ export default function NoticesFilters({ state }) {
 
                 Add Pet <AiOutlinePlus />
             </AddToButton>
+        <DropdownMenu>
+            <h3>Filters</h3>
+            <FiltersBtn> {arrowD}  By age</FiltersBtn>
+            <FiltersBtn> {arrowD} By gender</FiltersBtn>
+
+        </DropdownMenu>
+        </FilterWrapper>
             {showModal && (
               <ModalPopup {...modals} onClose ={onModalClose}  /> //  onClose ={onModalClose}   {...modal1} 
-          )}
-        </FilterWrapper>
+             )}
+        </>
     )}
