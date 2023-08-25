@@ -39,7 +39,7 @@ const schema = object({
     birth: string()
         .required()
         .matches(
-            /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(202[0-3])$/,
+            /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(0[0-9]{1,3}|20[0-2][0-3])$/,
             'Enter a valid date in DD-MM-YYYY format'
         ),
     typePet: string()
@@ -240,9 +240,7 @@ export default function PersonalDetails({
                         }}
                         onChange={e => {
                             const isValid =
-                                /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(202[0-3])$/.test(
-                                    e.target.value
-                                );
+                            /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(0[0-9]{1,3}|20[0-2][0-3])$/.test(e.target.value);
                             setIsBirthValid(isValid);
                             setBirth(e.target.value);
                             if (isValid) {
