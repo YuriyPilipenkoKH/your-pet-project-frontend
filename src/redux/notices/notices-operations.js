@@ -100,9 +100,22 @@ const fetchAllNotices = createAsyncThunk(
 //     }
 // );
 
+const fetchNoticesByCategory = createAsyncThunk(
+    'notices/noticesAllByCategory',
+    async ({ categoryName, query, page }, thunkAPI) => {
+        try {
+            const { data } = await axios.get('/notices');
+            return data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+);
+
 
 const operations = {
     fetchAllNotices,
+    fetchNoticesByCategory,
     // fetchNoticeById,
     // fetchAddNotice,
     // fetchAllFavorite,

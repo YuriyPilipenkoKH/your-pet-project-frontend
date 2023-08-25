@@ -26,6 +26,27 @@ export default function NoticesPage() {
     console.log('filterValue',filterValue)
     console.log('currentIndex',currentIndex)
 
+    const makeCategory = () => {
+      if(currentIndex === 0) {
+        return 'sell'
+      }
+      if(currentIndex === 1) {
+        return 'lost-found"'
+      }
+      if(currentIndex === 2) {
+        return 'in-good-hands'
+      }
+      if(currentIndex === 3) {
+        return 'favorite-ads'
+      }
+      if(currentIndex === 4) {
+        return 'my-ads'
+      }
+
+    }
+    console.log('makeCategory ', makeCategory() )
+
+
 
 useEffect(() => {
   dispatch(noticesOperations.fetchAllNotices())

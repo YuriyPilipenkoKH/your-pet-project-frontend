@@ -113,32 +113,31 @@ const noticesSlice = createSlice({
             //         store.error = payload;
             //     }
             // )
-            // .addCase(
-            //     noticesOperations.fetchNoticesByCategory.pending,
-            //     store => {
-            //         store.loading = true;
-            //         store.items = [];
-            //         store.itemsFavorite = [];
-            //     }
-            // )
-            // .addCase(
-            //     noticesOperations.fetchNoticesByCategory.fulfilled,
-            //     (store, { payload }) => {
-            //         store.loading = false;
-            //         store.items = [...payload.data.notices];
-            //         store.category = payload.category;
-            //         store.page = Number(payload.data.page);
-            //         store.totalPages = payload.data.totalPages;
-            //         store.keyword = '';
-            //     }
-            // )
-            // .addCase(
-            //     noticesOperations.fetchNoticesByCategory.rejected,
-            //     (store, { payload }) => {
-            //         store.loading = false;
-            //         store.error = payload;
-                // }
-            // )
+            .addCase(
+                noticesOperations.fetchNoticesByCategory.pending,
+                store => {
+                    store.loading = true;
+                    store.itemsFavorite = [];
+                }
+            )
+            .addCase(
+                noticesOperations.fetchNoticesByCategory.fulfilled,
+                (store, { payload }) => {
+                    store.loading = false;
+                    store.list = payload
+                    store.category = payload.category;
+                    store.page = Number(payload.data.page);
+                    store.totalPages = payload.data.totalPages;
+                    store.keyword = '';
+                }
+            )
+            .addCase(
+                noticesOperations.fetchNoticesByCategory.rejected,
+                (store, { payload }) => {
+                    store.loading = false;
+                    store.error = payload;
+                }
+            )
             // .addCase(noticesOperations.fetchNoticesByOwn.pending, store => {
             //     store.loading = true;
             //     store.items = [];

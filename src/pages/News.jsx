@@ -31,6 +31,15 @@ export const NewsPage = () => {
     const currentItems = news.slice(itemOffset, endOffset);
     const [numButtons, setNumButtons] = useState(5);
 
+    const filteredNews = () => {
+      const normalized = filter.toLowerCase();
+       const filteredTitles = news.filter(item =>
+               item.title.toLowerCase().includes(normalized)
+      );
+      
+      return [...filteredTitles]
+  };
+
 
     useEffect(() => {
         const handleResize = () => {
@@ -100,14 +109,7 @@ export const NewsPage = () => {
     return (
         <NewsWrapper>
 
-  const filteredNews = () => {
-    const normalized = filter.toLowerCase();
-     const filteredTitles = news.filter(item =>
-             item.title.toLowerCase().includes(normalized)
-    );
-    
-    return [...filteredTitles]
-};
+
 
 
   return (
