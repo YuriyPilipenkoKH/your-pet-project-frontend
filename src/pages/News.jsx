@@ -13,6 +13,16 @@ export const NewsPage = () => {
   const dispatch = useDispatch()
   const filter = useSelector(getNewsFilter)
 
+  const filteredNews = () => {
+    const normalized = filter.toLowerCase();
+     const filteredTitles = news.filter(item =>
+             item.title.toLowerCase().includes(normalized)
+    );
+    
+    return [...filteredTitles]
+};
+
+
   return (
     <NewsWrapper>
       <SearchWrapper>
@@ -34,7 +44,7 @@ export const NewsPage = () => {
         </SearchForm>
       </SearchWrapper>
       <NewsContainer className="NewsContainer">
-        {news.map((item, index) => (
+        {filteredNews().map((item, index) => (
           <NewsCard
             key={index}
             imgUrl={item.imgUrl}
