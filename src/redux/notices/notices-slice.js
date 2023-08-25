@@ -123,11 +123,12 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchNoticesByCategory.fulfilled,
                 (store, { payload }) => {
+                  console.log('payload', payload)
                     store.loading = false;
                     store.list = payload
                     store.category = payload.category;
-                    store.page = Number(payload.data.page);
-                    store.totalPages = payload.data.totalPages;
+                    store.page =  Math.ceil(payload.length / 12);
+                    // store.totalPages = payload.data.totalPages;
                     store.keyword = '';
                 }
             )

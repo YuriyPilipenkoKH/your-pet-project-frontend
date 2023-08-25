@@ -9,7 +9,7 @@ import { getNoticesFilter } from 'redux/filter/filterSelectors';
 
 
 
-export default function NoticesSearch() {
+export default function NoticesSearch({search}) {
   const dispatch = useDispatch()
   const filter = useSelector(getNoticesFilter)
 
@@ -26,7 +26,7 @@ export default function NoticesSearch() {
           value={filter}
           placeholder="Search"
            />
-          <FormButton >
+          <FormButton onClick = {search}>
             <SearchIcon className="search-icon">
               <BsSearch style = { {color: "#54adff"} }/>
             </SearchIcon>

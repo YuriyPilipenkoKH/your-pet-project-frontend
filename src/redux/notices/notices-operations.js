@@ -104,7 +104,7 @@ const fetchNoticesByCategory = createAsyncThunk(
     'notices/noticesAllByCategory',
     async ({ categoryName, query, page }, thunkAPI) => {
         try {
-            const { data } = await axios.get('/notices');
+            const { data } = await axios.get('/notices', { categoryName, query, page });
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data);

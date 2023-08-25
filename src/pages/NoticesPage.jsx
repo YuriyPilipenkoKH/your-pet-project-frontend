@@ -46,6 +46,19 @@ export default function NoticesPage() {
     }
     console.log('makeCategory ', makeCategory() )
 
+    const page = Math.ceil(noticesList?.length / 12)
+    console.log('page', page)
+
+    const searchParams = {
+      categoryName: makeCategory(),
+      query: filterValue,
+      page: 1,
+    }
+
+    const searchByCategory = (e) => {
+      e.preventDefault()
+      dispatch(noticesOperations.fetchNoticesByCategory(searchParams))
+    }
 
 
 useEffect(() => {
@@ -53,6 +66,7 @@ useEffect(() => {
     .then((data) => {
       // console.log(data);
       // setNotices(data);
+      // dispatch(noticesOperations.fetchNoticesByCategory(searchParams))
     })
     .catch((error) => {
       console.error('Error fetching notices:', error);
@@ -61,7 +75,7 @@ useEffect(() => {
   
   return (
     <CommonWrapper>
-    <NoticesSearch/>
+    <NoticesSearch search = {searchByCategory}/>
       <NoticesPageWrap >
          <NoticesCategoriesNav/>
          <NoticesFilters state={{ from: location }} />
