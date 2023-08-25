@@ -3,6 +3,8 @@ import PersonalDetails from './PersonalDetails/PersonalDetails';
 import MoreInfo from './MoreInfo/MoreInfo';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import operations from 'redux/notices/notices-operations';
 
 export default function AddInGoodHandsPet({
     children,
@@ -10,18 +12,26 @@ export default function AddInGoodHandsPet({
     beforeForm,
     stepNumber,
     state,
-    clearStepNumber
+    clearStepNumber,
+    clearData
 }) {
     const [pet, setPet] = useLocalStorage("dataSellPet", {});
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const backLinkLocation = useRef(state?.from ?? '/');
     const deliveryDataPet = data => {
         setPet(prevState => {
             return { ...prevState, ...data };
         });
         if (stepNumber === 3) {
-            navigate(backLinkLocation.current)
+            const formData = new FormData();
+            for (const key in { ...pet, ...data }) {
+                formData.append(key, { ...pet, ...data }[key]);
+            }
+            dispatch(operations.fetchAddNotice(formData));
+            navigate(backLinkLocation.current);
             clearStepNumber();
+            clearData("dataSellPet");
         }
     };
     return (

@@ -25,7 +25,8 @@ const schema = object({
         .min(2, 'Name should be at least 2 characters')
         .max(16, 'Name should not exceed 16 characters')
         .matches(
-            /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+            /^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$/
+,
             'Name should contain only letters'
         ),
     email: string()
@@ -123,7 +124,8 @@ export default function RegisterForm() {
                         }}
                         onChange={e => {
                             const isValid =
-                                /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/.test(
+                                /^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$/
+.test(
                                     e.target.value
                                 );
                             setIsNameValid(isValid);

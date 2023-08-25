@@ -78,7 +78,7 @@ export default function MoreInfo({
         deliveryDataPet({
             comments: coment,
             petAvatar: image,
-            category: 'my-ads',
+            category: 'my ads',
         });
         reset();
     };
@@ -164,7 +164,7 @@ export default function MoreInfo({
                         }}
                     ></Textarea>
 
-                    {isComentValid && (
+                    {isComentValid  && !errors.coment && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"

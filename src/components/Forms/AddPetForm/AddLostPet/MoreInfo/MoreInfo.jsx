@@ -112,7 +112,7 @@ export default function MoreInfo({
         deliveryDataPet({
             comments: coment,
             petAvatar: image,
-            category: 'lost-found',
+            category: 'lost/found',
             location,
             sex: active,
         });
@@ -230,7 +230,7 @@ export default function MoreInfo({
                                     }
                                 }}
                             ></InputForAddPet>
-                            {isLocationValid && (
+                            {isLocationValid  && !errors.location && (
                                 <IconOkey
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"

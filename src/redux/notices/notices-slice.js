@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import noticesOperations from './notices-operations';
 
-
 const initialState = {
     list: [],
     category: '',
@@ -19,42 +18,46 @@ const noticesSlice = createSlice({
     initialState,
     reducers: {
         setKeyword: (state, action) => {
-          
             state.keyword = action.payload;
         },
     },
     extraReducers: builder => {
         builder
-              .addCase(noticesOperations.fetchAllNotices.pending, (store) => {
+            .addCase(noticesOperations.fetchAllNotices.pending, store => {
                 store.loading = true;
-              })
-             .addCase(noticesOperations.fetchAllNotices.fulfilled, (store, { payload }) => {
-            //   console.log(payload);
-                store.loading = false;
-                store.list = payload;
-              })
-              .addCase(noticesOperations.fetchAllNotices.rejected, (store, { payload }) => {
-                store.loading = false;
-                store.error = payload;
-              })
-
-            // .addCase(noticesOperations.fetchAddNotice.pending, store => {
-            //     store.loading = true;
-            // })
-            // .addCase(
-            //     noticesOperations.fetchAddNotice.fulfilled,
-            //     (store, { payload }) => {
-            //         store.loading = false;
-            //         store.items.push(payload);
-            //     }
-            // )
-            // .addCase(
-            //     noticesOperations.fetchAddNotice.rejected,
-            //     (store, { payload }) => {
-            //         store.loading = false;
-            //         store.error = payload;
-            //     }
-            // )
+            })
+            .addCase(
+                noticesOperations.fetchAllNotices.fulfilled,
+                (store, { payload }) => {
+                    //   console.log(payload);
+                    store.loading = false;
+                    store.list = payload;
+                }
+            )
+            .addCase(
+                noticesOperations.fetchAllNotices.rejected,
+                (store, { payload }) => {
+                    store.loading = false;
+                    store.error = payload;
+                }
+            )
+            .addCase(noticesOperations.fetchAddNotice.pending, store => {
+                store.loading = true;
+            })
+            .addCase(
+                noticesOperations.fetchAddNotice.fulfilled,
+                (store, { payload }) => {
+                    store.loading = false;
+                    console.log(payload);
+                }
+            )
+            .addCase(
+                noticesOperations.fetchAddNotice.rejected,
+                (store, { payload }) => {
+                    store.loading = false;
+                    store.error = payload;
+                }
+            )
 
             // .addCase(
             //     noticesOperations.fetchNoticesAddFavorite.pending,
@@ -123,11 +126,11 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchNoticesByCategory.fulfilled,
                 (store, { payload }) => {
-                  console.log('payload', payload)
+                    console.log('payload', payload);
                     store.loading = false;
-                    store.list = payload
+                    store.list = payload;
                     store.category = payload.category;
-                    store.page =  Math.ceil(payload.length / 12);
+                    store.page = Math.ceil(payload.length / 12);
                     // store.totalPages = payload.data.totalPages;
                     store.keyword = '';
                 }
@@ -138,22 +141,22 @@ const noticesSlice = createSlice({
                     store.loading = false;
                     store.error = payload;
                 }
-            )
-            // .addCase(noticesOperations.fetchNoticesByOwn.pending, store => {
-            //     store.loading = true;
-            //     store.items = [];
-            //     store.category = '';
-            // })
-            // .addCase(fetchNoticesByOwn.fulfilled, (store, { payload }) => {
-            //     store.loading = false;
-            //     store.items = [...payload.notices];
-            //     store.page = Number(payload.page);
-            //     store.totalPages = payload.totalPages;
-            // })
-            // .addCase(fetchNoticesByOwn.rejected, (store, { payload }) => {
-            //     store.loading = false;
-            //     store.error = payload.notices;
-            // });
+            );
+        // .addCase(noticesOperations.fetchNoticesByOwn.pending, store => {
+        //     store.loading = true;
+        //     store.items = [];
+        //     store.category = '';
+        // })
+        // .addCase(fetchNoticesByOwn.fulfilled, (store, { payload }) => {
+        //     store.loading = false;
+        //     store.items = [...payload.notices];
+        //     store.page = Number(payload.page);
+        //     store.totalPages = payload.totalPages;
+        // })
+        // .addCase(fetchNoticesByOwn.rejected, (store, { payload }) => {
+        //     store.loading = false;
+        //     store.error = payload.notices;
+        // });
     },
 });
 

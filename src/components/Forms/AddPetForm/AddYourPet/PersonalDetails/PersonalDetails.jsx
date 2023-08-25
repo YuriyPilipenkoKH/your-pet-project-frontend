@@ -24,13 +24,14 @@ const schema = object({
         .min(2, 'Name should be at least 2 characters')
         .max(16, 'Name should not exceed 16 characters')
         .matches(
-            /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+            /^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$/
+,
             'Name should contain only letters'
         ),
     birth: string()
         .required()
         .matches(
-            /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/,
+            /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(202[0-3])$/,
             'Enter a valid date in DD-MM-YYYY format'
         ),
     typePet: string()
@@ -38,7 +39,8 @@ const schema = object({
         .min(2)
         .max(16)
         .matches(
-            /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+            /^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$/
+,
             'Type should contain only letters'
         ),
 }).required();
@@ -48,7 +50,7 @@ export default function PersonalDetails({
     nextForm,
     beforeForm,
     stepNumber,
-    deliveryDataPet
+    deliveryDataPet,
 }) {
     const [isNameValid, setIsNameValid] = useState(false);
     const [isBirthValid, setIsBirthValid] = useState(false);
@@ -106,7 +108,8 @@ export default function PersonalDetails({
                         }}
                         onChange={e => {
                             const isValid =
-                                /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/.test(
+                                /^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$/
+.test(
                                     e.target.value
                                 );
                             setIsNameValid(isValid);
@@ -116,7 +119,7 @@ export default function PersonalDetails({
                             }
                         }}
                     ></InputForAddPet>
-                    {isNameValid && (
+                    {isNameValid && !errors.name && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -166,7 +169,7 @@ export default function PersonalDetails({
                         }}
                         onChange={e => {
                             const isValid =
-                                /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/.test(
+                                /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(202[0-3])$/.test(
                                     e.target.value
                                 );
                             setIsBirthValid(isValid);
@@ -176,7 +179,7 @@ export default function PersonalDetails({
                             }
                         }}
                     ></InputForAddPet>
-                    {isBirthValid && (
+                    {isBirthValid  && !errors.birth && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -226,7 +229,8 @@ export default function PersonalDetails({
                         }}
                         onChange={e => {
                             const isValid =
-                                /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/.test(
+                                /^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$/
+.test(
                                     e.target.value
                                 );
                             setIsTypeValid(isValid);
@@ -236,7 +240,7 @@ export default function PersonalDetails({
                             }
                         }}
                     ></InputForAddPet>
-                    {isTypeValid && (
+                    {isTypeValid  && !errors.typePet && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
