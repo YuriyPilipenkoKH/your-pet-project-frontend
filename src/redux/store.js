@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth';
 import noticesSlice from './notices/notices-slice';
 import { sortReducer } from './sort/sortSlice';
+import { filterReducer } from './filter/filterSlice';
 
 
 
@@ -27,6 +28,7 @@ export const store = configureStore({
         auth: persistReducer(authPersistConfig, authReducer),
         notices: noticesSlice,
         sort:sortReducer,
+        filter: filterReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({
