@@ -181,7 +181,7 @@ export const SearchInput = styled.input`
   padding: 0 30px;
   border: 1px solid var(--blue);
   border-radius:50px;
-  color: var(--blue);
+  color: var(--grey);
 
   &::placeholder {
     font-size: 14px;

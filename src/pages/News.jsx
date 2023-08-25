@@ -1,15 +1,17 @@
 import React from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { NewsCard } from '../components/News/NewsCard';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import news from '../utils/json/news.json';
 import {  NewsContainer, NewsWrapper,  SearchForm, SearchIcon, SearchInput, SearchWrapper, TytleNwes } from './pages.styled/Pages.styled';
 import { StyledLink } from '../components/Button/Button.styled';
 import { FormButton } from 'components/Button/Button';
 import { setFilterNews } from 'redux/filter/filterSlice';
+import { getNewsFilter } from 'redux/filter/filterSelectors';
 
 export const NewsPage = () => {
   const dispatch = useDispatch()
+  const filter = useSelector(getNewsFilter)
 
   return (
     <NewsWrapper>
@@ -21,6 +23,7 @@ export const NewsPage = () => {
           <SearchInput 
            onChange={(e) => dispatch(setFilterNews(e.target.value))}
           type="text" 
+          value={filter}
           name="search" 
           placeholder="Search" />
           <FormButton >
