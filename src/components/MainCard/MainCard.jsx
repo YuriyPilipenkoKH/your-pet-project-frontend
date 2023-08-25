@@ -10,7 +10,7 @@ import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 
 
 
-export const MainCard = ({title, photo, sex, place, name, category} ) => {
+export const MainCard = ({title, photo, sex, place, name, category, birthday} ) => {
 
 //===========================
 const [showModal, setShowModal] = useState(false);
@@ -38,7 +38,35 @@ const onLearnMore = () => {
   setShowModal(true);
 }
 //===========================
+function calculateAge(birthday) {
+  const birthDate = new Date(birthday); // Parse birthday string into Date object
+  const currentDate = new Date(); // Current date
 
+  // Calculate age in years
+  let age = currentDate.getFullYear() - birthDate.getFullYear();
+
+  // Adjust age if birth date hasn't occurred yet this year
+  if (
+      currentDate.getMonth() < birthDate.getMonth() ||
+      (currentDate.getMonth() === birthDate.getMonth() &&
+          currentDate.getDate() < birthDate.getDate())
+  ) {
+      age--;
+  }
+
+  // Format the age string based on the calculated age
+  if (!age) {
+      return `1 month`;
+  } 
+  else if(age < 1) {
+    return `0 years`;
+  }
+  else if(age === 1) {
+    return `1 year`;
+  }
+  else {
+      return `${age} years`;
+  }}
 
 return(
     <CardWrapper>
@@ -48,7 +76,7 @@ return(
         {isLoggedIn && <FavButton className='del'> {iconTrash}</FavButton>}
 
         <Tab className="tab1" text= {place || 'Somewhere'} icon = {iconMap}  ></Tab>
-        <Tab className='tab2' text= {'1 year'} icon = {iconClock}  ></Tab>
+        <Tab className='tab2' text= {calculateAge(birthday) || '0 years'} icon = {iconClock}  ></Tab>
         <Tab className='tab3' text= {sex} icon = {sex === 'male' ? iconMan :  iconFem}  ></Tab>
     
 
