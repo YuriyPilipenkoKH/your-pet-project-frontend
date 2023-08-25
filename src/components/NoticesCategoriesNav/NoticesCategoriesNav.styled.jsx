@@ -11,8 +11,12 @@ import styled from 'styled-components';
     gap: 8px;
     
     @media screen and (min-width: 768px) {
-   /* display:none; */
+
    max-width: 350px;
+};
+    @media screen and (min-width: 1280px) {
+
+   max-width: 500px;
 };
   
   &>button.active {

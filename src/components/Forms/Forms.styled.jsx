@@ -157,6 +157,7 @@ export const ButtonSubmit = styled.button.withConfig({
     cursor: pointer;
     transition: background 500ms;
     margin-bottom: 8px;
+    outline:none;
     @media screen and (min-width: 768px) {
         margin-bottom: ${({ loginButtom }) => (loginButtom ? '20px' : '16px')};
     }
@@ -238,7 +239,9 @@ export const ShowPasswordButton = styled.button`
     @media screen and (min-width: 768px) {
         left: 400px;
     }
-`;
+
+    outline:none;
+ `;
 
 export const TextValidation = styled.p.withConfig({
     shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet' && prop !== 'activeSex',
