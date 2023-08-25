@@ -56,7 +56,7 @@ function calculateAge(birthday) {
 
   // Format the age string based on the calculated age
   if (!age) {
-      return `1 year`;
+      return `1 month`;
   } 
   else if(age < 1) {
     return `0 years`;
