@@ -31,6 +31,10 @@ export default function AddPetForm({ state }) {
         JSON.parse(localStorage.getItem('stepNumber'));
         localStorage.setItem('stepNumber', JSON.stringify(1));
     };
+    const clearData = (name) => {
+        JSON.parse(localStorage.getItem(name));
+        localStorage.setItem(name, JSON.stringify({ }));
+    };
     const activeOption = index => {
         setActive(index + 1);
     };
@@ -60,6 +64,7 @@ export default function AddPetForm({ state }) {
                     stepNumber={stepNumber}
                     state={state}
                     clearStepNumber={clearStepNumber}
+                    clearData={clearData}
                 >
                     <ListProgresSteps
                         arraySteps={arraySteps}
@@ -74,6 +79,7 @@ export default function AddPetForm({ state }) {
                     stepNumber={stepNumber}
                     state={state}
                     clearStepNumber={clearStepNumber}
+                    clearData={clearData}
                 >
                     <ListProgresSteps
                         arraySteps={arraySteps}
@@ -88,6 +94,7 @@ export default function AddPetForm({ state }) {
                     stepNumber={stepNumber}
                     state={state}
                     clearStepNumber={clearStepNumber}
+                    clearData={clearData}
                 >
                     <ListProgresSteps
                         arraySteps={arraySteps}
@@ -102,6 +109,7 @@ export default function AddPetForm({ state }) {
                     stepNumber={stepNumber}
                     state={state}
                     clearStepNumber={clearStepNumber}
+                    clearData={clearData}
                 >
                     <ListProgresSteps
                         arraySteps={arraySteps}

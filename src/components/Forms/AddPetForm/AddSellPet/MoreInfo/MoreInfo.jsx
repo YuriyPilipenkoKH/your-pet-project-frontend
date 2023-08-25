@@ -241,7 +241,7 @@ export default function MoreInfo({
                                     }
                                 }}
                             ></InputForAddPet>
-                            {isLocationValid && (
+                            {isLocationValid  && !errors.location && (
                                 <IconOkey
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
@@ -302,7 +302,7 @@ export default function MoreInfo({
                                     }
                                 }}
                             ></InputForAddPet>
-                            {isPriceValid && (
+                            {isPriceValid  && !errors.price && (
                                 <IconOkey
                                     addPetMoreInformation
                                     xmlns="http://www.w3.org/2000/svg"

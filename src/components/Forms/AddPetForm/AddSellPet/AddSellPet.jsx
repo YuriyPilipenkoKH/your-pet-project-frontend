@@ -3,6 +3,8 @@ import PersonalDetails from './PersonalDetails/PersonalDetails';
 import MoreInfo from './MoreInfo/MoreInfo';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import operations from 'redux/notices/notices-operations';
 
 export default function AddSellPet({
     children,
@@ -10,20 +12,30 @@ export default function AddSellPet({
     beforeForm,
     stepNumber,
     state,
-    clearStepNumber
+    clearStepNumber,
+    clearData,
 }) {
     const [pet, setPet] = useLocalStorage("dataSellPet", {});
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const backLinkLocation = useRef(state?.from ?? '/');
+    
     const deliveryDataPet = data => {
         setPet(prevState => {
             return { ...prevState, ...data };
         });
         if (stepNumber === 3) {
-            navigate(backLinkLocation.current)
+            const formData = new FormData();
+            for (const key in { ...pet, ...data }) {
+                formData.append(key, { ...pet, ...data }[key]);
+            }
+            dispatch(operations.fetchAddNotice(formData));
+            navigate(backLinkLocation.current);
             clearStepNumber();
+            clearData("dataSellPet");
         }
     };
+    
     return (    
         <>
             {stepNumber === 2 && (
