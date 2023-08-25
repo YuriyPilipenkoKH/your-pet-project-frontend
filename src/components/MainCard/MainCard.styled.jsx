@@ -102,10 +102,8 @@ export const ImgWrapper = styled.div`
     }
 
     &>.tab1,  &>.tab2,  &>.tab3 {
-
-      /* overflow: hidden; */
-      white-space: nowrap; 
-      text-overflow: ellipsis;
+     
+     
     }
 
 
@@ -169,8 +167,10 @@ export const CardTitle = styled.div`
     padding: 0 20px;
     height: 66px;
     overflow: hidden;
-    text-overflow: ellipsis;
-    /* white-space: nowrap;  */
-
-
+    text-overflow: ellipsis; 
+    
+    -webkit-box-orient: vertical ;
+    -webkit-line-clamp: 2 ; 
+    /* Number of lines to display */
 `
+    /* white-space: nowrap;   */
