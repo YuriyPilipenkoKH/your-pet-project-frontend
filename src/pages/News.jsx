@@ -31,6 +31,7 @@ export const NewsPage = () => {
     const currentItems = news.slice(itemOffset, endOffset);
     const [numButtons, setNumButtons] = useState(5);
 
+
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth <= 768) {
@@ -98,6 +99,20 @@ export const NewsPage = () => {
     };
     return (
         <NewsWrapper>
+
+  const filteredNews = () => {
+    const normalized = filter.toLowerCase();
+     const filteredTitles = news.filter(item =>
+             item.title.toLowerCase().includes(normalized)
+    );
+    
+    return [...filteredTitles]
+};
+
+
+  return (
+    <NewsWrapper>
+
       <SearchWrapper>
         <StyledLink to="/test" style={{background: 'transparent'}}>
         <TytleNwes>News</TytleNwes>
@@ -116,6 +131,7 @@ export const NewsPage = () => {
           </FormButton>
         </SearchForm>
       </SearchWrapper>
+
             <NewsContainer className="NewsContainer">
                 {currentItems.map((item, index) => (
                     <NewsCard
@@ -158,4 +174,20 @@ export const NewsPage = () => {
             </PaginationWrapper>
         </NewsWrapper>
     );
+
+      <NewsContainer className="NewsContainer">
+        {filteredNews().map((item, index) => (
+          <NewsCard
+            key={index}
+            imgUrl={item.imgUrl}
+            title={item.title}
+            text={item.text}
+            date={item.date}
+            url={item.url}
+          />
+        ))}
+      </NewsContainer>
+    </NewsWrapper>
+  );
+
 };
