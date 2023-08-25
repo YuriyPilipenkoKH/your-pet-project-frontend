@@ -106,8 +106,6 @@ export const NewsPage = () => {
             setActive(active + 1)
         }
     };
-    return (
-        <NewsWrapper>
 
 
 
@@ -177,19 +175,6 @@ export const NewsPage = () => {
         </NewsWrapper>
     );
 
-      <NewsContainer className="NewsContainer">
-        {filteredNews().map((item, index) => (
-          <NewsCard
-            key={index}
-            imgUrl={item.imgUrl}
-            title={item.title}
-            text={item.text}
-            date={item.date}
-            url={item.url}
-          />
-        ))}
-      </NewsContainer>
-    </NewsWrapper>
-  );
+    
 
 };
