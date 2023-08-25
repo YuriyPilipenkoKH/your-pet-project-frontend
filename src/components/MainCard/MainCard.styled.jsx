@@ -124,8 +124,8 @@ export const ImgWrapper = styled.div`
     width: 288px;
 }
     /* height: ${props => props.photo} ; */
-    /* background-image: url(${props => props.photo}); */
-    background-image: url('${bgImgM}');
+    background-image: url(${props => props.photo});
+    /* background-image: url('${bgImgM}'); */
     background-size: cover;
     background-position: center;  
  
