@@ -21,7 +21,9 @@ export default function NoticesSearch({search}) {
   return (
     <SearchWrapper>
       <TytleNwes>Find your favorite pet</TytleNwes>
-      <SearchForm className="search-form">
+      <SearchForm 
+       onSubmit = {searchByCategory}
+       className="search-form">
           <SearchInput 
           onChange={(e)=> dispatch(setFilterNotices(e.target.value))}
           type="text" 
@@ -29,7 +31,7 @@ export default function NoticesSearch({search}) {
           value={filter}
           placeholder="Search"
            />
-          <FormButton onClick = {searchByCategory}>
+          <FormButton >
             <SearchIcon className="search-icon">
               <BsSearch style = { {color: "#54adff"} }/>
             </SearchIcon>

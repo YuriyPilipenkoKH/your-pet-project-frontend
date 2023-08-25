@@ -15,16 +15,16 @@ const {userId}  = useAuth()
 
 //===========================
 const { 
-        title, 
-        photo, 
-        sex,
-        place,
-        name,
-        owner,
-        petAvatarURL,
-        location,
-        category,
-        birthday   } = item
+  title, 
+  photo, 
+  sex,
+  owner,
+  // place,
+  // name,
+  // petAvatarURL,
+  location,
+  category,
+  birthday   } = item
 const [showModal, setShowModal] = useState(false);
 const [modals, setModals] = useState(modal1)
 const {isLoggedIn} = useAuth()

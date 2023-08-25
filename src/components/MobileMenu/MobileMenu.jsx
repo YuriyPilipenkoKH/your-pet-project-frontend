@@ -16,7 +16,7 @@ import { toggleSell } from 'redux/sort/sortSlice';
 
 export  const MobileMenu = ({ isOpen, onClose }) => {
 
-const {isLoggedIn} = useAuth()
+const {isLoggedIn, userId} = useAuth()
   const name = useSelector(authSelectors.getUsername);
    const dispatch = useDispatch();
    const signOut = () => {
@@ -29,7 +29,7 @@ const {isLoggedIn} = useAuth()
   return (
     <MenuWrapp className= {isOpen ? ['menu', 'active'].join(' ') : 'menu'} >
             <MenuHeader className='MenuHeader'>
-                <StyledLogo to="/" onClick={()=>console.log(name)}  >{iconLogo}</StyledLogo>
+                <StyledLogo to="/" onClick={()=>console.log('name', name, 'userId',userId)}  >{iconLogo}</StyledLogo>
                <CloseButton onClick={onClose} ><RxCross2/></CloseButton>
             </MenuHeader>
         <MenuContent className='MenuContent'>

@@ -162,7 +162,11 @@ export const SearchForm = styled.form`
         background-color: transparent;
         position: absolute;
         top: 2px;
-        right: 0;
+        right: 10px;
+
+        &>span>svg {
+          scale: 1.5;
+        }
     }
 `;
 export const SearchIcon = styled.span`
