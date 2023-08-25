@@ -11,7 +11,7 @@ import { getNoticesList } from 'redux/notices/notices-selectors'
 import { useDispatch, useSelector } from 'react-redux';
 import noticesOperations from "../redux/notices/notices-operations"
 import { getNoticesFilter } from 'redux/filter/filterSelectors'
-
+import { activeIndex } from 'redux/sort/sortSelectors'
 
 
 export default function NoticesPage() {
@@ -20,13 +20,17 @@ export default function NoticesPage() {
   const dispatch = useDispatch();
   const noticesList = useSelector(getNoticesList)
   const filterValue = useSelector(getNoticesFilter)
-  
+  const currentIndex =   useSelector(activeIndex)
+ 
+    console.log('noticesList',noticesList)
+    console.log('filterValue',filterValue)
+    console.log('currentIndex',currentIndex)
 
 
 useEffect(() => {
   dispatch(noticesOperations.fetchAllNotices())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       // setNotices(data);
     })
     .catch((error) => {
@@ -44,7 +48,7 @@ useEffect(() => {
       <NoticeContainer className="notice-container">
       {noticesList.map((item, index) => (
        
-       <MainCard
+       <MainCard 
          key={index}
          title ={ item.title}
          photo ={ item.petFotoURL}
