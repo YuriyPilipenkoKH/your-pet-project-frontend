@@ -10,7 +10,7 @@ import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 
 
 
-export const MainCard = ({title, photo, sex, place, name,category} ) => {
+export const MainCard = ({title, photo, sex, place, name, category} ) => {
 
 //===========================
 const [showModal, setShowModal] = useState(false);
