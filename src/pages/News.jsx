@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { NewsCard } from '../components/News/NewsCard';
+import { useDispatch, useSelector } from 'react-redux';
 import news from '../utils/json/news.json';
 import {
     ListButtonForPagination,
@@ -17,8 +18,12 @@ import {
 import { StyledLink } from '../components/Button/Button.styled';
 import { FormButton } from 'components/Button/Button';
 import { iconRowLeft } from 'images/icons';
+import { setFilterNews } from 'redux/filter/filterSlice';
+import { getNewsFilter } from 'redux/filter/filterSelectors';
 
 export const NewsPage = () => {
+    const dispatch = useDispatch()
+  const filter = useSelector(getNewsFilter)
     const [active, setActive] = useState(1);
     const [itemOffset, setItemOffset] = useState(0);
     const cardsPerPage = 6;
@@ -93,23 +98,24 @@ export const NewsPage = () => {
     };
     return (
         <NewsWrapper>
-            <SearchWrapper>
-                <StyledLink to="/test" style={{ background: 'transparent' }}>
-                    <TytleNwes>News</TytleNwes>
-                </StyledLink>
-                <SearchForm className="search-form">
-                    <SearchInput
-                        type="text"
-                        name="search"
-                        placeholder="Search"
-                    />
-                    <FormButton>
-                        <SearchIcon className="search-icon">
-                            <BsSearch style={{ color: '#54adff' }} />
-                        </SearchIcon>
-                    </FormButton>
-                </SearchForm>
-            </SearchWrapper>
+      <SearchWrapper>
+        <StyledLink to="/test" style={{background: 'transparent'}}>
+        <TytleNwes>News</TytleNwes>
+        </StyledLink>
+        <SearchForm className="search-form">
+          <SearchInput 
+           onChange={(e) => dispatch(setFilterNews(e.target.value))}
+          type="text" 
+          value={filter}
+          name="search" 
+          placeholder="Search" />
+          <FormButton >
+            <SearchIcon className="search-icon">
+              <BsSearch style = { {color: "#54adff"} } />
+            </SearchIcon>
+          </FormButton>
+        </SearchForm>
+      </SearchWrapper>
             <NewsContainer className="NewsContainer">
                 {currentItems.map((item, index) => (
                     <NewsCard

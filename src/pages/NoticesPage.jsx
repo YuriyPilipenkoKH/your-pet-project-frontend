@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom'
 import { getNoticesList } from 'redux/notices/notices-selectors'
 import { useDispatch, useSelector } from 'react-redux';
 import noticesOperations from "../redux/notices/notices-operations"
+import { getNoticesFilter } from 'redux/filter/filterSelectors'
 
 
 
@@ -17,8 +18,9 @@ export default function NoticesPage() {
   const location = useLocation();
 
   const dispatch = useDispatch();
-const noticesList = useSelector(getNoticesList)
-
+  const noticesList = useSelector(getNoticesList)
+  const filterValue = useSelector(getNoticesFilter)
+  
 
 
 useEffect(() => {
@@ -45,6 +47,11 @@ useEffect(() => {
        <MainCard
          key={index}
          title ={ item.title}
+         photo ={ item.petFotoURL}
+         sex ={ item.sex}
+         category ={ item.category}
+         name ={ item.name}
+         place ={ item.place}
           />
         ))}
       </NoticeContainer>

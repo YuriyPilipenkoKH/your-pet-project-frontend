@@ -170,13 +170,19 @@ export const SearchIcon = styled.span`
 `;
 
 export const SearchInput = styled.input`
-    width: 280px;
-    height: 44px;
-    font-size: 16px;
-    padding: 0 30px;
-    border: 1px solid var(--blue);
-    border-radius: 50px;
-    color: var(--blue);
+  width: 280px;
+  height: 44px;
+  font-size: 16px;
+  padding: 0 30px;
+  border: 1px solid var(--blue);
+  border-radius:50px;
+  color: var(--grey);
+
+  &::placeholder {
+    font-size: 14px;
+    line-height: 16.94px;
+    
+  }
 
     &::placeholder {
         font-size: 14px;

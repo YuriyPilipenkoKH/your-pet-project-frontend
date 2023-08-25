@@ -42,7 +42,7 @@ export const SearchInput = styled.input`
   border: 1px solid var(--blue);
   border-radius:50px;
   
-  color: var(--blue);
+  color: var(--grey);
   &::placeholder {
     font-size: 14px;
     line-height: 16.94px;

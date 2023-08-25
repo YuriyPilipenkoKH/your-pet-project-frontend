@@ -10,7 +10,7 @@ import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 
 
 
-export const MainCard = ({title} ) => {
+export const MainCard = ({title, photo, sex, place, name,category} ) => {
 
 //===========================
 const [showModal, setShowModal] = useState(false);
@@ -42,14 +42,14 @@ const onLearnMore = () => {
 
 return(
     <CardWrapper>
-      <ImgWrapper>
-        <CategoryWrapp className='category'> {'In good hands'} </CategoryWrapp>
+      <ImgWrapper  photo ={photo}>
+        <CategoryWrapp className='category'> {category} </CategoryWrapp>
         <FavButton className='fav' onClick = {checkRoute}> {iconHeart}</FavButton>
         {isLoggedIn && <FavButton className='del'> {iconTrash}</FavButton>}
 
-        <Tab className="tab1" text= {'Ivano'} icon = {iconMap}  ></Tab>
+        <Tab className="tab1" text= {'Ivano '} icon = {iconMap}  ></Tab>
         <Tab className='tab2' text= {'1 year'} icon = {iconClock }  ></Tab>
-        <Tab className='tab3' text= {'female'} icon = {iconFem}  ></Tab>
+        <Tab className='tab3' text= {sex} icon = {iconFem}  ></Tab>
     
 
       </ImgWrapper>

@@ -18,13 +18,16 @@ const initialState = {
     error: null,
     token: null,
     isLoggedIn: false,
-    isRefreshing: false,
+    isRefreshing: true,
   };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  
+  reducers: {
+    // ... other reducers
+
+  },
   extraReducers:builder=> {
     builder
     // register
@@ -32,8 +35,6 @@ const authSlice = createSlice({
       state.isLoading = true;
         state.error = null;
     })
-
-   
       
 
     .addCase(authOperations.register.fulfilled,(state, action)=>{
@@ -61,7 +62,7 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.user.favorite = action.payload.user.favorite;
-
+      state.isRefreshing =false;
     
     })
     .addCase(authOperations.logIn.rejected, (state, action) => {
@@ -80,8 +81,7 @@ const authSlice = createSlice({
       // console.log(action);
       state.isLoading = false;
       state.user = action.payload;
-      state.registrationSuccessful = true;
-      
+           
       state.isLoggedIn = true;
       state.error = null
       state.isRefreshing =false;
@@ -107,6 +107,9 @@ const authSlice = createSlice({
       state.token = null;
       state.isLoggedIn = false;
       state.user.favorite = [];
+      state.isRefreshing =true;
+
+      
     })
     .addCase(authOperations.logOut.rejected, (state, action) => {
       state.isLoading = false;

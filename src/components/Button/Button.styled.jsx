@@ -369,8 +369,6 @@ ${gridBtnStyles}
 
 `
 
-
-
 export const StyledLink = styled(NavLink)`
 ${buttonStyles} 
  ${ripple} 
@@ -392,7 +390,7 @@ fill: var(--white);
 
   &.active {
     color: #eee;
-    background-color: var(--green);
+  
   }
 `;
 

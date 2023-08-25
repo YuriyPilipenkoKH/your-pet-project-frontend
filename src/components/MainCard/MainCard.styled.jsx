@@ -73,7 +73,7 @@ export const ImgWrapper = styled.div`
 
     &>.category{
       grid-area: top;
-      max-width: 130px;
+      width: 130px;
       justify-self: start;
     }
     &>.fav{
@@ -101,6 +101,15 @@ export const ImgWrapper = styled.div`
       grid-area: t3;
     }
 
+    &>.tab1,  &>.tab2,  &>.tab3 {
+
+      /* overflow: hidden; */
+      white-space: nowrap; 
+      text-overflow: ellipsis;
+    }
+
+
+
     
     width: 280px;
     height: 288px;
@@ -116,8 +125,11 @@ export const ImgWrapper = styled.div`
     
     width: 288px;
 }
-
-    background-image: url("${bgImgM}");
+    /* height: ${props => props.photo} ; */
+    /* background-image: url(${props => props.photo}); */
+    background-image: url('${bgImgM}');
+    background-size: cover;
+    background-position: center;  
  
 
   @media (min-device-pixel-ratio: 2),
@@ -129,6 +141,7 @@ export const ImgWrapper = styled.div`
    
     
     background-image: url('${bgImgT}');
+    
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -156,6 +169,8 @@ export const CardTitle = styled.div`
     padding: 0 20px;
     height: 66px;
     overflow: hidden;
+    text-overflow: ellipsis;
+    /* white-space: nowrap;  */
 
 
 `
