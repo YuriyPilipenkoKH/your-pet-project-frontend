@@ -22,24 +22,25 @@ import { setFilterNews } from 'redux/filter/filterSlice';
 import { getNewsFilter } from 'redux/filter/filterSelectors';
 
 export const NewsPage = () => {
-    const dispatch = useDispatch()
-  const filter = useSelector(getNewsFilter)
+    const dispatch = useDispatch();
+    const filter = useSelector(getNewsFilter);
     const [active, setActive] = useState(1);
     const [itemOffset, setItemOffset] = useState(0);
     const cardsPerPage = 6;
     const endOffset = itemOffset + cardsPerPage;
-    const currentItems = news.slice(itemOffset, endOffset);
     const [numButtons, setNumButtons] = useState(5);
 
+    // Функція фільтрації новин
     const filteredNews = () => {
-      const normalized = filter.toLowerCase();
-       const filteredTitles = news.filter(item =>
-               item.title.toLowerCase().includes(normalized)
-      );
-      
-      return [...filteredTitles]
-  };
+        const normalized = filter.toLowerCase();
+        return news.filter(item =>
+            item.title.toLowerCase().includes(normalized)
+        );
+    };
 
+    // Отримання списку новин після фільтрації
+    const newsSearch = filteredNews();
+    const currentItems = newsSearch.slice(itemOffset, endOffset);
 
     useEffect(() => {
         const handleResize = () => {
@@ -59,78 +60,100 @@ export const NewsPage = () => {
         };
     }, []);
 
+    // Ефект, який оновлює стан компонента при зміні фільтру або сторінки
+    useEffect(() => {
+        // Ваша логіка оновлення стану тут
+        // Наприклад, обчислення totalPages та оновлення active
+        if (newsSearch.length > 0) {
+            const totalPages = Math.ceil(newsSearch.length / cardsPerPage);
+
+            let start = active - 2;
+            let end = active + 2;
+
+            if (active < 3) {
+                start = 1;
+                end = numButtons;
+            } else if (active > totalPages - 2) {
+                start = totalPages - numButtons + 1;
+                end = totalPages;
+            }
+
+            // Перевірка, чи активна сторінка в діапазоні totalPages
+            if (active < 1) setActive(1);
+            if (active > totalPages) setActive(totalPages);
+        }
+
+    }, [filter, itemOffset, newsSearch, cardsPerPage, numButtons, active]);
+
+    // Обробники сторінок
     const handlePageClick = selectedPage => {
         const newOffset = selectedPage * cardsPerPage;
         setItemOffset(newOffset);
         setActive(selectedPage + 1);
     };
 
-    const pageButtons = [];
-    const totalPages = Math.ceil(news.length / cardsPerPage);
-
-        let start = active - 2;
-        let end = active + 2;
-
-        if (active < 3) {
-            start = 1;
-            end = numButtons;
-        } else if (active > totalPages - 2) {
-            start = totalPages - numButtons + 1;
-            end = totalPages;
-        }
-
-        for (let i = start; i <= end; i++) {
-            pageButtons.push(
-                <PaginationButton
-                    key={i}
-                    onClick={() => handlePageClick(i - 1)}
-                    currentButton={i}
-                    active={active}
-                >
-                    {i}
-                </PaginationButton>
-            );
-        }
-    
-
     const handlePrevPage = () => {
         if (itemOffset > 0) {
             setItemOffset(itemOffset - cardsPerPage);
-            setActive(active - 1)
+            setActive(active - 1);
         }
     };
 
     const handleNextPage = () => {
-        if (itemOffset + cardsPerPage < news.length) {
+        if (itemOffset + cardsPerPage < newsSearch.length) {
             setItemOffset(itemOffset + cardsPerPage);
-            setActive(active + 1)
+            setActive(active + 1);
         }
     };
 
+    // Побудова кнопок сторінок на основі стану numButtons
+    const totalPages = Math.ceil(newsSearch.length / cardsPerPage);
+    let start = active - 2;
+    let end = active + 2;
 
+    if (active < 3) {
+        start = 1;
+        end = numButtons;
+    } else if (active > totalPages - 2) {
+        start = totalPages - numButtons + 1;
+        end = totalPages;
+    }
 
+    const pageButtons = [];
+    for (let i = start; i <= end; i++) {
+        pageButtons.push(
+            <PaginationButton
+                key={i}
+                onClick={() => handlePageClick(i - 1)}
+                currentButton={i}
+                active={active}
+            >
+                {i}
+            </PaginationButton>
+        );
+    }
 
-  return (
-    <NewsWrapper>
-
-      <SearchWrapper>
-        <StyledLink to="/test" style={{background: 'transparent'}}>
-        <TytleNwes>News</TytleNwes>
-        </StyledLink>
-        <SearchForm className="search-form">
-          <SearchInput 
-           onChange={(e) => dispatch(setFilterNews(e.target.value))}
-          type="text" 
-          value={filter}
-          name="search" 
-          placeholder="Search" />
-          <FormButton >
-            <SearchIcon className="search-icon">
-              <BsSearch style = { {color: "#54adff"} } />
-            </SearchIcon>
-          </FormButton>
-        </SearchForm>
-      </SearchWrapper>
+    return (
+        <NewsWrapper>
+            <SearchWrapper>
+                <StyledLink to="/test" style={{ background: 'transparent' }}>
+                    <TytleNwes>News</TytleNwes>
+                </StyledLink>
+                <SearchForm className="search-form">
+                    <SearchInput
+                        onChange={e => dispatch(setFilterNews(e.target.value))}
+                        type="text"
+                        value={filter}
+                        name="search"
+                        placeholder="Search"
+                    />
+                    <FormButton>
+                        <SearchIcon className="search-icon">
+                            <BsSearch style={{ color: '#54adff' }} />
+                        </SearchIcon>
+                    </FormButton>
+                </SearchForm>
+            </SearchWrapper>
 
             <NewsContainer className="NewsContainer">
                 {currentItems.map((item, index) => (
@@ -144,7 +167,7 @@ export const NewsPage = () => {
                     />
                 ))}
             </NewsContainer>
-            <PaginationWrapper>
+            {newsSearch.length > 0 && <PaginationWrapper>
                 <PaginationButton
                     style={{
                         display: 'flex',
@@ -171,10 +194,7 @@ export const NewsPage = () => {
                 >
                     {iconRowLeft}
                 </PaginationButton>
-            </PaginationWrapper>
+            </PaginationWrapper>}
         </NewsWrapper>
     );
-
-    
-
 };
