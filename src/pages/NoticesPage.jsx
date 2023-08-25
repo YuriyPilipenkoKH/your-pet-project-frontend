@@ -91,6 +91,7 @@ useEffect(() => {
          category ={ item.category}
          name ={ item.name}
          place ={ item.place}
+         birthday ={ item.birthday}
           />
         ))}
       </NoticeContainer>
