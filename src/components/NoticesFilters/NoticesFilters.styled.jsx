@@ -45,7 +45,7 @@ export const DropdownMenu = styled.div`
   flex-direction: column;
   gap: 8px;
   width: 152px;
-  height: 120px;
+  /* height: 120px; */
   border-radius: 20px;
   background-color: var(--white);
   padding:  8px;
@@ -71,12 +71,18 @@ export const FiltersBtn = styled.div`
   padding:0 16px;
   font-size: 12px;
   color: var(--blue);
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  
+  &>span{
+    width: 100%;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
 
-  &>svg{
-  width: 12px;
+  }
+
+  &>span>svg{
+  width: 18px;
   fill: var(--blue);
   }
 

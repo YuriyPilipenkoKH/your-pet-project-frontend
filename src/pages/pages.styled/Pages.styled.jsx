@@ -297,6 +297,7 @@ export const Notfound = styled.div`
 `;
 
 export const CommonWrapper = styled.div`
+    min-height: 600px;
     display: grid;
     gap: 24px;
 `;

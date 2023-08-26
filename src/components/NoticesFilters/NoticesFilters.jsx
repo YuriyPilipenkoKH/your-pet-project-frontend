@@ -11,6 +11,9 @@ import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 export default function NoticesFilters({ state }) {
     const [showModal, setShowModal] = useState(false);
     const [modals, setModals] = useState(modal1)
+    const [showFilters, setShowFilters] = useState(false)
+    const [big1, setBig1] = useState(false)
+    const [big2, setBig2] = useState(false)
     const {isLoggedIn} = useAuth()
     const navigate = useNavigate()
 
@@ -31,24 +34,37 @@ export default function NoticesFilters({ state }) {
          }   
     }
 
+    const expandFilter =() => {
+        
+    }
     return (
         <>
         <FilterWrapper className="NoticesFilters" >
-            <ButtonTransparent className= "FilterBtn" >
+            <ButtonTransparent 
+             onClick = {() => setShowFilters(!showFilters)}
+            className= "FilterBtn" >
                 Filter {iconFilter}
             </ButtonTransparent>
-           <FavButton  className='filround'> {iconFilter}</FavButton>
+           <FavButton 
+           onClick = {() => setShowFilters(!showFilters)}
+            className='filround'> {iconFilter}</FavButton>
 
             <AddToButton onClick = {checkRoute}  >
 
                 Add Pet <AiOutlinePlus />
             </AddToButton>
-        <DropdownMenu>
+        {showFilters && <DropdownMenu>
             <h3>Filters</h3>
-            <FiltersBtn> {arrowD}  By age</FiltersBtn>
-            <FiltersBtn> {arrowD} By gender</FiltersBtn>
 
-        </DropdownMenu>
+            <FiltersBtn  >
+                 <span onClick= {() => setBig1(!big1)} > {arrowD} By age</span></FiltersBtn>
+                 <div>
+                    
+                 </div>
+            <FiltersBtn >
+               <span onClick= {() => setBig2(!big2)}> {arrowD} By gender</span></FiltersBtn>
+
+        </DropdownMenu>}
         </FilterWrapper>
             {showModal && (
               <ModalPopup {...modals} onClose ={onModalClose}  /> //  onClose ={onModalClose}   {...modal1} 

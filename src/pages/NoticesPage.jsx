@@ -74,7 +74,7 @@ useEffect(() => {
 }, [dispatch]);
   
   return (
-    <CommonWrapper>
+    <CommonWrapper className='CommonWrapper'>
     <NoticesSearch search = {{searchParams}}/>
       <NoticesPageWrap >
          <NoticesCategoriesNav/>
