@@ -30,6 +30,7 @@ export const MainCard = ({
     birthday,
     id,
 }) => {
+  
     const { userId } = useAuth();
     // const [shouldReload, setShouldReload] = useState(false);
     const dispatch = useDispatch();
@@ -147,6 +148,7 @@ export const MainCard = ({
                     icon={sex === 'male' ? iconMan : iconFem}
                 ></Tab>
             </ImgWrapper>
+            {/* <img src={petAvatarURL} style={{width: '200px'}}/> */}
 
             <CardTitle> {title} </CardTitle>
             <ButtonTransparent onClick={onLearnMore}>

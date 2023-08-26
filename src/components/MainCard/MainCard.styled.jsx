@@ -115,6 +115,7 @@ export const ImgWrapper = styled.div`
 
 }      
    background-image: url(${props => props.photo});
+   /* background-image: url(${'bgImgM'}); */
        background-size: cover;
     background-position: center;  
  

@@ -95,7 +95,7 @@ export default function NoticesPage() {
                         key={index}
                         index={index}
                         title={item.title}
-                        photo={item.photo}
+                        petAvatarURL={item.petAvatarURL}
                         sex={item.sex}
                         owner={item.owner}
                         idUsersAddedFavorite={item.idUsersAddedFavorite}
