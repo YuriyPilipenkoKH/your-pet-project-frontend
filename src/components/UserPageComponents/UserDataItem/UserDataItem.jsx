@@ -78,36 +78,6 @@ const UserDataItem = ({
                 </ErrorMessage>
             </FormItem>
         </FormWrapper>
-
-        // <FormWrapper>
-        //     <FormItem>
-        //         <InputName>{label}</InputName>
-        //         <FormLabel htmlFor={id}></FormLabel>
-        //         {/* <FormLabel></FormLabel> */}
-        //         <EditInpuButton
-        //             type="button"
-        //             //on click
-        //         >
-        //             <EditIc />
-        //         </EditInpuButton>
-        //         <FormInput
-        //             autoComplete="off"
-        //             // id={id}
-        //             name={name}
-        //             // on change
-        //             onBlur={formik.handleBlur}
-        //             value={formik.values[name]}
-        //             // active or not
-        //             touched={
-        //                 formik.touched[name]
-        //                     ? formik.touched[name].toString()
-        //                     : ''
-        //             }
-        //             error={formik.errors[name]}
-        //             {...props}
-        //         />
-        //     </FormItem>
-        // </FormWrapper>
     );
 };
 
