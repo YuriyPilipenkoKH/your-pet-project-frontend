@@ -73,7 +73,7 @@ export default function NoticesFilters({ state }) {
         </DropdownMenu>}
         </FilterWrapper>
             {showModal && (
-              <ModalPopup {...modals} onClose ={onModalClose}  /> 
+              <ModalPopup {...modals} onClose ={onModalClose} isOpen={showModal}   /> 
              )}
         </>
     )}

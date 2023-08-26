@@ -98,7 +98,7 @@ return(
       <CardTitle>  {title} </CardTitle>
       <ButtonTransparent  onClick={onLearnMore} >Learn more</ButtonTransparent>
       {showModal && (
-       <ModalPopup {...modals} onClose ={onModalClose} checkRoute ={checkRoute} isOpen={showModal}  /> //  onClose ={onModalClose}   {...modal1} 
+       <ModalPopup {...modals} onClose ={onModalClose} checkRoute ={checkRoute} isOpen={showModal}  />
    )}
     </CardWrapper>
 )
