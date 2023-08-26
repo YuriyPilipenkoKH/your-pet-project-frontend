@@ -316,7 +316,7 @@ export const StyleAddToButton = styled.button`
     }
 `;
 
-export const StyledContactButton = styled.button`
+export const StyledContactButton = styled(NavLink)`
     ${buttonStyles};
     ${ripple};
     ${hoverStylesTrB};

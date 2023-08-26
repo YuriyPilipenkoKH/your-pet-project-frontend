@@ -6,7 +6,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineLogout} from "react-icons/md";
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BtnContainer,  BtnContainer3,  ContentWrapp,  ModalCategory,  ModalContainer, ModalContainer3, ModalImage, ModalOverlay, ModalText, ModalTitle, ModalTitle3, OnCloseButton, PetList } from './ModalPopup.styled';
-import { Button, ButtonTransparent, OutButton } from '../Button/Button';
+import { Button, ButtonTransparent, ContactButton, OutButton } from '../Button/Button';
 import noticesOperations from '../../redux/notices/notices-operations'
 import { setModalClose, setModalOpen } from 'redux/modal/modalSlice';
 import { useAll } from 'hooks/useAll';
@@ -153,7 +153,7 @@ if (type === 3){
         </ContentWrapp>
 
         <BtnContainer3 style={{marginTop: 'auto'}}>
-          {btn1}
+        <ContactButton to="mailto:alex@gmail.com" >Contact</ContactButton>
           <Button  onClick ={checkRoute}>Add to <FaRegHeart/> </Button>
         </BtnContainer3>
         <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
