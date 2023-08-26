@@ -142,7 +142,6 @@ export const MainCard = ({
                     icon={sex === 'male' ? iconMan : iconFem}
                 ></Tab>
             </ImgWrapper>
-            {/* <img src={petAvatarURL} style={{width: '200px'}}/> */}
 
             <CardTitle> {title} </CardTitle>
             <ButtonTransparent onClick={onLearnMore}>

@@ -141,10 +141,10 @@ if (type === 3){
         <ContentWrapp>
           <ModalTitle3 >{title}</ModalTitle3>
           <PetList>
-            <p>Name:</p> {name}
+            <p>Name:</p> <span>{name} </span> 
             <p>Birthday:</p> {birthday}
-            <p>Type:</p>  {animal}
-            <p>Place:</p>  {location}
+            <p>Type:</p>  <span>{animal}</span>
+            <p>Place:</p> <span>  {location} </span>
             <p>The sex:</p>  {sex}
             <p className='userContact'>Email:</p> <span> <a href='mailto:alex@gmail.com'> {'alex@gmail.com'}</a> </span> 
             <p className='userContact'>Phone:</p> <span> <a href='tel:+380971234567'>{'+380971234567'}</a> </span> 
