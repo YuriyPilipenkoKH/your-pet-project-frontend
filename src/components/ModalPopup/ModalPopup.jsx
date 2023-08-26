@@ -10,6 +10,9 @@ import { Button, ButtonTransparent, OutButton } from '../Button/Button';
 import noticesOperations from '../../redux/notices/notices-operations'
 import { setModalClose, setModalOpen } from 'redux/modal/modalSlice';
 import { useAll } from 'hooks/useAll';
+import { toggleSell } from 'redux/sort/sortSlice';
+import { authOperations, authSelectors } from "redux/auth";
+
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -79,6 +82,13 @@ useEffect(() => {
     dispatch(setModalClose())
     onClose()
 
+  }
+
+  const exit = () => {
+     dispatch(toggleSell())
+     dispatch(setModalClose())
+     dispatch(authOperations.logOut())
+    onClose()
   }
 
 
@@ -159,7 +169,7 @@ if (type === 5 ){
         <ModalTitle>{title}</ModalTitle>
         <BtnContainer {...props}>
            <ButtonTransparent onClick={shut}>Cacel</ButtonTransparent>
-           <OutButton  to="/" exact="true" onClick={shut}>  Yes <MdOutlineLogout/> </OutButton>
+           <OutButton  to="/" exact="true" onClick={exit}>  Yes <MdOutlineLogout/> </OutButton>
         </BtnContainer >
         <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
       </ModalContainer>
