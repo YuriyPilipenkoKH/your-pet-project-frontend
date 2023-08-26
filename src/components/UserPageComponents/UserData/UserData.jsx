@@ -14,13 +14,18 @@ import { useDispatch } from 'react-redux';
 import avatarDefault2x from '../../../images/Photo_default@2x.jpg';
 import UserDataForm from '../UserDataForm/UserDataForm';
 import { ReactComponent as Camera } from '../../../images/userPageIcons/camera.svg';
+// import { date } from 'yup';
 
 const UserData = () => {
-    let user = {
+    const [user, setUser] = useState({
+        _id: '3444542njnj54khbhb45bhk',
         name: 'Taras',
         email: 'Taras@gmail.com',
-        avatarURL: '//www.gravatar.com/avatar/1aedb8ddc4751e229a335e371db805',
-    };
+        avatarURL: '//www.gravatar.com/avatar/1aeb8d9dc4751e229a335e371db8058',
+        birthday: '23-11-2023',
+        phone: '+380123456789',
+        location: 'Lviv',
+    }); 
 
     const [edit, setEdit] = useState(false);
     const [petPhoto, setFileInput] = useState('');
@@ -34,8 +39,10 @@ const UserData = () => {
         setEdit(false);
         // setFileInput(false);      
         const newAvatar = URL.createObjectURL(petPhoto);
-        // dispatch(changeUser(newAvatar))    
-        console.log(newAvatar); 
+        // dispatch(changeUser(newAvatar))  
+        ////////////////////////
+        // console.log(newAvatar); 
+        /////////////////////////
     };
 
     const handleCancelAvatar = e => {
@@ -53,6 +60,24 @@ const UserData = () => {
 
     const handleEditBtn = () => {
         document.getElementById('petPhoto').click();
+    };
+
+    const handleChangeData = data => {
+        const updatedData = Object.fromEntries(
+            Object.entries(data)
+                .map(([key, value]) => {
+                    if (value !== '') {
+                        return [key, value];
+                    }
+                    return null;
+                })
+                .filter(Boolean)
+        );
+        //////////////////////////////////////////////
+        // console.log('changing user data', updatedData)
+        setUser(updatedData)
+        ///////////////////////////////////////////////
+        // dispatch(changeUser(updatedData));
     };
 
     return (
@@ -129,7 +154,7 @@ const UserData = () => {
                     </StylizedForm>
                 )}
             </Formik>
-            <UserDataForm />
+            <UserDataForm user={user} onSubmit={handleChangeData} />
         </UserInfo>
     );
 };
