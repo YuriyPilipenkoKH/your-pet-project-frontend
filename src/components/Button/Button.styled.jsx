@@ -142,7 +142,7 @@ cursor: pointer;
 `
 
 export const StyledButton = styled.button.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet' && prop !== 'stepNumber',
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet' && prop !== 'stepNumber' && prop !== 'addPetMoreInformation',
 })`
     ${buttonStyles};
     ${ripple};
@@ -153,8 +153,9 @@ export const StyledButton = styled.button.withConfig({
     width: ${({ addPet }) => addPet && '100%'};
 
     @media screen and (min-width: 768px) {
-      width: ${({ addPet, stepNumber }) => addPet && '68%'};
+      width: ${({ addPet }) => addPet && '68%'};
       width: ${({ stepNumber }) => stepNumber > 1 && '72%'};
+      width: ${({ addPetMoreInformation }) => addPetMoreInformation && '38%'};
   }
 
 
@@ -297,7 +298,7 @@ export const StyleAddToButton = styled.button`
     @media screen and ( max-width: 767px ) {
       position: fixed;
       left: 60%;
-      bottom: 60px;
+      bottom: 200px;
 
       width: 80px;
       height: 80px;
@@ -306,7 +307,7 @@ export const StyleAddToButton = styled.button`
       flex-direction: column-reverse;
       font-size: 12px;
       gap: 12px;
-      z-index: 12;
+      z-index: 5;
 
       &>svg{
         scale: 2;
@@ -368,8 +369,6 @@ ${gridBtnStyles}
 
 `
 
-
-
 export const StyledLink = styled(NavLink)`
 ${buttonStyles} 
  ${ripple} 
@@ -391,7 +390,7 @@ fill: var(--white);
 
   &.active {
     color: #eee;
-    background-color: var(--green);
+  
   }
 `;
 

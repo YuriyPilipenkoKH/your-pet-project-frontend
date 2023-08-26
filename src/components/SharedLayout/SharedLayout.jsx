@@ -43,7 +43,7 @@ export const SharedLayout = () => {
       <LayoutWrap className="layoutWrap">
         <StyledLogo to="/">{isMobile ? iconLogo : iconLogoBig}</StyledLogo>
         <Nav/>
-        <AuthNavWrap>
+        <AuthNavWrap className="AuthNavWrap">
         {isLoggedIn ?<UserNav/>  : <AuthNav/>}
           
           <ButtonBurger onClick={toggleMenu}><RxHamburgerMenu/></ButtonBurger> 

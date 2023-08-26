@@ -11,7 +11,7 @@ export const MenuWrapp = styled.div`
   bottom: 0;
   width: 100%;
   height: 100vh;
-  z-index: 2;
+  z-index: 22;
   background-color: var(--fone-color);
   transition: left 1s;
   padding: 25px;
@@ -27,7 +27,8 @@ export const MenuWrapp = styled.div`
 `
 export const MenuHeader = styled.div`
     position: relative;
-    width: 320px;
+    
+    width: 100%;
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
@@ -46,6 +47,9 @@ export const MenuContent = styled.div`
     padding: 40px;
     gap: 40px;
 
+@media screen and (max-width: 319px) {
+                padding: 40px 4px;
+            }
 
 
     &>.AuthNav,
@@ -66,14 +70,14 @@ export const MenuContent = styled.div`
         &>a{
             font-size: 32px;
             font-weight: 500;
+            @media screen and (max-width: 319px) {
+                font-size: calc(0.7vw + 1.2rem );
+            }
+
             @media screen and (min-width: 768px) {
                 font-size: 48px;
             }
 
-            &:hover{
-                color: var(--yellow);
-                font-weight: 700px;
-            }
         }
     }
 
@@ -103,7 +107,22 @@ export const MenuContent = styled.div`
     } */
     
   } 
+     &>.logout{
+        position: absolute;
+        bottom: 20px;
+        right: 50%;
+        @media screen and (min-width: 768px) {
+            top: 25px;
+            left: 64%;
+        }
 
+     }
+
+     &>.useravatar {
+        @media screen and (min-width: 768px) {
+            display: none;
+     }
+     }
 
 `
 

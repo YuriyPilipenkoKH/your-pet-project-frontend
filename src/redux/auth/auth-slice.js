@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { authOperations } from '.';
+import  authOperations  from './auth-operations';
+
 
 
 const initialState = {
@@ -17,74 +18,94 @@ const initialState = {
     error: null,
     token: null,
     isLoggedIn: false,
-    isRefreshing: false,
+    isRefreshing: true,
   };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  
+  reducers: {
+    // ... other reducers
+
+  },
   extraReducers:builder=> {
     builder
     // register
     .addCase(authOperations.register.pending,(state)=>{
       state.isLoading = true;
         state.error = null;
+        // state.isRefreshing = true;
     })
-    .addCase(authOperations.register.fulfilled,(state, {payload})=>{
-      const { user, accessToken } = payload;
+      
+
+    .addCase(authOperations.register.fulfilled,(state, action)=>{
       state.isLoading = false;
-      state.user = user;
+      state.user = action.payload.user;
       state.registrationSuccessful = true;
-      state.token = accessToken;
+      state.token = action.payload.token;
       state.isLoggedIn = true;
       state.error = null
+      // state.isRefreshing =false;
     })
-    .addCase(authOperations.register.rejected, (state, { payload }) => {
+    .addCase(authOperations.register.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = payload;
+      state.error = action.payload;
+      // state.isRefreshing =false;
     })
     // login
     .addCase(authOperations.logIn.pending, (state) => {
       state.isLoading = true;
       state.error = null;
+      // state.isRefreshing = true;
     })
-    .addCase(authOperations.logIn.fulfilled,(state, {payload})=>{
-      const { user, accessToken } = payload;
-        state.isLoading = false;
-        state.user = user;
-        state.token = accessToken;
-        state.isLoggedIn = true;
-        state.user.favorite = user.favorite;
-    })
-    .addCase(authOperations.logIn.rejected, (state, { payload }) => {
+
+    .addCase(authOperations.logIn.fulfilled,(state, action)=>{
+      
       state.isLoading = false;
-      state.error = payload;
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+      state.user.favorite = action.payload.user.favorite;
+      state.isRefreshing = false;
+    
+    })
+    .addCase(authOperations.logIn.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+      // state.isRefreshing =false;
     })
   
     //current
-    .addCase(authOperations.fetchCurrentUser.pending, (state) => {
+    .addCase(authOperations.fetchCurrentUser.pending, (state, action) => {
       state.isLoading = true;
       state.error = null;
+      // state.isRefreshing = true;
+
     })
-    .addCase(authOperations.fetchCurrentUser.fulfilled, (state, { payload }) => {
-      const { favorite } = payload;
+    .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
+      // console.log(action);
       state.isLoading = false;
-      state.registrationSuccessful = false;
-      state.user = payload;
+      state.user = action.payload;
+           
       state.isLoggedIn = true;
-      state.user.favorite = favorite;
+      state.error = null
+      // state.isRefreshing =false;
+      
     })
-    .addCase(authOperations.fetchCurrentUser.rejected, (state, { payload }) => {
+    
+    .addCase(authOperations.fetchCurrentUser.rejected, (state, action) => {
       state.isLoading = false;
-      state.token = "";
-      state.error = payload;
+      state.token = null;
+      state.error = action.payload;
+      // state.isRefreshing =false;
     })
 
     // logout
     .addCase(authOperations.logOut.pending, (state) => {
       state.isLoading = true;
       state.error = null;
+      // state.isRefreshing = true;
+      
     })
     .addCase(authOperations.logOut.fulfilled,(state, action)=>{
       state.isLoading = false;
@@ -93,10 +114,14 @@ const authSlice = createSlice({
       state.token = null;
       state.isLoggedIn = false;
       state.user.favorite = [];
+      state.isRefreshing = true;
+
+      
     })
-    .addCase(authOperations.logOut.rejected, (state, { payload }) => {
+    .addCase(authOperations.logOut.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = payload;
+      state.error = action.payload;
+      // state.isRefreshing = false;
     })
     // fetchUser
 

@@ -2,17 +2,14 @@ import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import bgImgD from '../../images/form-bg-d.png';
-import bgImgD2 from '../../images/form-bg-d@2x.png';
-import bgImgM from '../../images/form-bg-m.png';
-import bgImgM2 from '../../images/form-bg-m@2x.png';
-import bgImgT from '../../images/form-bg-t.png';
-import bgImgT2 from '../../images/form-bg-m@2x.png';
-
 export const Form = styled.div.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet',
+    shouldForwardProp: prop =>
+        isPropValid(prop) &&
+        prop !== 'addPet' &&
+        prop !== 'addPetMoreInformation',
 })`
     padding: 40px 12px;
+    padding: ${({ addPet }) => addPet && '20px 8px'};
     background: #fff;
     border-radius: 40px;
     box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
@@ -22,25 +19,40 @@ export const Form = styled.div.withConfig({
     width: 100%;
     @media screen and (min-width: 320px) {
         width: 280px;
-        padding: ${({ addPet }) => addPet && '20px 8px'};
-        width: ${({ addPet }) => addPet && '280px'};
     }
     @media screen and (min-width: 768px) {
         width: 608px;
         padding: 60px 75px;
         padding: ${({ addPet }) => addPet && '20px 32px'};
         width: ${({ addPet }) => addPet && '458px'};
+        width: ${({ addPetMoreInformation }) =>
+            addPetMoreInformation && '704px'};
+    }
+    @media screen and (min-width: 1280px) {
+        width: 608px;
+        padding: 60px 75px;
+        padding: ${({ addPet }) => addPet && '20px 32px'};
+        width: ${({ addPet }) => addPet && '458px'};
+        padding: ${({ addPetMoreInformation }) =>
+            addPetMoreInformation && '20px 73px'};
+        width: ${({ addPetMoreInformation }) =>
+            addPetMoreInformation && '820px'};
     }
 `;
 
 export const Title = styled.h3.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'chooseOption',
+    shouldForwardProp: prop =>
+        isPropValid(prop) &&
+        prop !== 'chooseOption' &&
+        prop !== 'addPetMoreInformation',
 })`
     font-family: Manrope;
     font-size: 24px;
     line-height: normal;
     color: var(--black);
     font-weight: 500;
+    text-align: ${({ addPetMoreInformation }) =>
+        addPetMoreInformation && 'center'};
     margin-bottom: 20px;
     @media screen and (min-width: 768px) {
         font-size: 36px;
@@ -61,8 +73,8 @@ export const InputForAddPet = styled.input`
     letter-spacing: 0.64px;
     border: 1px solid var(--blue);
     @media screen and (max-width: 768px) {
-        padding: '8px 16px';
-        font-size: '14px';
+        padding: 8px 16px;
+        font-size: 14px;
     }
 
     &:focus {
@@ -103,40 +115,26 @@ export const InputUploadImage = styled.input`
     }
 `;
 
-export const Textarea = styled.textarea`
+export const Textarea = styled.textarea.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'withOutPrice',
+})`
     display: block;
     width: 100%;
-    border-radius: 40px;
+    border-radius: 20px;
     font-family: Manrope;
     padding: 8px 16px;
     color: var(--grey);
     resize: none;
+    height: auto; /* Автоматична висота */
+    min-height: 80px;
     font-size: 16px;
     line-height: 150%;
     letter-spacing: 0.64px;
     border: 1px solid var(--blue);
-    scrollbar-color: var(--blue) transparent; /* Колір повзунка (голубий) і фону скроллу */
-    overflow-y: scroll;
-
-    &::-webkit-scrollbar {
-        width: 5px; /* ширина скроллбара */
-        height: 5px;
-        border-radius: 50px;
-        left: 5px;
-    }
-    &::-webkit-scrollbar-thumb {
-        background-color: var(--green);
-        border-radius: 50px;
-        height: 5px;
-        left: 5px;
-    }
-
-    &::-webkit-scrollbar-track {
-        background-color: transparent; /* Фоновий колір трека скроллбара */
-    }
-
+    overflow-y: hidden;
+    overflow-x: hidden;
     @media screen and (min-width: 768px) {
-        padding: 12px 16px;
+        min-height: ${({ withOutPrice }) => (withOutPrice && "182px")};
     }
 
     &:focus {
@@ -159,6 +157,7 @@ export const ButtonSubmit = styled.button.withConfig({
     cursor: pointer;
     transition: background 500ms;
     margin-bottom: 8px;
+    outline:none;
     @media screen and (min-width: 768px) {
         margin-bottom: ${({ loginButtom }) => (loginButtom ? '20px' : '16px')};
     }
@@ -212,7 +211,8 @@ export const LabelForAdd = styled.label.withConfig({
         isPropValid(prop) &&
         prop !== 'yourPet' &&
         prop !== 'coment' &&
-        prop !== 'image',
+        prop !== 'image' &&
+        prop !== 'addPetMoreInformation',
 })`
     position: relative;
     display: block;
@@ -220,7 +220,9 @@ export const LabelForAdd = styled.label.withConfig({
     margin-bottom: ${({ coment }) => coment && '24px'};
     @media screen and (min-width: 768px) {
         margin-bottom: ${({ yourPet }) => (yourPet ? '40px' : '24px')};
-        margin-bottom: ${({ coment }) => coment && '17px'};
+        margin-bottom: ${({ coment }) => coment && '20px'};
+        margin-bottom: ${({ addPetMoreInformation }) =>
+            addPetMoreInformation && '0px'};
     }
 `;
 
@@ -237,14 +239,17 @@ export const ShowPasswordButton = styled.button`
     @media screen and (min-width: 768px) {
         left: 400px;
     }
-`;
+
+    outline:none;
+ `;
 
 export const TextValidation = styled.p.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet',
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet' && prop !== 'activeSex',
 })`
     position: absolute;
     top: 50px;
     top: ${({ addPet }) => addPet && '101%'};
+    top: ${({ activeSex }) => activeSex && '25%'};
     left: 20px;
     color: var(--red);
     font-size: 12px;
@@ -257,7 +262,10 @@ export const TextValidation = styled.p.withConfig({
 
 export const IconCrossValidate = styled.button.withConfig({
     shouldForwardProp: prop =>
-        isPropValid(prop) && prop !== 'iconPassowrd' && prop !== 'addPet',
+        isPropValid(prop) &&
+        prop !== 'iconPassowrd' &&
+        prop !== 'addPet' &&
+        prop !== 'addPetMoreInformation',
 })`
     position: absolute;
     background-color: transparent;
@@ -274,11 +282,16 @@ export const IconCrossValidate = styled.button.withConfig({
         top: ${({ addPet }) => addPet && '55%'};
         left: ${({ iconPassowrd }) => (iconPassowrd ? '370px' : '400px')};
         left: ${({ addPet }) => addPet && '345px'};
+        left: ${({ addPetMoreInformation }) =>
+            addPetMoreInformation && '350px'};
     }
 `;
 export const IconOkey = styled.svg.withConfig({
     shouldForwardProp: prop =>
-        isPropValid(prop) && prop !== 'iconPassowrd' && prop !== 'addPet',
+        isPropValid(prop) &&
+        prop !== 'iconPassowrd' &&
+        prop !== 'addPet' &&
+        prop !== 'addPetMoreInformation',
 })`
     position: absolute;
     top: 25%;
@@ -292,6 +305,8 @@ export const IconOkey = styled.svg.withConfig({
         left: ${({ iconPassowrd }) => (iconPassowrd ? '380px' : '410px')};
         left: ${({ addPet }) => addPet && '350px'};
         top: ${({ addPet }) => addPet && '55%'};
+        left: ${({ addPetMoreInformation }) =>
+            addPetMoreInformation && '350px'};
     }
 `;
 
@@ -349,12 +364,29 @@ export const Progres = styled.div.withConfig({
     border-radius: 8px;
 `;
 
-export const ListOption = styled.ul`
+export const ListOption = styled.ul.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop) &&
+        prop !== 'currentStep' &&
+        prop !== 'addPetMoreInformation',
+})`
     margin-bottom: 137px;
+    display: ${({ addPetMoreInformation }) => addPetMoreInformation && 'flex'};
+    margin-bottom: ${({ addPetMoreInformation }) =>
+        addPetMoreInformation && '10px'};
+        @media screen and (min-width: 768px) {
+            margin-bottom: ${({ addPetMoreInformation }) =>
+        addPetMoreInformation && '35px'};
+        }
 `;
 
-export const ItemOption = styled.li`
+export const ItemOption = styled.li.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'addPetMoreInformation',
+})`
     margin-bottom: 12px;
+    margin-bottom: ${({ addPetMoreInformation }) =>
+        addPetMoreInformation && '0'};
     &:last-child {
         margin-bottom: 0px;
     }
@@ -366,8 +398,13 @@ export const ButtonOption = styled.button.withConfig({
 })`
     cursor: pointer;
     padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     color: ${props =>
         props.currentActive === props.active ? 'var(--white)' : 'var(--blue)'};
+    color: ${({ addPetMoreInformation }) =>
+        addPetMoreInformation && 'var(--grey)'};
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.56px;
@@ -380,8 +417,79 @@ export const ButtonOption = styled.button.withConfig({
     border-radius: 40px;
 `;
 
-export const WrapperNextBackButton = styled.div`
+export const ButtonSex = styled.button.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'activeSex' && prop !== 'sex',
+})`
+    cursor: pointer;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    font-size: ${props =>
+        props.sex === 'male' && props.activeSex === 'male'
+            ? '14px'
+            : props.sex === 'female' && props.activeSex === 'female'
+            ? '14px'
+            : '16px'};
+    gap: 12px;
+    color: ${props =>
+        props.sex === 'male' && props.activeSex === 'male'
+            ? 'var(--white)'
+            : props.sex === 'female' && props.activeSex === 'female'
+            ? 'var(--white)'
+            : 'var(--grey)'};
+    font-weight: 500;
+    letter-spacing: 0.56px;
+    background-color: ${props =>
+        props.sex === 'male' && props.activeSex === 'male'
+            ? 'var(--blue)'
+            : props.sex === 'female' && props.activeSex === 'female'
+            ? 'var(--red)'
+            : 'transparent'};
+    border-color: transparent;
+    cursor: pointer;
+    border-radius: 40px;
+    & > svg > path {
+        fill: transparent;
+        stroke: ${props => {
+            if (
+                (props.sex === 'male' && props.activeSex === 'male') ||
+                (props.sex === 'female' && props.activeSex === 'female')
+            ) {
+                return 'var(--white)';
+            } else if (
+                (props.sex === 'male' && props.activeSex === '') ||
+                (props.sex === 'female' && props.activeSex === '')
+            ) {
+                return props.sex === 'male' ? 'var(--blue)' : 'var(--red)';
+            } else {
+                return 'var(--grey)';
+            }
+        }};
+`;
+
+export const SvgForMoreInformation = styled.svg.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'activeSex' && prop !== 'sex',
+})`
+    & > path {
+        fill: transparent;
+        stroke: ${props =>
+            props.sex === 'male' && props.activeSex === 'male'
+                ? 'var(--white)'
+                : props.sex === 'female' && props.activeSex === 'female'
+                ? 'var(--white)'
+                : '#F43F5E'};
+    }
+`;
+
+export const WrapperNextBackButton = styled.div.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'addPetMoreInformation',
+})`
     text-align: center;
+    justify-content: ${({ addPetMoreInformation }) =>
+        addPetMoreInformation && 'center'};
     display: flex;
     @media screen and (min-width: 0px) and (max-width: 768px) {
         gap: 10px;
@@ -396,7 +504,10 @@ export const WrapperNextBackButton = styled.div`
 `;
 
 export const TypeInput = styled.span.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addImage',
+    shouldForwardProp: prop =>
+        isPropValid(prop) &&
+        prop !== 'addImage' &&
+        prop !== 'addPetMoreInformation',
 })`
     color: var(--black);
     display: inline-block;
@@ -406,18 +517,28 @@ export const TypeInput = styled.span.withConfig({
     margin-bottom: 4px;
     width: ${({ addImage }) => addImage && '33%'};
     @media screen and (min-width: 768px) {
+        width: ${({ addPetMoreInformation }) => addPetMoreInformation && '100%'};
         font-size: 20px;
         line-height: 26.5px;
         margin-bottom: 8px;
     }
 `;
 
-export const LabelForAddImage = styled.div`
+export const LabelForAddImage = styled.div.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'addPetMoreInformation',
+})`
     display: flex;
     align-items: center;
     position: relative;
     gap: 16px;
     margin-bottom: 24px;
+    margin-bottom: ${({ addPetMoreInformation }) =>
+        addPetMoreInformation && '0'};
+    @media screen and (min-width: 768px) {
+        display: ${({ addPetMoreInformation }) =>
+            addPetMoreInformation && 'block'};
+    }
 `;
 
 export const ImageWrapper = styled.div`
@@ -440,5 +561,50 @@ export const ImagePet = styled.img`
     @media screen and (min-width: 768px) {
         width: 182px;
         height: 182px;
+    }
+`;
+
+export const WrapperForMoreInformation = styled.div.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'addPetMoreInformation',
+})`
+    gap: 80px;
+    @media screen and (min-width: 768px) {
+        gap: 45px;
+        margin-bottom: ${({ addPetMoreInformation }) =>
+            addPetMoreInformation && '60px'};
+        display: flex;
+    }
+    @media screen and (min-width: 1280px) {
+        gap: 80px;
+    }
+`;
+
+export const WrapperForProgresMoreInformation = styled.div`
+    width: 264px;
+    margin-right: auto;
+    margin-left: auto;
+    @media screen and (min-width: 768px) {
+        width: 392px;
+    }
+`;
+
+export const WrapperForInputInMoreInformationOne = styled.div`
+    width: 100%;
+    position: relative;
+    @media screen and (min-width: 768px) {
+        width: 32%;
+    }
+    @media screen and (min-width: 1280px) {
+        width: 30%;
+    }
+`;
+export const WrapperForInputInMoreInformationTwo = styled.div`
+    width: 100%;
+    @media screen and (min-width: 768px) {
+        width: 62%;
+    }
+    @media screen and (min-width: 1280px) {
+        width: 59%;
     }
 `;

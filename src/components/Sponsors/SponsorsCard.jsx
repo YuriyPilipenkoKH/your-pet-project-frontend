@@ -1,4 +1,3 @@
-
 import {
     ImgWrap,
     Span,
@@ -12,10 +11,27 @@ import {
 } from './Sponsors.styled';
 
 export const SponsorCard = ({ item }) => {
-  const workDay = item.workDay? item.workDay: "closed"
     const email = item.email ? item.email : 'notemail@gmail.com';
     const phone = item.phone ? item.phone : 'notphone';
-
+    let fromTime =
+        (item?.workDays && item.workDays[0]?.from) ||
+        (item?.workDays && item.workDays[5]?.from) ||
+        'day and night';
+    let toTime =
+        (item?.workDays && item.workDays[0]?.to) ||
+        (item?.workDays && item.workDays[5]?.to) ||
+        '';
+    const openDaysCount = item?.workDays
+        ? item.workDays.filter(day => day.isOpen).length
+        : 0;
+    const workSchedule =
+        openDaysCount === 7
+            ? 'everyday'
+            : openDaysCount === 2
+            ? 'weekends'
+            : openDaysCount === 5
+            ? 'weekdays'
+            : 'everyday';
     return (
         <SponsorCardWrapper className="sponsors-card">
             <SponsorCardTitle
@@ -38,9 +54,13 @@ export const SponsorCard = ({ item }) => {
                 <SponsorContent className="sponsors-content">
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__workDays">
-                            Time:
+                            Time:{' '}
+                            {workSchedule}
                         </SponsorText>
-                        <Span> {workDay}</Span>
+                        {/* <Span> few</Span> */}
+                        <Span>
+                            {fromTime} {toTime !== "" && "-"} {toTime}
+                        </Span>
                     </TextWrap>
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__address">

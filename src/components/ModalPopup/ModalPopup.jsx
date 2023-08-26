@@ -1,31 +1,57 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from "react-redux"
 import { createPortal } from 'react-dom';
 import { RxCross2 } from "react-icons/rx";
+import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineLogout} from "react-icons/md";
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BtnContainer,  BtnContainer3,  ContentWrapp,  ModalCategory,  ModalContainer, ModalContainer3, ModalImage, ModalOverlay, ModalText, ModalTitle, ModalTitle3, OnCloseButton, PetList } from './ModalPopup.styled';
 import { Button, ButtonTransparent, OutButton } from '../Button/Button';
 
+import { setModalClose, setModalOpen } from 'redux/modal/modalSlice';
+import { useAll } from 'hooks/useAll';
+
 const modalRoot = document.querySelector('#modal-root');
 
 
-export const ModalPopup = ({ type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose } ) => {
+export const ModalPopup = ({ type, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose } ) => {
 
 const props = {
   type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized
 }
+const { modalIsOpen} = useAll()
+const dispatch = useDispatch()
+
+useEffect(() => {
+
+  if (isOpen) {
+    dispatch(setModalOpen())
+  }
+  if (!isOpen) {
+    dispatch(setModalClose())
+  }
+  console.log('isOpen,', isOpen)
+  console.log('modalIsOpen', modalIsOpen)
+}, [dispatch,isOpen])
+
+
+
 
   useEffect(() => {
     const handleBackdropClick = (e) => {
 
       if (e.target.classList.contains("modal-backdrop")) {
-       return onClose();
+    
+         dispatch(setModalClose())
+         onClose()
+                
       }
     };
 
     const handleKeyDown = (e) => {
       if (e.keyCode === 27) {
-       return onClose();
+        dispatch(setModalClose())
+        onClose()
       }
     };
 
@@ -42,6 +68,11 @@ const props = {
     };
   }, [onClose]);
 
+  const shut = () => {
+    dispatch(setModalClose())
+    onClose()
+  }
+
 
 
 if (type === 1  || type === 4  ){
@@ -56,7 +87,7 @@ if (type === 1  || type === 4  ){
           {btn1}
           {btn2}
         </BtnContainer >
-        <OnCloseButton onClick={onClose} ><RxCross2/></OnCloseButton>
+        <OnCloseButton onClick={shut}  ><RxCross2/></OnCloseButton>
       </ModalContainer>
     </ModalOverlay>,
       modalRoot
@@ -71,10 +102,10 @@ if ( type === 2  ){
         <ModalTitle>{title}</ModalTitle>
         <ModalText>{text}</ModalText>
         <BtnContainer {...props}>
-          <ButtonTransparent onClick={onClose}>Cacel</ButtonTransparent>
-          <Button onClick={onClose}>Yes <RiDeleteBin6Line/> </Button>,
+          <ButtonTransparent onClick={shut}>Cacel</ButtonTransparent>
+          <Button onClick={shut}>Yes <RiDeleteBin6Line/> </Button>,
         </BtnContainer >
-        <OnCloseButton onClick={onClose} ><RxCross2/></OnCloseButton>
+        <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
       </ModalContainer>
     </ModalOverlay>,
       modalRoot
@@ -103,9 +134,9 @@ if (type === 3){
 
         <BtnContainer3 style={{marginTop: 'auto'}}>
           {btn1}
-          {btn2}
+          <Button  onClick ={checkRoute}>Add to <FaRegHeart/> </Button>
         </BtnContainer3>
-        <OnCloseButton onClick={onClose} ><RxCross2/></OnCloseButton>
+        <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
       </ModalContainer3>
     </ModalOverlay>,
       modalRoot
@@ -119,10 +150,10 @@ if (type === 5 ){
       >
         <ModalTitle>{title}</ModalTitle>
         <BtnContainer {...props}>
-           <ButtonTransparent onClick={onClose}>Cacel</ButtonTransparent>
-           <OutButton  to="/" exact="true" onClick={onClose}>  Yes <MdOutlineLogout/> </OutButton>
+           <ButtonTransparent onClick={shut}>Cacel</ButtonTransparent>
+           <OutButton  to="/" exact="true" onClick={shut}>  Yes <MdOutlineLogout/> </OutButton>
         </BtnContainer >
-        <OnCloseButton onClick={onClose} ><RxCross2/></OnCloseButton>
+        <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
       </ModalContainer>
     </ModalOverlay>,
       modalRoot

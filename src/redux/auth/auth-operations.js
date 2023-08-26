@@ -5,7 +5,7 @@ axios.defaults.baseURL = 'https://your-pet-shw3.onrender.com';
 
 const token = {
     set(token) {
-        axios.defaults.headers.common.Authorization = `Bearer  + ${token}`;
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     },
     unset() {
         axios.defaults.headers.common.Authorization = '';
@@ -42,19 +42,19 @@ const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
 });
 
 const fetchCurrentUser = createAsyncThunk(
-    'auth/update',
+    'auth/current',
     async (_, thunkAPI) => {
         const state = thunkAPI.getState();
         const persistedToken = state.auth.token;
 
         if (persistedToken === null) {
-            console.log('Токена нет, уходим из fetchCurrentUser');
+            // console.log('Токена нет, уходим из fetchCurrentUser');
             return thunkAPI.rejectWithValue();
         }
 
         token.set(persistedToken);
         try {
-            const { data } = await axios.get('/users/update');
+            const { data } = await axios.get('/users/current');
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -70,6 +70,10 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
         return thunkAPI.rejectWithValue(error.message);
     }
 });
+
+
+
+
 
 // const fetchUser = createAsyncThunk("user/fetch", async (_, thunkAPI) => {
 //     try {

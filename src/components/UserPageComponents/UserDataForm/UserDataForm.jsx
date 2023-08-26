@@ -3,9 +3,12 @@ import { Formik } from 'formik';
 import { UserForm, Logout } from './UserDataForm.styled';
 import fields from './fieldsValidation';
 import UserDataItem from '../UserDataItem/UserDataItem';
+import { useDispatch} from "react-redux";
 // import { OutButton } from '../../Button/Button';
 import { ReactComponent as LogoutIcon } from '../../../images/userPageIcons/logout.svg';
 import * as Yup from 'yup';
+import { toggleSell } from 'redux/sort/sortSlice';
+import { authOperations } from 'redux/auth';
 
 const cityRegex =
     /^(?:(?:[a-zA-Zа-яА-ЯіІїЇєЄ]+(?:[.'’‘`-][a-zA-Zа-яА-ЯіІїЇєЄ]+)*)\s*)+$/;
@@ -50,6 +53,13 @@ const UserDataForm = ({ user, onSubmit }) => {
         phone: '',
         location: '',
     });
+
+    const dispatch = useDispatch();
+
+    const signOut = () => {
+        dispatch(toggleSell());
+        dispatch(authOperations.logOut());
+    };
 
     useEffect(() => {
         if (user) {
@@ -164,7 +174,8 @@ const UserDataForm = ({ user, onSubmit }) => {
                             {...field}
                         />
                     ))}
-                    <Logout>
+                    <Logout onClick = {signOut}                      
+            >
                         {/* <LogoutIcon stroke="#54ADFF" /> */}
                         <LogoutIcon />
                         Log out

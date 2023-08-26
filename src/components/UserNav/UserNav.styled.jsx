@@ -7,15 +7,25 @@ export const UserWrap = styled.div`
 
 &.UserNav {
   display: none;
-  /* @media screen and(min-width: 767px) {
-    display: none;
 
-  } */
-  
+
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: row-reverse;
-    gap: 10px;
+    gap: 20px;
+
+    &>.logout{
+    display: none;
+  }
+  
+  }
+  @media screen and (min-width: 1280px) {
+
+
+    &>.logout{
+    display: flex;
+  }
+  
   }
 }
 
@@ -44,8 +54,20 @@ export const ProfileWrap = styled.div`
     color: var(--yellow);
 
     &>svg{
-        fill: var(--yellow);
+          fill: var(--yellow);
+      }
+
+    &>a {
+      background: none !important;
+      padding: 10px;
+
+      &>svg{
+          fill: var(--yellow);
+      }
     }
+
+
+
 
 `
 export const StyledLinkOut = styled(NavLink)`

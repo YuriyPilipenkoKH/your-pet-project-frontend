@@ -1,11 +1,13 @@
 import { useSelector } from 'react-redux';
 import {
-getUsername,
+  getUsername,
   getIsLoggedIn,
   getRefreshing,
   getIsFetching,
   getToken,
-  getIsLoading
+  getIsLoading,
+  getRegistrationSuccessful,
+  getUserId
   
 } from '../redux/auth/auth-selectors';
 
@@ -13,11 +15,15 @@ getUsername,
 export const useAuth = () => {
 
   return {
+
     isLoggedIn: useSelector(getIsLoggedIn),
     isRefreshing: useSelector(getRefreshing),
     user: useSelector(getUsername),
+    userId: useSelector(getUserId ),
     isLoading: useSelector(getIsLoading),
     isFetching: useSelector(getIsFetching),
     token: useSelector(getToken),
+    registrationSuccessful: useSelector(getRegistrationSuccessful),
+    
   };
 };

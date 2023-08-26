@@ -1,12 +1,12 @@
 import { StyledTab } from "./Tab.styled"
 
 
-export const Tab = ({icon, text, className}) => {
+export const Tab = ({className, icon, text, }) => {
 
 return(
     <StyledTab className = {className}>
         {icon}
-        {text}
+        <div>{text}</div>
     </StyledTab>
 
 )

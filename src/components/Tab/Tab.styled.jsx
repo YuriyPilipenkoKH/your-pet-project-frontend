@@ -3,20 +3,27 @@ import styled from 'styled-components';
 export const StyledTab = styled.div`
     width: 80px;
     height: 28px;
-    display: flex;
-    gap: 5px;
+    display: grid;
+
+    grid-template-columns: 40% auto;
     align-items: center;
-    justify-content: center;
     background-color: var(--light-blue);
     border-radius: 14px;
-    overflow: auto;
 
-    color: #111;
     font-size: 10px;
     font-weight: 600;
-
+    color: #111;
+    
+    
+    &>div{
+        overflow: hidden;
+        text-overflow: ellipsis; 
+        white-space: nowrap; 
+    
+    }
     &>svg{
         fill: var(--blue);
+        justify-self: center;
     }
 
 `
