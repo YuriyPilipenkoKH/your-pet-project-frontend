@@ -103,12 +103,10 @@ const fetchRemoveFavorite = createAsyncThunk(
 
 const fetchNoticesByCategory = createAsyncThunk(
     'notices/noticesAllByCategory',
-    async ({searchParams} ,thunkAPI) => {
+    async (searchParams ,thunkAPI) => {
         console.log('searchParams', searchParams)
         try {
             const { NoticesCategoriesNav, query } = searchParams;
-            console.log("NoticesCategoriesNav", NoticesCategoriesNav);
-            console.log("query", query);
             const { data } = await axios.get(`/notices?NoticesCategoriesNav=${NoticesCategoriesNav}&NoticesSearch=${query}`)
             return data;
         } catch (error) {
