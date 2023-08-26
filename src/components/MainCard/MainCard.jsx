@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
     iconClock,
     iconFem,
@@ -20,10 +20,11 @@ import operations from 'redux/notices/notices-operations';
 export const MainCard = ({
     index,
     title,
-    photo,
+    // photo,
     sex,
     owner,
     idUsersAddedFavorite,
+    petAvatarURL,
     location,
     category,
     birthday,
@@ -111,7 +112,7 @@ export const MainCard = ({
 
     return (
         <CardWrapper>
-            <ImgWrapper photo={photo}>
+            <ImgWrapper photo={petAvatarURL}>
                 <CategoryWrapp className="category"> {category} </CategoryWrapp>
                 <FavButton
                     className="fav"
