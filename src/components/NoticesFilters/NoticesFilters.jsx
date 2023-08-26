@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { AddToButton, ButtonTransparent, FavButton } from '../Button/Button';
 import { arrowD, iconFilter } from '../../images/icons';
 import { AiOutlinePlus } from 'react-icons/ai';
@@ -7,6 +7,7 @@ import { modal1 } from 'modals/modals';
 import { useAuth } from 'hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
+import { useAll } from 'hooks/useAll';
 
 export default function NoticesFilters({ state }) {
     const [showModal, setShowModal] = useState(false);
@@ -16,7 +17,12 @@ export default function NoticesFilters({ state }) {
     const [big2, setBig2] = useState(false)
     const {isLoggedIn} = useAuth()
     const navigate = useNavigate()
+    const { modalIsOpen} = useAll()
 
+    useEffect(() => {
+        setShowFilters(false)
+    }, [modalIsOpen])
+    
   
     const onModalClose = () => {
         setShowModal(false);
@@ -67,7 +73,7 @@ export default function NoticesFilters({ state }) {
         </DropdownMenu>}
         </FilterWrapper>
             {showModal && (
-              <ModalPopup {...modals} onClose ={onModalClose}  /> //  onClose ={onModalClose}   {...modal1} 
+              <ModalPopup {...modals} onClose ={onModalClose}  /> 
              )}
         </>
     )}
