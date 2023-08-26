@@ -52,7 +52,7 @@ const UserPage = () => {
             </UserPageWrapper>
 
             {(showModal && registrationSuccessful ) &&
-             <ModalPopup {...modal4}  onClose ={onModalClose} /> 
+             <ModalPopup {...modal4}  onClose ={onModalClose}  isOpen = {showModal}/> 
                    }
         </>
     );

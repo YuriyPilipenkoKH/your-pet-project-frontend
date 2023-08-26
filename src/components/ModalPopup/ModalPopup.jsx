@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector} from "react-redux"
 import { createPortal } from 'react-dom';
 import { RxCross2 } from "react-icons/rx";
 import { FaRegHeart } from "react-icons/fa";
@@ -6,15 +7,34 @@ import { MdOutlineLogout} from "react-icons/md";
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BtnContainer,  BtnContainer3,  ContentWrapp,  ModalCategory,  ModalContainer, ModalContainer3, ModalImage, ModalOverlay, ModalText, ModalTitle, ModalTitle3, OnCloseButton, PetList } from './ModalPopup.styled';
 import { Button, ButtonTransparent, OutButton } from '../Button/Button';
+import { useAuth } from 'hooks/useAuth';
+import { setModalClose, setModalOpen } from 'redux/modal/modalSlice';
 
 const modalRoot = document.querySelector('#modal-root');
 
 
-export const ModalPopup = ({ type, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose } ) => {
+export const ModalPopup = ({ type, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose } ) => {
 
 const props = {
   type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized
 }
+const { modalIsOpen} = useAuth()
+const dispatch = useDispatch()
+
+useEffect(() => {
+
+  if (isOpen) {
+    dispatch(setModalOpen())
+  }
+  if (!isOpen) {
+    dispatch(setModalClose())
+  }
+  console.log('isOpen,', isOpen)
+  console.log('modalIsOpen', modalIsOpen)
+}, [dispatch, isOpen])
+
+
+
 
   useEffect(() => {
     const handleBackdropClick = (e) => {
