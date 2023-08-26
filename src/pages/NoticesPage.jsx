@@ -70,7 +70,7 @@ export default function NoticesPage() {
     useEffect(() => {
         dispatch(noticesOperations.fetchAllNotices(searchParams));
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [searchParams.NoticesCategoriesNav]);
 
     return (
         <CommonWrapper className="CommonWrapper">

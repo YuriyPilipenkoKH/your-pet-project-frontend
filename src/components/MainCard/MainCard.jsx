@@ -11,7 +11,7 @@ import { ButtonTransparent, FavButton, TrashButton } from '../Button/Button';
 import { Tab } from '../Tab/Tab';
 import { CardTitle, CardWrapper, ImgWrapper } from './MainCard.styled';
 import { CategoryWrapp } from '../Tab/Tab.styled';
-import { modal1, modal3 } from 'modals/modals';
+import { modal1, modal2, modal3 } from 'modals/modals';
 import { useAuth } from 'hooks/useAuth';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { useDispatch } from 'react-redux';
@@ -30,7 +30,8 @@ export const MainCard = ({
     id,
 }) => {
     const { userId } = useAuth();
-    const [shouldReload, setShouldReload] = useState(false);
+    // const [shouldReload, setShouldReload] = useState(false);
+  const [isLike, setIsLike] = useState(false)
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     const [modals, setModals] = useState(modal1);
@@ -40,9 +41,9 @@ export const MainCard = ({
     const onModalClose = () => {
         setShowModal(false);
     };
-    let isLike = null;
+    // let isLike = null;
     if (idUsersAddedFavorite.includes(userId)) {
-        isLike = index + 1;
+      // setIsLike(true)
     }
 
     const checkRoute = () => {
@@ -52,11 +53,23 @@ export const MainCard = ({
         } else {
             if (idUsersAddedFavorite.includes(userId)) {
                 dispatch(operations.fetchRemoveFavorite(id));
-            }
-            dispatch(operations.fetchNoticesAddFavorite(id));
-            setShouldReload(true);
+              //  setIsLike(false)
+              }
+                
+                else {
+                    dispatch(operations.fetchNoticesAddFavorite(id));
+                    // setIsLike(true)
+                    // setShouldReload(true);
+
+                  }
+
         }
     };
+
+    const removeCard = () => {
+      setModals(modal2);
+      setShowModal(true);
+    }
 
   //   useEffect(() => {
   //     if (shouldReload) {
@@ -116,7 +129,9 @@ export const MainCard = ({
                     {iconHeart}
                 </FavButton>
                 {isTrashShown && (
-                    <TrashButton className="del"> {iconTrash}</TrashButton>
+                    <TrashButton 
+                    onClick ={removeCard}
+                    className="del"> {iconTrash}</TrashButton>
                 )}
 
                 <Tab
@@ -146,6 +161,7 @@ export const MainCard = ({
                     onClose={onModalClose}
                     checkRoute={checkRoute}
                     isOpen={showModal}
+                    delId={id}
                 />
             )}
         </CardWrapper>
