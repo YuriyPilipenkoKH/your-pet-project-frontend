@@ -1,7 +1,6 @@
 import { ReactComponent as CheckIcon } from '../../../images/userPageIcons/check.svg';
 import { ReactComponent as EditIcon } from '../../../images/userPageIcons/edit.svg'
-// import styled, { css } from 'styled-components';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Field } from 'formik';
 
 export const FormItem = styled.div`
@@ -56,7 +55,9 @@ export const EditInpuButton = styled.button`
     background: transparent;
     border: none;
 
-    // confirm icon
+    ${ConfirmIcon} {
+        stroke: ${({ disabled }) => (disabled ? '#888888' : '#00C3AD')};
+    }
 `;
 
 export const FormInput = styled(Field)`
@@ -80,7 +81,12 @@ export const FormInput = styled(Field)`
         height: 32px};
     }
 
-   //umova!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   ${({ touched, error }) =>
+       touched &&
+       error &&
+       css`
+           border: 1px solid #f43f5e;
+       `}
 
     &::-webkit-calendar-picker-indicator {
         color: #111111;
