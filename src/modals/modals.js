@@ -37,7 +37,7 @@ export const modal2 = {
         widthd: '608px',
         heightd: '352px', 
         title: 'Delete adverstiment?',
-        text: 'Are you sure you want to delete  “Cute dog looking for a home”? You can’t undo this action.',
+        text: 'Are you sure you want to delete  ? You can’t undo this action.',
         image: '',
         buttonColor: '#13d', 
         buttonText: 'confirm',

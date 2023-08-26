@@ -21,6 +21,7 @@ export const MainCard = ({
     index,
     title,
     // photo,
+    name,
     sex,
     owner,
     idUsersAddedFavorite,
@@ -28,6 +29,8 @@ export const MainCard = ({
     location,
     category,
     birthday,
+    type,
+    comments,
     id,
 }) => {
   
@@ -60,7 +63,6 @@ export const MainCard = ({
                     dispatch(operations.fetchNoticesAddFavorite(id));
 
                   }
-
         }
     };
 
@@ -69,15 +71,7 @@ export const MainCard = ({
       setShowModal(true);
     }
 
-  //   useEffect(() => {
-  //     if (shouldReload) {
-  //         // Оновити сторінку
-  //         window.location.reload();
-  //     }
-  // }, [shouldReload]);
-  
-  
-
+    
     const onLearnMore = () => {
         setModals(modal3);
         setShowModal(true);
@@ -161,6 +155,15 @@ export const MainCard = ({
                     checkRoute={checkRoute}
                     isOpen={showModal}
                     delid={id}
+                    cardtitle={title}
+                    petAvatarURL={petAvatarURL}
+                    category={category}
+                    location={location}
+                    name={name}
+                    birthday={birthday}
+                    animal={type}
+                    sex={sex}
+                    comments={comments}
                 />
             )}
         </CardWrapper>

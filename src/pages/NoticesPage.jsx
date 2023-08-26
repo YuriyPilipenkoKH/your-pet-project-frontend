@@ -102,6 +102,9 @@ export default function NoticesPage() {
                         location={item.location}
                         category={item.category}
                         birthday={item.birthday}
+                        name={item.name}
+                        comments={item.comments}
+                        type={item.type}
                         id={item._id}
                     />
                 ))}
