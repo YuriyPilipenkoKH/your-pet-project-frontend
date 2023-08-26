@@ -355,19 +355,45 @@ font-size: 12px;
 
 `;
 
-export const StyledFavButton = styled.button`
+export const StyledFavButton = styled.button.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) &&
+      prop !== 'isLike' &&
+      prop !== 'currentDiv'
+})`
+
+${ripple} 
+${hoverStylesTrB} 
+${gridBtnStyles} 
+
+background-color: ${({ isLike, currentDiv }) => isLike === currentDiv ? 'var(--blue)' : "var(--light-blue)"};
+& > svg {
+  fill: ${({ isLike, currentDiv }) => isLike === currentDiv ? 'var(--white)' : "var(-blue)"};
+}
+
+`
+export const StyledTrashButton = styled.button.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) &&
+      prop !== 'isLike' &&
+      prop !== 'currentDiv'
+})`
 
 ${ripple} 
 ${hoverStylesTrB} 
 ${gridBtnStyles} 
 
 background-color: var(--light-blue);
+
 `
+
 export const StyledFormButton = styled.button`
 
 ${gridBtnStyles} 
 
 `
+
+
 
 export const StyledLink = styled(NavLink)`
 ${buttonStyles} 

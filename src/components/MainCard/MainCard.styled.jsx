@@ -44,7 +44,6 @@ export const CardWrapper = styled.div`
         margin: 0 auto;
 
         &>svg{
-        
           fill: var(--blue);
         }
     }
