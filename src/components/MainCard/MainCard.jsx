@@ -30,7 +30,7 @@ export const MainCard = ({
     id,
 }) => {
     const { userId } = useAuth();
-    const [key, setKey] = useState(0);
+    const [shouldReload, setShouldReload] = useState(false);
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     const [modals, setModals] = useState(modal1);
@@ -54,12 +54,17 @@ export const MainCard = ({
                 dispatch(operations.fetchRemoveFavorite(id));
             }
             dispatch(operations.fetchNoticesAddFavorite(id));
+            setShouldReload(true);
         }
     };
 
-    useEffect(() => {
-      setKey(prevKey => prevKey + 1);
-  }, [idUsersAddedFavorite]);
+  //   useEffect(() => {
+  //     if (shouldReload) {
+  //         // Оновити сторінку
+  //         window.location.reload();
+  //     }
+  // }, [shouldReload]);
+  
   
 
     const onLearnMore = () => {

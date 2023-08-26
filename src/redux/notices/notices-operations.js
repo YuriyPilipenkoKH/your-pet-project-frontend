@@ -56,19 +56,21 @@ const fetchAddNotice = createAsyncThunk(
 
 
 
-// const fetchDeleteNotice = createAsyncThunk(
-//     'notices/noticesDelete',
+const fetchDeleteNotice = createAsyncThunk(
+    'notices/noticesDelete',
 
-//     async (notices, thunkAPI) => {
-//         const { id } = notices;
-//         try {
-//             const { data } = await axios.delete(`/notices/${id}`);
-//             return data;
-//         } catch (error) {
-//             return thunkAPI.rejectWithValue(error.response.data);
-//         }
-//     }
-// );
+    async (id, thunkAPI) => {
+        // const { id } = notices;
+        console.log(id)
+
+        try {
+            const { data } = await axios.delete(`/notices/${id}`);
+            return data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+);
 
 
 
@@ -122,7 +124,7 @@ const operations = {
     // fetchNoticeById,
     fetchAddNotice,
     // fetchAllFavorite,
-    // fetchDeleteNotice,
+    fetchDeleteNotice,
     fetchNoticesAddFavorite,
     fetchRemoveFavorite
 };

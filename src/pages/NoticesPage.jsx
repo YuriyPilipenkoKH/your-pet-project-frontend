@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import noticesOperations from '../redux/notices/notices-operations';
 import { getNoticesFilter } from 'redux/filter/filterSelectors';
 import { activeIndex } from 'redux/sort/sortSelectors';
+import { useLocalStorage } from 'hooks/useLocalStaoreage';
 
 export default function NoticesPage() {
     const location = useLocation();
@@ -23,29 +24,34 @@ export default function NoticesPage() {
     const noticesList = useSelector(getNoticesList);
     const filterValue = useSelector(getNoticesFilter);
     const currentIndex = useSelector(activeIndex);
+    const [currentActive, setCurrentActive] = useLocalStorage("currentActive", 0)
+    
+    const handleChangeCurrentActive = (data) => {
+        setCurrentActive(data);
+    }
+  
 
     console.log('noticesList', noticesList);
     console.log('filterValue', filterValue);
     console.log('currentIndex', currentIndex);
 
     const makeCategory = () => {
-        if (currentIndex === 0) {
+        if (currentActive === 0) {
             return 'sell';
         }
-        if (currentIndex === 1) {
+        if (currentActive === 1) {
             return 'lost-found';
         }
-        if (currentIndex === 2) {
+        if (currentActive === 2) {
             return 'in-good-hands';
         }
-        if (currentIndex === 3) {
+        if (currentActive === 3) {
             return 'favorite-ads';
         }
-        if (currentIndex === 4) {
+        if (currentActive === 4) {
             return 'my-ads';
         }
     };
-    console.log('makeCategory ', makeCategory());
 
     const page = Math.ceil(noticesList?.length / 12);
     console.log('page', page);
@@ -70,7 +76,7 @@ export default function NoticesPage() {
         <CommonWrapper className="CommonWrapper">
             <NoticesSearch search={{ searchParams }} />
             <NoticesPageWrap>
-                <NoticesCategoriesNav />
+                <NoticesCategoriesNav handleChangeCurrentActive={handleChangeCurrentActive} currentActive={currentActive} />
                 <NoticesFilters state={{ from: location }} />
             </NoticesPageWrap>
             <NoticeContainer className="notice-container">

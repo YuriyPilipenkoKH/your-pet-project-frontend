@@ -7,18 +7,19 @@ import { MdOutlineLogout} from "react-icons/md";
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BtnContainer,  BtnContainer3,  ContentWrapp,  ModalCategory,  ModalContainer, ModalContainer3, ModalImage, ModalOverlay, ModalText, ModalTitle, ModalTitle3, OnCloseButton, PetList } from './ModalPopup.styled';
 import { Button, ButtonTransparent, OutButton } from '../Button/Button';
-
+import noticesOperations from '../../redux/notices/notices-operations'
 import { setModalClose, setModalOpen } from 'redux/modal/modalSlice';
 import { useAll } from 'hooks/useAll';
 
 const modalRoot = document.querySelector('#modal-root');
 
 
-export const ModalPopup = ({ type, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose } ) => {
+export const ModalPopup = ({ type, delId, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose } ) => {
 
 const props = {
-  type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized
+  type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized, delId
 }
+console.log('delId' ,delId)
 const { modalIsOpen} = useAll()
 const dispatch = useDispatch()
 
@@ -73,6 +74,13 @@ useEffect(() => {
     onClose()
   }
 
+  const removeCard = () => {
+    dispatch(noticesOperations.fetchDeleteNotice(delId))
+    dispatch(setModalClose())
+    onClose()
+
+  }
+
 
 
 if (type === 1  || type === 4  ){
@@ -103,7 +111,7 @@ if ( type === 2  ){
         <ModalText>{text}</ModalText>
         <BtnContainer {...props}>
           <ButtonTransparent onClick={shut}>Cacel</ButtonTransparent>
-          <Button onClick={shut}>Yes <RiDeleteBin6Line/> </Button>,
+          <Button onClick={removeCard}>Yes <RiDeleteBin6Line/> </Button>,
         </BtnContainer >
         <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
       </ModalContainer>
