@@ -115,6 +115,19 @@ const fetchNoticesByCategory = createAsyncThunk(
     }
 );
 
+const addMySelfPet = createAsyncThunk(
+    'pet/addPet',
+    async (dataPet ,thunkAPI) => {
+        console.log("dataPet", dataPet);
+        try {
+            const { data } = await axios.post(`/pets`, dataPet)
+            return data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+);
+
 
 const operations = {
     fetchAllNotices,
@@ -124,7 +137,8 @@ const operations = {
     // fetchAllFavorite,
     fetchDeleteNotice,
     fetchNoticesAddFavorite,
-    fetchRemoveFavorite
+    fetchRemoveFavorite,
+    addMySelfPet
 };
 
 export default operations;

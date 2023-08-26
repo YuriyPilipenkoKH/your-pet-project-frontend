@@ -132,13 +132,14 @@ export default function MoreInfo({
 
     return (
         <Form addPetMoreInformation addPet>
-            <Title addPetMoreInformation>Add pet for sale</Title>
+            <Title addPet addPetMoreInformation>Add pet for sale</Title>
             <WrapperForProgresMoreInformation>
                 {children}
             </WrapperForProgresMoreInformation>
             <form
                 onSubmit={handleSubmit(deliveryData)}
                 encType="multipart/form-data"
+                style={{ marginTop: '16px' }}
             >
                 <WrapperForMoreInformation addPetMoreInformation>
                     <WrapperForInputInMoreInformationOne>
@@ -241,7 +242,7 @@ export default function MoreInfo({
                                     }
                                 }}
                             ></InputForAddPet>
-                            {isLocationValid  && !errors.location && (
+                            {isLocationValid && !errors.location && (
                                 <IconOkey
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
@@ -302,7 +303,7 @@ export default function MoreInfo({
                                     }
                                 }}
                             ></InputForAddPet>
-                            {isPriceValid  && !errors.price && (
+                            {isPriceValid && !errors.price && (
                                 <IconOkey
                                     addPetMoreInformation
                                     xmlns="http://www.w3.org/2000/svg"

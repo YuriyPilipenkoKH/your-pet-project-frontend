@@ -121,13 +121,14 @@ export default function MoreInfo({
 
     return (
         <Form addPetMoreInformation addPet>
-            <Title addPetMoreInformation>Add in good hands</Title>
+            <Title addPet addPetMoreInformation>Add in good hands</Title>
             <WrapperForProgresMoreInformation>
                 {children}
             </WrapperForProgresMoreInformation>
             <form
                 onSubmit={handleSubmit(deliveryData)}
                 encType="multipart/form-data"
+                style={{ marginTop: "16px" }}
             >
                 <WrapperForMoreInformation addPetMoreInformation>
                     <WrapperForInputInMoreInformationOne>
