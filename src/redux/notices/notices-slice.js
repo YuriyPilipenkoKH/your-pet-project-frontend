@@ -58,29 +58,48 @@ const noticesSlice = createSlice({
                     store.error = payload;
                 }
             )
-
-            // .addCase(
-            //     noticesOperations.fetchNoticesAddFavorite.pending,
-            //     store => {
-            //         store.loading = true;
-            //         store.item = {};
-            //     }
-            // )
-            // .addCase(
-            //     noticesOperations.fetchNoticesAddFavorite.fulfilled,
-            //     (store, { payload }) => {
-            //         store.loading = false;
-            //         store.item = payload;
-            //         store.owner = payload.owner;
-            //     }
-            // )
-            // .addCase(
-            //     noticesOperations.fetchNoticesAddFavorite.rejected,
-            //     (store, { payload }) => {
-            //         store.loading = false;
-            //         store.error = payload;
-            //     }
-            // )
+            .addCase(
+                noticesOperations.fetchNoticesAddFavorite.pending,
+                store => {
+                    store.loading = true;
+                    store.item = {};
+                }
+            )
+            .addCase(
+                noticesOperations.fetchNoticesAddFavorite.fulfilled,
+                (store, { payload }) => {
+                    store.loading = false;
+                    store.owner = payload.owner;
+                }
+            )
+            .addCase(
+                noticesOperations.fetchNoticesAddFavorite.rejected,
+                (store, { payload }) => {
+                    store.loading = false;
+                    store.error = payload;
+                }
+            )
+            .addCase(
+                noticesOperations.fetchRemoveFavorite.pending,
+                store => {
+                    store.loading = true;
+                    store.item = {};
+                }
+            )
+            .addCase(
+                noticesOperations.fetchRemoveFavorite.fulfilled,
+                (store, { payload }) => {
+                    store.loading = false;
+                    store.owner = payload.owner;
+                }
+            )
+            .addCase(
+                noticesOperations.fetchRemoveFavorite.rejected,
+                (store, { payload }) => {
+                    store.loading = false;
+                    store.error = payload;
+                }
+            )
 
             // .addCase(noticesOperations.fetchNoticeById.pending, (store) => {
             //   store.loading = true;
@@ -130,7 +149,7 @@ const noticesSlice = createSlice({
                     store.loading = false;
                     store.list = payload;
                     store.category = payload.category;
-                    store.page = Math.ceil(payload.length / 12);
+                    // store.page = Math.ceil(payload.length / 12);
                     // store.totalPages = payload.data.totalPages;
                     store.keyword = '';
                 }

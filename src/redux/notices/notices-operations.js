@@ -72,43 +72,42 @@ const fetchAddNotice = createAsyncThunk(
 
 
 
-// const fetchNoticesAddFavorite = createAsyncThunk(
-//     'notices/addFavorite',
+const fetchNoticesAddFavorite = createAsyncThunk(
+    'notices/addFavorite',
 
-//     async (favoriteNotices, thunkAPI) => {
-//         const { id, payload } = favoriteNotices;
-//         try {
-//             const { data } = await axios.patch(`/notices/${id}/addFavorite`, payload);
-//             return data;
-//         } catch (error) {
-//             return thunkAPI.rejectWithValue(error.response.data);
-//         }
-//     }
-// );
+    async (favoriteNotices, thunkAPI) => {
+        try {
+            const { data } = await axios.patch(`/notices/${favoriteNotices}/addFavorite`);
+            return data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+);
 
-// const fetchRemoveFavorite = createAsyncThunk(
-//     'notices/removeFavorite',
+const fetchRemoveFavorite = createAsyncThunk(
+    'notices/removeFavorite',
 
-//     async (favoriteNotices, thunkAPI) => {
-//         const { id, payload } = favoriteNotices;
-//         try {
-//             const { data } = await axios.patch(`/notices/${id}/removeFavorite`, payload);
-//             return data;
-//         } catch (error) {
-//             return thunkAPI.rejectWithValue(error.response.data);
-//         }
-//     }
-// );
+    async (favoriteNotices, thunkAPI) => {
+        try {
+            const { data } = await axios.patch(`/notices/${favoriteNotices}/removeFavorite`);
+            console.log(data);
+            return data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+);
 
 const fetchNoticesByCategory = createAsyncThunk(
     'notices/noticesAllByCategory',
-    async (searchParams ,thunkAPI) => {
+    async ({searchParams} ,thunkAPI) => {
         console.log('searchParams', searchParams)
         try {
-            const { NoticesCategoriesNav, query, page } = searchParams;
-            const { data } = await axios.get(`/notices?NoticesCategoriesNav=in-good-hands&query=dog`,
-            //  { params: { NoticesCategoriesNav, query, page }}
-            );
+            const { NoticesCategoriesNav, query } = searchParams;
+            console.log("NoticesCategoriesNav", NoticesCategoriesNav);
+            console.log("query", query);
+            const { data } = await axios.get(`/notices?NoticesCategoriesNav=${NoticesCategoriesNav}&NoticesSearch=${query}`)
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data);
@@ -124,8 +123,8 @@ const operations = {
     fetchAddNotice,
     // fetchAllFavorite,
     // fetchDeleteNotice,
-    // fetchNoticesAddFavorite,
-    // fetchRemoveFavorite
+    fetchNoticesAddFavorite,
+    fetchRemoveFavorite
 };
 
 export default operations;
