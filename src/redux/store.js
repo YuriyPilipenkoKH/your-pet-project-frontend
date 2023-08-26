@@ -28,6 +28,7 @@ export const store = configureStore({
     reducer: {
         auth: persistReducer(authPersistConfig, authReducer),
         notices: noticesSlice,
+        // pets: petsSlice,
         sort:sortReducer,
         filter: filterReducer,
         modal: modalReducer,

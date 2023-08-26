@@ -141,22 +141,23 @@ const authSlice = createSlice({
     //   state.error = payload;
     // })
 
-    //fetchUpdateUser
-    // .addCase(authOperations.fetchUpdateUser.pending, (state) => {
-    //   state.isLoading = true;
-    //   state.error = null;
-    // })
-    // .addCase(authOperations.fetchUpdateUser.fulfilled, (state, { payload }) => {
-    //   const { user } = payload;
-    //   state.isLoading = false;
-    //   state.registrationSuccessful = false;
-    //   state.user = user;
-    //   state.error = null;
-    // })
-    // .addCase(authOperations.fetchUpdateUser.rejected, (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.error = payload;
-    // })
+    // fetchUpdateUser
+    .addCase(authOperations.fetchUpdateUser.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    })
+    .addCase(authOperations.fetchUpdateUser.fulfilled, (state, { payload }) => {
+      console.log("payload", payload);
+      const { user } = payload;
+      state.isLoading = false;
+      state.registrationSuccessful = false;
+      state.user = user;
+      state.error = null;
+    })
+    .addCase(authOperations.fetchUpdateUser.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    })
 
     //fetchUpdateAvatar
     // .addCase(authOperations.fetchUpdateAvatar.pending, (state) => {

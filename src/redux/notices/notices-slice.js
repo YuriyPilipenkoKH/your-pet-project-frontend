@@ -115,26 +115,26 @@ const noticesSlice = createSlice({
             //   store.error = payload;
             // })
 
-            // .addCase(noticesOperations.fetchDeleteNotice.pending, store => {
-            //     store.loading = true;
-            // })
-            // .addCase(
-            //     noticesOperations.fetchDeleteNotice.fulfilled,
-            //     (store, { payload }) => {
-            //         store.loading = false;
-            //         const index = store.items.findIndex(
-            //             item => item.id === payload
-            //         );
-            //         store.items.splice(index, 1);
-            //     }
-            // )
-            // .addCase(
-            //     noticesOperations.fetchDeleteNotice.rejected,
-            //     (store, { payload }) => {
-            //         store.loading = false;
-            //         store.error = payload;
-            //     }
-            // )
+            .addCase(noticesOperations.fetchDeleteNotice.pending, store => {
+                store.loading = true;
+            })
+            .addCase(
+                noticesOperations.fetchDeleteNotice.fulfilled,
+                (store, { payload }) => {
+                    store.loading = false;
+                    const index = store.list.findIndex(
+                        item => item.id === payload
+                    );
+                    store.items.splice(index, 1);
+                }
+            )
+            .addCase(
+                noticesOperations.fetchDeleteNotice.rejected,
+                (store, { payload }) => {
+                    store.loading = false;
+                    store.error = payload;
+                }
+            )
             .addCase(
                 noticesOperations.fetchNoticesByCategory.pending,
                 store => {

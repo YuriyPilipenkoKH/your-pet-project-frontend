@@ -15,6 +15,7 @@ import avatarDefault2x from '../../../images/Photo_default@2x.jpg';
 import UserDataForm from '../UserDataForm/UserDataForm';
 import { ReactComponent as Camera } from '../../../images/userPageIcons/camera.svg';
 // import { date } from 'yup';
+import { authOperations } from 'redux/auth';
 
 const UserData = () => {
     const [user, setUser] = useState({
@@ -78,6 +79,14 @@ const UserData = () => {
         setUser(updatedData)
         ///////////////////////////////////////////////
         // dispatch(changeUser(updatedData));
+        dispatch(authOperations.fetchUpdateUser(updatedData))
+        // .unwrap().then(originalPromiseResult => {
+            // Notify.success(`${originalPromiseResult.user.name} welcome back!`);
+        //   })
+        //   .catch(() => {
+            // Notify.failure('Incorrect login or password');
+        //   });
+        
     };
 
     return (

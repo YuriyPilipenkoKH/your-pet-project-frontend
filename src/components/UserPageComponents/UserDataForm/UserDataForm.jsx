@@ -60,12 +60,16 @@ const UserDataForm = ({ user, onSubmit }) => {
         dispatch(toggleSell());
         dispatch(authOperations.logOut());
     };
+  
 
     useEffect(() => {
+        // const {name,email,birthday, phone,location,avatarURL} = user
         if (user) {
             setInitialState(prevState => {
+               
+
                 const newState = {
-                    ...user,
+                    avatarURL: user.avatarURL || "",
                     name: user.name || '',
                     email: user.email || '',
                     birthday: user.birthday || '',

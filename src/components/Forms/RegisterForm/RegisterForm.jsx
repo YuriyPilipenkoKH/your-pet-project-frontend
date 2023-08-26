@@ -81,7 +81,7 @@ export default function RegisterForm() {
         //   })
         //   .catch(() => {
             // Notify.failure('Incorrect login or password');
-        //   });;
+        //   });
 
     };
     const reset = () => {
