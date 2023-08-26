@@ -5,13 +5,13 @@ import { CloseButton, MenuContent, MenuHeader, MenuWrapp } from './MobileMenu.st
 import { StyledLogo } from '../Button/Button.styled';
 import { iconLogo, iconUser } from '../../images/icons';
 import { RxCross2 } from "react-icons/rx";
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { ProfileWrap, StyledLinkOut } from 'components/UserNav/UserNav.styled';
 import { useDispatch, useSelector } from "react-redux";
-import { authOperations, authSelectors } from 'redux/auth';
+import { authSelectors } from 'redux/auth';
 import { MdOutlineLogout} from "react-icons/md";
 import { useAuth } from 'hooks/useAuth';
-import { toggleSell } from 'redux/sort/sortSlice';
+import { } from 'redux/sort/sortSlice';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { modal1, modal5 } from 'modals/modals';
 
@@ -23,7 +23,7 @@ export  const MobileMenu = ({ isOpen, onClose }) => {
 
 const {isLoggedIn, userId} = useAuth()
   const name = useSelector(authSelectors.getUsername);
-   const dispatch = useDispatch();
+
 
    const signOut = () => {
     setModals(modal5);

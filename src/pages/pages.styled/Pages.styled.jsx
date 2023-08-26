@@ -61,6 +61,7 @@ export const HomeWrapper = styled.div`
         }
     }
 `;
+
 export const HomeWrapperTwo = styled.div`
     height: 600px;
     background-image: url('${FormBgImgM}');
