@@ -83,14 +83,11 @@ const noticesSlice = createSlice({
                     store.reRender = false;
                 }
             )
-            .addCase(
-                noticesOperations.fetchRemoveFavorite.pending,
-                store => {
-                    store.loading = true;
-                    store.item = {};
-                    store.reRender = true;
-                }
-            )
+            .addCase(noticesOperations.fetchRemoveFavorite.pending, store => {
+                store.loading = true;
+                store.item = {};
+                store.reRender = true;
+            })
             .addCase(
                 noticesOperations.fetchRemoveFavorite.fulfilled,
                 (store, { payload }) => {
@@ -105,6 +102,22 @@ const noticesSlice = createSlice({
                     store.loading = false;
                     store.error = payload;
                     store.reRender = false;
+                }
+            )
+            .addCase(noticesOperations.addMySelfPet.pending, store => {
+                store.loading = true;
+            })
+            .addCase(
+                noticesOperations.addMySelfPet.fulfilled,
+                (store, { payload }) => {
+                    store.loading = false;
+                }
+            )
+            .addCase(
+                noticesOperations.addMySelfPet.rejected,
+                (store, { payload }) => {
+                    console.log(12345)
+                    store.loading = false;
                 }
             )
 
@@ -128,7 +141,7 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchDeleteNotice.fulfilled,
                 (store, { payload }) => {
-                  console.log(payload)
+                    console.log(payload);
                     store.loading = false;
                     const index = store.list.findIndex(
                         item => item.id === payload

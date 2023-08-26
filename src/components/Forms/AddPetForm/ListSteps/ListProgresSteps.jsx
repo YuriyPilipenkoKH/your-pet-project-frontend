@@ -3,7 +3,7 @@ import { ItemStep, ListSteps, Progres, TextStep } from '../../Forms.styled';
 
 export default function ListProgresSteps({stepNumber, arraySteps}) {
     return (
-        <ListSteps>
+        <ListSteps chooseOption>
             {arraySteps.map((step, index) => {
                 return (
                     <ItemStep key={index}>
