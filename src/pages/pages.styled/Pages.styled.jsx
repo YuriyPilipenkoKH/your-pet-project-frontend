@@ -116,10 +116,11 @@ export const HomeTitle = styled.h1`
 `;
 // Nwes
 export const NewsWrapper = styled.div`
+    height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     gap: 44px;
     padding-bottom: 40px;
 `;
@@ -162,7 +163,11 @@ export const SearchForm = styled.form`
         background-color: transparent;
         position: absolute;
         top: 2px;
-        right: 0;
+        right: 10px;
+
+        &>span>svg {
+          scale: 1.5;
+        }
     }
 `;
 export const SearchIcon = styled.span`
@@ -292,6 +297,7 @@ export const Notfound = styled.div`
 `;
 
 export const CommonWrapper = styled.div`
+    min-height: 600px;
     display: grid;
     gap: 24px;
 `;

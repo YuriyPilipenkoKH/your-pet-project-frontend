@@ -50,15 +50,15 @@ export default function NoticesPage() {
     console.log('page', page)
 
     const searchParams = {
-      categoryName: makeCategory(),
+      NoticesCategoriesNav: makeCategory(),
       query: filterValue,
       page: 1,
     }
 
-    const searchByCategory = (e) => {
-      e.preventDefault()
-      dispatch(noticesOperations.fetchNoticesByCategory(searchParams))
-    }
+    // const searchByCategory = (e) => {
+    //   e.preventDefault()
+    //   dispatch(noticesOperations.fetchNoticesByCategory(searchParams))
+    // }
 
 
 useEffect(() => {
@@ -74,24 +74,25 @@ useEffect(() => {
 }, [dispatch]);
   
   return (
-    <CommonWrapper>
-    <NoticesSearch search = {searchByCategory}/>
+    <CommonWrapper className='CommonWrapper'>
+    <NoticesSearch search = {{searchParams}}/>
       <NoticesPageWrap >
          <NoticesCategoriesNav/>
          <NoticesFilters state={{ from: location }} />
       </NoticesPageWrap>
       <NoticeContainer className="notice-container">
       {noticesList.map((item, index) => (
-       
+          //  console.log('item',item)
        <MainCard 
          key={index}
-         title ={ item.title}
-         photo ={ item.petFotoURL}
+         item ={ item}
+         photo ={ item.petAvatarURL}
          sex ={ item.sex}
          category ={ item.category}
          name ={ item.name}
          place ={ item.place}
          birthday ={ item.birthday}
+         owner ={ item.owner}
           />
         ))}
       </NoticeContainer>

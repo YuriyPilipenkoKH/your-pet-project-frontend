@@ -6,19 +6,24 @@ import { SearchForm } from 'pages/pages.styled/Pages.styled'
 import { FormButton } from 'components/Button/Button'
 import {  setFilterNotices } from 'redux/filter/filterSlice'
 import { getNoticesFilter } from 'redux/filter/filterSelectors';
-
+import noticesOperations from "../../redux/notices/notices-operations"
 
 
 export default function NoticesSearch({search}) {
   const dispatch = useDispatch()
   const filter = useSelector(getNoticesFilter)
 
-  
+  const searchByCategory = (e) => {
+    e.preventDefault()
+    dispatch(noticesOperations.fetchNoticesByCategory(search))
+  }
 
   return (
     <SearchWrapper>
       <TytleNwes>Find your favorite pet</TytleNwes>
-      <SearchForm className="search-form">
+      <SearchForm 
+       onSubmit = {searchByCategory}
+       className="search-form">
           <SearchInput 
           onChange={(e)=> dispatch(setFilterNotices(e.target.value))}
           type="text" 
@@ -26,7 +31,7 @@ export default function NoticesSearch({search}) {
           value={filter}
           placeholder="Search"
            />
-          <FormButton onClick = {search}>
+          <FormButton >
             <SearchIcon className="search-icon">
               <BsSearch style = { {color: "#54adff"} }/>
             </SearchIcon>

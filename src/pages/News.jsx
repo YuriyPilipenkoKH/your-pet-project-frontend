@@ -134,7 +134,7 @@ export const NewsPage = () => {
     }
 
     return (
-        <NewsWrapper>
+        <NewsWrapper className='NewsWrapper'>
             <SearchWrapper>
                 <StyledLink to="/test" style={{ background: 'transparent' }}>
                     <TytleNwes>News</TytleNwes>

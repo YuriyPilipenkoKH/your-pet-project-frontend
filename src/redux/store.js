@@ -14,6 +14,7 @@ import { authReducer } from './auth';
 import noticesSlice from './notices/notices-slice';
 import { sortReducer } from './sort/sortSlice';
 import { filterReducer } from './filter/filterSlice';
+import { modalReducer } from './modal/modalSlice';
 
 
 
@@ -29,6 +30,7 @@ export const store = configureStore({
         notices: noticesSlice,
         sort:sortReducer,
         filter: filterReducer,
+        modal: modalReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({

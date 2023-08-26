@@ -101,22 +101,13 @@ export const ImgWrapper = styled.div`
       grid-area: t3;
     }
 
-    &>.tab1,  &>.tab2,  &>.tab3 {
-     
-     
-    }
-
-
-
-    
     width: 280px;
     height: 288px;
     padding: 16px 8px 16px 0;
 
-
     @media screen and (min-width: 768px) {
   
-  width: 336px;
+      width: 336px;
 }
 
   @media screen and (min-width: 1280px) {
@@ -124,8 +115,8 @@ export const ImgWrapper = styled.div`
     width: 288px;
 }
     /* height: ${props => props.photo} ; */
-    /* background-image: url(${props => props.photo}); */
-    background-image: url('${bgImgM}');
+    background-image: url(${props => props.photo});
+    /* background-image: url('${bgImgM}'); */
     background-size: cover;
     background-position: center;  
  

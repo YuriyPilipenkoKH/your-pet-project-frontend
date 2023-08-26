@@ -9,13 +9,26 @@ import { useAuth } from 'hooks/useAuth';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 
 
+export const MainCard = ({item} ) => {
+const {userId}  = useAuth()
 
-export const MainCard = ({title, photo, sex, place, name, category, birthday} ) => {
 
 //===========================
+const { 
+  title, 
+  photo, 
+  sex,
+  owner,
+  // place,
+  // name,
+  // petAvatarURL,
+  location,
+  category,
+  birthday   } = item
 const [showModal, setShowModal] = useState(false);
 const [modals, setModals] = useState(modal1)
 const {isLoggedIn} = useAuth()
+const isTrashShown = (userId === owner)
 
 const onModalClose = () => {
     setShowModal(false);
@@ -56,7 +69,7 @@ function calculateAge(birthday) {
 
   // Format the age string based on the calculated age
   if (!age) {
-      return `1 month`;
+      return `1 year`;
   } 
   else if(age < 1) {
     return `0 years`;
@@ -73,9 +86,9 @@ return(
       <ImgWrapper  photo ={photo}>
         <CategoryWrapp className='category'> {category} </CategoryWrapp>
         <FavButton className='fav' onClick = {checkRoute}> {iconHeart}</FavButton>
-        {isLoggedIn && <FavButton className='del'> {iconTrash}</FavButton>}
+        {isTrashShown && <FavButton className='del'> {iconTrash}</FavButton>}
 
-        <Tab className="tab1" text= {place || 'Somewhere'} icon = {iconMap}  ></Tab>
+        <Tab className="tab1" text= {location || 'Somewhere'} icon = {iconMap}  ></Tab>
         <Tab className='tab2' text= {calculateAge(birthday) || '0 years'} icon = {iconClock}  ></Tab>
         <Tab className='tab3' text= {sex} icon = {sex === 'male' ? iconMan :  iconFem}  ></Tab>
     
@@ -85,7 +98,7 @@ return(
       <CardTitle>  {title} </CardTitle>
       <ButtonTransparent  onClick={onLearnMore} >Learn more</ButtonTransparent>
       {showModal && (
-       <ModalPopup {...modals} onClose ={onModalClose} checkRoute ={checkRoute}  /> //  onClose ={onModalClose}   {...modal1} 
+       <ModalPopup {...modals} onClose ={onModalClose} checkRoute ={checkRoute} isOpen={showModal}  />
    )}
     </CardWrapper>
 )
