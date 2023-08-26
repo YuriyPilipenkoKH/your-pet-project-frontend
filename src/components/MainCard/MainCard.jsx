@@ -157,7 +157,7 @@ export const MainCard = ({
                     onClose={onModalClose}
                     checkRoute={checkRoute}
                     isOpen={showModal}
-                    delId={id}
+                    delid={id}
                 />
             )}
         </CardWrapper>

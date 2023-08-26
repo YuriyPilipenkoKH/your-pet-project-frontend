@@ -4,11 +4,12 @@ import { UserForm, Logout } from './UserDataForm.styled';
 import fields from './fieldsValidation';
 import UserDataItem from '../UserDataItem/UserDataItem';
 import { useDispatch} from "react-redux";
-// import { OutButton } from '../../Button/Button';
+import { useNavigate } from 'react-router-dom';
 import { ReactComponent as LogoutIcon } from '../../../images/userPageIcons/logout.svg';
 import * as Yup from 'yup';
 import { toggleSell } from 'redux/sort/sortSlice';
 import { authOperations } from 'redux/auth';
+
 
 const cityRegex =
     /^(?:(?:[a-zA-Zа-яА-ЯіІїЇєЄ]+(?:[.'’‘`-][a-zA-Zа-яА-ЯіІїЇєЄ]+)*)\s*)+$/;
@@ -55,10 +56,12 @@ const UserDataForm = ({ user, onSubmit }) => {
     });
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const signOut = () => {
         dispatch(toggleSell());
         dispatch(authOperations.logOut());
+        navigate('/login')
     };
 
     useEffect(() => {

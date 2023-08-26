@@ -41,8 +41,8 @@ export const SharedLayout = () => {
     };
 
     return (
-      
-            <SharedLayoutWrap className="sharedLayout">
+    
+                 <SharedLayoutWrap className="sharedLayout">
                 <LayoutWrap className="layoutWrap">
                     <StyledLogo to="/">
                         {isMobile ? iconLogo : iconLogoBig}
@@ -57,7 +57,7 @@ export const SharedLayout = () => {
                     </AuthNavWrap>
                     <MobileMenu isOpen={isOpen} onClose={toggleMenu} />
                 </LayoutWrap>
-            </SharedLayoutWrap>
+         
             <Suspense
                 fallback={
                     <DotLoader
@@ -74,10 +74,10 @@ export const SharedLayout = () => {
                     />
                 }
             >
-            <Suspense>
+          
                 <Outlet />
             </Suspense>
             </SharedLayoutWrap>
-        
+            
     );
 };

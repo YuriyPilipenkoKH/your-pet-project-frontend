@@ -17,12 +17,12 @@ import { authOperations } from "redux/auth";
 const modalRoot = document.querySelector('#modal-root');
 
 
-export const ModalPopup = ({ type, delId, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose } ) => {
+export const ModalPopup = ({ type, delid, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose } ) => {
 
 const props = {
-  type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized, delId
+  type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized, delid
 }
-console.log('delId' ,delId)
+
 const { modalIsOpen} = useAll()
 const dispatch = useDispatch()
 
@@ -78,7 +78,7 @@ useEffect(() => {
   }
 
   const removeCard = () => {
-    dispatch(noticesOperations.fetchDeleteNotice(delId))
+    dispatch(noticesOperations.fetchDeleteNotice(delid))
     dispatch(setModalClose())
     onClose()
 
