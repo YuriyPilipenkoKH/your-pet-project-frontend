@@ -40,7 +40,7 @@ export const SharedLayout = () => {
     };
 
     return (
-        <>
+      
             <SharedLayoutWrap className="sharedLayout">
                 <LayoutWrap className="layoutWrap">
                     <StyledLogo to="/">
@@ -56,10 +56,10 @@ export const SharedLayout = () => {
                     </AuthNavWrap>
                     <MobileMenu isOpen={isOpen} onClose={toggleMenu} />
                 </LayoutWrap>
-            </SharedLayoutWrap>
             <Suspense>
                 <Outlet />
             </Suspense>
-        </>
+            </SharedLayoutWrap>
+        
     );
 };
