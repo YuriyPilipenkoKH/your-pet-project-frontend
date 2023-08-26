@@ -11,6 +11,7 @@ const initialState = {
     page: 1,
     totalPages: 1,
     keyword: '',
+    reRender: false,
 };
 
 const noticesSlice = createSlice({
@@ -62,6 +63,7 @@ const noticesSlice = createSlice({
                 noticesOperations.fetchNoticesAddFavorite.pending,
                 store => {
                     store.loading = true;
+                    store.reRender = true;
                     store.item = {};
                 }
             )
@@ -70,6 +72,7 @@ const noticesSlice = createSlice({
                 (store, { payload }) => {
                     store.loading = false;
                     store.owner = payload.owner;
+                    store.reRender = false;
                 }
             )
             .addCase(
@@ -77,6 +80,7 @@ const noticesSlice = createSlice({
                 (store, { payload }) => {
                     store.loading = false;
                     store.error = payload;
+                    store.reRender = false;
                 }
             )
             .addCase(
@@ -84,6 +88,7 @@ const noticesSlice = createSlice({
                 store => {
                     store.loading = true;
                     store.item = {};
+                    store.reRender = true;
                 }
             )
             .addCase(
@@ -91,6 +96,7 @@ const noticesSlice = createSlice({
                 (store, { payload }) => {
                     store.loading = false;
                     store.owner = payload.owner;
+                    store.reRender = false;
                 }
             )
             .addCase(
@@ -98,6 +104,7 @@ const noticesSlice = createSlice({
                 (store, { payload }) => {
                     store.loading = false;
                     store.error = payload;
+                    store.reRender = false;
                 }
             )
 

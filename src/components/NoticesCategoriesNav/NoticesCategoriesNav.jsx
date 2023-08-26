@@ -14,7 +14,10 @@ import {
 } from 'redux/sort/sortSlice';
 import { activeIndex } from 'redux/sort/sortSelectors';
 
-export default function NoticesCategoriesNav({ handleChangeCurrentActive, currentActive }) {
+export default function NoticesCategoriesNav({
+    handleChangeCurrentActive,
+    currentActive,
+}) {
     const { isLoggedIn } = useAuth();
     const dispatch = useDispatch();
     const currentIndex = useSelector(activeIndex);
@@ -24,36 +27,36 @@ export default function NoticesCategoriesNav({ handleChangeCurrentActive, curren
             <NavWrapper>
                 <BtnWrap>
                     <RadioButton
-                        onClick={() => handleChangeCurrentActive(0)}
-                        className={currentActive === 0 ? 'active' : ''}
+                        onClick={() => dispatch(toggleSell())}
+                        className={currentIndex === 0 ? 'active' : ''}
                     >
                         sell
                     </RadioButton>
                     <RadioButton
-                        onClick={() => handleChangeCurrentActive(1)}
-                        className={currentActive === 1 ? 'active' : ''}
+                        onClick={() => dispatch(toggleLostFound())}
+                        className={currentIndex === 1 ? 'active' : ''}
                     >
                         lost/found
                     </RadioButton>
                     <RadioButton
-                        onClick={() => handleChangeCurrentActive(2)}
-                        className={currentActive === 2 ? 'active' : ''}
+                        onClick={() => dispatch(toggleInGoodHands())}
+                        className={currentIndex === 2 ? 'active' : ''}
                     >
                         in good hands
                     </RadioButton>
 
                     {isLoggedIn && (
                         <RadioButton
-                            onClick={() => handleChangeCurrentActive(3)}
-                            className={currentActive === 3 ? 'active' : ''}
+                            onClick={() => dispatch(toggleFavoriteAds())}
+                            className={currentIndex === 3 ? 'active' : ''}
                         >
                             favorite ads
                         </RadioButton>
                     )}
                     {isLoggedIn && (
                         <RadioButton
-                            onClick={() => handleChangeCurrentActive(4)}
-                            className={currentActive === 4 ? 'active' : ''}
+                            onClick={() => dispatch(toggleMyAds())}
+                            className={currentIndex === 4 ? 'active' : ''}
                         >
                             my ads
                         </RadioButton>

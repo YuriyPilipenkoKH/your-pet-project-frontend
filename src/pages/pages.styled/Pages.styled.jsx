@@ -63,6 +63,8 @@ export const HomeWrapper = styled.div`
 `;
 
 export const HomeWrapperTwo = styled.div`
+width: 100%;
+overflow-x: hidden;
     height: 600px;
     background-image: url('${FormBgImgM}');
     padding: 0px 20px 0 20px;
@@ -75,7 +77,7 @@ export const HomeWrapperTwo = styled.div`
 
     @media screen and (min-width: 768px) {
         padding: 40px 20px 0 20px;
-        height: 1024px;
+        height: 1200px;
         background-image: url('${FormBgImgT}');
 
         @media (min-device-pixel-ratio: 2),

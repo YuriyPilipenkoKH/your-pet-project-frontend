@@ -31,7 +31,6 @@ export const MainCard = ({
 }) => {
     const { userId } = useAuth();
     // const [shouldReload, setShouldReload] = useState(false);
-  const [isLike, setIsLike] = useState(false)
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     const [modals, setModals] = useState(modal1);
@@ -41,9 +40,9 @@ export const MainCard = ({
     const onModalClose = () => {
         setShowModal(false);
     };
-    // let isLike = null;
+    let isLike = null;
     if (idUsersAddedFavorite.includes(userId)) {
-      // setIsLike(true)
+      isLike = index + 1;
     }
 
     const checkRoute = () => {
@@ -53,13 +52,10 @@ export const MainCard = ({
         } else {
             if (idUsersAddedFavorite.includes(userId)) {
                 dispatch(operations.fetchRemoveFavorite(id));
-              //  setIsLike(false)
               }
                 
                 else {
                     dispatch(operations.fetchNoticesAddFavorite(id));
-                    // setIsLike(true)
-                    // setShouldReload(true);
 
                   }
 
