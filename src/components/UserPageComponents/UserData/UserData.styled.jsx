@@ -15,7 +15,10 @@ export const UserInfo = styled.div`
 `;
 
 export const StylizedForm = styled(Form)`
-    @media screen and (min-width: 768px) max-width: 1280px {
+    @media screen and (min-width: 768px)  {
+        width: 182px;
+    }
+    @media screen and (max-width: 1280px)  {
         width: 182px;
     }
 `;
@@ -77,7 +80,7 @@ export const EditButton = styled.button`
 
 export const Cross = styled(CrossIcon)`
     stroke: #F43F5E;
-    margin-right: 8px};
+    margin-right: 8px;
 `;
 
 export const Check = styled(CheckIcon)`

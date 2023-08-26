@@ -11,7 +11,7 @@ export const MenuWrapp = styled.div`
   bottom: 0;
   width: 100%;
   height: 100vh;
-  z-index: 22;
+  z-index: 5;
   background-color: var(--fone-color);
   transition: left 1s;
   padding: 25px;

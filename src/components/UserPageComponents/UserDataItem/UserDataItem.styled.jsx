@@ -78,7 +78,7 @@ export const FormInput = styled(Field)`
 
     @media screen and (min-width: 768px) {
         width: 255px;
-        height: 32px};
+        height: 32px;
     }
 
    ${({ touched, error }) =>

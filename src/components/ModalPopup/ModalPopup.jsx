@@ -11,7 +11,7 @@ import noticesOperations from '../../redux/notices/notices-operations'
 import { setModalClose, setModalOpen } from 'redux/modal/modalSlice';
 import { useAll } from 'hooks/useAll';
 import { toggleSell } from 'redux/sort/sortSlice';
-import { authOperations, authSelectors } from "redux/auth";
+import { authOperations } from "redux/auth";
 
 
 const modalRoot = document.querySelector('#modal-root');

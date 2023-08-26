@@ -41,7 +41,7 @@ export const SharedLayout = () => {
     };
 
     return (
-        <>
+      
             <SharedLayoutWrap className="sharedLayout">
                 <LayoutWrap className="layoutWrap">
                     <StyledLogo to="/">
@@ -74,8 +74,10 @@ export const SharedLayout = () => {
                     />
                 }
             >
+            <Suspense>
                 <Outlet />
             </Suspense>
-        </>
+            </SharedLayoutWrap>
+        
     );
 };
