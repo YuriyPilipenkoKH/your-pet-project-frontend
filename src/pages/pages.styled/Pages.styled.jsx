@@ -28,22 +28,10 @@ export const HomeWrapper = styled.div`
     background-image: url('${bgImgM}');
     padding: 40px 20px 0 20px;
 
-    @media (min-device-pixel-ratio: 2),
-        (min-resolution: 192dpi),
-        (min-resolution: 2dppx) {
-        background-image: url('${bgImgM2}');
-    }
-
     @media screen and (min-width: 768px) {
         padding: 80px 20px 0 20px;
         height: 1024px;
         background-image: url('${bgImgT}');
-
-        @media (min-device-pixel-ratio: 2),
-            (min-resolution: 192dpi),
-            (min-resolution: 2dppx) {
-            background-image: url('${bgImgT2}');
-        }
     }
 
     @media screen and (min-width: 1280px) {
@@ -53,12 +41,6 @@ export const HomeWrapper = styled.div`
         justify-content: start;
         height: 768px;
         background-image: url('${bgImgD}');
-
-        @media (min-device-pixel-ratio: 2),
-            (min-resolution: 192dpi),
-            (min-resolution: 2dppx) {
-            background-image: url('${bgImgD2}');
-        }
     }
 `;
 
@@ -69,22 +51,10 @@ overflow-x: hidden;
     background-image: url('${FormBgImgM}');
     padding: 0px 20px 0 20px;
 
-    @media (min-device-pixel-ratio: 2),
-        (min-resolution: 192dpi),
-        (min-resolution: 2dppx) {
-        background-image: url('${FormBgImgM2}');
-    }
-
     @media screen and (min-width: 768px) {
         padding: 40px 20px 0 20px;
         height: 1200px;
         background-image: url('${FormBgImgT}');
-
-        @media (min-device-pixel-ratio: 2),
-            (min-resolution: 192dpi),
-            (min-resolution: 2dppx) {
-            background-image: url('${FormBgImgT2}');
-        }
     }
 
     @media screen and (min-width: 1280px) {
@@ -94,12 +64,6 @@ overflow-x: hidden;
         justify-content: start;
         height: 768px;
         background-image: url('${FormBgImgD}');
-
-        @media (min-device-pixel-ratio: 2),
-            (min-resolution: 192dpi),
-            (min-resolution: 2dppx) {
-            background-image: url('${FormBgImgD2}');
-        }
     }
 `;
 // Home title
