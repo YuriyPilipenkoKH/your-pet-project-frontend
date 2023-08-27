@@ -53,7 +53,7 @@ overflow-x: hidden;
 
     @media screen and (min-width: 768px) {
         padding: 40px 20px 0 20px;
-        height: 1200px;
+        height: 800px;
         background-image: url('${FormBgImgT}');
     }
 
@@ -264,7 +264,6 @@ export const Notfound = styled.div`
 `;
 
 export const CommonWrapper = styled.div`
-    min-height: 900px;
     display: grid;
     gap: 24px;
 `;
