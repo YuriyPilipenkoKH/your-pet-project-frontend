@@ -163,6 +163,8 @@ export const MainCard = ({
                     animal={type}
                     sex={sex}
                     comments={comments}
+                    isLike={isLike}
+                    currentDiv={index + 1}
                 />
             )}
         </CardWrapper>

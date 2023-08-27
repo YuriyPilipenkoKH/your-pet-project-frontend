@@ -315,6 +315,47 @@ export const StyleAddToButton = styled.button`
       
     }
 `;
+export const StyledAddFavButton = styled.button.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) &&
+      prop !== 'isLike' &&
+      prop !== 'currentDiv'
+})`
+    ${buttonStyles};
+    ${ripple};
+
+    border: 2px solid var(--blue);
+    background-color: var(--blue);
+    color: var(--fone-color);
+    width: 130px;
+
+
+    ${hoverStylesB};
+
+    &:hover {
+        border: 2px solid transparent;
+    }
+
+    @media screen and ( max-width: 767px ) {
+      position: fixed;
+      left: 60%;
+      bottom: 200px;
+
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      padding: 2px;
+      flex-direction: column-reverse;
+      font-size: 12px;
+      gap: 12px;
+      z-index: 5;
+
+      &>svg{
+        scale: 2;
+      }
+      
+    }
+`;
 
 export const StyledContactButton = styled(NavLink)`
     ${buttonStyles};

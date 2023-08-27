@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 
 export const FilterWrapper = styled.div`
@@ -63,10 +64,13 @@ export const DropdownMenu = styled.div`
 }
 
 `
-export const FiltersBtn = styled.div`
+export const FiltersBtn = styled.div.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) && prop !== 'bor' ,
+})`
   width: 136px;
   height: 32px;
-  border-radius: ${props => props.bor ? `${props.bor} 16px 16px 0 0` : '16px'};
+  border-radius: ${({ bor }) => bor ? '16px 16px 0 0' : '16px'};
   background-color: var(--light-blue);
   padding:0 16px;
   font-size: 12px;
@@ -84,18 +88,21 @@ export const FiltersBtn = styled.div`
   &>span>svg{
   width: 18px;
   fill: var(--blue);
-  
+  opacity: ${({ bor }) => bor ? '0' : '1' };
   }
 
 `
-export const CheckList = styled.div`
+export const CheckList = styled.div.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) && prop !== 'bor' ,
+})`
   width: 136px;
   height: 100px;
   padding: 8px;
   display: grid;
   gap: 5px;
   background-color: var(--light-blue);
-  border-radius: bor  0 0 16px 16px;
+  border-radius: ${({ bor }) => !bor ? ' 0 0 16px 16px' : '16px'};
 
 
 `
@@ -116,7 +123,8 @@ position: relative;
   position: absolute;
   left: 5px;
   width: 16px;
-  fill: var(--blue)
+  fill: var(--blue);
+  
 }
 `
 
