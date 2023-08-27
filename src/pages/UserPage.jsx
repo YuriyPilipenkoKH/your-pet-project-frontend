@@ -12,11 +12,19 @@ import {useEffect, useState } from "react";
 import { useAuth } from 'hooks/useAuth';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { modal4 } from 'modals/modals';
+import { getUser, getPets } from 'redux/auth/auth-selectors';
+import { useSelector } from 'react-redux';
 
 const UserPage = () => {
     const location = useLocation();
     const {registrationSuccessful} = useAuth()
     const [showModal, setShowModal] = useState(true);
+
+    const user = useSelector(getUser);
+    const pets = useSelector(getPets);
+
+    // console.log(useSelector(getPets))
+
 
     useEffect(() => {
         if (showModal && registrationSuccessful) {
@@ -42,11 +50,11 @@ const UserPage = () => {
                             <Title>My information:</Title>
                         </TitleWrap>
                         <Card>
-                            <UserData/>
+                            <UserData user={user} />
                         </Card>
                     </div>
                     <div style={{ position: 'relative', width: '100%' }}>
-                        <PetsData state={{ from: location }}/>
+                        <PetsData state={{ from: location }} pets={pets} />
                     </div>
                 </MainContent>
             </UserPageWrapper>
