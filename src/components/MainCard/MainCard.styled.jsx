@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 
 // import bgImgD from '../../images/cat-d.png';
@@ -59,7 +60,10 @@ export const Im = styled.div`
 
 
 
-export const ImgWrapper = styled.div`
+export const ImgWrapper = styled.div.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) && prop !== 'active' && prop !== 'photo',
+})`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;

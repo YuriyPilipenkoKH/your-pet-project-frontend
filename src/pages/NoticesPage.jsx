@@ -9,7 +9,7 @@ import {
 import { MainCard } from '../components/MainCard/MainCard';
 import { CommonWrapper } from './pages.styled/Pages.styled';
 import { useLocation } from 'react-router-dom';
-import {  getReRender } from 'redux/notices/notices-selectors';
+import { getReRender } from 'redux/notices/notices-selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import noticesOperations from '../redux/notices/notices-operations';
 import { getNoticesFilter } from 'redux/filter/filterSelectors';
@@ -18,17 +18,13 @@ import { useAll } from 'hooks/useAll';
 
 export default function NoticesPage() {
     const location = useLocation();
-    const { 
-        filterByAgeIdx,
-         filterByGender,
-         noticesList,
-         activeIndex
-        } = useAll()
+    const { filterByAgeIdx, filterByGender, noticesList, activeIndex } =
+        useAll();
     const dispatch = useDispatch();
 
     const filterValue = useSelector(getNoticesFilter);
     const reRender = useSelector(getReRender);
-   
+
     const [currentActive, setCurrentActive] = useLocalStorage(
         'currentActive',
         0
@@ -57,40 +53,33 @@ export default function NoticesPage() {
     };
 
     const page = Math.ceil(noticesList?.length / 12);
-  
+
     const searchParams = {
         NoticesCategoriesNav: makeCategory(),
         query: filterValue,
         page: 1,
     };
     useEffect(() => {
-        
-        if(activeIndex === 3){
+        if (activeIndex === 3) {
             dispatch(noticesOperations.fetchAllFavorite());
-        }
-        else if(activeIndex === 4){
+        } else if (activeIndex === 4) {
             dispatch(noticesOperations.fetchUserNotices());
-
-        }
-        else{
+        } else {
             dispatch(noticesOperations.fetchNoticesByCategory(searchParams));
-
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reRender]);
 
-    const genderFilter =() => {
-        
-        if(filterByGender === 'male'){
-            return noticesList.filter(e => e.sex === 'male')
+    const genderFilter = () => {
+        if (filterByGender === 'male') {
+            return noticesList.filter(e => e.sex === 'male');
         }
-        if(filterByGender === 'female'){
-            return noticesList.filter(e => e.sex === 'female')
+        if (filterByGender === 'female') {
+            return noticesList.filter(e => e.sex === 'female');
         }
-    }
+    };
 
     const filteredNotices = () => {
-      
         if (filterByAgeIdx === 0) {
             return genderFilter().filter(e => calculateAge(e.birthday) <= 1);
         } else if (filterByAgeIdx === 1) {
@@ -100,7 +89,7 @@ export default function NoticesPage() {
         }
 
         return noticesList;
-        }
+    };
 
     function calculateAge(birthday) {
         const birthDate = new Date(birthday); // Parse birthday string into Date object
@@ -118,15 +107,12 @@ export default function NoticesPage() {
             age--;
         }
 
-        if (!age){
-            return 1
-        }
-        else if(age <= 0){
-            return 0
-        }
-        else   return Number(age)
+        if (!age) {
+            return 1;
+        } else if (age <= 0) {
+            return 0;
+        } else return Number(age);
     }
-
 
     return (
         <CommonWrapper className="CommonWrapper">
@@ -140,7 +126,6 @@ export default function NoticesPage() {
             </NoticesPageWrap>
             <NoticeContainer className="notice-container">
                 {filteredNotices().map((item, index) => (
-                   
                     <MainCard
                         key={index}
                         index={index}
