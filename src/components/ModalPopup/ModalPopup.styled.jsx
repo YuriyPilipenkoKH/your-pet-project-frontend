@@ -265,4 +265,10 @@ export const PetList = styled.div`
     grid-row-gap : 10px;
 } 
 
+&>span{
+       overflow: hidden;
+        text-overflow: ellipsis; 
+        white-space: nowrap; 
+}
+
 `

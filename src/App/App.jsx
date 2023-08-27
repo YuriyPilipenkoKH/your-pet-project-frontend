@@ -30,54 +30,38 @@ const App = () => {
         <Container>
             <Routes>
                 <Route path="/" element={<SharedLayout />}>
+                    
                     <Route index element={<Home />} />
 
-                    <Route
-                        path="/register"
-                        element={
-                            <PublicRoute
-                                redirectTo="/profile"
-                                component={<RegisterPage />}
-                            />
-                        }
-                    />
+                    <Route  path="/register"
+                        element={ <PublicRoute
+                        redirectTo="/profile"
+                        component={<RegisterPage />} /> } />
+
+                    <Route path="/login"  
+                            element={ <PublicRoute
+                            redirectTo="/profile"
+                            component={<LoginPage />} /> } />
+
+                    <Route path="/add-pet"
+                            element={ <PrivateRoute
+                            redirectTo="/login"
+                            component={<AddPetPage />}/> } />
 
                     <Route
-                        path="/login"
-                        element={
-                            <PublicRoute
-                                redirectTo="/profile"
-                                component={<LoginPage />}
-                            />
-                        }
-                    />
+                        path="/profile" 
+                            element={ <PrivateRoute
+                            redirectTo="/login"
+                            component={<UserPage />} />  } />
 
-                    <Route
-                        path="/add-pet"
-                        element={
-                            <PrivateRoute
-                                redirectTo="/login"
-                                component={<AddPetPage />}
-                            />
-                        }
-                    />
-                    <Route
-                        path="/profile"
-                        element={
-                            <PrivateRoute
-                                redirectTo="/login"
-                                component={<UserPage />}
-                            />
-                        }
-                    />
                     <Route path="/notices" element={<NoticesPage />} />
 
                     <Route path="/news" element={<NewsPage />} />
 
                     <Route path="/friends" element={<SponsorsPage />} />
 
-
                     <Route path="*" element={<NotfoundPage />} />
+
                     <Route path="/test" element={<TestPage />} />
                     
                 </Route>

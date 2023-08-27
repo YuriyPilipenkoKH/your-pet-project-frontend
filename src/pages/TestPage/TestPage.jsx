@@ -8,6 +8,7 @@ import { MdOutlineLogout} from "react-icons/md";
 import { AiOutlinePlus} from "react-icons/ai";
 import { ModalPopup } from "../../components/ModalPopup/ModalPopup";
 
+
 export const TestPage =()=> {
 
     const [showModal, setShowModal] = useState(false);
@@ -22,6 +23,8 @@ export const TestPage =()=> {
         setShowModal(false);
       
     };
+
+
     
 
     return(
@@ -54,7 +57,10 @@ export const TestPage =()=> {
   onModalOpen(); 
   }}>Contact</ContactButton>
 
-  <AddToButton>Add Pet <AiOutlinePlus/></AddToButton>
+
+  <AddToButton >Add Pet <AiOutlinePlus/></AddToButton>
+
+
 
   <RadioButton>your pet</RadioButton>
   <RadioButton>sell</RadioButton>

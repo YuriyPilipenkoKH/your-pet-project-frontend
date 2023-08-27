@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
     iconClock,
     iconFem,
@@ -20,15 +20,20 @@ import operations from 'redux/notices/notices-operations';
 export const MainCard = ({
     index,
     title,
-    photo,
+    // photo,
+    name,
     sex,
     owner,
     idUsersAddedFavorite,
+    petAvatarURL,
     location,
     category,
     birthday,
+    type,
+    comments,
     id,
 }) => {
+  
     const { userId } = useAuth();
     // const [shouldReload, setShouldReload] = useState(false);
     const dispatch = useDispatch();
@@ -58,7 +63,6 @@ export const MainCard = ({
                     dispatch(operations.fetchNoticesAddFavorite(id));
 
                   }
-
         }
     };
 
@@ -67,15 +71,7 @@ export const MainCard = ({
       setShowModal(true);
     }
 
-  //   useEffect(() => {
-  //     if (shouldReload) {
-  //         // Оновити сторінку
-  //         window.location.reload();
-  //     }
-  // }, [shouldReload]);
-  
-  
-
+    
     const onLearnMore = () => {
         setModals(modal3);
         setShowModal(true);
@@ -111,7 +107,7 @@ export const MainCard = ({
 
     return (
         <CardWrapper>
-            <ImgWrapper photo={photo}>
+            <ImgWrapper photo={petAvatarURL}>
                 <CategoryWrapp className="category"> {category} </CategoryWrapp>
                 <FavButton
                     className="fav"
@@ -158,6 +154,15 @@ export const MainCard = ({
                     checkRoute={checkRoute}
                     isOpen={showModal}
                     delid={id}
+                    cardtitle={title}
+                    petAvatarURL={petAvatarURL}
+                    category={category}
+                    location={location}
+                    name={name}
+                    birthday={birthday}
+                    animal={type}
+                    sex={sex}
+                    comments={comments}
                 />
             )}
         </CardWrapper>

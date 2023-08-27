@@ -51,7 +51,7 @@ export const DropdownMenu = styled.div`
   padding:  8px;
   z-index: 10;
   box-shadow: var(--shadow-default);
-  cursor: pointer;
+  
 
 
   @media screen and (min-width: 768px) {
@@ -66,7 +66,7 @@ export const DropdownMenu = styled.div`
 export const FiltersBtn = styled.div`
   width: 136px;
   height: 32px;
-  border-radius: 16px;
+  border-radius: ${props => props.bor ? `${props.bor} 16px 16px 0 0` : '16px'};
   background-color: var(--light-blue);
   padding:0 16px;
   font-size: 12px;
@@ -78,14 +78,46 @@ export const FiltersBtn = styled.div`
     display: flex;
     align-items: center;
     gap: 16px;
-
+    cursor: pointer;
   }
 
   &>span>svg{
   width: 18px;
   fill: var(--blue);
+  
   }
 
+`
+export const CheckList = styled.div`
+  width: 136px;
+  height: 100px;
+  padding: 8px;
+  display: grid;
+  gap: 5px;
+  background-color: var(--light-blue);
+  border-radius: bor  0 0 16px 16px;
+
+
+`
+
+export const RadioInput = styled.input`
+opacity: 0;
+`
+export const RadioLabel = styled.label`
+position: relative;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  color: var(--blue);
+  font-size: 12px;
+
+&>svg {
+  position: absolute;
+  left: 5px;
+  width: 16px;
+  fill: var(--blue)
+}
 `
 
 

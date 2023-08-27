@@ -6,7 +6,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineLogout} from "react-icons/md";
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BtnContainer,  BtnContainer3,  ContentWrapp,  ModalCategory,  ModalContainer, ModalContainer3, ModalImage, ModalOverlay, ModalText, ModalTitle, ModalTitle3, OnCloseButton, PetList } from './ModalPopup.styled';
-import { Button, ButtonTransparent, OutButton } from '../Button/Button';
+import { Button, ButtonTransparent, ContactButton, OutButton } from '../Button/Button';
 import noticesOperations from '../../redux/notices/notices-operations'
 import { setModalClose, setModalOpen } from 'redux/modal/modalSlice';
 import { useAll } from 'hooks/useAll';
@@ -17,11 +17,12 @@ import { authOperations } from "redux/auth";
 const modalRoot = document.querySelector('#modal-root');
 
 
-export const ModalPopup = ({ type, delid, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose } ) => {
+export const ModalPopup = ({ type, delid, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose , cardtitle, petAvatarURL, category, location, name, birthday, sex, animal, comments} ) => {
 
 const props = {
   type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized, delid
 }
+console.log('props', props)
 
 const { modalIsOpen} = useAll()
 const dispatch = useDispatch()
@@ -118,7 +119,8 @@ if ( type === 2  ){
       {...props}
       >
         <ModalTitle>{title}</ModalTitle>
-        <ModalText>{text}</ModalText>
+        <ModalText>{`Are you sure you want to delete  ${cardtitle} ? You can’t undo this action.`}</ModalText>
+        
         <BtnContainer {...props}>
           <ButtonTransparent onClick={shut}>Cacel</ButtonTransparent>
           <Button onClick={removeCard}>Yes <RiDeleteBin6Line/> </Button>,
@@ -133,25 +135,25 @@ if (type === 3){
   return  createPortal(
     <ModalOverlay className='modal-backdrop'>
       <ModalContainer3  >
-        {image && <ModalImage src={image.doggy} alt="Modal Image" />}
-        <ModalCategory > {'in good hands'} </ModalCategory>
+        {image && <ModalImage src={petAvatarURL} alt="Modal Image" />}
+        <ModalCategory > {category} </ModalCategory>
 
         <ContentWrapp>
           <ModalTitle3 >{title}</ModalTitle3>
           <PetList>
-            <p>Name:</p> {'Rich'}
-            <p>Birthday:</p> {'21.09.2020'}
-            <p>Type:</p>  {'Pomeranian'}
-            <p>Place:</p>  {'Lviv'}
-            <p>The sex:</p>  {'male'}
-            <p className='userContact'>Email:</p> <span>{'user@mail.com'}</span> 
-            <p className='userContact'>Phone:</p> <span>{'+380971234567'}</span> 
-            <p >Comments:<span>{' Rich would be the perfect addition to an active family that loves to play and go on walks. I bet he would love having a doggy playmate too! '}</span> </p>
+            <p>Name:</p> <span>{name} </span> 
+            <p>Birthday:</p> {birthday}
+            <p>Type:</p>  <span>{animal}</span>
+            <p>Place:</p> <span>  {location} </span>
+            <p>The sex:</p>  {sex}
+            <p className='userContact'>Email:</p> <span> <a href='mailto:alex@gmail.com'> {'alex@gmail.com'}</a> </span> 
+            <p className='userContact'>Phone:</p> <span> <a href='tel:+380971234567'>{'+380971234567'}</a> </span> 
+            <p >Comments:<span>{comments}</span> </p>
           </PetList>
         </ContentWrapp>
 
         <BtnContainer3 style={{marginTop: 'auto'}}>
-          {btn1}
+        <ContactButton to="mailto:alex@gmail.com" >Contact</ContactButton>
           <Button  onClick ={checkRoute}>Add to <FaRegHeart/> </Button>
         </BtnContainer3>
         <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>

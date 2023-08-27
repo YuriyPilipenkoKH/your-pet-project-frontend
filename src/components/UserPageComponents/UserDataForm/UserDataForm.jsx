@@ -3,12 +3,10 @@ import { Formik } from 'formik';
 import { UserForm, Logout } from './UserDataForm.styled';
 import fields from './fieldsValidation';
 import UserDataItem from '../UserDataItem/UserDataItem';
-import { useDispatch} from "react-redux";
-import { useNavigate } from 'react-router-dom';
 import { ReactComponent as LogoutIcon } from '../../../images/userPageIcons/logout.svg';
 import * as Yup from 'yup';
-import { toggleSell } from 'redux/sort/sortSlice';
-import { authOperations } from 'redux/auth';
+import {  modal5 } from 'modals/modals';
+import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 
 
 const cityRegex =
@@ -47,6 +45,10 @@ const validationSchema = Yup.object({
 });
 
 const UserDataForm = ({ user, onSubmit }) => {
+
+    const [showModal, setShowModal] = useState(false);
+    const [modals, setModals] = useState(modal5);
+
     const [initialState, setInitialState] = useState({
         name: '',
         email: '',
@@ -55,13 +57,14 @@ const UserDataForm = ({ user, onSubmit }) => {
         location: '',
     });
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const onModalClose = () => {
+        setShowModal(false);
+    };
 
     const signOut = () => {
-        dispatch(toggleSell());
-        dispatch(authOperations.logOut());
-        navigate('/login')
+        setModals(modal5);
+        setShowModal(true);
+        
     };
 
     useEffect(() => {
@@ -104,6 +107,8 @@ const UserDataForm = ({ user, onSubmit }) => {
     };
 
     const [formErrors, setFormErrors] = useState({});
+
+
 
     useEffect(() => {
         setUsernameIsActive(true);
@@ -154,6 +159,8 @@ const UserDataForm = ({ user, onSubmit }) => {
     };
 
     return (
+        <>
+        
         <Formik
             enableReinitialize
             initialValues={initialState}
@@ -185,7 +192,16 @@ const UserDataForm = ({ user, onSubmit }) => {
                     </Logout>
                 </UserForm>
             )}
+
         </Formik>
+        {showModal && (
+                <ModalPopup
+                    {...modals}
+                    onClose={onModalClose}
+                    isOpen={showModal}
+                                   />
+            )}
+        </>
     );
 };
 
