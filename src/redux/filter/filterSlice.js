@@ -9,7 +9,7 @@ export  const filterSlice = createSlice({
         filterNotices: '',
         filterNews: '',
         filterByAgeIdx: null,
-        filterByGenderIdx: null,
+        filterByGender: '',
     },
     reducers: {
         setFilterNotices(state, action) {
@@ -21,11 +21,11 @@ export  const filterSlice = createSlice({
       setFilterByAgeIdx(state, action) {
         state.filterByAgeIdx = action.payload
       },
-      setFilterByGenderIdx(state, action) {
-        state.filterByGenderIdx = action.payload
+      setFilterByGender(state, action) {
+        state.filterByGender = action.payload
       },
 }
 })
 
-export const {setFilterNotices, setFilterNews, setFilterByAgeIdx, setFilterByGenderIdx}  = filterSlice.actions
+export const {setFilterNotices, setFilterNews, setFilterByAgeIdx, setFilterByGender}  = filterSlice.actions
 export const filterReducer = filterSlice.reducer

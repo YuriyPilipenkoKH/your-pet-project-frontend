@@ -1,8 +1,10 @@
 import { useSelector } from 'react-redux';
-import { getFilterByAgeIdx, getFilterByGenderIdx, getNewsFilter, getNoticesFilter } from 'redux/filter/filterSelectors';
+import { getFilterByAgeIdx, getFilterByGender,  getNewsFilter, getNoticesFilter } from 'redux/filter/filterSelectors';
+import { getLang } from 'redux/lang/langSelectors';
 import { getModalIsOpen } from 'redux/modal/modalSelectors';
 import { getNoticesList } from 'redux/notices/notices-selectors';
 import { activeIndex, getSorted } from 'redux/sort/sortSelectors';
+import { getTheme } from 'redux/theme/themeSelectors';
 
 
 export const useAll= () => {
@@ -17,7 +19,10 @@ export const useAll= () => {
         noticesFilter: useSelector(getNoticesFilter),
         newsFilter: useSelector(getNewsFilter),
         filterByAgeIdx: useSelector(getFilterByAgeIdx),
-        filterByGenderIdx: useSelector(getFilterByGenderIdx),
+        filterByGenderIdx: useSelector(getFilterByGender),
+
+        theme: useSelector(getTheme),
+        lang: useSelector(getLang),
   
     };
   };
