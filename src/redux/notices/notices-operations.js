@@ -146,6 +146,7 @@ const fetchUserNotices = createAsyncThunk(
        
         try {
             const { data } = await axios.get(`/notices/userNotices`)
+            console.log(data)
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data);

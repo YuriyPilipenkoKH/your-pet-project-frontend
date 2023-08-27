@@ -77,6 +77,10 @@ export default function NoticesPage() {
         if(activeIndex === 3){
             dispatch(noticesOperations.fetchAllFavorite());
         }
+        else if(activeIndex === 4){
+            dispatch(noticesOperations.fetchUserNotices());
+
+        }
         else{
             dispatch(noticesOperations.fetchNoticesByCategory(searchParams));
 
