@@ -137,7 +137,7 @@ const authSlice = createSlice({
                 state.isLoading = false;
                 state.error = payload;
             }
-        );
+        )
 
     // fetchUser
 
