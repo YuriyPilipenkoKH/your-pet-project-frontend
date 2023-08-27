@@ -32,8 +32,11 @@ export const MainCard = ({
     birthday,
     type,
     comments,
+   
     id,
 }) => {
+
+   
   
     const { userId } = useAuth();
     // const [shouldReload, setShouldReload] = useState(false);
