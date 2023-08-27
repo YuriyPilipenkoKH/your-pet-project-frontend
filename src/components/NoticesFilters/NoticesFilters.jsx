@@ -5,12 +5,11 @@ import { arrowD, iconFilter, iconchbox, iconbox} from '../../images/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlinePlus } from 'react-icons/ai';
 import {
-    CheckList,
+   
     CheckList1,
     CheckList2,
     DropdownMenu,
     FilterWrapper,
-    FiltersBtn,
     FiltersBtn1,
     FiltersBtn2,
     RadioInput,
@@ -21,7 +20,7 @@ import { useAuth } from 'hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { useAll } from 'hooks/useAll';
-import { setFilterByAgeIdx } from 'redux/filter/filterSlice';
+import { setFilterByAgeIdx, setFilterByGender } from 'redux/filter/filterSlice';
 
 export default function NoticesFilters({ state }) {
     const [showModal, setShowModal] = useState(false);
@@ -114,21 +113,17 @@ export default function NoticesFilters({ state }) {
                                 </span>
                             </FiltersBtn2>
                             { big2 &&  <CheckList2  visible ={big1}>
-                                    <RadioLabel htmlFor="a">
+                                <RadioLabel htmlFor="d">
                                     <RadioInput
-                                    onClick={()=> dispatch(setFilterByAgeIdx(0))}
-                                    type="radio" id="a" name="radio"/>
-                                     {iconbox} up to 1 year</RadioLabel>
-                                    <RadioLabel htmlFor="b">
+                                    onClick={()=> dispatch(setFilterByGender('female'))}
+                                    type="radio" id="d" name="radio"/>
+                                     {iconbox} female</RadioLabel>
+                                <RadioLabel htmlFor="e">
                                     <RadioInput
-                                     onClick={()=> dispatch(setFilterByAgeIdx(1))}
-                                    type="radio" id="b" name="radio"/>
-                                    {iconbox} up to 2 years</RadioLabel>
-                                    <RadioLabel htmlFor="c">
-                                    <RadioInput
-                                     onClick={()=> dispatch(setFilterByAgeIdx(2))}
-                                    type="radio" id="c" name="radio"/>
-                                    {iconbox} from 2 years</RadioLabel>
+                                     onClick={()=> dispatch(setFilterByGender('male'))}
+                                    type="radio" id="e" name="radio"/>
+                                    {iconbox} male</RadioLabel>
+                                
                             
                                 </CheckList2>}
                         </div>

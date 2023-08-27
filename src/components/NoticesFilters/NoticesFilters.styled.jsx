@@ -141,7 +141,7 @@ export const CheckList2 = styled.div.withConfig({
       isPropValid(prop) && prop !== 'bor' ,
 })`
   width: 136px;
-  height: 100px;
+  height: 70px;
   padding: 8px;
   display: grid;
   gap: 5px;
