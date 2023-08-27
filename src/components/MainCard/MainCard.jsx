@@ -16,7 +16,7 @@ import { useAuth } from 'hooks/useAuth';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { useDispatch } from 'react-redux';
 import operations from 'redux/notices/notices-operations';
-import { setAge } from 'redux/notices/notices-slice';
+// import { setAge } from 'redux/notices/notices-slice';
 
 export const MainCard = ({
     index,
@@ -95,7 +95,7 @@ export const MainCard = ({
         }
 
         // Format the age string based on the calculated age
-        dispatch(setAge(age))
+        // dispatch(setAge(age))
 
         if (!age) {
             return `1 year`;

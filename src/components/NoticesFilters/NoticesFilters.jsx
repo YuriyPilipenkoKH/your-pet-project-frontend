@@ -57,7 +57,11 @@ export default function NoticesFilters({ state }) {
         <>
             <FilterWrapper className="NoticesFilters">
                 <ButtonTransparent
-                    onClick={() => setShowFilters(!showFilters)}
+                    onClick={() =>{
+                         setShowFilters(!showFilters)
+                         dispatch(setFilterByAgeIdx(null))
+                         dispatch(setFilterByGender(''))
+                        }}
                     className="FilterBtn"
                 >
                     Filter {iconFilter}

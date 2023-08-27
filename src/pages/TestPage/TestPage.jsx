@@ -8,6 +8,12 @@ import { MdOutlineLogout} from "react-icons/md";
 import { AiOutlinePlus} from "react-icons/ai";
 import { ModalPopup } from "../../components/ModalPopup/ModalPopup";
 import { setCategory } from "redux/pets/petsSlice";
+import { LangBtn, ThemeBtn } from "./TestPage.styled";
+import { toggleLang } from "redux/lang/langSlice";
+import { toggleTheme } from "redux/theme/themeSlice";
+import { useAll } from "hooks/useAll";
+import {MdOutlineNightlight} from 'react-icons/md';
+import {MdOutlineLightMode} from 'react-icons/md';
 
 
 export const TestPage =()=> {
@@ -15,6 +21,9 @@ export const TestPage =()=> {
     const [showModal, setShowModal] = useState(false);
     const [modals, setModals] = useState(modal1)
     const dispatch = useDispatch();
+    const {theme, lang} = useAll()
+
+
     const onModalOpen = () => {
       setShowModal(true);
    
@@ -30,6 +39,23 @@ export const TestPage =()=> {
 
     return(
         <TestWrapp >
+        <LangBtn  
+        onClick={() => dispatch(toggleLang())}
+        type="button">
+        {lang === 'eng' ?  'EN' :  'UA'}
+        </LangBtn>
+
+        <ThemeBtn 
+        onClick={() => dispatch(toggleTheme())}
+        type="button"
+      
+        >
+          {theme === 'light'
+          ? <MdOutlineLightMode size={30}/>
+          : <MdOutlineNightlight size={30}/>
+          }
+        </ThemeBtn>
+
             <HomeTitle> Test Page</HomeTitle>
 
             <Button onClick={() => {

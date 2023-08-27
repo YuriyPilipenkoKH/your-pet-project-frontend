@@ -9,7 +9,7 @@ import {
 import { MainCard } from '../components/MainCard/MainCard';
 import { CommonWrapper } from './pages.styled/Pages.styled';
 import { useLocation } from 'react-router-dom';
-import { getNoticesList, getReRender } from 'redux/notices/notices-selectors';
+import {  getReRender } from 'redux/notices/notices-selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import noticesOperations from '../redux/notices/notices-operations';
 import { getNoticesFilter } from 'redux/filter/filterSelectors';
@@ -37,8 +37,6 @@ export default function NoticesPage() {
     const handleChangeCurrentActive = data => {
         setCurrentActive(data);
     };
-
-
 
     const makeCategory = () => {
         if (activeIndex === 0) {
@@ -88,20 +86,20 @@ export default function NoticesPage() {
 
 
     const filteredNotices = () => {
-        //filterByGender
-        // if(filterByGender === 'male'){
-        //     return noticesList.filter(e => e.sex === 'male')
-        // }
-        // if(filterByGender === 'female'){
-        //     return noticesList.filter(e => e.sex === 'female')
-        // }
-        if(filterByAgeIdx === 0){
+      
+        if(filterByGender === 'male'){
+            return noticesList.filter(e => e.sex === 'male')
+        }
+        if(filterByGender === 'female'){
             return noticesList.filter(e => e.sex === 'female')
         }
+        // if(filterByAgeIdx === 0){
+        //     return noticesList.filter(e => e.sex === 'female')
+        // }
 
         else return  noticesList
     }
-    console.log('filteredNotices', filteredNotices)
+
 
     return (
         <CommonWrapper className="CommonWrapper">

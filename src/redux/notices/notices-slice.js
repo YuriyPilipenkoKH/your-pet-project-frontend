@@ -130,14 +130,14 @@ const noticesSlice = createSlice({
             .addCase(noticesOperations.fetchUserNotices.pending, store => {
                 store.loading = true;
                 store.item = {};
-                // store.reRender = true;
+                store.reRender = true;
             })
             .addCase(
                 noticesOperations.fetchUserNotices.fulfilled,
                 (store, { payload }) => {
                     store.loading = false;
                     store.list = payload;
-                    // store.reRender = false;
+                    store.reRender = false;
                 }
             )
             .addCase(
@@ -145,7 +145,7 @@ const noticesSlice = createSlice({
                 (store, { payload }) => {
                     store.loading = false;
                     store.error = payload;
-                    // store.reRender = false;
+                    store.reRender = false;
                 }
             )
 
