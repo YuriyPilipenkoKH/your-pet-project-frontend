@@ -71,8 +71,21 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     }
 });
 
-
-
+    const fetchUpdateUser = createAsyncThunk(
+        'auth/update',
+        async (updatedData, thunkAPI) => {
+            // console.log('updatedData', updatedData);
+            try {
+                const { data } = await axios.patch(
+                    '/users/update',
+                    updatedData
+                );
+                return data;
+            } catch (error) {
+                return thunkAPI.rejectWithValue(error.response.data);
+            }
+        }
+    );
 
 
 // const fetchUser = createAsyncThunk("user/fetch", async (_, thunkAPI) => {
@@ -90,6 +103,7 @@ const operations = {
     logIn,
     fetchCurrentUser,
     logOut,
+    fetchUpdateUser,
     // fetchUser
     // fetchUpdateAvatar
     // fetchDeleteUserPet
