@@ -19,7 +19,7 @@ import { useAll } from 'hooks/useAll';
 export default function NoticesPage() {
     const location = useLocation();
     const { 
-        // filterByAgeIdx,
+        filterByAgeIdx,
          filterByGender,
          noticesList,
          activeIndex
@@ -28,7 +28,7 @@ export default function NoticesPage() {
 
     const filterValue = useSelector(getNoticesFilter);
     const reRender = useSelector(getReRender);
-    console.log(reRender)
+   
     const [currentActive, setCurrentActive] = useLocalStorage(
         'currentActive',
         0
@@ -57,8 +57,7 @@ export default function NoticesPage() {
     };
 
     const page = Math.ceil(noticesList?.length / 12);
-    console.log('page', page);
-
+  
     const searchParams = {
         NoticesCategoriesNav: makeCategory(),
         query: filterValue,
@@ -80,20 +79,52 @@ export default function NoticesPage() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reRender]);
 
-
-    const filteredNotices = () => {
-      
+    const genderFilter =() => {
+        
         if(filterByGender === 'male'){
             return noticesList.filter(e => e.sex === 'male')
         }
         if(filterByGender === 'female'){
             return noticesList.filter(e => e.sex === 'female')
         }
-        // if(filterByAgeIdx === 0){
-        //     return noticesList.filter(e => e.sex === 'female')
-        // }
+    }
 
-        else return  noticesList
+    const filteredNotices = () => {
+      
+        if (filterByAgeIdx === 0) {
+            return genderFilter().filter(e => calculateAge(e.birthday) <= 1);
+        } else if (filterByAgeIdx === 1) {
+            return genderFilter().filter(e => calculateAge(e.birthday) <= 2);
+        } else if (filterByAgeIdx === 2) {
+            return genderFilter().filter(e => calculateAge(e.birthday) > 2);
+        }
+
+        return noticesList;
+        }
+
+    function calculateAge(birthday) {
+        const birthDate = new Date(birthday); // Parse birthday string into Date object
+        const currentDate = new Date(); // Current date
+
+        // Calculate age in years
+        let age = currentDate.getFullYear() - birthDate.getFullYear();
+
+        // Adjust age if birth date hasn't occurred yet this year
+        if (
+            currentDate.getMonth() < birthDate.getMonth() ||
+            (currentDate.getMonth() === birthDate.getMonth() &&
+                currentDate.getDate() < birthDate.getDate())
+        ) {
+            age--;
+        }
+
+        if (!age){
+            return 1
+        }
+        else if(age <= 0){
+            return 0
+        }
+        else   return Number(age)
     }
 
 
@@ -109,7 +140,7 @@ export default function NoticesPage() {
             </NoticesPageWrap>
             <NoticeContainer className="notice-container">
                 {filteredNotices().map((item, index) => (
-                    //  console.log('item',item)
+                   
                     <MainCard
                         key={index}
                         index={index}

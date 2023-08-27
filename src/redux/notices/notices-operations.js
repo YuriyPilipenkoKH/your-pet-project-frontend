@@ -73,7 +73,7 @@ const fetchDeleteNotice = createAsyncThunk(
 
     async (id, thunkAPI) => {
         // const { id } = notices;
-        console.log(id)
+        // console.log(id)
 
         try {
             const { data } = await axios.delete(`/notices/${id}`);
@@ -105,7 +105,7 @@ const fetchRemoveFavorite = createAsyncThunk(
     async (favoriteNotices, thunkAPI) => {
         try {
             const { data } = await axios.patch(`/notices/${favoriteNotices}/removeFavorite`);
-            console.log(data);
+            // console.log(data);
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data);
@@ -116,7 +116,7 @@ const fetchRemoveFavorite = createAsyncThunk(
 const fetchNoticesByCategory = createAsyncThunk(
     'notices/noticesAllByCategory',
     async (searchParams ,thunkAPI) => {
-        console.log('searchParams', searchParams)
+        // console.log('searchParams', searchParams)
         try {
             const { NoticesCategoriesNav, query } = searchParams;
             const { data } = await axios.get(`/notices?NoticesCategoriesNav=${NoticesCategoriesNav}&NoticesSearch=${query}`)
@@ -130,7 +130,7 @@ const fetchNoticesByCategory = createAsyncThunk(
 const addMySelfPet = createAsyncThunk(
     'pet/addPet',
     async (dataPet ,thunkAPI) => {
-        console.log("dataPet", dataPet);
+        // console.log("dataPet", dataPet);
         try {
             const { data } = await axios.post(`/pets`, dataPet)
             return data;
@@ -146,7 +146,7 @@ const fetchUserNotices = createAsyncThunk(
        
         try {
             const { data } = await axios.get(`/notices/userNotices`)
-            console.log(data)
+            // console.log(data)
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data);
