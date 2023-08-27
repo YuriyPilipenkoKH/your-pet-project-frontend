@@ -15,13 +15,13 @@ const fields = {
         type: 'text',
         name: 'birthday',
         label: 'Birthday:',
-        placeholder: '00-00-0000',
+        placeholder: 'DD-MM-YYYY',
     },
     phone: {
         type: 'tel',
         name: 'phone',
         label: 'Phone:',
-        placeholder: '+38000000000',
+        placeholder: '+380123456789',
     },
     location: {
         type: 'text',

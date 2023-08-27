@@ -14,18 +14,9 @@ import { useDispatch } from 'react-redux';
 import avatarDefault2x from '../../../images/Photo_default@2x.jpg';
 import UserDataForm from '../UserDataForm/UserDataForm';
 import { ReactComponent as Camera } from '../../../images/userPageIcons/camera.svg';
-// import { date } from 'yup';
+import operations from '../../../redux/auth/auth-operations';
 
-const UserData = () => {
-    const [user, setUser] = useState({
-        _id: '3444542njnj54khbhb45bhk',
-        name: 'Taras',
-        email: 'Taras@gmail.com',
-        avatarURL: '//www.gravatar.com/avatar/1aeb8d9dc4751e229a335e371db8058',
-        birthday: '23-11-2023',
-        phone: '+380123456789',
-        location: 'Lviv',
-    }); 
+const UserData = ({ user }) => {
 
     const [edit, setEdit] = useState(false);
     const [petPhoto, setFileInput] = useState('');
@@ -37,12 +28,19 @@ const UserData = () => {
 
     const handleAddAvatar = e => {
         setEdit(false);
-        // setFileInput(false);      
-        const newAvatar = URL.createObjectURL(petPhoto);
-        // dispatch(changeUser(newAvatar))  
-        ////////////////////////
-        // console.log(newAvatar); 
-        /////////////////////////
+        setFileInput(false);
+
+        const { name, phone = '', birthday = '', location = '', email } = user;
+
+        const avatar = petPhoto;
+        const formData = new FormData();
+        for (const key in { name, phone, birthday, location, email, avatar }) {
+            formData.append(
+                key,
+                { name, phone, birthday, location, email, avatar }[key]
+            );
+        }
+        dispatch(operations.fetchUpdateUser(formData));
     };
 
     const handleCancelAvatar = e => {
@@ -73,11 +71,36 @@ const UserData = () => {
                 })
                 .filter(Boolean)
         );
-        //////////////////////////////////////////////
-        // console.log('changing user data', updatedData)
-        setUser(updatedData)
-        ///////////////////////////////////////////////
-        // dispatch(changeUser(updatedData));
+
+        const { name, email, phone = '', avatarURL, birthday = '', location = ''} =
+            updatedData;
+
+        fetch(avatarURL)
+            .then(response => response.blob()) // Получаем Blob изображения
+            .then(avatar => {
+                const formData = new FormData();
+                for (const key in {
+                    name,
+                    phone,
+                    birthday,
+                    location,
+                    email,
+                    avatar,
+                }) {
+                    formData.append(
+                        key,
+                        { name, phone, birthday, location, email, avatar }[key]
+                    );
+                }
+                console.log(formData)
+                dispatch(operations.fetchUpdateUser(formData));
+                //  .unwrap().then(originalPromiseResult => {
+                // Notify.success(`${originalPromiseResult.user.name} welcome back!`);
+                //   })
+                //   .catch(() => {
+                // Notify.failure('Incorrect login or password');
+                //   });
+            });
     };
 
     return (
