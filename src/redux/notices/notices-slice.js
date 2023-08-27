@@ -42,6 +42,24 @@ const noticesSlice = createSlice({
                     store.error = payload;
                 }
             )
+            .addCase(noticesOperations.fetchAllFavorite.pending, store => {
+                store.loading = true;
+            })
+            .addCase(
+                noticesOperations.fetchAllFavorite.fulfilled,
+                (store, { payload }) => {
+                    //   console.log(payload);
+                    store.loading = false;
+                    store.list = payload;
+                }
+            )
+            .addCase(
+                noticesOperations.fetchAllFavorite.rejected,
+                (store, { payload }) => {
+                    store.loading = false;
+                    store.error = payload;
+                }
+            )
             .addCase(noticesOperations.fetchAddNotice.pending, store => {
                 store.loading = true;
             })
@@ -137,16 +155,18 @@ const noticesSlice = createSlice({
 
             .addCase(noticesOperations.fetchDeleteNotice.pending, store => {
                 store.loading = true;
+                store.reRender = true
             })
             .addCase(
                 noticesOperations.fetchDeleteNotice.fulfilled,
                 (store, { payload }) => {
                     console.log(payload);
                     store.loading = false;
-                    const index = store.list.findIndex(
-                        item => item.id === payload
-                    );
+                    // const index = store.list.findIndex(
+                    //     item => item.id === payload
+                    // );
                     // store.list.splice(index, 1);
+                    store.reRender = false;
                 }
             )
             .addCase(
@@ -154,6 +174,7 @@ const noticesSlice = createSlice({
                 (store, { payload }) => {
                     store.loading = false;
                     store.error = payload;
+                    store.reRender = false;
                 }
             )
             .addCase(

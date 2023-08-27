@@ -13,17 +13,18 @@ import { getNoticesList, getReRender } from 'redux/notices/notices-selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import noticesOperations from '../redux/notices/notices-operations';
 import { getNoticesFilter } from 'redux/filter/filterSelectors';
-import { activeIndex } from 'redux/sort/sortSelectors';
+// import { activeIndex } from 'redux/sort/sortSelectors';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
+import { useAll } from 'hooks/useAll';
 
 export default function NoticesPage() {
     const location = useLocation();
 
     const dispatch = useDispatch();
-
+    const { activeIndex } = useAll()
     const noticesList = useSelector(getNoticesList);
     const filterValue = useSelector(getNoticesFilter);
-    const currentIndex = useSelector(activeIndex);
+    // const currentIndex = useSelector(activeIndex);
     const reRender = useSelector(getReRender);
     console.log(reRender)
     const [currentActive, setCurrentActive] = useLocalStorage(
@@ -37,22 +38,22 @@ export default function NoticesPage() {
 
     console.log('noticesList', noticesList);
     console.log('filterValue', filterValue);
-    console.log('currentIndex', currentIndex);
+    console.log('currentIndex', activeIndex);
 
     const makeCategory = () => {
-        if (currentIndex === 0) {
+        if (activeIndex === 0) {
             return 'sell';
         }
-        if (currentIndex === 1) {
+        if (activeIndex === 1) {
             return 'lost-found';
         }
-        if (currentIndex === 2) {
+        if (activeIndex === 2) {
             return 'in-good-hands';
         }
-        if (currentIndex === 3) {
+        if (activeIndex === 3) {
             return 'favorite-ads';
         }
-        if (currentIndex === 4) {
+        if (activeIndex === 4) {
             return 'my-ads';
         }
     };
@@ -74,7 +75,14 @@ export default function NoticesPage() {
     // }
     // dispatch(noticesOperations.fetchNoticesByCategory(searchParams))
     useEffect(() => {
-        dispatch(noticesOperations.fetchNoticesByCategory(searchParams));
+        
+        if(activeIndex === 3){
+            dispatch(noticesOperations.fetchAllFavorite());
+        }
+        else{
+            dispatch(noticesOperations.fetchNoticesByCategory(searchParams));
+
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reRender]);
 

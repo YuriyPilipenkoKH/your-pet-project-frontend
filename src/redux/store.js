@@ -17,6 +17,7 @@ import { filterReducer } from './filter/filterSlice';
 import { modalReducer } from './modal/modalSlice';
 import { themeReducer } from './theme/themeSlice';
 import { langReducer } from './lang/langSlice';
+import  petsReducer  from './pets/petsSlice';
 
 
 
@@ -31,6 +32,7 @@ export const store = configureStore({
         auth: persistReducer(authPersistConfig, authReducer),
         notices: noticesSlice,
         sort:sortReducer,
+        pets: petsReducer,
         filter: filterReducer,
         modal: modalReducer,
         theme:themeReducer,

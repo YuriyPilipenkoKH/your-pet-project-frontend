@@ -7,15 +7,24 @@ import { FormButton } from 'components/Button/Button'
 import {  setFilterNotices } from 'redux/filter/filterSlice'
 import { getNoticesFilter } from 'redux/filter/filterSelectors';
 import noticesOperations from "../../redux/notices/notices-operations"
+import { useAll } from 'hooks/useAll';
+
 
 
 export default function NoticesSearch({search}) {
   const dispatch = useDispatch()
+  const { activeIndex } = useAll()
   const filter = useSelector(getNoticesFilter)
 
   const searchByCategory = (e) => {
     e.preventDefault()
-    dispatch(noticesOperations.fetchNoticesByCategory(search))
+    if(activeIndex === 3){
+      dispatch(noticesOperations.fetchAllFavorite());
+  }
+  else{
+      dispatch(noticesOperations.fetchNoticesByCategory(search));
+
+  }
   }
 
   return (

@@ -12,7 +12,7 @@ import {useEffect, useState } from "react";
 import { useAuth } from 'hooks/useAuth';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { modal4 } from 'modals/modals';
-import { getUser, getPets } from 'redux/auth/auth-selectors';
+import { getUser} from 'redux/auth/auth-selectors';
 import { useSelector } from 'react-redux';
 
 const UserPage = () => {
@@ -21,7 +21,7 @@ const UserPage = () => {
     const [showModal, setShowModal] = useState(true);
 
     const user = useSelector(getUser);
-    const pets = useSelector(getPets);
+    // const pets = useSelector(getPets);
 
     // console.log(useSelector(getPets))
 
@@ -54,7 +54,9 @@ const UserPage = () => {
                         </Card>
                     </div>
                     <div style={{ position: 'relative', width: '100%' }}>
-                        <PetsData state={{ from: location }} pets={pets} />
+                        <PetsData state={{ from: location }} 
+                        // pets={pets}
+                         />
                     </div>
                 </MainContent>
             </UserPageWrapper>

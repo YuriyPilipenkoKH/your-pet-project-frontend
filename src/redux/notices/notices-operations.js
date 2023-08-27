@@ -27,6 +27,18 @@ const fetchAddNotice = createAsyncThunk(
     }
 );
 
+const fetchAllFavorite = createAsyncThunk(
+    'notices/noticesAllFavorite',
+    async (data, thunkAPI) => {
+        try {
+            const response = await axios.get('/notices/favorite');
+            return response.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
+
 // const fetchAllFavorite = createAsyncThunk(
 //     'notices/favoriteAll',
 //     async (_, thunkAPI) => {
@@ -134,7 +146,7 @@ const operations = {
     fetchNoticesByCategory,
     // fetchNoticeById,
     fetchAddNotice,
-    // fetchAllFavorite,
+    fetchAllFavorite,
     fetchDeleteNotice,
     fetchNoticesAddFavorite,
     fetchRemoveFavorite,
