@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { AddToButton, ButtonTransparent, FavButton } from '../Button/Button';
-import { arrowD, iconFilter, iconchbox, iconbox} from '../../images/icons';
+import { arrowD, iconFilter,  iconbox} from '../../images/icons';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { AiOutlinePlus } from 'react-icons/ai';
 import {
    

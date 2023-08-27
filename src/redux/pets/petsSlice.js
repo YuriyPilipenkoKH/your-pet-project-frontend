@@ -10,6 +10,15 @@ const initialState = {
 const petsSlice = createSlice({
     name: 'pets',
     initialState,
+
+    reducers: {
+        
+        setCategory: (state, action) => {
+            state.pets.category = action.payload
+
+        },
+      },
+
     extraReducers: builder => {
         builder
         .addCase(petsOperations.addMySelfPet.pending, (state) => {

@@ -13,7 +13,6 @@ import { getNoticesList, getReRender } from 'redux/notices/notices-selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import noticesOperations from '../redux/notices/notices-operations';
 import { getNoticesFilter } from 'redux/filter/filterSelectors';
-// import { activeIndex } from 'redux/sort/sortSelectors';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
 import { useAll } from 'hooks/useAll';
 
@@ -24,7 +23,6 @@ export default function NoticesPage() {
     const { activeIndex } = useAll()
     const noticesList = useSelector(getNoticesList);
     const filterValue = useSelector(getNoticesFilter);
-    // const currentIndex = useSelector(activeIndex);
     const reRender = useSelector(getReRender);
     console.log(reRender)
     const [currentActive, setCurrentActive] = useLocalStorage(

@@ -12,7 +12,7 @@ const initialState = {
       favorite: [],
       itemsFavorite: [], 
     },
-    pets: [{}],
+    
     registrationSuccessful: false,
     isLoading: false,
     error: null,
