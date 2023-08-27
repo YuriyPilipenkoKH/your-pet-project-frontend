@@ -15,6 +15,7 @@ import { StyledLogo } from '../Button/Button.styled';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 import { useAuth } from 'hooks/useAuth';
 import { UserNav } from 'components/UserNav/UserNav';
+import { DotLoader } from 'react-spinners';
 
 export const SharedLayout = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -40,8 +41,8 @@ export const SharedLayout = () => {
     };
 
     return (
-        <>
-            <SharedLayoutWrap className="sharedLayout">
+    
+                 <SharedLayoutWrap className="sharedLayout">
                 <LayoutWrap className="layoutWrap">
                     <StyledLogo to="/">
                         {isMobile ? iconLogo : iconLogoBig}
@@ -56,10 +57,27 @@ export const SharedLayout = () => {
                     </AuthNavWrap>
                     <MobileMenu isOpen={isOpen} onClose={toggleMenu} />
                 </LayoutWrap>
-            </SharedLayoutWrap>
-            <Suspense>
+         
+            <Suspense
+                fallback={
+                    <DotLoader
+                        style={{
+                            position: 'fixed',
+                            top: '50%',
+                            left: '50%',
+                            zIndex: '999',
+                        }}
+                        color="#3682d6"
+                        cssOverride={{}}
+                        loading
+                        size={70}
+                    />
+                }
+            >
+          
                 <Outlet />
             </Suspense>
-        </>
+            </SharedLayoutWrap>
+            
     );
 };

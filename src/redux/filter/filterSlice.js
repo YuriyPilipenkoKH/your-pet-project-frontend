@@ -8,6 +8,8 @@ export  const filterSlice = createSlice({
      
         filterNotices: '',
         filterNews: '',
+        filterByAgeIdx: null,
+        filterByGender: '',
     },
     reducers: {
         setFilterNotices(state, action) {
@@ -16,8 +18,14 @@ export  const filterSlice = createSlice({
       setFilterNews(state, action) {
         state.filterNews = action.payload
       },
+      setFilterByAgeIdx(state, action) {
+        state.filterByAgeIdx = action.payload
+      },
+      setFilterByGender(state, action) {
+        state.filterByGender = action.payload
+      },
 }
 })
 
-export const {setFilterNotices, setFilterNews}  = filterSlice.actions
+export const {setFilterNotices, setFilterNews, setFilterByAgeIdx, setFilterByGender}  = filterSlice.actions
 export const filterReducer = filterSlice.reducer

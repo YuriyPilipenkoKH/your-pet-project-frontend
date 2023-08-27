@@ -25,13 +25,15 @@ export default function AddYourPet({
         });
         if (stepNumber === 3) {
             const formData = new FormData();
+            console.log({ ...pet, ...data })
             for (const key in { ...pet, ...data }) {
                 formData.append(key, { ...pet, ...data }[key]);
-            }
-            dispatch(operations.fetchAddNotice(formData));
+            };
+            dispatch(operations.addMySelfPet(formData));
             navigate(backLinkLocation.current);
+            console.log("right")
             clearStepNumber();
-            clearData("dataSellPet");
+            clearData("dataYourPet");
         }
     };
     return (

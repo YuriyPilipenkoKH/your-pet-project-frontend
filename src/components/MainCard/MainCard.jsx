@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
     iconClock,
     iconFem,
@@ -11,7 +11,7 @@ import { ButtonTransparent, FavButton, TrashButton } from '../Button/Button';
 import { Tab } from '../Tab/Tab';
 import { CardTitle, CardWrapper, ImgWrapper } from './MainCard.styled';
 import { CategoryWrapp } from '../Tab/Tab.styled';
-import { modal1, modal3 } from 'modals/modals';
+import { modal1, modal2, modal3 } from 'modals/modals';
 import { useAuth } from 'hooks/useAuth';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { useDispatch } from 'react-redux';
@@ -20,17 +20,22 @@ import operations from 'redux/notices/notices-operations';
 export const MainCard = ({
     index,
     title,
-    photo,
+    // photo,
+    name,
     sex,
     owner,
     idUsersAddedFavorite,
+    petAvatarURL,
     location,
     category,
     birthday,
+    type,
+    comments,
     id,
 }) => {
+  
     const { userId } = useAuth();
-    const [key, setKey] = useState(0);
+    // const [shouldReload, setShouldReload] = useState(false);
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     const [modals, setModals] = useState(modal1);
@@ -42,7 +47,7 @@ export const MainCard = ({
     };
     let isLike = null;
     if (idUsersAddedFavorite.includes(userId)) {
-        isLike = index + 1;
+      isLike = index + 1;
     }
 
     const checkRoute = () => {
@@ -52,16 +57,21 @@ export const MainCard = ({
         } else {
             if (idUsersAddedFavorite.includes(userId)) {
                 dispatch(operations.fetchRemoveFavorite(id));
-            }
-            dispatch(operations.fetchNoticesAddFavorite(id));
+              }
+                
+                else {
+                    dispatch(operations.fetchNoticesAddFavorite(id));
+
+                  }
         }
     };
 
-    useEffect(() => {
-      setKey(prevKey => prevKey + 1);
-  }, [idUsersAddedFavorite]);
-  
+    const removeCard = () => {
+      setModals(modal2);
+      setShowModal(true);
+    }
 
+    
     const onLearnMore = () => {
         setModals(modal3);
         setShowModal(true);
@@ -97,7 +107,7 @@ export const MainCard = ({
 
     return (
         <CardWrapper>
-            <ImgWrapper photo={photo}>
+            <ImgWrapper photo={petAvatarURL}>
                 <CategoryWrapp className="category"> {category} </CategoryWrapp>
                 <FavButton
                     className="fav"
@@ -111,7 +121,9 @@ export const MainCard = ({
                     {iconHeart}
                 </FavButton>
                 {isTrashShown && (
-                    <TrashButton className="del"> {iconTrash}</TrashButton>
+                    <TrashButton 
+                    onClick ={removeCard}
+                    className="del"> {iconTrash}</TrashButton>
                 )}
 
                 <Tab
@@ -141,6 +153,16 @@ export const MainCard = ({
                     onClose={onModalClose}
                     checkRoute={checkRoute}
                     isOpen={showModal}
+                    delid={id}
+                    cardtitle={title}
+                    petAvatarURL={petAvatarURL}
+                    category={category}
+                    location={location}
+                    name={name}
+                    birthday={birthday}
+                    animal={type}
+                    sex={sex}
+                    comments={comments}
                 />
             )}
         </CardWrapper>

@@ -72,18 +72,21 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 });
 
 
-const fetchUpdateUser = createAsyncThunk(
-    'auth/update',
-    async (updatedData, thunkAPI) => {
-        console.log("updatedData",updatedData);
-        try {
-            const { data } = await axios.patch('/users/update', updatedData);
-            return data;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.response.data);
+    const fetchUpdateUser = createAsyncThunk(
+        'auth/update',
+        async (updatedData, thunkAPI) => {
+            // console.log('updatedData', updatedData);
+            try {
+                const { data } = await axios.patch(
+                    '/users/update',
+                    updatedData
+                );
+                return data;
+            } catch (error) {
+                return thunkAPI.rejectWithValue(error.response.data);
+            }
         }
-    }
-);
+    );
 
 
 // export const fetchUpdateUser = createAsyncThunk(

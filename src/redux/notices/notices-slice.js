@@ -11,6 +11,7 @@ const initialState = {
     page: 1,
     totalPages: 1,
     keyword: '',
+    reRender: false,
 };
 
 const noticesSlice = createSlice({
@@ -62,6 +63,7 @@ const noticesSlice = createSlice({
                 noticesOperations.fetchNoticesAddFavorite.pending,
                 store => {
                     store.loading = true;
+                    store.reRender = true;
                     store.item = {};
                 }
             )
@@ -70,6 +72,7 @@ const noticesSlice = createSlice({
                 (store, { payload }) => {
                     store.loading = false;
                     store.owner = payload.owner;
+                    store.reRender = false;
                 }
             )
             .addCase(
@@ -77,20 +80,20 @@ const noticesSlice = createSlice({
                 (store, { payload }) => {
                     store.loading = false;
                     store.error = payload;
+                    store.reRender = false;
                 }
             )
-            .addCase(
-                noticesOperations.fetchRemoveFavorite.pending,
-                store => {
-                    store.loading = true;
-                    store.item = {};
-                }
-            )
+            .addCase(noticesOperations.fetchRemoveFavorite.pending, store => {
+                store.loading = true;
+                store.item = {};
+                store.reRender = true;
+            })
             .addCase(
                 noticesOperations.fetchRemoveFavorite.fulfilled,
                 (store, { payload }) => {
                     store.loading = false;
                     store.owner = payload.owner;
+                    store.reRender = false;
                 }
             )
             .addCase(
@@ -98,6 +101,23 @@ const noticesSlice = createSlice({
                 (store, { payload }) => {
                     store.loading = false;
                     store.error = payload;
+                    store.reRender = false;
+                }
+            )
+            .addCase(noticesOperations.addMySelfPet.pending, store => {
+                store.loading = true;
+            })
+            .addCase(
+                noticesOperations.addMySelfPet.fulfilled,
+                (store, { payload }) => {
+                    store.loading = false;
+                }
+            )
+            .addCase(
+                noticesOperations.addMySelfPet.rejected,
+                (store, { payload }) => {
+                    console.log(12345)
+                    store.loading = false;
                 }
             )
 
@@ -121,11 +141,16 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchDeleteNotice.fulfilled,
                 (store, { payload }) => {
+
                     store.loading = false;
                     const index = store.list.findIndex(
                         item => item.id === payload
                     );
+
                     store.items.splice(index, 1);
+
+                    // store.list.splice(index, 1);
+
                 }
             )
             .addCase(

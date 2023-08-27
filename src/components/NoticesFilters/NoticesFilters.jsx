@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { AddToButton, ButtonTransparent, FavButton } from '../Button/Button';
-import { arrowD, iconFilter } from '../../images/icons';
+import { arrowD, iconFilter, iconchbox, iconbox} from '../../images/icons';
 import { AiOutlinePlus } from 'react-icons/ai';
 import {
+    CheckList,
     DropdownMenu,
     FilterWrapper,
     FiltersBtn,
+    RadioInput,
+    RadioLabel,
 } from './NoticesFilters.styled';
 import { modal1 } from 'modals/modals';
 import { useAuth } from 'hooks/useAuth';
@@ -65,13 +68,28 @@ export default function NoticesFilters({ state }) {
                     <DropdownMenu>
                         <h3>Filters</h3>
 
-                        <FiltersBtn>
-                            <span onClick={() => setBig1(!big1)}>
-                                {' '}
-                                {arrowD} By age
-                            </span>
+                        <div>
+                        <FiltersBtn  bor ={big1}>
+                                <span onClick={() => setBig1(!big1)}>
+                                    {' '}
+                                    {arrowD} By age
+                                </span>
                         </FiltersBtn>
-                        <div></div>
+                           { big1 &&  <CheckList  visible ={big1}>
+                                <RadioLabel for="a">
+                                <RadioInput type="radio" id="a" name="radio"/>
+                                 {iconbox} up to 1 year</RadioLabel>
+                                <RadioLabel for="b">
+                                <RadioInput type="radio" id="b" name="radio"/>
+                                {iconbox} up to 2 years</RadioLabel>
+                                <RadioLabel for="c">
+                                <RadioInput type="radio" id="c" name="radio"/>
+                                {iconbox} from 2 years</RadioLabel>
+                          
+  
+                            </CheckList>}
+                            </div>
+
                         <FiltersBtn>
                             <span onClick={() => setBig2(!big2)}>
                                 {' '}

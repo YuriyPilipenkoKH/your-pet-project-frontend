@@ -5,26 +5,37 @@ import { CloseButton, MenuContent, MenuHeader, MenuWrapp } from './MobileMenu.st
 import { StyledLogo } from '../Button/Button.styled';
 import { iconLogo, iconUser } from '../../images/icons';
 import { RxCross2 } from "react-icons/rx";
-
+import {  useState } from 'react';
 import { ProfileWrap, StyledLinkOut } from 'components/UserNav/UserNav.styled';
 import { useDispatch, useSelector } from "react-redux";
-import { authOperations, authSelectors } from 'redux/auth';
+import { authSelectors } from 'redux/auth';
 import { MdOutlineLogout} from "react-icons/md";
 import { useAuth } from 'hooks/useAuth';
-import { toggleSell } from 'redux/sort/sortSlice';
+import { } from 'redux/sort/sortSlice';
+import { ModalPopup } from 'components/ModalPopup/ModalPopup';
+import { modal1, modal5 } from 'modals/modals';
 
 
 export  const MobileMenu = ({ isOpen, onClose }) => {
 
+  const [showModal, setShowModal] = useState(false);
+  const [modals, setModals] = useState(modal1);
+
 const {isLoggedIn, userId} = useAuth()
   const name = useSelector(authSelectors.getUsername);
-   const dispatch = useDispatch();
+
+
    const signOut = () => {
-    dispatch(toggleSell())
-    dispatch(authOperations.logOut())
+    setModals(modal5);
+    setShowModal(true);
+
+    // dispatch(toggleSell())
+    // dispatch(authOperations.logOut())
 
   }
-
+  const onModalClose = () => {
+    setShowModal(false);
+};
 
   return (
     <MenuWrapp className= {isOpen ? ['menu', 'active'].join(' ') : 'menu'} >
@@ -44,7 +55,13 @@ const {isLoggedIn, userId} = useAuth()
 
                < Nav onClose={onClose}/>
         </MenuContent>
-
+        {showModal && (
+                <ModalPopup
+                    {...modals}
+                    onClose={onModalClose}
+                    isOpen={showModal}
+                                   />
+            )}
     </MenuWrapp>
   );
 };

@@ -44,7 +44,8 @@ export const Title = styled.h3.withConfig({
     shouldForwardProp: prop =>
         isPropValid(prop) &&
         prop !== 'chooseOption' &&
-        prop !== 'addPetMoreInformation',
+        prop !== 'addPetMoreInformation' &&
+        prop !== 'addPet',
 })`
     font-family: Manrope;
     font-size: 24px;
@@ -53,11 +54,13 @@ export const Title = styled.h3.withConfig({
     font-weight: 500;
     text-align: ${({ addPetMoreInformation }) =>
         addPetMoreInformation && 'center'};
+    font-size: ${({ addPet }) => addPet && '20px'};
     margin-bottom: 20px;
     @media screen and (min-width: 768px) {
         font-size: 36px;
         margin-bottom: 40px;
         font-size: ${({ chooseOption }) => chooseOption && '28px'};
+        font-size: ${({ addPet }) => addPet && '28px'};
         margin-bottom: ${({ chooseOption }) => chooseOption && '24px'};
     }
 `;
@@ -134,7 +137,7 @@ export const Textarea = styled.textarea.withConfig({
     overflow-y: hidden;
     overflow-x: hidden;
     @media screen and (min-width: 768px) {
-        min-height: ${({ withOutPrice }) => (withOutPrice && "182px")};
+        min-height: ${({ withOutPrice }) => withOutPrice && '182px'};
     }
 
     &:focus {
@@ -157,7 +160,7 @@ export const ButtonSubmit = styled.button.withConfig({
     cursor: pointer;
     transition: background 500ms;
     margin-bottom: 8px;
-    outline:none;
+    outline: none;
     @media screen and (min-width: 768px) {
         margin-bottom: ${({ loginButtom }) => (loginButtom ? '20px' : '16px')};
     }
@@ -240,11 +243,12 @@ export const ShowPasswordButton = styled.button`
         left: 400px;
     }
 
-    outline:none;
- `;
+    outline: none;
+`;
 
 export const TextValidation = styled.p.withConfig({
-    shouldForwardProp: prop => isPropValid(prop) && prop !== 'addPet' && prop !== 'activeSex',
+    shouldForwardProp: prop =>
+        isPropValid(prop) && prop !== 'addPet' && prop !== 'activeSex',
 })`
     position: absolute;
     top: 50px;
@@ -310,10 +314,11 @@ export const IconOkey = styled.svg.withConfig({
     }
 `;
 
-export const ListSteps = styled.ul`
+export const ListSteps = styled.ul.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && prop !== 'chooseOption',
+})`
     display: flex;
     width: 100%;
-    margin-bottom: 40px;
 `;
 
 export const ItemStep = styled.li`
@@ -370,14 +375,17 @@ export const ListOption = styled.ul.withConfig({
         prop !== 'currentStep' &&
         prop !== 'addPetMoreInformation',
 })`
+    margin-top: 40px;
     margin-bottom: 137px;
     display: ${({ addPetMoreInformation }) => addPetMoreInformation && 'flex'};
+    margin-top: ${({ addPetMoreInformation }) =>
+        addPetMoreInformation && '0'};
     margin-bottom: ${({ addPetMoreInformation }) =>
         addPetMoreInformation && '10px'};
-        @media screen and (min-width: 768px) {
-            margin-bottom: ${({ addPetMoreInformation }) =>
-        addPetMoreInformation && '35px'};
-        }
+    @media screen and (min-width: 768px) {
+        margin-bottom: ${({ addPetMoreInformation }) =>
+            addPetMoreInformation && '35px'};
+    }
 `;
 
 export const ItemOption = styled.li.withConfig({
@@ -517,7 +525,8 @@ export const TypeInput = styled.span.withConfig({
     margin-bottom: 4px;
     width: ${({ addImage }) => addImage && '33%'};
     @media screen and (min-width: 768px) {
-        width: ${({ addPetMoreInformation }) => addPetMoreInformation && '100%'};
+        width: ${({ addPetMoreInformation }) =>
+            addPetMoreInformation && '100%'};
         font-size: 20px;
         line-height: 26.5px;
         margin-bottom: 8px;

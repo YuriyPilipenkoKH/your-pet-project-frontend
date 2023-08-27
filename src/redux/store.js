@@ -15,6 +15,8 @@ import noticesSlice from './notices/notices-slice';
 import { sortReducer } from './sort/sortSlice';
 import { filterReducer } from './filter/filterSlice';
 import { modalReducer } from './modal/modalSlice';
+import { themeReducer } from './theme/themeSlice';
+import { langReducer } from './lang/langSlice';
 
 
 
@@ -32,6 +34,8 @@ export const store = configureStore({
         sort:sortReducer,
         filter: filterReducer,
         modal: modalReducer,
+        theme:themeReducer,
+        lang:langReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({

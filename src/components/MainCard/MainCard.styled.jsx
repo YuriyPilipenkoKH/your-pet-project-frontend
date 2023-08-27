@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import bgImgD from '../../images/cat-d.png';
-import bgImgD2 from '../../images/cat-d@2x.png';
-import bgImgM from '../../images/cat-m.png';
-import bgImgM2 from '../../images/cat-m@2x.png';
-import bgImgT from '../../images/cat-t.png';
-import bgImgT2 from '../../images/cat-m@2x.png';
+// import bgImgD from '../../images/cat-d.png';
+// import bgImgD2 from '../../images/cat-d@2x.png';
+// import bgImgM from '../../images/cat-m.png';
+// import bgImgM2 from '../../images/cat-m@2x.png';
+// import bgImgT from '../../images/cat-t.png';
+// import bgImgT2 from '../../images/cat-m@2x.png';
 
 export const CardWrapper = styled.div`
     display: flex ;
@@ -112,40 +112,40 @@ export const ImgWrapper = styled.div`
   @media screen and (min-width: 1280px) {
     
     width: 288px;
-}
-    /* height: ${props => props.photo} ; */
-    background-image: url(${props => props.photo});
-    /* background-image: url('${bgImgM}'); */
-    background-size: cover;
+
+}      
+   background-image: url(${props => props.photo});
+   /* background-image: url(${'bgImgM'}); */
+       background-size: cover;
     background-position: center;  
  
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url('${bgImgM2}');
+    background-image: url(${props => props.photo});
   }
   @media screen and (min-width: 768px) {
    
     
-    background-image: url('${bgImgT}');
+    background-image: url(${props => props.photo});
     
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url('${bgImgT2}');
+      background-image: url(${props => props.photo});
     }
 }
 @media screen and (min-width: 1280px) {
   
     
-    background-image: url('${bgImgD}');
+    background-image: url(${props => props.photo});
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url('${bgImgD2}');
+      background-image: url(${props => props.photo});
     }
   }
 

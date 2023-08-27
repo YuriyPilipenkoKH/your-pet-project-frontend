@@ -1,22 +1,33 @@
-
+import {  useState } from 'react';
 import { MdOutlineLogout} from "react-icons/md";
 import { ProfileWrap, StyledLinkOut, UserWrap } from './UserNav.styled';
 import { iconUser } from '../../images/icons';
-import { useDispatch, useSelector } from "react-redux";
-import { authOperations, authSelectors } from "redux/auth";
+import {  useSelector } from "react-redux";
+import {  authSelectors } from "redux/auth";
 import { StyledLink } from "components/Button/Button.styled";
-import { toggleSell } from "redux/sort/sortSlice";
+
+import { modal1, modal5 } from 'modals/modals';
+import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 
 export const UserNav = ({onClose}) => {
-  const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
+  const [modals, setModals] = useState(modal1);
+
+  const onModalClose = () => {
+    setShowModal(false);
+};
+
+
   const name = useSelector(authSelectors.getUsername);
   const signOut = () => {
-    dispatch(toggleSell())
-    dispatch(authOperations.logOut())
+    setModals(modal5);
+    setShowModal(true);
+
 
   }
 
   return (
+    <>
     <UserWrap className= "UserNav">
       <ProfileWrap className= "useravatar" > 
       <StyledLink to="/profile" exact="true" >{iconUser} </StyledLink>
@@ -25,5 +36,13 @@ export const UserNav = ({onClose}) => {
         Log out <MdOutlineLogout/>
       </StyledLinkOut>
     </UserWrap>
+    {showModal && (
+                <ModalPopup
+                    {...modals}
+                    onClose={onModalClose}
+                    isOpen={showModal}
+                                   />
+            )}
+    </>
   );
 };

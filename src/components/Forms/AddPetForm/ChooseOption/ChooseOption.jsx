@@ -22,7 +22,7 @@ export default function ChooseOption({
 }) {
     return (
         <Form addPet>
-            <Title>Add pet</Title>
+            <Title addPet>Add pet</Title>
             {children}
             <ListOption>
                 {arrayOption.map((option, index) => {

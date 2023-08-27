@@ -78,18 +78,18 @@ export default function MoreInfo({
         deliveryDataPet({
             comments: coment,
             petAvatar: image,
-            category: 'my ads',
         });
         reset();
     };
 
     return (
         <Form addPet>
-            <Title>Add pet</Title>
+            <Title addPet>Add pet</Title>
             {children}
             <form
                 onSubmit={handleSubmit(deliveryData)}
                 encType="multipart/form-data"
+                style={{ marginTop: "16px" }}
             >
                 <LabelForAddImage>
                     <TypeInput addImage>Load the pet’s image:</TypeInput>
