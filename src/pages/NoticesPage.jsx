@@ -18,10 +18,14 @@ import { useAll } from 'hooks/useAll';
 
 export default function NoticesPage() {
     const location = useLocation();
-
+    const { 
+        filterByAgeIdx,
+         filterByGender,
+         noticesList,
+         activeIndex
+        } = useAll()
     const dispatch = useDispatch();
-    const { activeIndex } = useAll()
-    const noticesList = useSelector(getNoticesList);
+
     const filterValue = useSelector(getNoticesFilter);
     const reRender = useSelector(getReRender);
     console.log(reRender)
@@ -34,9 +38,7 @@ export default function NoticesPage() {
         setCurrentActive(data);
     };
 
-    console.log('noticesList', noticesList);
-    console.log('filterValue', filterValue);
-    console.log('currentIndex', activeIndex);
+
 
     const makeCategory = () => {
         if (activeIndex === 0) {
@@ -84,6 +86,23 @@ export default function NoticesPage() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reRender]);
 
+
+    const filteredNotices = () => {
+        //filterByGender
+        // if(filterByGender === 'male'){
+        //     return noticesList.filter(e => e.sex === 'male')
+        // }
+        // if(filterByGender === 'female'){
+        //     return noticesList.filter(e => e.sex === 'female')
+        // }
+        if(filterByAgeIdx === 0){
+            return noticesList.filter(e => e.sex === 'female')
+        }
+
+        else return  noticesList
+    }
+    console.log('filteredNotices', filteredNotices)
+
     return (
         <CommonWrapper className="CommonWrapper">
             <NoticesSearch search={searchParams} />
@@ -95,7 +114,7 @@ export default function NoticesPage() {
                 <NoticesFilters state={{ from: location }} />
             </NoticesPageWrap>
             <NoticeContainer className="notice-container">
-                {noticesList.map((item, index) => (
+                {filteredNotices().map((item, index) => (
                     //  console.log('item',item)
                     <MainCard
                         key={index}

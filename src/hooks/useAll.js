@@ -20,7 +20,7 @@ export const useAll= () => {
         noticesFilter: useSelector(getNoticesFilter),
         newsFilter: useSelector(getNewsFilter),
         filterByAgeIdx: useSelector(getFilterByAgeIdx),
-        filterByGenderIdx: useSelector(getFilterByGender),
+        filterByGender: useSelector(getFilterByGender),
 
         theme: useSelector(getTheme),
         lang: useSelector(getLang),

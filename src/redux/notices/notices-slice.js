@@ -21,6 +21,11 @@ const noticesSlice = createSlice({
         setKeyword: (state, action) => {
             state.keyword = action.payload;
         },
+        setAge: (state, action) => {
+            // state.list.age = action.payload;
+        },
+
+
     },
     extraReducers: builder => {
         builder
@@ -246,5 +251,5 @@ const noticesSlice = createSlice({
 
 // export default noticesSlice.reducer;
 // export const { setKeyword } = noticesSlice.actions;
-
+export const {setAge}  = noticesSlice.actions
 export default noticesSlice.reducer;
