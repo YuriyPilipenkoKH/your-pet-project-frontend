@@ -97,7 +97,7 @@ export const BtnContainer3 = styled.div`
     gap: 12px;
 
     &>button,  &>a {
-        width: 240px;
+        /* width: 240px; */
     }
 
     @media screen and (min-width: 768px) {
