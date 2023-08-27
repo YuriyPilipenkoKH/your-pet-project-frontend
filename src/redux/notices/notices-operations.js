@@ -140,6 +140,19 @@ const addMySelfPet = createAsyncThunk(
     }
 );
 
+const fetchUserNotices = createAsyncThunk(
+    'notices/userNotices',
+    async (_,thunkAPI) => {
+       
+        try {
+            const { data } = await axios.get(`/notices/userNotices`)
+            return data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+);
+
 
 const operations = {
     fetchAllNotices,
@@ -150,7 +163,8 @@ const operations = {
     fetchDeleteNotice,
     fetchNoticesAddFavorite,
     fetchRemoveFavorite,
-    addMySelfPet
+    addMySelfPet,
+    fetchUserNotices
 };
 
 export default operations;

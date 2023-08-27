@@ -3,17 +3,18 @@ import { iconFilter, iconPawprint } from "../../images/icons";
 import { modal1, modal2, modal3, modal4, modal5 } from "../../modals/modals";
 import { HomeTitle,  TestWrapp } from "../pages.styled/Pages.styled"
 import { useState } from "react";
-
+import { useDispatch} from 'react-redux';
 import { MdOutlineLogout} from "react-icons/md";
 import { AiOutlinePlus} from "react-icons/ai";
 import { ModalPopup } from "../../components/ModalPopup/ModalPopup";
+import { setCategory } from "redux/pets/petsSlice";
 
 
 export const TestPage =()=> {
 
     const [showModal, setShowModal] = useState(false);
     const [modals, setModals] = useState(modal1)
-  
+    const dispatch = useDispatch();
     const onModalOpen = () => {
       setShowModal(true);
    
@@ -58,7 +59,7 @@ export const TestPage =()=> {
   }}>Contact</ContactButton>
 
 
-  <AddToButton >Add Pet <AiOutlinePlus/></AddToButton>
+  <AddToButton onClick ={()=>  dispatch(setCategory('index'))} >Add Pet <AiOutlinePlus/></AddToButton>
 
 
 

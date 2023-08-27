@@ -4,6 +4,7 @@ const initialState = {
     listPets: [],
     loading: false,
     category: '',
+    categoryIdx: null,
     error: null,
     item: {},
 };
@@ -14,7 +15,13 @@ const petsSlice = createSlice({
     reducers: {
         
         setCategory: (state, action) => {
-            state.pets.category = action.payload
+            console.log('action',action)
+            state.category = action.payload
+
+        },
+        setCategoryIdx: (state, action) => {
+            console.log('action',action)
+            state.categoryIdx = action.payload
 
         },
       },
@@ -57,4 +64,6 @@ const petsSlice = createSlice({
             );
     },
 });
+
+export const {setCategory, setCategoryIdx}  = petsSlice.actions
 export default petsSlice.reducer;

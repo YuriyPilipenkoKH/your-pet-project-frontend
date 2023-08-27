@@ -17,9 +17,13 @@ export default function NoticesSearch({search}) {
   const filter = useSelector(getNoticesFilter)
 
   const searchByCategory = (e) => {
+    
     e.preventDefault()
     if(activeIndex === 3){
       dispatch(noticesOperations.fetchAllFavorite());
+  }
+   else if(activeIndex === 4){
+      dispatch(noticesOperations.fetchUserNotices());
   }
   else{
       dispatch(noticesOperations.fetchNoticesByCategory(search));
