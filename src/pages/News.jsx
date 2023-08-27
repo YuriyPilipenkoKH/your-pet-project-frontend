@@ -30,7 +30,6 @@ export const NewsPage = () => {
     const endOffset = itemOffset + cardsPerPage;
     const [numButtons, setNumButtons] = useState(5);
 
-    // Функція фільтрації новин
     const filteredNews = () => {
         const normalized = filter.toLowerCase();
         return news.filter(item =>
@@ -38,7 +37,6 @@ export const NewsPage = () => {
         );
     };
 
-    // Отримання списку новин після фільтрації
     const newsSearch = filteredNews();
     const currentItems = newsSearch.slice(itemOffset, endOffset);
 
@@ -60,16 +58,21 @@ export const NewsPage = () => {
         };
     }, []);
 
-    // Ефект, який оновлює стан компонента при зміні фільтру або сторінки
     useEffect(() => {
-        // Ваша логіка оновлення стану тут
-        // Наприклад, обчислення totalPages та оновлення active
         if (newsSearch.length > 0) {
             const totalPages = Math.ceil(newsSearch.length / cardsPerPage);
 
+            if (totalPages < 4) {
+                setNumButtons(totalPages);
+            } else if (window.innerWidth <= 768) {
+                setNumButtons(4);
+            } else {
+                setNumButtons(5);
+            }
+    
             let start = active - 2;
             let end = active + 2;
-
+    
             if (active < 3) {
                 start = 1;
                 end = numButtons;
@@ -77,15 +80,15 @@ export const NewsPage = () => {
                 start = totalPages - numButtons + 1;
                 end = totalPages;
             }
-
-            // Перевірка, чи активна сторінка в діапазоні totalPages
+    
             if (active < 1) setActive(1);
-            if (active > totalPages) setActive(totalPages);
+            if (active > totalPages) {
+                setActive(1);
+                setItemOffset(0);
+            }
         }
-
     }, [filter, itemOffset, newsSearch, cardsPerPage, numButtons, active]);
 
-    // Обробники сторінок
     const handlePageClick = selectedPage => {
         const newOffset = selectedPage * cardsPerPage;
         setItemOffset(newOffset);
@@ -106,7 +109,6 @@ export const NewsPage = () => {
         }
     };
 
-    // Побудова кнопок сторінок на основі стану numButtons
     const totalPages = Math.ceil(newsSearch.length / cardsPerPage);
     let start = active - 2;
     let end = active + 2;
