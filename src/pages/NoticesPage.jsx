@@ -19,7 +19,7 @@ import { useAll } from 'hooks/useAll';
 export default function NoticesPage() {
     const location = useLocation();
     const { 
-        filterByAgeIdx,
+        // filterByAgeIdx,
          filterByGender,
          noticesList,
          activeIndex
