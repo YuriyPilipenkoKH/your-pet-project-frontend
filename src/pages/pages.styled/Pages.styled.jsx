@@ -106,7 +106,9 @@ overflow-x: hidden;
 export const HomeTitle = styled.h1`
     font-size: 32px;
     font-weight: 700;
-    color: #000000;
+    color: var(--text-color) ;
+    transition: all 1s ease-in-out;
+
     @media screen and (min-width: 768px) {
         width: 588px;
         font-size: 68px;
@@ -142,7 +144,8 @@ export const TytleNwes = styled.h2`
     font-weight: 700;
     line-height: 32.78px;
     text-align: center;
-    color: #000000;
+    color: var(--text-color) ;
+    transition: all 1s ease-in-out;
     @media screen and (min-width: 768px) {
         font-size: 48px;
         line-height: 65.57px;
@@ -245,7 +248,8 @@ export const TitleSponsor = styled.h2`
     font-weight: 700;
     line-height: 32.78px;
     text-align: center;
-    color: #000000;
+    color: var(--text-color) ;
+    transition: all 1s ease-in-out;
     @media screen and (min-width: 768px) {
         font-size: 48px;
         line-height: 65.57px;

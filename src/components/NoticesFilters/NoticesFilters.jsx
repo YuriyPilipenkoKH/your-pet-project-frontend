@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AddToButton, ButtonTransparent, FavButton } from '../Button/Button';
-import { arrowD, iconFilter,  iconbox} from '../../images/icons';
+import { arrowD, iconFilter,  iconchbox} from '../../images/icons';
 
 import { useDispatch} from 'react-redux';
 import { AiOutlinePlus } from 'react-icons/ai';
@@ -52,7 +52,7 @@ export default function NoticesFilters({ state }) {
         }
     };
 
-    // const expandFilter = () => {};
+
     return (
         <>
             <FilterWrapper className="NoticesFilters">
@@ -89,21 +89,24 @@ export default function NoticesFilters({ state }) {
                                 </span>
                         </FiltersBtn1>
                         { big1 &&  <CheckList1  visible ={big1}>
-                                <RadioLabel htmlFor="a">
-                                <RadioInput 
+                            <RadioLabel htmlFor="a">
+                                <div></div>
+                                <RadioInput className='radio-input'
                                 onClick={()=> dispatch(setFilterByAgeIdx(0))}
                                 type="radio" id="a" name="radio"/>
-                                 {iconbox} up to 1 year</RadioLabel>
-                                <RadioLabel htmlFor="b">
-                                <RadioInput 
+                                {iconchbox}  up to 1 year</RadioLabel>
+                            <RadioLabel htmlFor="b">
+                                <div></div>
+                                <RadioInput className='radio-input'
                                  onClick={()=> dispatch(setFilterByAgeIdx(1))}
                                 type="radio" id="b" name="radio"/>
-                                {iconbox} up to 2 years</RadioLabel>
-                                <RadioLabel htmlFor="c">
-                                <RadioInput 
+                                {iconchbox}  up to 2 years</RadioLabel>
+                            <RadioLabel htmlFor="c">
+                                <div className='box'></div>
+                                <RadioInput className='radio-input'
                                  onClick={()=> dispatch(setFilterByAgeIdx(2))}
                                 type="radio" id="c" name="radio"/>
-                                {iconbox} from 2 years</RadioLabel>
+                                {iconchbox} from 2 years</RadioLabel>
                           
   
                             </CheckList1>}
@@ -118,15 +121,17 @@ export default function NoticesFilters({ state }) {
                             </FiltersBtn2>
                             { big2 &&  <CheckList2  visible ={big1}>
                                 <RadioLabel htmlFor="d">
-                                    <RadioInput
+                                    <div className='box'></div>
+                                    <RadioInput  className='radio-input'
                                     onClick={()=> dispatch(setFilterByGender('female'))}
                                     type="radio" id="d" name="radio"/>
-                                     {iconbox} female</RadioLabel>
+                                     {iconchbox}  female</RadioLabel>
                                 <RadioLabel htmlFor="e">
-                                    <RadioInput
+                                    <div className='box'></div>
+                                    <RadioInput  className='radio-input'
                                      onClick={()=> dispatch(setFilterByGender('male'))}
                                     type="radio" id="e" name="radio"/>
-                                    {iconbox} male</RadioLabel>
+                                    {iconchbox}  male</RadioLabel>
                                 
                             
                                 </CheckList2>}

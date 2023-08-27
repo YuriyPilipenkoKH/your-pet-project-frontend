@@ -21,7 +21,7 @@ export const NavWrap = styled.div`
 
 export const StyledLink = styled(NavLink)`
   
-  color: var(--black);
+  color: var(--text-color);
   text-decoration:none;
   font-size: 20px;
   font-weight: 600;

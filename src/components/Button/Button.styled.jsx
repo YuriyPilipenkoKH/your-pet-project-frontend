@@ -467,6 +467,10 @@ outline: none;
 background-color: transparent;
 padding: 12px 0;
 
+&>svg {
+   fill-opacity: var(--text-color);
+}
+
 &>:hover {
   animation-duration: 0.1s;
   animation: ${rotate} 1s ease;   

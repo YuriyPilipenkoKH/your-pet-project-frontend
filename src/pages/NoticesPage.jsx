@@ -16,6 +16,7 @@ import { getNoticesFilter } from 'redux/filter/filterSelectors';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
 import { useAll } from 'hooks/useAll';
 
+
 export default function NoticesPage() {
     const location = useLocation();
     const { 
@@ -55,8 +56,6 @@ export default function NoticesPage() {
             return 'my-ads';
         }
     };
-
-    const page = Math.ceil(noticesList?.length / 12);
   
     const searchParams = {
         NoticesCategoriesNav: makeCategory(),
@@ -79,24 +78,24 @@ export default function NoticesPage() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reRender]);
 
-    const genderFilter =() => {
-        
+
+    const filteredNotices = () => {
+
         if(filterByGender === 'male'){
             return noticesList.filter(e => e.sex === 'male')
         }
-        if(filterByGender === 'female'){
+        else if(filterByGender === 'female'){
             return noticesList.filter(e => e.sex === 'female')
         }
-    }
-
-    const filteredNotices = () => {
       
-        if (filterByAgeIdx === 0) {
-            return genderFilter().filter(e => calculateAge(e.birthday) <= 1);
-        } else if (filterByAgeIdx === 1) {
-            return genderFilter().filter(e => calculateAge(e.birthday) <= 2);
-        } else if (filterByAgeIdx === 2) {
-            return genderFilter().filter(e => calculateAge(e.birthday) > 2);
+        else if (filterByAgeIdx === 0) {
+            return noticesList.filter(e => calculateAge(e.birthday) <= 1);
+        }
+         else if (filterByAgeIdx === 1) {
+            return noticesList.filter(e => calculateAge(e.birthday) <= 2);
+        } 
+        else if (filterByAgeIdx === 2) {
+            return noticesList.filter(e => calculateAge(e.birthday) > 2);
         }
 
         return noticesList;
