@@ -18,6 +18,7 @@ import { modalReducer } from './modal/modalSlice';
 import { themeReducer } from './theme/themeSlice';
 import { langReducer } from './lang/langSlice';
 import  petsReducer  from './pets/petsSlice';
+import  newsReducer  from './news/newsSlice';
 
 
 
@@ -37,6 +38,7 @@ export const store = configureStore({
         modal: modalReducer,
         theme:themeReducer,
         lang:langReducer,
+        news: newsReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({

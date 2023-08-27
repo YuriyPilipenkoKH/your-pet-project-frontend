@@ -18,16 +18,12 @@ const initialState = {
     error: null,
     token: null,
     isLoggedIn: false,
-    isRefreshing: true,
+    isRefreshing: false,
   };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    // ... other reducers
-
-  },
   extraReducers:builder=> {
     builder
         // register
@@ -44,18 +40,15 @@ const authSlice = createSlice({
             state.token = action.payload.token;
             state.isLoggedIn = true;
             state.error = null;
-            // state.isRefreshing =false;
         })
         .addCase(authOperations.register.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
-            // state.isRefreshing =false;
         })
         // login
         .addCase(authOperations.logIn.pending, state => {
             state.isLoading = true;
             state.error = null;
-            // state.isRefreshing = true;
         })
 
         .addCase(authOperations.logIn.fulfilled, (state, action) => {
@@ -69,37 +62,33 @@ const authSlice = createSlice({
         .addCase(authOperations.logIn.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
-            // state.isRefreshing =false;
         })
 
         //current
         .addCase(authOperations.fetchCurrentUser.pending, (state, action) => {
             state.isLoading = true;
             state.error = null;
-            // state.isRefreshing = true;
+            state.isRefreshing = true;
         })
         .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
-            // console.log(action);
             state.isLoading = false;
             state.user = action.payload;
-
+            state.isRefreshing = false;
             state.isLoggedIn = true;
             state.error = null;
-            // state.isRefreshing =false;
         })
 
         .addCase(authOperations.fetchCurrentUser.rejected, (state, action) => {
             state.isLoading = false;
+            state.isRefreshing = false;
             state.token = null;
             state.error = action.payload;
-            // state.isRefreshing =false;
         })
 
         // logout
         .addCase(authOperations.logOut.pending, state => {
             state.isLoading = true;
             state.error = null;
-            // state.isRefreshing = true;
         })
         .addCase(authOperations.logOut.fulfilled, (state, action) => {
             state.isLoading = false;
@@ -108,12 +97,10 @@ const authSlice = createSlice({
             state.token = null;
             state.isLoggedIn = false;
             state.user.favorite = [];
-            state.isRefreshing = true;
         })
         .addCase(authOperations.logOut.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
-            // state.isRefreshing = false;
         })
       
         //fetchUpdateUser
@@ -124,7 +111,6 @@ const authSlice = createSlice({
         .addCase(
             authOperations.fetchUpdateUser.fulfilled,
             (state, { payload }) => {
-              // console.log('payload', payload);
               state.isLoading = false;
               state.registrationSuccessful = false;
               state.user = payload;
@@ -138,75 +124,6 @@ const authSlice = createSlice({
                 state.error = payload;
             }
         );
-
-    // fetchUser
-
-    // .addCase(authOperations.fetchUser.pending, (state) => {
-    //   state.isLoading = true;
-    //   state.error = null;
-    // })
-    // .addCase(authOperations.fetchUser.fulfilled, (state, { payload }) => {
-    //   const { user, pets } = payload;
-    //   state.isLoading = false;
-    //   state.user = user;
-    //   state.pets = pets;
-    //   state.error = null;
-    // })
-    // .addCase(authOperations.fetchUser.rejected, (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.error = payload;
-    // })
-
-    //fetchUpdateUser
-    // .addCase(authOperations.fetchUpdateUser.pending, (state) => {
-    //   state.isLoading = true;
-    //   state.error = null;
-    // })
-    // .addCase(authOperations.fetchUpdateUser.fulfilled, (state, { payload }) => {
-    //   const { user } = payload;
-    //   state.isLoading = false;
-    //   state.registrationSuccessful = false;
-    //   state.user = user;
-    //   state.error = null;
-    // })
-    // .addCase(authOperations.fetchUpdateUser.rejected, (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.error = payload;
-    // })
-
-    //fetchUpdateAvatar
-    // .addCase(authOperations.fetchUpdateAvatar.pending, (state) => {
-    //   state.isLoading = true;
-    //   state.error = null;
-    // })
-    // .addCase(authOperations.fetchUpdateAvatar.fulfilled, (state, { payload }) => {
-    //   const { user } = payload;
-    //   state.isLoading = false;
-    //   state.registrationSuccessful = false;
-    //   state.user = user;
-    //   state.error = null;
-    // })
-    // .addCase(authOperations.fetchUpdateAvatar.rejected, (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.error = payload;
-    // })
-    // .addCase(authOperations.fetchDeleteUserPet.pending, (state) => {
-    //   state.isLoading = true;
-    // })
-
-    //fetchDeleteUserPet
-    // .addCase(authOperations.fetchDeleteUserPet.fulfilled, (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.registrationSuccessful = false;
-    //   const index = state.pets.findIndex((pet) => pet._id === payload);
-    //   state.pets.splice(index, 1);
-    // })
-    // .addCase(authOperations.fetchDeleteUserPet.rejected, (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.error = payload;
-    // });
-    
-    
   },
 });
 

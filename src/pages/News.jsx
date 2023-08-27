@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { NewsCard } from '../components/News/NewsCard';
 import { useDispatch, useSelector } from 'react-redux';
-import news from '../utils/json/news.json';
 import {
     ListButtonForPagination,
     NewsContainer,
@@ -20,15 +19,36 @@ import { FormButton } from 'components/Button/Button';
 import { iconRowLeft } from 'images/icons';
 import { setFilterNews } from 'redux/filter/filterSlice';
 import { getNewsFilter } from 'redux/filter/filterSelectors';
+import { getNewsList } from 'redux/news/newsSelectors';
+import newsOperations from '../redux/news/newsOperations';
 
 export const NewsPage = () => {
     const dispatch = useDispatch();
+    const news = useSelector(getNewsList)
     const filter = useSelector(getNewsFilter);
     const [active, setActive] = useState(1);
     const [itemOffset, setItemOffset] = useState(0);
     const cardsPerPage = 6;
     const endOffset = itemOffset + cardsPerPage;
     const [numButtons, setNumButtons] = useState(5);
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                setNumButtons(4);
+            } else {
+                setNumButtons(5);
+            }
+        };
+
+        handleResize();
+        dispatch(newsOperations.fetchNews());
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const filteredNews = () => {
         const normalized = filter.toLowerCase();
@@ -40,23 +60,6 @@ export const NewsPage = () => {
     const newsSearch = filteredNews();
     const currentItems = newsSearch.slice(itemOffset, endOffset);
 
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth <= 768) {
-                setNumButtons(4);
-            } else {
-                setNumButtons(5);
-            }
-        };
-
-        handleResize();
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
 
     useEffect(() => {
         if (newsSearch.length > 0) {

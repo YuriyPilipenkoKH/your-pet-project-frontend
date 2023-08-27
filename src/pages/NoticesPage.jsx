@@ -64,14 +64,6 @@ export default function NoticesPage() {
         query: filterValue,
         page: 1,
     };
-
-    // const notices = dispatch(noticesOperations.fetchNoticesByCategory(searchParams));
-
-    // const searchByCategory = (e) => {
-    //   e.preventDefault()
-    //   dispatch(noticesOperations.fetchNoticesByCategory(searchParams))
-    // }
-    // dispatch(noticesOperations.fetchNoticesByCategory(searchParams))
     useEffect(() => {
         
         if(activeIndex === 3){
