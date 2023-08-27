@@ -6,7 +6,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineLogout} from "react-icons/md";
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BtnContainer,  BtnContainer3,  ContentWrapp,  ModalCategory,  ModalContainer, ModalContainer3, ModalImage, ModalOverlay, ModalText, ModalTitle, ModalTitle3, OnCloseButton, PetList } from './ModalPopup.styled';
-import { Button, ButtonTransparent, ContactButton, OutButton } from '../Button/Button';
+import { AddFavButton, Button, ButtonTransparent, ContactButton, OutButton } from '../Button/Button';
 import noticesOperations from '../../redux/notices/notices-operations'
 import { setModalClose, setModalOpen } from 'redux/modal/modalSlice';
 import { useAll } from 'hooks/useAll';
@@ -17,7 +17,7 @@ import { authOperations } from "redux/auth";
 const modalRoot = document.querySelector('#modal-root');
 
 
-export const ModalPopup = ({ type, delid, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose , cardtitle, petAvatarURL, category, location, name, birthday, sex, animal, comments} ) => {
+export const ModalPopup = ({ type, delid, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose , cardtitle, petAvatarURL, category, location, name, birthday, sex, animal, comments, isLike, currentDiv} ) => {
 
 const props = {
   type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized, delid
@@ -154,7 +154,10 @@ if (type === 3){
 
         <BtnContainer3 style={{marginTop: 'auto'}}>
         <ContactButton to="mailto:alex@gmail.com" >Contact</ContactButton>
-          <Button  onClick ={checkRoute}>Add to <FaRegHeart/> </Button>
+          <AddFavButton  
+          isLike={isLike}
+          currentDiv={currentDiv}
+          onClick ={checkRoute}>{isLike === currentDiv ? 'Remove' :'Add to'} <FaRegHeart/> </AddFavButton>
         </BtnContainer3>
         <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
       </ModalContainer3>

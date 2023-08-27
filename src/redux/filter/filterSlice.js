@@ -29,3 +29,4 @@ export  const filterSlice = createSlice({
 
 export const {setFilterNotices, setFilterNews, setFilterByAgeIdx, setFilterByGender}  = filterSlice.actions
 export const filterReducer = filterSlice.reducer
+
