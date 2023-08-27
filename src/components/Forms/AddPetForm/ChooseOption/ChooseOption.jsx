@@ -7,11 +7,9 @@ import {
     Title,
     WrapperNextBackButton,
 } from '../../Forms.styled';
-import { useDispatch} from 'react-redux';
 import { Button, ButtonTransparent } from '../../../Button/Button';
 import { BiArrowBack } from 'react-icons/bi';
 import { iconPawprint } from '../../../../images/icons';
-import {  setCategoryIdx } from 'redux/pets/petsSlice';
 
 export default function ChooseOption({
     children,
@@ -22,8 +20,6 @@ export default function ChooseOption({
     beforeForm,
     stepNumber,
 }) {
-    const dispatch = useDispatch();
-    
     return (
         <Form addPet>
             <Title addPet>Add pet</Title>
@@ -34,8 +30,7 @@ export default function ChooseOption({
                         <ItemOption key={index}>
                             <ButtonOption
                                 onClick={() => {
-                                    activeOption(index)
-                                    dispatch(setCategoryIdx(index))
+                                    activeOption(index);
                                 }}
                                 active={active}
                                 currentActive={index + 1}
