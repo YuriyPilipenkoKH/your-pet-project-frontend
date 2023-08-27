@@ -60,10 +60,10 @@ export default function NoticesPage() {
         page: 1,
     };
     useEffect(() => {
-        if (activeIndex === 3) {
-            dispatch(noticesOperations.fetchAllFavorite());
-        } else if (activeIndex === 4) {
+        if (activeIndex === 4) {
             dispatch(noticesOperations.fetchUserNotices());
+        } else if (activeIndex === 3) {
+            dispatch(noticesOperations.fetchAllFavorite());
         } else {
             dispatch(noticesOperations.fetchNoticesByCategory(searchParams));
         }
