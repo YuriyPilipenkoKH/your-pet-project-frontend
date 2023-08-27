@@ -30,7 +30,7 @@ const UserData = ({ user }) => {
         setEdit(false);
         setFileInput(false);
 
-        const { name, phone, birthday, location, email } = user;
+        const { name, phone = '', birthday = '', location = '', email } = user;
 
         const avatar = petPhoto;
         const formData = new FormData();
@@ -72,7 +72,7 @@ const UserData = ({ user }) => {
                 .filter(Boolean)
         );
 
-        const { name, email, phone, avatarURL, birthday, location } =
+        const { name, email, phone = '', avatarURL, birthday = '', location = ''} =
             updatedData;
 
         fetch(avatarURL)
@@ -92,6 +92,7 @@ const UserData = ({ user }) => {
                         { name, phone, birthday, location, email, avatar }[key]
                     );
                 }
+                console.log(formData)
                 dispatch(operations.fetchUpdateUser(formData));
                 //  .unwrap().then(originalPromiseResult => {
                 // Notify.success(`${originalPromiseResult.user.name} welcome back!`);
