@@ -6,9 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlinePlus } from 'react-icons/ai';
 import {
     CheckList,
+    CheckList1,
+    CheckList2,
     DropdownMenu,
     FilterWrapper,
     FiltersBtn,
+    FiltersBtn1,
+    FiltersBtn2,
     RadioInput,
     RadioLabel,
 } from './NoticesFilters.styled';
@@ -75,39 +79,61 @@ export default function NoticesFilters({ state }) {
                         <h3>Filters</h3>
 
                         <div>
-                        <FiltersBtn  bor ={big1}>
+                        <FiltersBtn1  bor ={big1}>
                                 <span onClick={() => setBig1(!big1)}>
                                     {' '}
                                     {arrowD} By age
                                 </span>
-                        </FiltersBtn>
-                           { big1 &&  <CheckList  visible ={big1}>
-                                <RadioLabel for="a">
+                        </FiltersBtn1>
+                        { big1 &&  <CheckList1  visible ={big1}>
+                                <RadioLabel htmlFor="a">
                                 <RadioInput 
                                 onClick={()=> dispatch(setFilterByAgeIdx(0))}
                                 type="radio" id="a" name="radio"/>
                                  {iconbox} up to 1 year</RadioLabel>
-                                <RadioLabel for="b">
+                                <RadioLabel htmlFor="b">
                                 <RadioInput 
                                  onClick={()=> dispatch(setFilterByAgeIdx(1))}
                                 type="radio" id="b" name="radio"/>
                                 {iconbox} up to 2 years</RadioLabel>
-                                <RadioLabel for="c">
+                                <RadioLabel htmlFor="c">
                                 <RadioInput 
                                  onClick={()=> dispatch(setFilterByAgeIdx(2))}
                                 type="radio" id="c" name="radio"/>
                                 {iconbox} from 2 years</RadioLabel>
                           
   
-                            </CheckList>}
+                            </CheckList1>}
                             </div>
 
-                        <FiltersBtn>
-                            <span onClick={() => setBig2(!big2)}>
-                                {' '}
-                                {arrowD} By gender
-                            </span>
-                        </FiltersBtn>
+                        <div>
+                            <FiltersBtn2   bor ={big2}>
+                                <span onClick={() => setBig2(!big2)}>
+                                    {' '}
+                                    {arrowD} By gender
+                                </span>
+                            </FiltersBtn2>
+                            { big2 &&  <CheckList2  visible ={big1}>
+                                    <RadioLabel htmlFor="a">
+                                    <RadioInput
+                                    onClick={()=> dispatch(setFilterByAgeIdx(0))}
+                                    type="radio" id="a" name="radio"/>
+                                     {iconbox} up to 1 year</RadioLabel>
+                                    <RadioLabel htmlFor="b">
+                                    <RadioInput
+                                     onClick={()=> dispatch(setFilterByAgeIdx(1))}
+                                    type="radio" id="b" name="radio"/>
+                                    {iconbox} up to 2 years</RadioLabel>
+                                    <RadioLabel htmlFor="c">
+                                    <RadioInput
+                                     onClick={()=> dispatch(setFilterByAgeIdx(2))}
+                                    type="radio" id="c" name="radio"/>
+                                    {iconbox} from 2 years</RadioLabel>
+                            
+                                </CheckList2>}
+                        </div>
+
+
                     </DropdownMenu>
                 )}
             </FilterWrapper>

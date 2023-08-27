@@ -64,7 +64,7 @@ export const DropdownMenu = styled.div`
 }
 
 `
-export const FiltersBtn = styled.div.withConfig({
+export const FiltersBtn1 = styled.div.withConfig({
   shouldForwardProp: prop =>
       isPropValid(prop) && prop !== 'bor' ,
 })`
@@ -92,7 +92,51 @@ export const FiltersBtn = styled.div.withConfig({
   }
 
 `
-export const CheckList = styled.div.withConfig({
+export const FiltersBtn2 = styled.div.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) && prop !== 'bor' ,
+})`
+  width: 136px;
+  height: 32px;
+  border-radius: ${({ bor }) => bor ? '16px 16px 0 0' : '16px'};
+  background-color: var(--light-blue);
+  padding:0 16px;
+  font-size: 12px;
+  color: var(--blue);
+  
+  &>span{
+    width: 100%;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+  }
+
+  &>span>svg{
+  width: 18px;
+  fill: var(--blue);
+  opacity: ${({ bor }) => bor ? '0' : '1' };
+  }
+
+`
+
+
+export const CheckList1 = styled.div.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) && prop !== 'bor' ,
+})`
+  width: 136px;
+  height: 100px;
+  padding: 8px;
+  display: grid;
+  gap: 5px;
+  background-color: var(--light-blue);
+  border-radius: ${({ bor }) => !bor ? ' 0 0 16px 16px' : '16px'};
+
+
+`
+export const CheckList2 = styled.div.withConfig({
   shouldForwardProp: prop =>
       isPropValid(prop) && prop !== 'bor' ,
 })`
@@ -109,6 +153,7 @@ export const CheckList = styled.div.withConfig({
 
 export const RadioInput = styled.input`
 opacity: 0;
+padding: 2px 8px;
 `
 export const RadioLabel = styled.label`
 position: relative;
