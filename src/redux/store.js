@@ -17,6 +17,7 @@ import { filterReducer } from './filter/filterSlice';
 import { modalReducer } from './modal/modalSlice';
 import { themeReducer } from './theme/themeSlice';
 import { langReducer } from './lang/langSlice';
+import petsReducer from "../redux/pets/pet-slice"
 
 
 
@@ -35,6 +36,7 @@ export const store = configureStore({
         modal: modalReducer,
         theme:themeReducer,
         lang:langReducer,
+        pets: petsReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({

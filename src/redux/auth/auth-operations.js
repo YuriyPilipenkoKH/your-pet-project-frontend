@@ -71,6 +71,7 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     }
 });
 
+
     const fetchUpdateUser = createAsyncThunk(
         'auth/update',
         async (updatedData, thunkAPI) => {
@@ -88,14 +89,28 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     );
 
 
-// const fetchUser = createAsyncThunk("user/fetch", async (_, thunkAPI) => {
-//     try {
-//         await axios.get('/user/fetch');
-//         token.unset();
-//     } catch (error) {
-//         return thunkAPI.rejectWithValue(error.message);
+// export const fetchUpdateUser = createAsyncThunk(
+//     "user/update",
+//     async ({ token, fieldToUpdate, newValue }, { rejectWithValue }) => {
+//       try {
+//         const result = await api.updateUserInf(fieldToUpdate, newValue, token);
+//         return result;
+//       } catch (error) {
+//         return rejectWithValue(error.message);
+//       }
 //     }
-// });
+//   );
+// export const fetchDeleteUserPet = createAsyncThunk(
+//     "user/deleteUserPet",
+//     async (id, { rejectWithValue }) => {
+//       try {
+//         await api.deleteUserPet(id);
+//         return id;
+//       } catch ({ response }) {
+//         return rejectWithValue(response.data);
+//       }
+//     }
+//   );
 
 
 const operations = {

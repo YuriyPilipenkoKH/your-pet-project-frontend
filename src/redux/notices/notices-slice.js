@@ -104,22 +104,22 @@ const noticesSlice = createSlice({
                     store.reRender = false;
                 }
             )
-            .addCase(noticesOperations.addMySelfPet.pending, store => {
-                store.loading = true;
-            })
-            .addCase(
-                noticesOperations.addMySelfPet.fulfilled,
-                (store, { payload }) => {
-                    store.loading = false;
-                }
-            )
-            .addCase(
-                noticesOperations.addMySelfPet.rejected,
-                (store, { payload }) => {
-                    console.log(12345)
-                    store.loading = false;
-                }
-            )
+            // .addCase(noticesOperations.addMySelfPet.pending, store => {
+            //     store.loading = true;
+            // })
+            // .addCase(
+            //     noticesOperations.addMySelfPet.fulfilled,
+            //     (store, { payload }) => {
+            //         store.loading = false;
+            //     }
+            // )
+            // .addCase(
+            //     noticesOperations.addMySelfPet.rejected,
+            //     (store, { payload }) => {
+            //         console.log(12345)
+            //         store.loading = false;
+            //     }
+            // )
 
             // .addCase(noticesOperations.fetchNoticeById.pending, (store) => {
             //   store.loading = true;
