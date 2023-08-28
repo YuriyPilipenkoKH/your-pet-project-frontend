@@ -57,7 +57,7 @@ export const NewsPage = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [dispatch]);
 
     const filteredNews = () => {
         const normalized = filter.toLowerCase();
