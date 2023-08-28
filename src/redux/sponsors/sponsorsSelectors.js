@@ -1,0 +1,1 @@
+export const getSponsorsList = state => state.sponsors.listSponsors
