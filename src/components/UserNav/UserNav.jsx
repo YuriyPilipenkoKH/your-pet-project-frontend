@@ -1,4 +1,4 @@
-import {  useState } from 'react';
+import {  useEffect, useState } from 'react';
 import { MdOutlineLogout} from "react-icons/md";
 import { ProfileWrap, StyledLinkOut, UserWrap } from './UserNav.styled';
 import { iconUser } from '../../images/icons';
@@ -8,8 +8,17 @@ import { StyledLink } from "components/Button/Button.styled";
 
 import { modal1, modal5 } from 'modals/modals';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 export const UserNav = ({onClose}) => {
+
+  const { language} = useAll()
+  const [lang, setLang] = useState(langUA)
+
+  useEffect(() => {
+    setLang(language === 'english' ?  langEN :  langUA);
+  }, [language])
   const [showModal, setShowModal] = useState(false);
   const [modals, setModals] = useState(modal1);
 
@@ -33,7 +42,7 @@ export const UserNav = ({onClose}) => {
       <StyledLink to="/profile" exact="true" >{iconUser} </StyledLink>
       {name} </ProfileWrap>
       <StyledLinkOut to="/" exact="true"  onClick={signOut} className='logout'>
-        Log out <MdOutlineLogout/>
+      {lang.outBtn}  <MdOutlineLogout/>
       </StyledLinkOut>
     </UserWrap>
     {showModal && (

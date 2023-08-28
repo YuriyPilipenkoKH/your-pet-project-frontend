@@ -16,7 +16,7 @@ import styled from 'styled-components';
 };
     @media screen and (min-width: 1280px) {
 
-   max-width: 500px;
+   max-width: 600px;
 };
   
   &>button.active {

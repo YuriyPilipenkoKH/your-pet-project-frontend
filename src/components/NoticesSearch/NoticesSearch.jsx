@@ -20,6 +20,7 @@ export default function NoticesSearch({search}) {
   const dispatch = useDispatch()
   const { activeIndex } = useAll()
   const filter = useSelector(getNoticesFilter)
+
   useEffect(() => {
     setLang(language === 'english' ?  langEN :  langUA);
   }, [language])
@@ -50,7 +51,7 @@ export default function NoticesSearch({search}) {
           type="text" 
           name="search" 
           value={filter}
-          placeholder="Search"
+          placeholder={lang.search}
            />
           <FormButton >
             <SearchIcon className="search-icon">

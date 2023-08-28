@@ -35,9 +35,10 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchAllNotices.fulfilled,
                 (store, { payload }) => {
-                    //   console.log(payload);
+                      console.log(payload);
                     store.loading = false;
-                    store.list = payload;
+                    store.list = payload.notices
+                    ;
                 }
             )
             .addCase(
@@ -55,7 +56,7 @@ const noticesSlice = createSlice({
                 (store, { payload }) => {
                     //   console.log(payload);
                     store.loading = false;
-                    store.list = payload;
+                    store.list =  payload.notices
                 }
             )
             .addCase(
@@ -217,7 +218,7 @@ const noticesSlice = createSlice({
                 (store, { payload }) => {
                     console.log('payload', payload);
                     store.loading = false;
-                    store.list = payload;
+                    store.list =  payload.notices
                     store.category = payload.category;
                     // store.page = Math.ceil(payload.length / 12);
                     // store.totalPages = payload.data.totalPages;

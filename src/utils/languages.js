@@ -8,9 +8,30 @@ const langEN = {
     find: 'Find pet',
     findPet: 'Find your favorite pet',
     friends: 'Our Friends',
+    sell: 'sell',
+    lost: 'lost/found',
+    hands: 'in good hands',
+    favadds: 'favorite adds',
+    myadds: 'my adds',
+
+    filter: 'Filter',
+    filters: 'Filters',
+    addPet: 'Add pet',
+
     contactsBtn: 'Contacts',
     logBtn: 'Login',
     regBtn: 'Register',
+    outBtn: 'Logout',
+    search: 'Search',
+    
+    byage: 'By age',
+    bygender: 'By gender',
+    oneyear: 'up to 1 year',
+    twoyears: 'up to 2 years',
+    fromtwo: 'from 2 years',
+    man: 'male',
+    fem: 'female',
+
     footerTitle: 'React-Phonebook-2023',
     name: 'Name',
     sname: "name",
@@ -45,7 +66,7 @@ const langEN = {
 
 const langUA = {
     appTitle: 'Знайдіть свого улюбленого вихованця',
-    appUnderTitle: `веб додаток, який дозволяє користувачам зберігати та керувати своїми контактами,
+    homeTitle: `веб додаток, який дозволяє користувачам зберігати та керувати своїми контактами,
     надання функцій для додавання, редагування та видалення контактної інформації`,
     homeBtn: 'Головна',
 
@@ -53,9 +74,31 @@ const langUA = {
     find: 'Знайдіть улюбленця',
     findPet: 'Знайдіть улюбленого вихованця',
     friends: 'Наші друзі',
+
+    sell: 'продаж',
+    lost: 'бюро знахідок',
+    hands: 'в добрі руки',
+    favadds: 'улюблені',
+    myadds: 'мої доповнення',
+
+    filter: 'Фільтр',
+    filters: 'Фільтри',
+    addPet: 'Додати',
+
     contactsBtn: 'Контакти',
     logBtn: 'Увійти',
+    outBtn: 'Вийти',
     regBtn: 'Реєстрація',
+    search: 'Пошук',
+
+    byage: 'По віку',
+    bygender: 'По статі',
+    oneyear: 'до 1 року',
+    twoyears: 'до 2 років',
+    fromtwo: 'від 2 років',
+    man: 'чоловічої статі',
+    fem: 'жіночої статі',
+
     footerTitle: 'React-телефонна книга-2023',
     name: 'Ім’я',
     sname: "ім’я",

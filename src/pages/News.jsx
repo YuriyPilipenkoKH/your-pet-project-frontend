@@ -159,7 +159,7 @@ export const NewsPage = () => {
                         type="text"
                         value={filter}
                         name="search"
-                        placeholder="Search"
+                        placeholder={lang.search}
                     />
                     <FormButton>
                         <SearchIcon className="search-icon">
