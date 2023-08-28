@@ -81,7 +81,7 @@ export const TestPage =()=> {
   }}>Contact</ContactButton>
 
 
-  <AddToButton onClick ={()=>  dispatch(setCategory('index'))} >Add Pet <AiOutlinePlus/></AddToButton>
+  <AddToButton onClick ={()=>  console.log('click')} >Add Pet <AiOutlinePlus/></AddToButton>
 
 
 
@@ -91,7 +91,7 @@ export const TestPage =()=> {
   <RadioButton>in good hands</RadioButton>
 
   {showModal && (
-        <ModalPopup {...modals} onClose ={onModalClose}  /> //  onClose ={onModalClose}   {...modal1} 
+        <ModalPopup {...modals} onClose ={onModalClose} isOpen={showModal}/> //  onClose ={onModalClose}   {...modal1} 
     )}
       
             
