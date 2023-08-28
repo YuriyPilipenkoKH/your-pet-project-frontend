@@ -83,17 +83,17 @@ export default function NoticesFilters({ state }) {
                 </FavButton>
 
                 <AddToButton onClick={checkRoute}>
-                    Add Pet <AiOutlinePlus />
+                    {lang.addPet} <AiOutlinePlus />
                 </AddToButton>
                 {showFilters && (
                     <DropdownMenu>
-                        <h3>Filters</h3>
+                        <h3> {lang.filters} </h3>
 
                         <div>
                         <FiltersBtn1  bor ={big1}>
                                 <span onClick={() => setBig1(!big1)}>
                                     {' '}
-                                    {arrowD} By age
+                                    {arrowD}  {lang.byage} 
                                 </span>
                         </FiltersBtn1>
                         { big1 &&  <CheckList1  visible ={big1}>
@@ -102,19 +102,19 @@ export default function NoticesFilters({ state }) {
                                 <RadioInput className='radio-input'
                                 onClick={()=> dispatch(setFilterByAgeIdx(0))}
                                 type="radio" id="a" name="radio"/>
-                                {iconchbox}  up to 1 year</RadioLabel>
+                                {iconchbox}   {lang.oneyear} </RadioLabel>
                             <RadioLabel htmlFor="b">
                                 <div></div>
                                 <RadioInput className='radio-input'
                                  onClick={()=> dispatch(setFilterByAgeIdx(1))}
                                 type="radio" id="b" name="radio"/>
-                                {iconchbox}  up to 2 years</RadioLabel>
+                                {iconchbox}   {lang.twoyears} </RadioLabel>
                             <RadioLabel htmlFor="c">
                                 <div className='box'></div>
                                 <RadioInput className='radio-input'
                                  onClick={()=> dispatch(setFilterByAgeIdx(2))}
                                 type="radio" id="c" name="radio"/>
-                                {iconchbox} from 2 years</RadioLabel>
+                                {iconchbox}  {lang.fromtwo} </RadioLabel>
                           
   
                             </CheckList1>}
@@ -124,7 +124,7 @@ export default function NoticesFilters({ state }) {
                             <FiltersBtn2   bor ={big2}>
                                 <span onClick={() => setBig2(!big2)}>
                                     {' '}
-                                    {arrowD} By gender
+                                    {arrowD}  {lang.bygender} 
                                 </span>
                             </FiltersBtn2>
                             { big2 &&  <CheckList2  visible ={big1}>
@@ -133,13 +133,13 @@ export default function NoticesFilters({ state }) {
                                     <RadioInput  className='radio-input'
                                     onClick={()=> dispatch(setFilterByGender('female'))}
                                     type="radio" id="d" name="radio"/>
-                                     {iconchbox}  female</RadioLabel>
+                                     {iconchbox}   {lang.fem} </RadioLabel>
                                 <RadioLabel htmlFor="e">
                                     <div className='box'></div>
                                     <RadioInput  className='radio-input'
                                      onClick={()=> dispatch(setFilterByGender('male'))}
                                     type="radio" id="e" name="radio"/>
-                                    {iconchbox}  male</RadioLabel>
+                                    {iconchbox}   {lang.man} </RadioLabel>
                                 
                             
                                 </CheckList2>}

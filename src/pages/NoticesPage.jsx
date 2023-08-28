@@ -140,7 +140,7 @@ export default function NoticesPage() {
                 <NoticesFilters state={{ from: location }} />
             </NoticesPageWrap>
             <NoticeContainer className="notice-container">
-                {noticesList.map((item, index) => (
+                {filteredNotices().map((item, index) => (
                    
                     <MainCard
                         key={index}

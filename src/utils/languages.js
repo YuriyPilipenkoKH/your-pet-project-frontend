@@ -14,13 +14,24 @@ const langEN = {
     favadds: 'favorite adds',
     myadds: 'my adds',
 
-     filter: 'Filter',
+    filter: 'Filter',
+    filters: 'Filters',
     addPet: 'Add pet',
-
 
     contactsBtn: 'Contacts',
     logBtn: 'Login',
     regBtn: 'Register',
+    outBtn: 'Logout',
+    search: 'Search',
+    
+    byage: 'By age',
+    bygender: 'By gender',
+    oneyear: 'up to 1 year',
+    twoyears: 'up to 2 years',
+    fromtwo: 'from 2 years',
+    man: 'male',
+    fem: 'female',
+
     footerTitle: 'React-Phonebook-2023',
     name: 'Name',
     sname: "name",
@@ -71,11 +82,23 @@ const langUA = {
     myadds: 'мої доповнення',
 
     filter: 'Фільтр',
+    filters: 'Фільтри',
     addPet: 'Додати',
 
     contactsBtn: 'Контакти',
     logBtn: 'Увійти',
+    outBtn: 'Вийти',
     regBtn: 'Реєстрація',
+    search: 'Пошук',
+
+    byage: 'По віку',
+    bygender: 'По статі',
+    oneyear: 'до 1 року',
+    twoyears: 'до 2 років',
+    fromtwo: 'від 2 років',
+    man: 'чоловічої статі',
+    fem: 'жіночої статі',
+
     footerTitle: 'React-телефонна книга-2023',
     name: 'Ім’я',
     sname: "ім’я",
