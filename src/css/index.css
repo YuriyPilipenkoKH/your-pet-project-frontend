@@ -34,7 +34,7 @@
 :root[data-theme="light"] {
   --background-color: #fef9f9;
   --text-color: #1C1E21;
-  --card-color: #eee;
+  --card-color: #fff;
 
   --field-color: #eeeeee;
   --border: 3px solid transparent;
@@ -53,15 +53,20 @@
   --main-text:  #001129;
 }
 
-:root[data-lang="eng"] {
+:root[data-lang="english"] {
   --fz: 16px;
-  --app-title: #001129;;
+  --title-fz: 48px;
+  --title-fz-m: 24px;
+  --app-title: #001129;
+
 }
 
-
-:root[data-lang="ukr"] {
+:root[data-lang="ukrainian"] {
   --fz: 12px;
+  --title-fz: 40px;
+  --title-fz-m: 18px;
   --app-title: #777;
+
 }
 
 body {

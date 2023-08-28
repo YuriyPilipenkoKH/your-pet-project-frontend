@@ -23,7 +23,7 @@ export const useAll= () => {
         filterByGender: useSelector(getFilterByGender),
 
         theme: useSelector(getTheme),
-        lang: useSelector(getLang),
+        language: useSelector(getLang),
 
         pets: useSelector(getPets),
         listPets: useSelector(getPetsList),

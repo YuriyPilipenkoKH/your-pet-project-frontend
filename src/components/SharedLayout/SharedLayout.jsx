@@ -25,6 +25,7 @@ import { useDispatch} from 'react-redux';
 import { useAll } from 'hooks/useAll';
 import {MdOutlineNightlight} from 'react-icons/md';
 import {MdOutlineLightMode} from 'react-icons/md';
+import { langEN, langUA } from 'utils/languages';
 
 
 export const SharedLayout = () => {
@@ -32,7 +33,8 @@ export const SharedLayout = () => {
     const isMobile = windowWidth <= 768;
     const { isLoggedIn } = useAuth();
     const dispatch = useDispatch();
-    const {theme, lang} = useAll()
+    const {theme, language} = useAll()
+  
 
     useEffect(() => {
         const handleResize = () => {
@@ -72,7 +74,7 @@ export const SharedLayout = () => {
                         <LangBtn
                          onClick={() => dispatch(toggleLang())}
                          type="button">
-                         {lang === 'eng' ?  'EN' :  'UA'}
+                         {language === 'english' ?  'EN' :  'UA'}
                          </LangBtn>
                          <ThemeBtn
                          onClick={() => dispatch(toggleTheme())}
