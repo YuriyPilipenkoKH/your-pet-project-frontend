@@ -23,13 +23,11 @@ export const CardWrapper = styled.div`
 
 
     @media screen and (min-width: 768px) {
-  
-      width: 336px;
+        width: 336px;
     }
 
       @media screen and (min-width: 1280px) {
-        
-        width: 288px;
+         width: 288px;
     }
 
     &:hover,
@@ -121,7 +119,7 @@ export const ImgWrapper = styled.div.withConfig({
 }      
    background-image: url(${props => props.photo});
    /* background-image: url(${'bgImgM'}); */
-       background-size: cover;
+    background-size: cover;
     background-position: center;  
  
 
@@ -153,7 +151,6 @@ export const ImgWrapper = styled.div.withConfig({
       background-image: url(${props => props.photo});
     }
   }
-
 
 `
 export const CardTitle = styled.div`

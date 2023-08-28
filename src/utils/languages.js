@@ -32,15 +32,16 @@ const langEN = {
     man: 'male',
     fem: 'female',
 
-    learnmore: 'Дізнатися більше',
-    name: 'Ім’я:',
-    birthday: 'Вік:',
-    type: 'Порода:',
-    place: 'Локація:',
-    sex: 'Стать:',
+    learnmore: 'Learn more',
+    name: 'Name:',
+    birthday: 'Age:',
+    type: 'Type:',
+    place: 'Location:',
+    sex: 'Gender:',
     phone: 'Phone:',
-    comments: 'Коментарі:',
-    email: 'Пошта:',
+    comments: 'Comments:',
+    email: 'Email:',
+    confirm: "Confirm password",
 
     addto: 'Add to',
     remove: 'Remove',
@@ -120,6 +121,7 @@ const langUA = {
     phone: 'Phone:',
     comments: 'Коментарі:',
     email: 'Пошта',
+    confirm: 'Підтвердити пароль',
 
 
     addto: 'Додати',

@@ -54,9 +54,9 @@ export const ModalContainer = styled.div`
 export const ModalContainer3 = styled.div`
   position: relative;
   width: 280px;
-  height: 800px;
+  height: 760px;
   position: relative;
-  /* display: grid; */
+  display: grid;
   place-items: center;
   gap: 20px;  
   background-color: var(--white);
@@ -183,8 +183,10 @@ export const ModalText = styled.p`
 `;
 
 export const ModalImage = styled.img`
-  max-width: 100%;
-  height: auto;
+  /* max-width: 100%;
+  height: auto; */
+  width:240px;
+  height: 240px;
   border-radius: 0px 0px 40px 40px;
 
   @media screen and (min-width: 768px) {
