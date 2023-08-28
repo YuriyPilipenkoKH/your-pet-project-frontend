@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import {  useEffect } from 'react';
 import NoticesSearch from '../components/NoticesSearch/NoticesSearch';
 import NoticesCategoriesNav from '../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesFilters from '../components/NoticesFilters/NoticesFilters';
@@ -17,7 +17,9 @@ import { useLocalStorage } from 'hooks/useLocalStaoreage';
 import { useAll } from 'hooks/useAll';
 
 
+
 export default function NoticesPage() {
+
     const location = useLocation();
     const { 
         filterByAgeIdx,
