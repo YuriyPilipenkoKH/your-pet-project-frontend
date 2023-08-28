@@ -26,19 +26,19 @@ import { langEN, langUA } from 'utils/languages';
 
 export const NewsPage = () => {
     const dispatch = useDispatch();
-    const news = useSelector(getNewsList)
+    const news = useSelector(getNewsList);
     const filter = useSelector(getNewsFilter);
     const [active, setActive] = useState(1);
     const [itemOffset, setItemOffset] = useState(0);
     const cardsPerPage = 6;
     const endOffset = itemOffset + cardsPerPage;
     const [numButtons, setNumButtons] = useState(5);
-    const { language} = useAll()
-    const [lang, setLang] = useState(langUA)
+    const { language, theme } = useAll();
+    const [lang, setLang] = useState(langUA);
 
     useEffect(() => {
-      setLang(language === 'english' ?  langEN :  langUA);
-    }, [language])
+        setLang(language === 'english' ? langEN : langUA);
+    }, [language]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -69,7 +69,6 @@ export const NewsPage = () => {
     const newsSearch = filteredNews();
     const currentItems = newsSearch.slice(itemOffset, endOffset);
 
-
     useEffect(() => {
         if (newsSearch.length > 0) {
             const totalPages = Math.ceil(newsSearch.length / cardsPerPage);
@@ -81,10 +80,10 @@ export const NewsPage = () => {
             } else {
                 setNumButtons(5);
             }
-    
+
             let start = active - 2;
             let end = active + 2;
-    
+
             if (active < 3) {
                 start = 1;
                 end = numButtons;
@@ -92,7 +91,7 @@ export const NewsPage = () => {
                 start = totalPages - numButtons + 1;
                 end = totalPages;
             }
-    
+
             if (active < 1) setActive(1);
             if (active > totalPages) {
                 setActive(1);
@@ -137,6 +136,7 @@ export const NewsPage = () => {
     for (let i = start; i <= end; i++) {
         pageButtons.push(
             <PaginationButton
+                theme={theme}
                 key={i}
                 onClick={() => handlePageClick(i - 1)}
                 currentButton={i}
@@ -148,7 +148,7 @@ export const NewsPage = () => {
     }
 
     return (
-        <NewsWrapper className='NewsWrapper'>
+        <NewsWrapper className="NewsWrapper">
             <SearchWrapper>
                 <StyledLink to="/test" style={{ background: 'transparent' }}>
                     <TytleNwes>{lang.news}</TytleNwes>
@@ -161,7 +161,7 @@ export const NewsPage = () => {
                         name="search"
                         placeholder={lang.search}
                     />
-                    <FormButton>
+                    <FormButton type="button">
                         <SearchIcon className="search-icon">
                             <BsSearch style={{ color: '#54adff' }} />
                         </SearchIcon>
@@ -181,34 +181,40 @@ export const NewsPage = () => {
                     />
                 ))}
             </NewsContainer>
-            {newsSearch.length > 0 && <PaginationWrapper>
-                <PaginationButton
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: 'transparent',
-                        padding: '10px 8px',
-                    }}
-                    onClick={handlePrevPage}
-                >
-                    {iconRowLeft}
-                </PaginationButton>
-                <ListButtonForPagination>{pageButtons}</ListButtonForPagination>
-                <PaginationButton
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: 'transparent',
-                        transform: 'rotate(180deg)',
-                        padding: '10px 8px',
-                    }}
-                    onClick={handleNextPage}
-                >
-                    {iconRowLeft}
-                </PaginationButton>
-            </PaginationWrapper>}
+            {newsSearch.length > 0 && (
+                <PaginationWrapper>
+                    <PaginationButton
+                        theme={theme}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: 'transparent',
+                            padding: '10px 8px',
+                        }}
+                        onClick={handlePrevPage}
+                    >
+                        {iconRowLeft}
+                    </PaginationButton>
+                    <ListButtonForPagination>
+                        {pageButtons}
+                    </ListButtonForPagination>
+                    <PaginationButton
+                        theme={theme}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: 'transparent',
+                            transform: 'rotate(180deg)',
+                            padding: '10px 8px',
+                        }}
+                        onClick={handleNextPage}
+                    >
+                        {iconRowLeft}
+                    </PaginationButton>
+                </PaginationWrapper>
+            )}
         </NewsWrapper>
     );
 };
