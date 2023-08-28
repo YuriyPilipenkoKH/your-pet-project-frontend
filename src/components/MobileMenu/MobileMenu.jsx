@@ -16,6 +16,7 @@ import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { modal1, modal5 } from 'modals/modals';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
+import { Avatar } from 'components/UserPageComponents/UserData/UserData.styled';
 
 
 export  const MobileMenu = ({ isOpen, onClose }) => {
@@ -30,8 +31,11 @@ export  const MobileMenu = ({ isOpen, onClose }) => {
   const [showModal, setShowModal] = useState(false);
   const [modals, setModals] = useState(modal1);
 
-const {isLoggedIn, userId} = useAuth()
-  const name = useSelector(authSelectors.getUsername);
+
+const {isLoggedIn, userId, userName , user} = useAuth()
+const avatar = user.avatarURL
+
+
 
 
    const signOut = () => {
@@ -49,14 +53,21 @@ const {isLoggedIn, userId} = useAuth()
   return (
     <MenuWrapp className= {isOpen ? ['menu', 'active'].join(' ') : 'menu'} >
             <MenuHeader className='MenuHeader'>
-                <StyledLogo to="/" onClick={()=>console.log('name', name, 'userId',userId)}  >{iconLogo}</StyledLogo>
+                <StyledLogo to="/" onClick={()=>console.log('name', userName , 'userId',userId)}  >{iconLogo}</StyledLogo>
                <CloseButton onClick={onClose} ><RxCross2/></CloseButton>
             </MenuHeader>
         <MenuContent className='MenuContent'>
             {!isLoggedIn 
             ? <AuthNav   onClose={onClose}/> 
             :   <>
-                  <ProfileWrap className= "useravatar" > {iconUser} {name} </ProfileWrap>
+                  <ProfileWrap className= "useravatar" > 
+                  {avatar ?   <Avatar style={{width: '50px' , height: '50px'}}
+                                    src={avatar }
+                                    alt="user avatar"
+                                />
+                     :  {iconUser}
+                     }   
+                  {userName } </ProfileWrap>
                  <StyledLinkOut to="/" exact="true"  onClick={signOut} className='logout'>
                    {lang.outBtn} <MdOutlineLogout/>
                  </StyledLinkOut>

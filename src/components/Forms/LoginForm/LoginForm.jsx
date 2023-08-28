@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import {  useEffect, useState } from 'react';
 import {
     ButtonSubmit,
     Form,
@@ -18,6 +18,8 @@ import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 const schema = object({
     email: string()
@@ -35,12 +37,19 @@ const schema = object({
 }).required();
 
 export default function LoginForm() {
+
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const [isEmailValid, setIsEmailValid] = useState(false);
     const [isPasswordValid, setIsPasswordlValid] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
 
     const {
         register,
@@ -72,12 +81,12 @@ export default function LoginForm() {
     return (
         <Form>
             <form onSubmit={handleSubmit(deliveryData)}>
-                <Title>Login</Title>
+                <Title>{lang.logBtn}</Title>
                 <LabelForLogin>
                     <InputForAuthorization
                         {...register('email')}
                         aria-invalid={errors.email ? 'true' : 'false'}
-                        placeholder="Email"
+                        placeholder={lang.email}
                         type="email"
                         value={email}
                         style={{
@@ -134,7 +143,7 @@ export default function LoginForm() {
                     <InputForAuthorization
                         {...register('password')}
                         aria-invalid={errors.password ? 'true' : 'false'}
-                        placeholder="Password"
+                        placeholder={lang.pass}
                         title="Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long."
                         value={password}
                         type={show ? 'text' : 'password'}
@@ -194,13 +203,13 @@ export default function LoginForm() {
                     </ShowPasswordButton>
                 </LabelForLogin>
                 <ButtonSubmit type="submit" loginButtom={true}>
-                    Login
+                    {lang.logBtn}
                 </ButtonSubmit>
                 <Question>
-                    Don't have an account?{' '}
+                    {lang.notYet}{' '}
                     {
                         <LinkToForm href="fwefew" to="/register">
-                            Register
+                            {lang.regBtn}
                         </LinkToForm>
                     }
                 </Question>

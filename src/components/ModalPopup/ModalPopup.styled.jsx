@@ -108,9 +108,7 @@ export const BtnContainer3 = styled.div`
     flex-direction: column;
     gap: 12px;
 
-    &>button,  &>a {
-        /* width: 240px; */
-    }
+  
 
     @media screen and (min-width: 768px) {
       position: absolute;
@@ -120,7 +118,7 @@ export const BtnContainer3 = styled.div`
       gap: 22px;
 
         &>button,  &>a {
-        width: 130px;
+        width: var(--btwidth);
     }
   }
 `;

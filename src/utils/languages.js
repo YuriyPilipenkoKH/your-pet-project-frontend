@@ -10,8 +10,8 @@ const langEN = {
     sell: 'sell',
     lost: 'lost/found',
     hands: 'in good hands',
-    favadds: 'favorite adds',
-    myadds: 'my adds',
+    favadds: 'favorite ads',
+    myadds: 'my ads',
 
     filter: 'Filter',
     filters: 'Filters',
@@ -20,6 +20,7 @@ const langEN = {
     contactsBtn: 'Contacts',
     logBtn: 'Login',
     regBtn: 'Register',
+    regTitle: 'Registration',
     outBtn: 'Logout',
     search: 'Search',
     
@@ -99,6 +100,7 @@ const langUA = {
     logBtn: 'Увійти',
     outBtn: 'Вийти',
     regBtn: 'Реєстрація',
+    regTitle: 'Реєстрація',
     search: 'Пошук',
 
     byage: 'По віку',
@@ -117,7 +119,7 @@ const langUA = {
     sex: 'Стать:',
     phone: 'Phone:',
     comments: 'Коментарі:',
-    email: 'Пошта:',
+    email: 'Пошта',
 
 
     addto: 'Додати',

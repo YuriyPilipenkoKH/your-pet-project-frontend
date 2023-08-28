@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import {  useEffect, useState } from 'react';
 import {
     ButtonSubmit,
     Form,
@@ -18,6 +18,8 @@ import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 const schema = object({
     name: string()
@@ -45,6 +47,7 @@ const schema = object({
 
 
 export default function RegisterForm() {
+
     const dispatch = useDispatch();
     const [showOne, setShowOne] = useState(false);
     const [showTwo, setShowTwo] = useState(false);
@@ -73,6 +76,14 @@ export default function RegisterForm() {
     });
     const handleClickShowOne = () => setShowOne(!showOne);
     const handleClickShowTwo = () => setShowTwo(!showTwo);
+
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
+
 
     const deliveryDataUser = (name, email, password) => {
         dispatch(authOperations.register({name,email,password}))
@@ -107,7 +118,7 @@ export default function RegisterForm() {
     return (
         <Form>
             <form onSubmit={handleSubmit(deliveryData)}>
-                <Title>Registration</Title>
+                <Title>{lang.regTitle}</Title>
                 <LabelForRegistration>
                     <InputForAuthorization
                         {...register('name')}

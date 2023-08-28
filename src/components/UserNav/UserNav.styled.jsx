@@ -48,11 +48,16 @@ export const ProfileWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     max-width: 320px;
     font-size: 20px;
     font-weight: 600;
     color: var(--yellow);
+    
+    &>a {
+      
+      color: var(--yellow);
+    }
 
     &>svg{
           fill: var(--yellow);
