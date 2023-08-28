@@ -458,9 +458,8 @@ fill: var(--white);
  }
 
   &.active {
-    /* color: #eee; */
-  
-  }
+    color: #eee;
+    }
 `;
 
 export const StyledLogo = styled(NavLink)`
