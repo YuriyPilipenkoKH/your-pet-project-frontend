@@ -454,7 +454,6 @@ fill: var(--white);
 &:hover  {
   transition: all 0.4s ease; 
   background: linear-gradient(to right, var( --gradient-bl), var(--gradient-br));
-  color: var(--white);
  }
 `;
 
