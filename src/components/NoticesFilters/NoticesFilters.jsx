@@ -21,8 +21,12 @@ import { useNavigate } from 'react-router-dom';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { useAll } from 'hooks/useAll';
 import { setFilterByAgeIdx, setFilterByGender } from 'redux/filter/filterSlice';
+import { langEN, langUA } from 'utils/languages';
 
 export default function NoticesFilters({ state }) {
+
+   
+    const [lang, setLang] = useState(langUA)
     const [showModal, setShowModal] = useState(false);
     const [modals, setModals] = useState(modal1);
     const [showFilters, setShowFilters] = useState(false);
@@ -30,11 +34,15 @@ export default function NoticesFilters({ state }) {
     const [big2, setBig2] = useState(false);
     const { isLoggedIn } = useAuth();
     const navigate = useNavigate();
-    const { modalIsOpen } = useAll();
-
-
+    const { modalIsOpen,language } = useAll();
+    
+    
     const dispatch = useDispatch();
 
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
+    
     useEffect(() => {
         setShowFilters(false);
     }, [modalIsOpen]);
@@ -64,7 +72,7 @@ export default function NoticesFilters({ state }) {
                         }}
                     className="FilterBtn"
                 >
-                    Filter {iconFilter}
+                   {lang.filter} {iconFilter}
                 </ButtonTransparent>
                 <FavButton
                     onClick={() => setShowFilters(!showFilters)}

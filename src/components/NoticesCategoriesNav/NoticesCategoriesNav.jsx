@@ -1,4 +1,4 @@
-import React from 'react';
+import {  useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RadioButton } from '../Button/Button';
@@ -13,11 +13,20 @@ import {
     toggleMyAds,
 } from 'redux/sort/sortSlice';
 import { activeIndex } from 'redux/sort/sortSelectors';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 export default function NoticesCategoriesNav({
     handleChangeCurrentActive,
     currentActive,
 }) {
+
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
     const { isLoggedIn } = useAuth();
     const dispatch = useDispatch();
     const currentIndex = useSelector(activeIndex);
@@ -30,19 +39,19 @@ export default function NoticesCategoriesNav({
                         onClick={() => dispatch(toggleSell())}
                         className={currentIndex === 0 ? 'active' : ''}
                     >
-                        sell
+                        {lang.sell}
                     </RadioButton>
                     <RadioButton
                         onClick={() => dispatch(toggleLostFound())}
                         className={currentIndex === 1 ? 'active' : ''}
                     >
-                        lost/found
+                        {lang.lost}
                     </RadioButton>
                     <RadioButton
                         onClick={() => dispatch(toggleInGoodHands())}
                         className={currentIndex === 2 ? 'active' : ''}
                     >
-                        in good hands
+                        {lang.hands}
                     </RadioButton>
 
                     {isLoggedIn && (
@@ -50,7 +59,7 @@ export default function NoticesCategoriesNav({
                             onClick={() => dispatch(toggleFavoriteAds())}
                             className={currentIndex === 3 ? 'active' : ''}
                         >
-                            favorite ads
+                            {lang.favadds}
                         </RadioButton>
                     )}
                     {isLoggedIn && (
@@ -58,7 +67,7 @@ export default function NoticesCategoriesNav({
                             onClick={() => dispatch(toggleMyAds())}
                             className={currentIndex === 4 ? 'active' : ''}
                         >
-                            my ads
+                           {lang.myadds}
                         </RadioButton>
                     )}
                 </BtnWrap>
