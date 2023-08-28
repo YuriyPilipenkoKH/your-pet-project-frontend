@@ -19,6 +19,7 @@ import { themeReducer } from './theme/themeSlice';
 import { langReducer } from './lang/langSlice';
 import  petsReducer  from './pets/petsSlice';
 import  newsReducer  from './news/newsSlice';
+import  sponsorsReducer  from './sponsors/sponsorsSlice';
 
 
 
@@ -39,6 +40,7 @@ export const store = configureStore({
         theme:themeReducer,
         lang:langReducer,
         news: newsReducer,
+        sponsors: sponsorsReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({

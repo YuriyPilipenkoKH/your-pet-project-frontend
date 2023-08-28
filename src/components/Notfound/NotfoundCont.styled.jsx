@@ -36,7 +36,6 @@ export const Wrapper = styled.div`
 export const TitleNotfound = styled.p`
 font-size: 24px;
     font-weight: 700;
-    width: 280px;
     text-align: center;
 `;
 

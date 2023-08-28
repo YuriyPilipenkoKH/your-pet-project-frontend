@@ -32,7 +32,7 @@ const UserPage = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             dispatch(petsOperations.getPet()).then(d => console.log(d));
-        }, 3000);
+        }, 2000);
         return () => clearTimeout(timer);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [petsRerender]);
