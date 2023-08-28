@@ -30,10 +30,10 @@ export default function NoticesSearch({search}) {
 
     e.preventDefault()
     if(activeIndex === 3){
-      dispatch(noticesOperations.fetchAllFavorite());
+      dispatch(noticesOperations.fetchAllFavorite(search));
   }
    else if(activeIndex === 4){
-      dispatch(noticesOperations.fetchUserNotices());
+      dispatch(noticesOperations.fetchUserNotices(search));
   }
   else{
       dispatch(noticesOperations.fetchNoticesByCategory(search));
