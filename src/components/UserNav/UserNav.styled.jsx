@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { buttonStyles, hoverStylesB,  ripple } from '../Button/Button.styled';
+import isPropValid from '@emotion/is-prop-valid';
 
 export const UserWrap = styled.div`
 
@@ -88,3 +89,12 @@ transform: rotate(180deg);
 }
 
 `;
+
+export const PhotoWrap =  styled.img.withConfig({
+  shouldForwardProp: prop => isPropValid(prop) && prop !== 'avatar',
+})`
+  width: 40px;
+  height: 40px;
+
+
+`

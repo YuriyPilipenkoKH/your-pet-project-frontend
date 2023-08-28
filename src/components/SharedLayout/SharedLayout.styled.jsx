@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const SharedLayoutWrap = styled.div`
     background-color: var(--background-color);
+    transition: all 1s ease-in-out;
     width: 100%;
 `;
 

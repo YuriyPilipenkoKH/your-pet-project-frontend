@@ -13,17 +13,18 @@ import { useAll } from 'hooks/useAll';
 import { toggleSell } from 'redux/sort/sortSlice';
 import { authOperations } from "redux/auth";
 import { langEN, langUA } from 'utils/languages';
-
+import petsOperations from '../../redux/pets/petsOperations'
 
 const modalRoot = document.querySelector('#modal-root');
 
 
-export const ModalPopup = ({ type, delid, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose , cardtitle, petAvatarURL, category, location, name, birthday, sex, animal, comments, isLike, currentDiv} ) => {
+export const ModalPopup = ({ type, path, delid, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose , cardtitle, petAvatarURL, category, location, name, birthday, sex, animal, comments, isLike, currentDiv} ) => {
 
 const props = {
   type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized, delid
 }
-console.log('props', props)
+// console.log('props', props)
+console.log('name', name)
 
 const { language} = useAll()
 const [lang, setLang] = useState(langUA)
@@ -86,9 +87,19 @@ useEffect(() => {
   }
 
   const removeCard = () => {
-    dispatch(noticesOperations.fetchDeleteNotice(delid))
-    dispatch(setModalClose())
-    onClose()
+
+    if(path === 'notice') {
+
+      dispatch(noticesOperations.fetchDeleteNotice(delid))
+     dispatch(setModalClose())
+     onClose()
+    }
+    else if(path === 'pet') {
+
+      dispatch(petsOperations.removeMyPet(delid))
+     dispatch(setModalClose())
+     onClose()
+    }
 
   }
 
@@ -98,12 +109,12 @@ useEffect(() => {
      dispatch(authOperations.logOut())
     onClose()
   }
-
+  // className='modal-backdrop'
 
 
 if (type === 1  || type === 4  ){
   return  createPortal(
-    <ModalOverlay className='modal-backdrop'>
+    <ModalOverlay className={`modal ${isOpen ? 'active' : ''}`}> 
       <ModalContainer 
       {...props}
       >
@@ -121,12 +132,12 @@ if (type === 1  || type === 4  ){
 }
 if ( type === 2  ){
   return  createPortal(
-    <ModalOverlay className='modal-backdrop'>
+    <ModalOverlay className={`modal ${isOpen ? 'active' : ''}`}>
       <ModalContainer 
       {...props}
       >
         <ModalTitle>{title}</ModalTitle>
-        <ModalText>{`Are you sure you want to delete  ${cardtitle} ? You can’t undo this action.`}</ModalText>
+        <ModalText>{`Are you sure you want to delete  ${cardtitle || name} ? You can’t undo this action.`}</ModalText>
         
         <BtnContainer {...props}>
           <ButtonTransparent onClick={shut}>Cacel</ButtonTransparent>
@@ -140,7 +151,7 @@ if ( type === 2  ){
 }
 if (type === 3){
   return  createPortal(
-    <ModalOverlay className='modal-backdrop'>
+    <ModalOverlay className={`modal ${isOpen ? 'active' : ''}`}>
       <ModalContainer3  >
         {image && <ModalImage src={petAvatarURL} alt="Modal Image" />}
         <ModalCategory > {category} </ModalCategory>
@@ -174,7 +185,7 @@ if (type === 3){
 }
 if (type === 5 ){
   return  createPortal(
-    <ModalOverlay className='modal-backdrop'>
+    <ModalOverlay className={`modal ${isOpen ? 'active' : ''}`}>
       <ModalContainer 
       {...props}
       >

@@ -6,6 +6,7 @@ const initialState = {
     owner: {},
     error: null,
     reRender: false,
+    message: '',
 };
 const petsSlice = createSlice({
     name: 'pets',
@@ -55,11 +56,14 @@ const petsSlice = createSlice({
             )
             .addCase(petsOperations.removeMyPet.pending, state => {
                 state.loading = true;
+                state.reRender = true;
             })
             .addCase(
                 petsOperations.removeMyPet.fulfilled,
                 (state, { payload }) => {
                     console.log(payload);
+                    state.message = payload.message
+                    state.reRender = false;
                 }
             )
             .addCase(
@@ -67,6 +71,7 @@ const petsSlice = createSlice({
                 (state, { payload }) => {
                     state.loading = false;
                     state.error = payload;
+                    state.reRender = false;
                 }
             );
     },

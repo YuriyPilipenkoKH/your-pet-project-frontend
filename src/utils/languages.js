@@ -1,6 +1,6 @@
 const langEN = {
     appTitle: 'Find your favorite pet',
-    appUnderTitle: `Take good care of your small pets`,
+    homeTitle: `Take good care of your small pets`,
     homeBtn: 'Home',
 
     news: 'News',
@@ -82,7 +82,7 @@ const langUA = {
 
     news: 'Новини',
     find: 'Знайдіть улюбленця',
-    findPet: 'Знайдіть улюбленого вихованця',
+    findPet: 'Знайдіть домашнього улюбленця',
     friends: 'Наші друзі',
 
     sell: 'продаж',

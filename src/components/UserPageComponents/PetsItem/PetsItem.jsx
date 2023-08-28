@@ -8,13 +8,31 @@ import {
     PetComment,
     InfoText,
 } from './PetsItem.styled';
-import IconButton from '../IconButton/IconButton'
-import avatarDefault2x from '../../../images/Photo_default@2x.jpg';
+// import IconButton from '../IconButton/IconButton'
+// import avatarDefault2x from '../../../images/Photo_default@2x.jpg';
 import {ReactComponent as DeletePet} from '../../../images/userPageIcons/trash-2.svg'
+import { Btn } from '../IconButton/IconButton.styled';
+import {  useState } from 'react';
+import { modal1, modal2 } from 'modals/modals';
+import { ModalPopup } from 'components/ModalPopup/ModalPopup';
+
 
 const PetsItem = ({
     name, comments, type, id, petAvatarURL, birthday
 }) => {
+
+    const [showModal, setShowModal] = useState(false);
+    const [modals, setModals] = useState(modal1);
+
+    const removePet = () => {
+        
+        setModals(modal2);
+        setShowModal(true);
+      }
+      const onModalClose = () => {
+        setShowModal(false);
+    };
+
     return (
         <>
                 <MyPetCard>
@@ -28,10 +46,16 @@ const PetsItem = ({
                                 <SubTitle>Name:&nbsp;</SubTitle>
                                 <InfoText> {name} </InfoText>
                             </InfoItem>
-                            <IconButton
+                            <Btn 
+                            onClick = {removePet}
+                            type='button'>
+                            <DeletePet stroke="#54ADFF" />
+                               
+                            </Btn>
+                            {/* <IconButton
                                 type="button"
                                 icon={<DeletePet stroke="#54ADFF" />}
-                            ></IconButton>
+                            ></IconButton> */}
                         </NameWrapper>
                         <InfoItem>
                             <SubTitle>Date of birth:&nbsp; </SubTitle>
@@ -45,7 +69,22 @@ const PetsItem = ({
                         </InfoItem>
                     </InfoWrap>
                 </MyPetCard>
-            {/* modalka */}
+
+                {showModal && (
+                <ModalPopup
+                    {...modals}
+                    onClose={onModalClose}
+                    isOpen={showModal}
+                    delid={id}
+                    petAvatarURL={petAvatarURL}
+                    name={name}
+                    birthday={birthday}
+                    animal={type}
+                   comments={comments}
+                   path= 'pet'
+                    
+                />
+            )}
         </>
     );
 };
