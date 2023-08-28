@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import {  useEffect, useState } from 'react';
 import { useDispatch } from "react-redux"
 import { createPortal } from 'react-dom';
 import { RxCross2 } from "react-icons/rx";
@@ -12,6 +12,7 @@ import { setModalClose, setModalOpen } from 'redux/modal/modalSlice';
 import { useAll } from 'hooks/useAll';
 import { toggleSell } from 'redux/sort/sortSlice';
 import { authOperations } from "redux/auth";
+import { langEN, langUA } from 'utils/languages';
 
 
 const modalRoot = document.querySelector('#modal-root');
@@ -24,8 +25,14 @@ const props = {
 }
 console.log('props', props)
 
+const { language} = useAll()
+const [lang, setLang] = useState(langUA)
 const { modalIsOpen} = useAll()
 const dispatch = useDispatch()
+
+useEffect(() => {
+  setLang(language === 'english' ?  langEN :  langUA);
+}, [language])
 
 useEffect(() => {
 
@@ -141,23 +148,23 @@ if (type === 3){
         <ContentWrapp>
           <ModalTitle3 >{title}</ModalTitle3>
           <PetList>
-            <p>Name:</p> <span>{name} </span> 
-            <p>Birthday:</p> {birthday}
-            <p>Type:</p>  <span>{animal}</span>
-            <p>Place:</p> <span>  {location} </span>
-            <p>The sex:</p>  {sex}
-            <p className='userContact'>Email:</p> <span> <a href='mailto:alex@gmail.com'> {'alex@gmail.com'}</a> </span> 
-            <p className='userContact'>Phone:</p> <span> <a href='tel:+380971234567'>{'+380971234567'}</a> </span> 
-            <p >Comments:<span>{comments}</span> </p>
+            <p> {lang.name} </p> <span>{name} </span> 
+            <p> {lang.birthday} </p> {birthday}
+            <p> {lang.type} </p>  <span>{animal}</span>
+            <p> {lang.place} </p> <span>  {location} </span>
+            <p> {lang.sex} </p>  {sex}
+            <p className='userContact'> {lang.email} </p> <span> <a href='mailto:alex@gmail.com'> {'alex@gmail.com'}</a> </span> 
+            <p className='userContact'> {lang.phone} </p> <span> <a href='tel:+380971234567'>{'+380971234567'}</a> </span> 
+            <p > {lang.comments} <span>{comments}</span> </p>
           </PetList>
         </ContentWrapp>
 
         <BtnContainer3 style={{marginTop: 'auto'}}>
-        <ContactButton to="mailto:alex@gmail.com" >Contact</ContactButton>
+        <ContactButton to="mailto:alex@gmail.com" > {lang.contact} </ContactButton>
           <AddFavButton  
           isLike={isLike}
           currentDiv={currentDiv}
-          onClick ={checkRoute}>{isLike === currentDiv ? 'Remove' :'Add to'} <FaRegHeart/> </AddFavButton>
+          onClick ={checkRoute}>{isLike === currentDiv ? `${lang.addto}` : `${lang.remove}` } <FaRegHeart/> </AddFavButton>
         </BtnContainer3>
         <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
       </ModalContainer3>
