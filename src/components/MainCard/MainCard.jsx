@@ -177,6 +177,7 @@ export const MainCard = ({
                     comments={comments}
                     isLike={isLike}
                     currentDiv={index + 1}
+                    path= 'notice'
                 />
             )}
         </CardWrapper>

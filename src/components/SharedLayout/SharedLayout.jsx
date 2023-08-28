@@ -34,7 +34,8 @@ export const SharedLayout = () => {
     const { isLoggedIn } = useAuth();
     const dispatch = useDispatch();
     const {theme, language} = useAll()
-  
+ 
+
 
     useEffect(() => {
         const handleResize = () => {
