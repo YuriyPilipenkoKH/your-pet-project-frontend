@@ -24,6 +24,14 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+
+  reducers: {
+        
+    setRegToZero: (state, action) => {
+        state.registrationSuccessful = false;
+    },
+  },
+
   extraReducers:builder=> {
     builder
         // register
@@ -44,6 +52,7 @@ const authSlice = createSlice({
         .addCase(authOperations.register.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
+            state.registrationSuccessful = false;
         })
         // login
         .addCase(authOperations.logIn.pending, state => {
@@ -112,7 +121,6 @@ const authSlice = createSlice({
             authOperations.fetchUpdateUser.fulfilled,
             (state, { payload }) => {
               state.isLoading = false;
-              state.registrationSuccessful = false;
               state.user = payload;
               state.error = null;
             }
@@ -128,3 +136,4 @@ const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
+export const { setRegToZero } = authSlice.actions;

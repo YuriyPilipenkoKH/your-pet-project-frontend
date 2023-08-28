@@ -18,6 +18,7 @@ import PetsItem from 'components/UserPageComponents/PetsItem/PetsItem';
 import { useDispatch } from 'react-redux';
 import petsOperations from '../redux/pets/petsOperations';
 import { useAll } from 'hooks/useAll';
+import { setRegToZero } from 'redux/auth/auth-slice';
 
 const UserPage = () => {
     const location = useLocation();
@@ -40,8 +41,9 @@ const UserPage = () => {
     useEffect(() => {
         if (showModal && registrationSuccessful) {
             const timer = setTimeout(() => {
+                dispatch(setRegToZero())
                 setShowModal(false);
-            }, 3000); // 5000 milliseconds = 5 seconds
+            }, 5000); // 5000 milliseconds = 5 seconds
 
             return () => clearTimeout(timer);
         }
