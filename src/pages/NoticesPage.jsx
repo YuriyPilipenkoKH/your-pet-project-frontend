@@ -1,4 +1,4 @@
-import {  useEffect } from 'react';
+import { useEffect } from 'react';
 import NoticesSearch from '../components/NoticesSearch/NoticesSearch';
 import NoticesCategoriesNav from '../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesFilters from '../components/NoticesFilters/NoticesFilters';
@@ -7,35 +7,37 @@ import {
     NoticesPageWrap,
 } from './pages.styled/NoticesPage.styled';
 import { MainCard } from '../components/MainCard/MainCard';
-import { CommonWrapper } from './pages.styled/Pages.styled';
+import {
+    CommonWrapper,
+    ListButtonForPagination,
+    PaginationButton,
+    PaginationWrapper,
+} from './pages.styled/Pages.styled';
 import { useLocation } from 'react-router-dom';
 import { getReRender } from 'redux/notices/notices-selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import noticesOperations from '../redux/notices/notices-operations';
 import { getNoticesFilter } from 'redux/filter/filterSelectors';
-import { useLocalStorage } from 'hooks/useLocalStaoreage';
 import { useAll } from 'hooks/useAll';
-
-
+import { iconRowLeft } from 'images/icons';
+import { useState } from 'react';
 
 export default function NoticesPage() {
-
+    const [itemOffset, setItemOffset] = useState(0);
+    const [numButtons, setNumButtons] = useState(5);
+    const [page, setPage] = useState(2);
     const location = useLocation();
-    const { filterByAgeIdx, filterByGender, noticesList, activeIndex } =
-        useAll();
+    const {
+        filterByAgeIdx,
+        filterByGender,
+        noticesList,
+        activeIndex,
+        totalPages,
+        theme,
+    } = useAll();
     const dispatch = useDispatch();
-
     const filterValue = useSelector(getNoticesFilter);
     const reRender = useSelector(getReRender);
-
-    const [currentActive, setCurrentActive] = useLocalStorage(
-        'currentActive',
-        0
-    );
-
-    const handleChangeCurrentActive = data => {
-        setCurrentActive(data);
-    };
 
     const makeCategory = () => {
         if (activeIndex === 0) {
@@ -57,7 +59,7 @@ export default function NoticesPage() {
     const searchParams = {
         NoticesCategoriesNav: makeCategory(),
         query: filterValue,
-        page: 1,
+        page,
     };
     useEffect(() => {
         if (activeIndex === 4) {
@@ -68,29 +70,29 @@ export default function NoticesPage() {
             dispatch(noticesOperations.fetchNoticesByCategory(searchParams));
         }
         //    eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [reRender]); 
-
+    }, [reRender, page]);
 
     const filteredNotices = () => {
-        if(filterByGender === 'male'){
-            return noticesList.filter(e => e.sex === 'male')
-        }
-        else if(filterByGender === 'female'){
-            return noticesList.filter(e => e.sex === 'female')
-        }
-      
-        else if (filterByAgeIdx === 0) {
+        if (filterByGender === 'male') {
+            return noticesList.filter(e => e.sex === 'male');
+        } else if (filterByGender === 'female') {
+            return noticesList.filter(e => e.sex === 'female');
+        } else if (filterByAgeIdx === 0) {
             return noticesList.filter(e => calculateAge(e.birthday) <= 1);
-        }
-         else if (filterByAgeIdx === 1) {
+        } else if (filterByAgeIdx === 1) {
             return noticesList.filter(e => calculateAge(e.birthday) <= 2);
-        } 
-        else if (filterByAgeIdx === 2) {
+        } else if (filterByAgeIdx === 2) {
             return noticesList.filter(e => calculateAge(e.birthday) > 2);
         }
 
         return noticesList;
     };
+
+    useEffect(() => {
+        if (totalPages < page) {
+            setPage(1);
+        }
+    }, [totalPages, page]);
 
     function calculateAge(birthday) {
         const birthDate = new Date(birthday); // Parse birthday string into Date object
@@ -115,14 +117,83 @@ export default function NoticesPage() {
         } else return Number(age);
     }
 
+    useEffect(() => {
+        if (noticesList.length > 0) {
+            if (totalPages < 4) {
+                setNumButtons(totalPages);
+            } else if (window.innerWidth <= 768) {
+                setNumButtons(4);
+            } else {
+                setNumButtons(5);
+            }
+
+            let start = page - 2;
+            let end = page + 2;
+
+            if (page < 3) {
+                start = 1;
+                end = numButtons;
+            } else if (page > totalPages - 2) {
+                start = totalPages - numButtons + 1;
+                end = totalPages;
+            }
+
+            if (page < 1) setPage(1);
+            if (page > totalPages) {
+                setPage(1);
+                setItemOffset(0);
+            }
+        }
+    }, [filterValue, itemOffset, noticesList, numButtons, page, totalPages]);
+
+    const handlePageClick = newPage => {
+        if (newPage >= 1 && newPage <= totalPages) {
+            setPage(newPage);
+        }
+    };
+
+    const handlePrevPage = () => {
+        if (noticesList.length > 0 && page > 1) {
+            setPage(prevState => prevState - 1);
+        }
+    };
+
+    const handleNextPage = () => {
+        if (noticesList.length > 0 && page < totalPages) {
+            setPage(prevState => prevState + 1);
+        }
+    };
+
+    let start = page - 2;
+    let end = page + 2;
+
+    if (page < 3) {
+        start = 1;
+        end = numButtons;
+    } else if (page > totalPages - 2) {
+        start = totalPages - numButtons + 1;
+        end = totalPages;
+    }
+    const pageButtons = [];
+    for (let i = start; i <= end; i++) {
+        pageButtons.push(
+            <PaginationButton
+                theme={theme}
+                key={i}
+                onClick={() => handlePageClick(i)}
+                currentButton={i}
+                active={page}
+            >
+                {i}
+            </PaginationButton>
+        );
+    }
+    console.log(filteredNotices());
     return (
         <CommonWrapper className="CommonWrapper">
             <NoticesSearch search={searchParams} />
             <NoticesPageWrap>
-                <NoticesCategoriesNav
-                    handleChangeCurrentActive={handleChangeCurrentActive}
-                    currentActive={currentActive}
-                />
+                <NoticesCategoriesNav />
                 <NoticesFilters state={{ from: location }} />
             </NoticesPageWrap>
             <NoticeContainer className="notice-container">
@@ -145,6 +216,40 @@ export default function NoticesPage() {
                     />
                 ))}
             </NoticeContainer>
+            {filteredNotices().length > 0 && (
+                <PaginationWrapper>
+                    <PaginationButton
+                        theme={theme}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: 'transparent',
+                            padding: '10px 8px',
+                        }}
+                        onClick={handlePrevPage}
+                    >
+                        {iconRowLeft}
+                    </PaginationButton>
+                    <ListButtonForPagination>
+                        {pageButtons}
+                    </ListButtonForPagination>
+                    <PaginationButton
+                        theme={theme}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: 'transparent',
+                            transform: 'rotate(180deg)',
+                            padding: '10px 8px',
+                        }}
+                        onClick={handleNextPage}
+                    >
+                        {iconRowLeft}
+                    </PaginationButton>
+                </PaginationWrapper>
+            )}
         </CommonWrapper>
     );
 }
