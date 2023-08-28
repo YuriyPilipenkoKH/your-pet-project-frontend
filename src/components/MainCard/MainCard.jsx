@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {  useEffect, useState } from 'react';
 import {
     iconClock,
     iconFem,
@@ -16,6 +16,8 @@ import { useAuth } from 'hooks/useAuth';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { useDispatch } from 'react-redux';
 import operations from 'redux/notices/notices-operations';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 // import { setAge } from 'redux/notices/notices-slice';
 
 export const MainCard = ({
@@ -35,9 +37,9 @@ export const MainCard = ({
    
     id,
 }) => {
-
    
-  
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
     const { userId } = useAuth();
     // const [shouldReload, setShouldReload] = useState(false);
     const dispatch = useDispatch();
@@ -45,14 +47,18 @@ export const MainCard = ({
     const [modals, setModals] = useState(modal1);
     const { isLoggedIn } = useAuth();
     const isTrashShown = userId === owner;
-
+    
     const onModalClose = () => {
         setShowModal(false);
     };
     let isLike = null;
     if (idUsersAddedFavorite.includes(userId)) {
-      isLike = index + 1;
+        isLike = index + 1;
     }
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
 
     const checkRoute = () => {
         if (!isLoggedIn) {
@@ -151,7 +157,7 @@ export const MainCard = ({
 
             <CardTitle> {title} </CardTitle>
             <ButtonTransparent onClick={onLearnMore}>
-                Learn more
+                {lang.learnmore}
             </ButtonTransparent>
             {showModal && (
                 <ModalPopup

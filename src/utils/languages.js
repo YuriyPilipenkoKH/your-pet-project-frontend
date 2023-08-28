@@ -1,7 +1,6 @@
 const langEN = {
     appTitle: 'Find your favorite pet',
-    appUnderTitle: `web application that allows users to store and manage their contacts,
-    providing features for adding, editing, and deleting contact information`,
+    appUnderTitle: `Take good care of your small pets`,
     homeBtn: 'Home',
 
     news: 'News',
@@ -32,10 +31,22 @@ const langEN = {
     man: 'male',
     fem: 'female',
 
+    learnmore: 'Дізнатися більше',
+    name: 'Ім’я:',
+    birthday: 'Вік:',
+    type: 'Порода:',
+    place: 'Локація:',
+    sex: 'Стать:',
+    phone: 'Phone:',
+    comments: 'Коментарі:',
+    email: 'Пошта:',
+
+    addto: 'Add to',
+    remove: 'Remove',
+    contact: 'Contact',
+
     footerTitle: 'React-Phonebook-2023',
-    name: 'Name',
     sname: "name",
-    email: 'Email',
     pass: 'Password',
     regSubmit: "SignUp",
     logSubmit: "SignIn",
@@ -48,7 +59,7 @@ const langEN = {
     try: "Try again",
     phonebook: "Phonebook",
     number: "Number",
-    phone: "phone",
+   
     
     empty: "List is empty ...",
     add: "Add contact",
@@ -66,8 +77,7 @@ const langEN = {
 
 const langUA = {
     appTitle: 'Знайдіть свого улюбленого вихованця',
-    homeTitle: `веб додаток, який дозволяє користувачам зберігати та керувати своїми контактами,
-    надання функцій для додавання, редагування та видалення контактної інформації`,
+    homeTitle: `Подбайте про своїх маленьких домашніх тварин`,
     homeBtn: 'Головна',
 
     news: 'Новини',
@@ -99,10 +109,25 @@ const langUA = {
     man: 'чоловічої статі',
     fem: 'жіночої статі',
 
+    learnmore: 'Дізнатися більше',
+    name: 'Ім’я:',
+    birthday: 'Вік:',
+    type: 'Порода:',
+    place: 'Локація:',
+    sex: 'Стать:',
+    phone: 'Phone:',
+    comments: 'Коментарі:',
+    email: 'Пошта:',
+
+
+    addto: 'Додати',
+    remove: 'Видаляти',
+    contact: 'Зв’язок',
+
     footerTitle: 'React-телефонна книга-2023',
-    name: 'Ім’я',
-    sname: "ім’я",
-    email: 'Пошта',
+    
+    
+   
     pass: 'Пароль',
     regSubmit: "Зареєструватися",
     logSubmit: "Увійти",
@@ -115,7 +140,7 @@ const langUA = {
     try: "Спробуйте знову",
     phonebook: "Телефонна книга",
     number: "Номер",
-    phone: "номер",
+    
     
     empty: "Список порожній...",
     add: "Додати контакт",
