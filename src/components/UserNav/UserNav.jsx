@@ -41,13 +41,14 @@ export const UserNav = ({ onClose }) => {
             <UserWrap className="UserNav">
                 <ProfileWrap className="useravatar">
                     <StyledLink to="/profile" exact="true">
+                    {iconUser}
                         
-                     {avatar ?   <Avatar style={{width: '50px' , height: '50px'}}
+                     {/* {avatar ?   <Avatar style={{width: '50px' , height: '50px'}}
                                     src={avatar }
                                     alt="user avatar"
                                 />
                      :  {iconUser}
-                     }   
+                     }    */}
                    
                     {userName}{' '}
                     </StyledLink>

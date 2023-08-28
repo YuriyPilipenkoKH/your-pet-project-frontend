@@ -43,7 +43,7 @@ const UserPage = () => {
             const timer = setTimeout(() => {
                 dispatch(setRegToZero())
                 setShowModal(false);
-            }, 5000); // 5000 milliseconds = 5 seconds
+            }, 3000); // 5000 milliseconds = 5 seconds
 
             return () => clearTimeout(timer);
         }

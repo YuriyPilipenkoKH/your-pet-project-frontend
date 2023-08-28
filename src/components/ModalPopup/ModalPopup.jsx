@@ -16,6 +16,7 @@ import { langEN, langUA } from 'utils/languages';
 import petsOperations from '../../redux/pets/petsOperations'
 import { StyledLink } from 'components/Button/Button.styled';
 import { iconPawprint } from 'images/icons';
+import { setRegToZero } from 'redux/auth/auth-slice';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -86,6 +87,12 @@ useEffect(() => {
   const shut = () => {
     dispatch(setModalClose())
     onClose()
+  }
+  const shutRegSuccess = () => {
+    dispatch(setModalClose())
+    dispatch(setRegToZero())
+    onClose()
+
   }
 
   const removeCard = () => {
@@ -195,10 +202,10 @@ if (type === 4  ){
         <ModalTitle>{title}</ModalTitle>
         <ModalText>{text}</ModalText>
         <BtnContainer {...props}>
-        <StyledLink to="/profile" exact="true" onClick={shut} >Go to profile {iconPawprint}</StyledLink>
+        <StyledLink to="/profile" exact="true" onClick={shutRegSuccess} >Go to profile {iconPawprint}</StyledLink>
           {btn2}
         </BtnContainer >
-        <OnCloseButton onClick={shut}  ><RxCross2/></OnCloseButton>
+        <OnCloseButton onClick={shutRegSuccess}  ><RxCross2/></OnCloseButton>
       </ModalContainer>
     </ModalOverlay>,
       modalRoot

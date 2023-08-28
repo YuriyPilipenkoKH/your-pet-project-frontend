@@ -55,8 +55,12 @@ export const ProfileWrap = styled.div`
     color: var(--yellow);
     
     &>a {
-      
-      color: var(--yellow);
+          color: var(--yellow);
+          display: flex;
+        align-items: center;
+       justify-content: center;
+        gap: 30px;
+
     }
 
     &>svg{
@@ -71,7 +75,6 @@ export const ProfileWrap = styled.div`
           fill: var(--yellow);
       }
     }
-
 
 
 
