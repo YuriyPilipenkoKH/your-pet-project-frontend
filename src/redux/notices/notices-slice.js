@@ -7,7 +7,7 @@ const initialState = {
     loading: false,
     error: null,
     item: {},
-    owner: {},
+    owner: '',
     page: 1,
     totalPages: 1,
     keyword: '',
@@ -94,8 +94,9 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchNoticesAddFavorite.fulfilled,
                 (store, { payload }) => {
+                    console.log('payload',payload);
                     store.loading = false;
-                    store.owner = payload.notices.owner;
+                    store.owner = payload.owner;
                     store.reRender = false;
                 }
             )
@@ -116,7 +117,7 @@ const noticesSlice = createSlice({
                 noticesOperations.fetchRemoveFavorite.fulfilled,
                 (store, { payload }) => {
                     store.loading = false;
-                    store.owner = payload.notices.owner;
+                    store.owner = payload.owner;
                     store.reRender = false;
                 }
             )

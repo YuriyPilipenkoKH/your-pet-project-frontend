@@ -29,7 +29,7 @@ export default function AddYourPet({
             for (const key in { ...pet, ...data }) {
                 formData.append(key, { ...pet, ...data }[key]);
             };
-            dispatch(operations.addMySelfPet(formData));
+            dispatch(operations.addMySelfPet(formData));  //  dispatch(operations.addMySelfPet(formData));
             navigate(backLinkLocation.current);
             console.log("right")
             clearStepNumber();

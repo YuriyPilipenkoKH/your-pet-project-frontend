@@ -77,8 +77,8 @@ export default function NoticesPage() {
             dispatch(noticesOperations.fetchNoticesByCategory(searchParams));
 
         }
-        //  reRender  eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []); 
+        //    eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [reRender]); 
 
 
     const filteredNotices = () => {
