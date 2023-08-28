@@ -74,7 +74,6 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     const fetchUpdateUser = createAsyncThunk(
         'auth/update',
         async (updatedData, thunkAPI) => {
-            // console.log('updatedData', updatedData);
             try {
                 const { data } = await axios.patch(
                     '/users/update',

@@ -30,7 +30,7 @@ const UserData = ({ user }) => {
         setEdit(false);
         setFileInput(false);
 
-        const { name, phone = '', birthday = '', location = '', email } = user;
+        const { name, phone = '', birthday = '', location = '', email = '' } = user;
 
         const avatar = petPhoto;
         const formData = new FormData();
