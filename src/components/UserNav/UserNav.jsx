@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MdOutlineLogout } from 'react-icons/md';
-import { ProfileWrap, StyledLinkOut, UserWrap } from './UserNav.styled';
+import { PhotoWrap, ProfileWrap, StyledLinkOut, UserWrap } from './UserNav.styled';
 import { iconUser } from '../../images/icons';
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
@@ -10,10 +10,13 @@ import { modal1, modal5 } from 'modals/modals';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
+import { useAuth } from 'hooks/useAuth';
 
 export const UserNav = ({ onClose }) => {
     const { language } = useAll();
+    const { user } = useAuth();
     const [lang, setLang] = useState(langUA);
+    const avatar = user.avatarURL
 
     useEffect(() => {
         setLang(language === 'english' ? langEN : langUA);
@@ -36,7 +39,8 @@ export const UserNav = ({ onClose }) => {
             <UserWrap className="UserNav">
                 <ProfileWrap className="useravatar">
                     <StyledLink to="/profile" exact="true">
-                        {iconUser}{' '}
+                        <PhotoWrap 
+                        src={avatar}  alt = 'alt'/>
                     {name}{' '}
                     </StyledLink>
                 </ProfileWrap>

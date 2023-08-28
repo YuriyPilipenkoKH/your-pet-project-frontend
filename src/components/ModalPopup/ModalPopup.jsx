@@ -23,7 +23,8 @@ export const ModalPopup = ({ type, path, delid, isOpen, checkRoute, widthm, heig
 const props = {
   type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized, delid
 }
-console.log('props', props)
+// console.log('props', props)
+console.log('name', name)
 
 const { language} = useAll()
 const [lang, setLang] = useState(langUA)
@@ -108,12 +109,12 @@ useEffect(() => {
      dispatch(authOperations.logOut())
     onClose()
   }
-
+  // className='modal-backdrop'
 
 
 if (type === 1  || type === 4  ){
   return  createPortal(
-    <ModalOverlay className='modal-backdrop'>
+    <ModalOverlay className={`modal ${isOpen ? 'active' : ''}`}> 
       <ModalContainer 
       {...props}
       >
@@ -131,12 +132,12 @@ if (type === 1  || type === 4  ){
 }
 if ( type === 2  ){
   return  createPortal(
-    <ModalOverlay className='modal-backdrop'>
+    <ModalOverlay className={`modal ${isOpen ? 'active' : ''}`}>
       <ModalContainer 
       {...props}
       >
         <ModalTitle>{title}</ModalTitle>
-        <ModalText>{`Are you sure you want to delete  ${cardtitle} ? You can’t undo this action.`}</ModalText>
+        <ModalText>{`Are you sure you want to delete  ${cardtitle || name} ? You can’t undo this action.`}</ModalText>
         
         <BtnContainer {...props}>
           <ButtonTransparent onClick={shut}>Cacel</ButtonTransparent>
@@ -150,7 +151,7 @@ if ( type === 2  ){
 }
 if (type === 3){
   return  createPortal(
-    <ModalOverlay className='modal-backdrop'>
+    <ModalOverlay className={`modal ${isOpen ? 'active' : ''}`}>
       <ModalContainer3  >
         {image && <ModalImage src={petAvatarURL} alt="Modal Image" />}
         <ModalCategory > {category} </ModalCategory>
@@ -184,7 +185,7 @@ if (type === 3){
 }
 if (type === 5 ){
   return  createPortal(
-    <ModalOverlay className='modal-backdrop'>
+    <ModalOverlay className={`modal ${isOpen ? 'active' : ''}`}>
       <ModalContainer 
       {...props}
       >

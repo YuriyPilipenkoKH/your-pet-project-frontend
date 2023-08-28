@@ -37,7 +37,8 @@ export const MainCard = ({
    
     id,
 }) => {
-   
+    
+
     const { language} = useAll()
     const [lang, setLang] = useState(langUA)
     const { userId } = useAuth();

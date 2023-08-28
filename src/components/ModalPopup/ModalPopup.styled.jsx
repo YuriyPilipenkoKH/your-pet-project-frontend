@@ -2,6 +2,7 @@ import styled from 'styled-components';
 // import isPropValid from '@emotion/is-prop-valid';
 
 export const ModalOverlay = styled.div`
+
   position: fixed;
   top: 0;
   left: 0;
@@ -12,6 +13,17 @@ export const ModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 7;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s, visibility 0s 1s; 
+
+
+  
+&.modal.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s;
+}
 `;
 
 export const ModalContainer = styled.div`

@@ -25,6 +25,7 @@ const PetsItem = ({
     const [modals, setModals] = useState(modal1);
 
     const removePet = () => {
+        
         setModals(modal2);
         setShowModal(true);
       }
