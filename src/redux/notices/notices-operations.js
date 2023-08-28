@@ -159,6 +159,7 @@ const operations = {
     fetchAllNotices,
     fetchNoticesByCategory,
     // fetchNoticeById,
+    fetchUserNotices,
     fetchAddNotice,
     fetchAllFavorite,
     fetchDeleteNotice,

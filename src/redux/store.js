@@ -18,6 +18,8 @@ import { modalReducer } from './modal/modalSlice';
 import { themeReducer } from './theme/themeSlice';
 import { langReducer } from './lang/langSlice';
 
+import petsReducer from './pets/petsSlice';
+
 
 
 const authPersistConfig = {
