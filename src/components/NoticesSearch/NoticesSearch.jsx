@@ -19,6 +19,7 @@ export default function NoticesSearch({search}) {
 
   const dispatch = useDispatch()
   const { activeIndex } = useAll()
+  console.log('activeIndex',activeIndex)
   const filter = useSelector(getNoticesFilter)
 
   useEffect(() => {
