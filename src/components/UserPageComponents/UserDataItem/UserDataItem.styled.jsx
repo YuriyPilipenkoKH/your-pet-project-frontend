@@ -55,6 +55,8 @@ export const EditInpuButton = styled.button`
     background: transparent;
     border: none;
 
+    cursor: pointer;
+
     ${ConfirmIcon} {
         stroke: ${({ disabled }) => (disabled ? '#888888' : '#00C3AD')};
     }

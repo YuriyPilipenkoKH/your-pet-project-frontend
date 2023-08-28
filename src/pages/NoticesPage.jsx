@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import {  useEffect } from 'react';
 import NoticesSearch from '../components/NoticesSearch/NoticesSearch';
 import NoticesCategoriesNav from '../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesFilters from '../components/NoticesFilters/NoticesFilters';
@@ -9,23 +9,29 @@ import {
 import { MainCard } from '../components/MainCard/MainCard';
 import { CommonWrapper } from './pages.styled/Pages.styled';
 import { useLocation } from 'react-router-dom';
-import { getNoticesList, getReRender } from 'redux/notices/notices-selectors';
+import {  getReRender } from 'redux/notices/notices-selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import noticesOperations from '../redux/notices/notices-operations';
 import { getNoticesFilter } from 'redux/filter/filterSelectors';
-import { activeIndex } from 'redux/sort/sortSelectors';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
+import { useAll } from 'hooks/useAll';
+
+
 
 export default function NoticesPage() {
-    const location = useLocation();
 
+    const location = useLocation();
+    const { 
+        filterByAgeIdx,
+         filterByGender,
+         noticesList,
+         activeIndex
+        } = useAll()
     const dispatch = useDispatch();
 
-    const noticesList = useSelector(getNoticesList);
     const filterValue = useSelector(getNoticesFilter);
-    const currentIndex = useSelector(activeIndex);
     const reRender = useSelector(getReRender);
-    console.log(reRender)
+   
     const [currentActive, setCurrentActive] = useLocalStorage(
         'currentActive',
         0
@@ -35,48 +41,93 @@ export default function NoticesPage() {
         setCurrentActive(data);
     };
 
-    console.log('noticesList', noticesList);
-    console.log('filterValue', filterValue);
-    console.log('currentIndex', currentIndex);
-
     const makeCategory = () => {
-        if (currentIndex === 0) {
+        if (activeIndex === 0) {
             return 'sell';
         }
-        if (currentIndex === 1) {
+        if (activeIndex === 1) {
             return 'lost-found';
         }
-        if (currentIndex === 2) {
+        if (activeIndex === 2) {
             return 'in-good-hands';
         }
-        if (currentIndex === 3) {
+        if (activeIndex === 3) {
             return 'favorite-ads';
         }
-        if (currentIndex === 4) {
+        if (activeIndex === 4) {
             return 'my-ads';
         }
     };
-
-    const page = Math.ceil(noticesList?.length / 12);
-    console.log('page', page);
-
+  
     const searchParams = {
         NoticesCategoriesNav: makeCategory(),
         query: filterValue,
         page: 1,
     };
-
-    // const notices = dispatch(noticesOperations.fetchNoticesByCategory(searchParams));
-
-    // const searchByCategory = (e) => {
-    //   e.preventDefault()
-    //   dispatch(noticesOperations.fetchNoticesByCategory(searchParams))
-    // }
-    // dispatch(noticesOperations.fetchNoticesByCategory(searchParams))
     useEffect(() => {
-        dispatch(noticesOperations.fetchNoticesByCategory(searchParams));
+        
+        if(activeIndex === 3){
+            dispatch(noticesOperations.fetchAllFavorite());
+        }
+        else if(activeIndex === 4){
+            dispatch(noticesOperations.fetchUserNotices());
+
+        }
+        else{
+            dispatch(noticesOperations.fetchNoticesByCategory(searchParams));
+
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reRender]);
+
+
+    const filteredNotices = () => {
+
+        if(filterByGender === 'male'){
+            return noticesList.filter(e => e.sex === 'male')
+        }
+        else if(filterByGender === 'female'){
+            return noticesList.filter(e => e.sex === 'female')
+        }
+      
+        else if (filterByAgeIdx === 0) {
+            return noticesList.filter(e => calculateAge(e.birthday) <= 1);
+        }
+         else if (filterByAgeIdx === 1) {
+            return noticesList.filter(e => calculateAge(e.birthday) <= 2);
+        } 
+        else if (filterByAgeIdx === 2) {
+            return noticesList.filter(e => calculateAge(e.birthday) > 2);
+        }
+
+        return noticesList;
+        }
+
+    function calculateAge(birthday) {
+        const birthDate = new Date(birthday); // Parse birthday string into Date object
+        const currentDate = new Date(); // Current date
+
+        // Calculate age in years
+        let age = currentDate.getFullYear() - birthDate.getFullYear();
+
+        // Adjust age if birth date hasn't occurred yet this year
+        if (
+            currentDate.getMonth() < birthDate.getMonth() ||
+            (currentDate.getMonth() === birthDate.getMonth() &&
+                currentDate.getDate() < birthDate.getDate())
+        ) {
+            age--;
+        }
+
+        if (!age){
+            return 1
+        }
+        else if(age <= 0){
+            return 0
+        }
+        else   return Number(age)
+    }
+
 
     return (
         <CommonWrapper className="CommonWrapper">
@@ -89,8 +140,8 @@ export default function NoticesPage() {
                 <NoticesFilters state={{ from: location }} />
             </NoticesPageWrap>
             <NoticeContainer className="notice-container">
-                {noticesList.map((item, index) => (
-                    //  console.log('item',item)
+                {filteredNotices().map((item, index) => (
+                   
                     <MainCard
                         key={index}
                         index={index}

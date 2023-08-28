@@ -21,6 +21,11 @@ const noticesSlice = createSlice({
         setKeyword: (state, action) => {
             state.keyword = action.payload;
         },
+        setAge: (state, action) => {
+            // state.list.age = action.payload;
+        },
+
+
     },
     extraReducers: builder => {
         builder
@@ -37,6 +42,24 @@ const noticesSlice = createSlice({
             )
             .addCase(
                 noticesOperations.fetchAllNotices.rejected,
+                (store, { payload }) => {
+                    store.loading = false;
+                    store.error = payload;
+                }
+            )
+            .addCase(noticesOperations.fetchAllFavorite.pending, store => {
+                store.loading = true;
+            })
+            .addCase(
+                noticesOperations.fetchAllFavorite.fulfilled,
+                (store, { payload }) => {
+                    //   console.log(payload);
+                    store.loading = false;
+                    store.list = payload;
+                }
+            )
+            .addCase(
+                noticesOperations.fetchAllFavorite.rejected,
                 (store, { payload }) => {
                     store.loading = false;
                     store.error = payload;
@@ -104,22 +127,45 @@ const noticesSlice = createSlice({
                     store.reRender = false;
                 }
             )
-            // .addCase(noticesOperations.addMySelfPet.pending, store => {
-            //     store.loading = true;
-            // })
-            // .addCase(
-            //     noticesOperations.addMySelfPet.fulfilled,
-            //     (store, { payload }) => {
-            //         store.loading = false;
-            //     }
-            // )
-            // .addCase(
-            //     noticesOperations.addMySelfPet.rejected,
-            //     (store, { payload }) => {
-            //         console.log(12345)
-            //         store.loading = false;
-            //     }
-            // )
+            .addCase(noticesOperations.fetchUserNotices.pending, store => {
+                store.loading = true;
+                store.item = {};
+                store.reRender = true;
+            })
+            .addCase(
+                noticesOperations.fetchUserNotices.fulfilled,
+                (store, { payload }) => {
+                    store.loading = false;
+                    store.list = payload;
+                    store.reRender = false;
+                }
+            )
+            .addCase(
+                noticesOperations.fetchUserNotices.rejected,
+                (store, { payload }) => {
+                    store.loading = false;
+                    store.error = payload;
+                    store.reRender = false;
+                }
+            )
+
+
+            .addCase(noticesOperations.addMySelfPet.pending, store => {
+                store.loading = true;
+            })
+            .addCase(
+                noticesOperations.addMySelfPet.fulfilled,
+                (store, { payload }) => {
+                    store.loading = false;
+                }
+            )
+            .addCase(
+                noticesOperations.addMySelfPet.rejected,
+                (store, { payload }) => {
+                    console.log(12345)
+                    store.loading = false;
+                }
+            )
 
             // .addCase(noticesOperations.fetchNoticeById.pending, (store) => {
             //   store.loading = true;
@@ -137,16 +183,18 @@ const noticesSlice = createSlice({
 
             .addCase(noticesOperations.fetchDeleteNotice.pending, store => {
                 store.loading = true;
+                store.reRender = true
             })
             .addCase(
                 noticesOperations.fetchDeleteNotice.fulfilled,
                 (store, { payload }) => {
                     console.log(payload);
                     store.loading = false;
-                    const index = store.list.findIndex(
-                        item => item.id === payload
-                    );
+                    // const index = store.list.findIndex(
+                    //     item => item.id === payload
+                    // );
                     // store.list.splice(index, 1);
+                    store.reRender = false;
                 }
             )
             .addCase(
@@ -154,6 +202,7 @@ const noticesSlice = createSlice({
                 (store, { payload }) => {
                     store.loading = false;
                     store.error = payload;
+                    store.reRender = false;
                 }
             )
             .addCase(
@@ -202,5 +251,5 @@ const noticesSlice = createSlice({
 
 // export default noticesSlice.reducer;
 // export const { setKeyword } = noticesSlice.actions;
-
+export const {setAge}  = noticesSlice.actions
 export default noticesSlice.reducer;

@@ -29,6 +29,8 @@ export const Title = styled.p`
     font-size: 20px;
     line-height: 1.36;
     letter-spacing: 0.04em;
+    color: var(--text-color);
+    transition: all 1s ease-in-out;
     @media screen and (min-width: 768px) {
         font-size: 28px;
     }

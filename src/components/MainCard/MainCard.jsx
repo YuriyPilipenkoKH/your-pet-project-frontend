@@ -16,6 +16,7 @@ import { useAuth } from 'hooks/useAuth';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { useDispatch } from 'react-redux';
 import operations from 'redux/notices/notices-operations';
+// import { setAge } from 'redux/notices/notices-slice';
 
 export const MainCard = ({
     index,
@@ -31,8 +32,11 @@ export const MainCard = ({
     birthday,
     type,
     comments,
+   
     id,
 }) => {
+
+   
   
     const { userId } = useAuth();
     // const [shouldReload, setShouldReload] = useState(false);
@@ -94,6 +98,8 @@ export const MainCard = ({
         }
 
         // Format the age string based on the calculated age
+        // dispatch(setAge(age))
+
         if (!age) {
             return `1 year`;
         } else if (age < 1) {
@@ -163,6 +169,8 @@ export const MainCard = ({
                     animal={type}
                     sex={sex}
                     comments={comments}
+                    isLike={isLike}
+                    currentDiv={index + 1}
                 />
             )}
         </CardWrapper>

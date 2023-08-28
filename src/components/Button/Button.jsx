@@ -1,7 +1,11 @@
-import {  StyleAddToButton, StyledButton, StyledButtonTransparent,  StyledContactButton,  StyledFavButton,  StyledFilterButton,  StyledFormButton,  StyledLearnButton,  StyledLogButton, StyledOutButton, StyledRadioButton, StyledRegButton, StyledTrashButton } from './Button.styled';
+import {   StyleAddToButton, StyledAddFavButton, StyledButton, StyledButtonTransparent,  StyledContactButton,  StyledFavButton,  StyledFilterButton,  StyledFormButton,  StyledLearnButton,  StyledLogButton, StyledOutButton, StyledRadioButton, StyledRegButton, StyledTrashButton } from './Button.styled';
 
 export const Button = ({ children, ...props }) => {
   return <StyledButton type='button' {...props}> {children}</StyledButton>;
+};
+
+export const AddFavButton = ({ children, ...props }) => {
+  return <StyledAddFavButton type='button' {...props}> {children}</StyledAddFavButton>;
 };
 
 

@@ -8,7 +8,7 @@ export const getIsLoading = state => state.auth.isLoading;
 export const getIsFetching = state => state.auth.isFetching;
 export const getRegistrationSuccessful = state => state.auth.registrationSuccessful;
 export const getUser = state => state.auth.user;
-export const getPets = state => state.auth.pets;
+// export const getPets = state => state.auth.pets;
 
 export const authSelectors = {
     getIsLoggedIn,
@@ -19,6 +19,6 @@ export const authSelectors = {
     getIsFetching,
     getRegistrationSuccessful,
     getUser,
-    getPets,
+    
 };
 export default authSelectors;

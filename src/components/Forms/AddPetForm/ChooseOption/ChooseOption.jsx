@@ -29,7 +29,9 @@ export default function ChooseOption({
                     return (
                         <ItemOption key={index}>
                             <ButtonOption
-                                onClick={() => activeOption(index)}
+                                onClick={() => {
+                                    activeOption(index);
+                                }}
                                 active={active}
                                 currentActive={index + 1}
                                 type="button"

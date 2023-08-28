@@ -18,9 +18,14 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { authOperations } from 'redux/auth';
 import PublicRoute from 'routes/PublicRoute';
+import { useAll } from 'hooks/useAll';
 
 const App = () => {
     const dispatch = useDispatch();
+    const {theme, language} = useAll()
+
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('data-lang', language);
 
     useEffect(() => {
         dispatch(authOperations.fetchCurrentUser());
@@ -30,7 +35,7 @@ const App = () => {
         <Container>
             <Routes>
                 <Route path="/" element={<SharedLayout />}>
-                    
+
                     <Route index element={<Home />} />
 
                     <Route  path="/register"

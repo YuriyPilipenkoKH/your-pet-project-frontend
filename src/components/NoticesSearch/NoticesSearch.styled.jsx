@@ -19,10 +19,13 @@ export const TytleNwes = styled.h2`
   font-weight: 700;
   line-height: 32.78px;
   text-align: center;
-  color: #000000;
+  color: var(--text-color);
+  font-size: var(--title-fz-m);
+  transition: all 1s ease-in-out;
   @media screen and (min-width: 768px) {
-    font-size: 48px;
+    font-size: var(--title-fz);
     line-height: 65.57px;
+    transition: all 1s ease-in-out;
   }
 `;
 

@@ -12,7 +12,7 @@ export const MenuWrapp = styled.div`
   width: 100%;
   height: 100vh;
   z-index: 5;
-  background-color: var(--fone-color);
+  background-color: var(--background-color);
   transition: left 1s;
   padding: 25px;
 
@@ -133,11 +133,11 @@ export const CloseButton = styled.button`
   
 
   &>svg{
-    color:#222;
+    color: var(--text-color)!important;
     scale: 2;
 
     &:hover {
-        color: var(--yellow);
+        color: var(--yellow)!important;
     }
 
   }

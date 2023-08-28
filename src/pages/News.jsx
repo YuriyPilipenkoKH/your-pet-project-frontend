@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { NewsCard } from '../components/News/NewsCard';
 import { useDispatch, useSelector } from 'react-redux';
-import news from '../utils/json/news.json';
 import {
     ListButtonForPagination,
     NewsContainer,
@@ -20,27 +19,26 @@ import { FormButton } from 'components/Button/Button';
 import { iconRowLeft } from 'images/icons';
 import { setFilterNews } from 'redux/filter/filterSlice';
 import { getNewsFilter } from 'redux/filter/filterSelectors';
+import { getNewsList } from 'redux/news/newsSelectors';
+import newsOperations from '../redux/news/newsOperations';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 export const NewsPage = () => {
     const dispatch = useDispatch();
+    const news = useSelector(getNewsList)
     const filter = useSelector(getNewsFilter);
     const [active, setActive] = useState(1);
     const [itemOffset, setItemOffset] = useState(0);
     const cardsPerPage = 6;
     const endOffset = itemOffset + cardsPerPage;
     const [numButtons, setNumButtons] = useState(5);
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
 
-    // Функція фільтрації новин
-    const filteredNews = () => {
-        const normalized = filter.toLowerCase();
-        return news.filter(item =>
-            item.title.toLowerCase().includes(normalized)
-        );
-    };
-
-    // Отримання списку новин після фільтрації
-    const newsSearch = filteredNews();
-    const currentItems = newsSearch.slice(itemOffset, endOffset);
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
 
     useEffect(() => {
         const handleResize = () => {
@@ -52,6 +50,7 @@ export const NewsPage = () => {
         };
 
         handleResize();
+        dispatch(newsOperations.fetchNews());
 
         window.addEventListener('resize', handleResize);
 
@@ -60,16 +59,32 @@ export const NewsPage = () => {
         };
     }, []);
 
-    // Ефект, який оновлює стан компонента при зміні фільтру або сторінки
+    const filteredNews = () => {
+        const normalized = filter.toLowerCase();
+        return news.filter(item =>
+            item.title.toLowerCase().includes(normalized)
+        );
+    };
+
+    const newsSearch = filteredNews();
+    const currentItems = newsSearch.slice(itemOffset, endOffset);
+
+
     useEffect(() => {
-        // Ваша логіка оновлення стану тут
-        // Наприклад, обчислення totalPages та оновлення active
         if (newsSearch.length > 0) {
             const totalPages = Math.ceil(newsSearch.length / cardsPerPage);
 
+            if (totalPages < 4) {
+                setNumButtons(totalPages);
+            } else if (window.innerWidth <= 768) {
+                setNumButtons(4);
+            } else {
+                setNumButtons(5);
+            }
+    
             let start = active - 2;
             let end = active + 2;
-
+    
             if (active < 3) {
                 start = 1;
                 end = numButtons;
@@ -77,15 +92,15 @@ export const NewsPage = () => {
                 start = totalPages - numButtons + 1;
                 end = totalPages;
             }
-
-            // Перевірка, чи активна сторінка в діапазоні totalPages
+    
             if (active < 1) setActive(1);
-            if (active > totalPages) setActive(totalPages);
+            if (active > totalPages) {
+                setActive(1);
+                setItemOffset(0);
+            }
         }
-
     }, [filter, itemOffset, newsSearch, cardsPerPage, numButtons, active]);
 
-    // Обробники сторінок
     const handlePageClick = selectedPage => {
         const newOffset = selectedPage * cardsPerPage;
         setItemOffset(newOffset);
@@ -106,7 +121,6 @@ export const NewsPage = () => {
         }
     };
 
-    // Побудова кнопок сторінок на основі стану numButtons
     const totalPages = Math.ceil(newsSearch.length / cardsPerPage);
     let start = active - 2;
     let end = active + 2;
@@ -137,7 +151,7 @@ export const NewsPage = () => {
         <NewsWrapper className='NewsWrapper'>
             <SearchWrapper>
                 <StyledLink to="/test" style={{ background: 'transparent' }}>
-                    <TytleNwes>News</TytleNwes>
+                    <TytleNwes>{lang.news}</TytleNwes>
                 </StyledLink>
                 <SearchForm className="search-form">
                     <SearchInput

@@ -108,7 +108,7 @@ const UserData = ({ user }) => {
             <Formik initialValues={initialValues}>
                 {({ setFieldValue }) => (
                     <StylizedForm>
-                        <label htmlFor="petPhoto">
+                        <label htmlFor="petPhoto" style={{ cursor: 'pointer' }}>
                             {!petPhoto && !user.avatarURL && (
                                 <Avatar
                                     src={avatarDefault2x}
