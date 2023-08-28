@@ -7,7 +7,7 @@ const initialState = {
     loading: false,
     error: null,
     item: {},
-    owner: {},
+    owner: '',
     page: 1,
     totalPages: 1,
     keyword: '',
@@ -35,9 +35,10 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchAllNotices.fulfilled,
                 (store, { payload }) => {
-                    //   console.log(payload);
+                      console.log(payload);
                     store.loading = false;
-                    store.list = payload;
+                    store.list = payload.notices
+                    ;
                 }
             )
             .addCase(
@@ -53,9 +54,9 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchAllFavorite.fulfilled,
                 (store, { payload }) => {
-                    //   console.log(payload);
+                      console.log('payload',payload);
                     store.loading = false;
-                    store.list = payload;
+                    store.list =  payload
                 }
             )
             .addCase(
@@ -93,6 +94,7 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchNoticesAddFavorite.fulfilled,
                 (store, { payload }) => {
+                    console.log('payload',payload);
                     store.loading = false;
                     store.owner = payload.owner;
                     store.reRender = false;
@@ -196,8 +198,8 @@ const noticesSlice = createSlice({
                 (store, { payload }) => {
                     console.log('payload', payload);
                     store.loading = false;
-                    store.list = payload;
-                    store.category = payload.category;
+                    store.list =  payload.notices
+                    // store.category = payload.notices.category;
                     // store.page = Math.ceil(payload.length / 12);
                     // store.totalPages = payload.data.totalPages;
                     store.keyword = '';

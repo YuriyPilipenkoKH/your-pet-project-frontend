@@ -21,6 +21,8 @@ import { setFilterNews } from 'redux/filter/filterSlice';
 import { getNewsFilter } from 'redux/filter/filterSelectors';
 import { getNewsList } from 'redux/news/newsSelectors';
 import newsOperations from '../redux/news/newsOperations';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 export const NewsPage = () => {
     const dispatch = useDispatch();
@@ -31,6 +33,13 @@ export const NewsPage = () => {
     const cardsPerPage = 6;
     const endOffset = itemOffset + cardsPerPage;
     const [numButtons, setNumButtons] = useState(5);
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
+
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth <= 768) {
@@ -142,7 +151,7 @@ export const NewsPage = () => {
         <NewsWrapper className='NewsWrapper'>
             <SearchWrapper>
                 <StyledLink to="/test" style={{ background: 'transparent' }}>
-                    <TytleNwes>News</TytleNwes>
+                    <TytleNwes>{lang.news}</TytleNwes>
                 </StyledLink>
                 <SearchForm className="search-form">
                     <SearchInput
@@ -150,7 +159,7 @@ export const NewsPage = () => {
                         type="text"
                         value={filter}
                         name="search"
-                        placeholder="Search"
+                        placeholder={lang.search}
                     />
                     <FormButton>
                         <SearchIcon className="search-icon">

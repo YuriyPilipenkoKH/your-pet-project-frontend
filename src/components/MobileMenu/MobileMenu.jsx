@@ -1,22 +1,31 @@
-import React from 'react';
+import {  useEffect, useState } from 'react';
 import { AuthNav } from '../AuthNav/AuthNav';
 import { Nav } from '../Nav/Nav';
 import { CloseButton, MenuContent, MenuHeader, MenuWrapp } from './MobileMenu.styled';
 import { StyledLogo } from '../Button/Button.styled';
 import { iconLogo, iconUser } from '../../images/icons';
 import { RxCross2 } from "react-icons/rx";
-import {  useState } from 'react';
+
 import { ProfileWrap, StyledLinkOut } from 'components/UserNav/UserNav.styled';
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { authSelectors } from 'redux/auth';
 import { MdOutlineLogout} from "react-icons/md";
 import { useAuth } from 'hooks/useAuth';
 import { } from 'redux/sort/sortSlice';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { modal1, modal5 } from 'modals/modals';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 
 export  const MobileMenu = ({ isOpen, onClose }) => {
+
+  const { language} = useAll()
+  const [lang, setLang] = useState(langUA)
+
+  useEffect(() => {
+    setLang(language === 'english' ?  langEN :  langUA);
+  }, [language])
 
   const [showModal, setShowModal] = useState(false);
   const [modals, setModals] = useState(modal1);
@@ -49,7 +58,7 @@ const {isLoggedIn, userId} = useAuth()
             :   <>
                   <ProfileWrap className= "useravatar" > {iconUser} {name} </ProfileWrap>
                  <StyledLinkOut to="/" exact="true"  onClick={signOut} className='logout'>
-                   Log out <MdOutlineLogout/>
+                   {lang.outBtn} <MdOutlineLogout/>
                  </StyledLinkOut>
                </>  }
 

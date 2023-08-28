@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    lang: 'eng',
+    lang: 'english',
     
   };
   const langSlice = createSlice({
@@ -12,11 +12,11 @@ const initialState = {
         
       toggleLang: (state, action) => {
        
-        if(state.lang === 'eng'){
-            state.lang = 'ukr'
+        if(state.lang === 'english'){
+            state.lang = 'ukrainian'
         }
-        else if(state.lang === 'ukr'){
-            state.lang = 'eng'
+        else if(state.lang === 'ukrainian'){
+            state.lang = 'english'
         }
       },
     },

@@ -11,7 +11,7 @@ export const SponsorCardWrapper = styled.div`
   height: 239px;
 
   border-radius: 20px;
-  background-color: var(--white);
+  background-color: var(--card-color);
   box-shadow: var(--shadow-default);
   transition: all 0.4s ease-in;
   &:hover {

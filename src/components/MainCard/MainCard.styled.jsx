@@ -16,10 +16,11 @@ export const CardWrapper = styled.div`
     width: 280px;
     height: 458px;
     padding: 0 0 24px;
-    background-color: var(--white);
+    background-color: var(--card-color);
     border-radius: 0 0 40px 40px;
     box-shadow: var(--shadow-default);
-    transition: all 0.4s ease;
+    transition: all 1s ease-in-out;
+
 
     @media screen and (min-width: 768px) {
   
@@ -162,7 +163,8 @@ export const CardTitle = styled.div`
     height: 66px;
     overflow: hidden;
     text-overflow: ellipsis; 
-    
+    color: var(--text-color);
+    transition: all 1s ease-in-out;
     -webkit-box-orient: vertical ;
     -webkit-line-clamp: 2 ; 
     /* Number of lines to display */

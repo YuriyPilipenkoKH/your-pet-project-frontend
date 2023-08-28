@@ -22,10 +22,10 @@ import { useAll } from 'hooks/useAll';
 
 const App = () => {
     const dispatch = useDispatch();
-    const {theme, lang} = useAll()
+    const {theme, language} = useAll()
 
     document.documentElement.setAttribute('data-theme', theme);
-    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('data-lang', language);
 
     useEffect(() => {
         dispatch(authOperations.fetchCurrentUser());

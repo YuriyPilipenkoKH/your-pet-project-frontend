@@ -3,17 +3,14 @@ import { iconFilter, iconPawprint } from "../../images/icons";
 import { modal1, modal2, modal3, modal4, modal5 } from "../../modals/modals";
 import { HomeTitle,  TestWrapp } from "../pages.styled/Pages.styled"
 import { useState } from "react";
-import { useDispatch} from 'react-redux';
+
 import { MdOutlineLogout} from "react-icons/md";
 import { AiOutlinePlus} from "react-icons/ai";
 import { ModalPopup } from "../../components/ModalPopup/ModalPopup";
 import { setCategory } from "redux/pets/petsSlice";
-import { LangBtn, ThemeBtn } from "./TestPage.styled";
-import { toggleLang } from "redux/lang/langSlice";
-import { toggleTheme } from "redux/theme/themeSlice";
-import { useAll } from "hooks/useAll";
-import {MdOutlineNightlight} from 'react-icons/md';
-import {MdOutlineLightMode} from 'react-icons/md';
+
+import { useDispatch} from 'react-redux';
+
 
 
 export const TestPage =()=> {
@@ -21,7 +18,6 @@ export const TestPage =()=> {
     const [showModal, setShowModal] = useState(false);
     const [modals, setModals] = useState(modal1)
     const dispatch = useDispatch();
-    const {theme, lang} = useAll()
 
 
     const onModalOpen = () => {
@@ -39,7 +35,7 @@ export const TestPage =()=> {
 
     return(
         <TestWrapp >
-        <LangBtn  
+        {/* <LangBtn  
         onClick={() => dispatch(toggleLang())}
         type="button">
         {lang === 'eng' ?  'EN' :  'UA'}
@@ -54,7 +50,7 @@ export const TestPage =()=> {
           ? <MdOutlineLightMode size={30}/>
           : <MdOutlineNightlight size={30}/>
           }
-        </ThemeBtn>
+        </ThemeBtn> */}
 
             <HomeTitle> Test Page</HomeTitle>
 

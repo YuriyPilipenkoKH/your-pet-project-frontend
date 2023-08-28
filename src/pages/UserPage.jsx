@@ -14,16 +14,25 @@ import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { modal4 } from 'modals/modals';
 import { getUser} from 'redux/auth/auth-selectors';
 import { useSelector } from 'react-redux';
+import PetsItem from 'components/UserPageComponents/PetsItem/PetsItem';
+import { useDispatch } from 'react-redux';
+import petsOperations from '../redux/pets/petsOperations'
+import { useAll } from 'hooks/useAll';
 
 const UserPage = () => {
     const location = useLocation();
     const {registrationSuccessful} = useAuth()
+    const {listPets, petsRerender } = useAll()
     const [showModal, setShowModal] = useState(true);
-
+    const dispatch = useDispatch();
     const user = useSelector(getUser);
     // const pets = useSelector(getPets);
 
     // console.log(useSelector(getPets))
+    useEffect(() => {
+        dispatch(petsOperations.getPet()).then((d) => console.log(d))  
+    }, [petsRerender, dispatch])
+    
 
 
     useEffect(() => {
@@ -54,9 +63,26 @@ const UserPage = () => {
                         </Card>
                     </div>
                     <div style={{ position: 'relative', width: '100%' }}>
+
                         <PetsData state={{ from: location }} 
                         // pets={pets}
                          />
+                    {listPets.map((item, index) => (
+
+                        <PetsItem 
+                            key={index}
+                            birthday={item.birthday}
+                            name={item.name}
+                            comments={item.comments}
+                            type={item.type}
+                            id={item._id}
+                            petAvatarURL={item.petAvatarURL}
+
+                         />
+
+                        
+
+                    ) )  }
                     </div>
                 </MainContent>
             </UserPageWrapper>

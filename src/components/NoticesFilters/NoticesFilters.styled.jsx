@@ -169,8 +169,29 @@ position: relative;
   left: 5px;
   width: 16px;
   fill: var(--blue);
-  
+  opacity: 0;
+  transition: opacity 250ms ease;
 }
+
+&>div{
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--blue);
+  border-radius: 4px;
+  transition: opacity 250ms ease;
+  
+
+}
+
+&>input:checked~ .iconchbox {
+  opacity: 1;
+
+}
+
+
 `
 
 

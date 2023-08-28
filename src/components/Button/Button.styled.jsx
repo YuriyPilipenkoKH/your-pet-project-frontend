@@ -391,9 +391,11 @@ color: var(--blue);
 transition: all 0.4s ease; 
 border: none;
 height: 35px;
+font-size: var(--fz-tab);
+
+@media screen and (min-width: 768px) {
 font-size: 12px;
-
-
+};
 `;
 
 export const StyledFavButton = styled.button.withConfig({
@@ -466,6 +468,10 @@ border: none;
 outline: none;
 background-color: transparent;
 padding: 12px 0;
+
+&>svg {
+   fill-opacity: var(--text-color);
+}
 
 &>:hover {
   animation-duration: 0.1s;

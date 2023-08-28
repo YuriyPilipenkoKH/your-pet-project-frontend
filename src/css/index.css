@@ -32,8 +32,9 @@
 }
 
 :root[data-theme="light"] {
-  --background-color: #cad9d9;
+  --background-color: #fef9f9;
   --text-color: #1C1E21;
+  --card-color: #fff;
 
   --field-color: #eeeeee;
   --border: 3px solid transparent;
@@ -45,33 +46,40 @@
 :root[data-theme="dark"] {
   --background-color: #001129;
   --text-color: #f5f6f7;
-
+  --card-color: #9994;
   --field-color: #eee5;
   --border: 3px solid var(--blue);
   
   --main-text:  #001129;
 }
 
-:root[data-lang="eng"] {
+:root[data-lang="english"] {
   --fz: 16px;
-  --app-title: #001129;;
+  --fz-tab: 12px;
+  --title-fz: 48px;
+  --title-fz-m: 24px;
+  --app-title: #001129;
+
 }
 
-
-:root[data-lang="ukr"] {
+:root[data-lang="ukrainian"] {
   --fz: 12px;
+  --fz-tab: 11px;
+  --title-fz: 40px;
+  --title-fz-m: 18px;
   --app-title: #777;
+
 }
 
 body {
-
+  background-color: var(--background-color);
   margin: 0;
   padding: 0;
   font-family: -apple-system, Manrope,  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-
+  transition: all 1s ease-in-out;
 }
 
 * {
@@ -121,8 +129,14 @@ img {
 }
 
 
+.iconLogo {
+  color: var(--text-color) ;
+}
 
-
+.radio-input~ .box {
+  /* background-color: crimson  !important; */
+    opacity: 0 ;
+}
 
 .userContact + span{
   color: var(--yellow);
