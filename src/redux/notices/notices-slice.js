@@ -7,7 +7,8 @@ const initialState = {
     loading: false,
     error: null,
     item: {},
-    owner: {},
+    // owner: {},
+    owner: "",
     page: 1,
     totalPages: 1,
     keyword: '',
@@ -73,7 +74,7 @@ const noticesSlice = createSlice({
                 noticesOperations.fetchAddNotice.fulfilled,
                 (store, { payload }) => {
                     store.loading = false;
-                    console.log(payload);
+                    
                 }
             )
             .addCase(
@@ -94,8 +95,9 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchNoticesAddFavorite.fulfilled,
                 (store, { payload }) => {
+                    console.log(payload.owner);
                     store.loading = false;
-                    store.owner = payload.notices.owner;
+                    store.owner = payload.owner;
                     store.reRender = false;
                 }
             )
@@ -115,8 +117,9 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchRemoveFavorite.fulfilled,
                 (store, { payload }) => {
+                    console.log(payload.owner);
                     store.loading = false;
-                    store.owner = payload.notices.owner;
+                    store.owner = payload.owner;
                     store.reRender = false;
                 }
             )
