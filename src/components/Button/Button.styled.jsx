@@ -456,11 +456,6 @@ fill: var(--white);
   background: linear-gradient(to right, var( --gradient-bl), var(--gradient-br));
   color: var(--white);
  }
-
-  &.active {
-    color: #eee;
-  
-  }
 `;
 
 export const StyledLogo = styled(NavLink)`

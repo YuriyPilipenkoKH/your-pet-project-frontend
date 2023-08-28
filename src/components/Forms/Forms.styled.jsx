@@ -10,7 +10,7 @@ export const Form = styled.div.withConfig({
 })`
     padding: 40px 12px;
     padding: ${({ addPet }) => addPet && '20px 8px'};
-    background: #fff;
+    background: #000080;
     border-radius: 40px;
     box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
     text-align: center;
