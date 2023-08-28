@@ -175,6 +175,7 @@ export const ModalText = styled.p`
 export const ModalImage = styled.img`
   max-width: 100%;
   height: auto;
+  border-radius: 0px 0px 40px 40px;
 
   @media screen and (min-width: 768px) {
     width: 262px;

@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-
 export const SharedLayoutWrap = styled.div`
+    background-color: #fef9f9;
     width: 100%;
 `;
 

@@ -54,4 +54,5 @@ export const NoticeContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     gap: 32px;
+    padding-bottom: 30px;
 `;

@@ -55,16 +55,14 @@ export const SharedLayout = () => {
     };
 
     return (
-    
-                 <SharedLayoutWrap className="sharedLayout">
-                <LayoutWrap className="layoutWrap">
-                    <StyledLogo to="/">
-                        {isMobile ? iconLogo : iconLogoBig}
-                    </StyledLogo>
-                    <Nav />
-                    <AuthNavWrap className="AuthNavWrap">
-                        {isLoggedIn ? <UserNav /> : <AuthNav />}
-
+        <SharedLayoutWrap className="sharedLayout">
+            <LayoutWrap className="layoutWrap">
+                <StyledLogo to="/">
+                    {isMobile ? iconLogo : iconLogoBig}
+                </StyledLogo>
+                <Nav />
+                <AuthNavWrap className="AuthNavWrap">
+                    {isLoggedIn ? <UserNav /> : <AuthNav />}
                         <ButtonBurger onClick={toggleMenu}>
                             <RxHamburgerMenu />
                         </ButtonBurger>
@@ -86,9 +84,8 @@ export const SharedLayout = () => {
                            }
                         </ThemeBtn>
                     </AuthBtnWrap>
-
                 </LayoutWrap>
-         
+        
             <Suspense
                 fallback={
                     <DotLoader
@@ -105,10 +102,8 @@ export const SharedLayout = () => {
                     />
                 }
             >
-          
                 <Outlet />
             </Suspense>
-            </SharedLayoutWrap>
-            
+        </SharedLayoutWrap>
     );
 };
