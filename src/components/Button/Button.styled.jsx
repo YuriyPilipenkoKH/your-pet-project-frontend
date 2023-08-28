@@ -458,7 +458,7 @@ fill: var(--white);
  }
 
   &.active {
-    color: #eee;
+    /* color: #eee; */
   
   }
 `;

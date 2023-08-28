@@ -14,6 +14,8 @@ import { toggleSell } from 'redux/sort/sortSlice';
 import { authOperations } from "redux/auth";
 import { langEN, langUA } from 'utils/languages';
 import petsOperations from '../../redux/pets/petsOperations'
+import { StyledLink } from 'components/Button/Button.styled';
+import { iconPawprint } from 'images/icons';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -112,7 +114,7 @@ useEffect(() => {
   // className='modal-backdrop'
 
 
-if (type === 1  || type === 4  ){
+if (type === 1   ){
   return  createPortal(
     <ModalOverlay className={`modal ${isOpen ? 'active' : 'modal-backdrop'}`}> 
       <ModalContainer 
@@ -180,6 +182,24 @@ if (type === 3){
         </BtnContainer3>
         <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
       </ModalContainer3>
+    </ModalOverlay>,
+      modalRoot
+  );
+}
+if (type === 4  ){
+  return  createPortal(
+    <ModalOverlay className={`modal ${isOpen ? 'active' : 'modal-backdrop'}`}> 
+      <ModalContainer 
+      {...props}
+      >
+        <ModalTitle>{title}</ModalTitle>
+        <ModalText>{text}</ModalText>
+        <BtnContainer {...props}>
+        <StyledLink to="/profile" exact="true" onClick={shut} >Go to profile {iconPawprint}</StyledLink>
+          {btn2}
+        </BtnContainer >
+        <OnCloseButton onClick={shut}  ><RxCross2/></OnCloseButton>
+      </ModalContainer>
     </ModalOverlay>,
       modalRoot
   );
