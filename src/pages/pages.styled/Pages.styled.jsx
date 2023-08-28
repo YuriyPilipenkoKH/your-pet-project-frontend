@@ -269,6 +269,7 @@ export const CommonWrapper = styled.div`
 export const PaginationWrapper = styled.div`
     display: flex;
     gap: 5px;
+    justify-content: center;
     padding-bottom: 40px;
     @media screen and (min-width: 768px) {
         gap: 40px;
@@ -277,10 +278,14 @@ export const PaginationWrapper = styled.div`
 `;
 export const PaginationButton = styled.button.withConfig({
     shouldForwardProp: prop =>
-        isPropValid(prop) && prop !== 'active' && prop !== 'currentButton',
+        isPropValid(prop) &&
+        prop !== 'active' &&
+        prop !== 'currentButton' &&
+        prop !== 'theme',
 })`
     color: ${({ active, currentButton }) =>
         active === currentButton ? 'var(--white)' : 'var(--black)'};
+    color: ${({ theme }) => theme === 'dark' && 'var(--white)'};
     background-color: transparent;
     background-color: ${({ active, currentButton }) =>
         active === currentButton ? 'var(--blue)' : 'transparent'};
@@ -293,6 +298,11 @@ export const PaginationButton = styled.button.withConfig({
     padding: 10px 14px;
     border-radius: 50%;
     cursor: pointer;
+
+    & > svg > path {
+        fill: ${({ theme }) => theme === 'dark' && 'var(--white)'};
+        fill-opacity: ${({ theme }) => theme === 'dark' && '1'};
+    }
 `;
 
 export const ListButtonForPagination = styled.div`

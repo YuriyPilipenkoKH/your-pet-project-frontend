@@ -16,10 +16,7 @@ import { activeIndex } from 'redux/sort/sortSelectors';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
 
-export default function NoticesCategoriesNav({
-    handleChangeCurrentActive,
-    currentActive,
-}) {
+export default function NoticesCategoriesNav() {
 
     const { language} = useAll()
     const [lang, setLang] = useState(langUA)
