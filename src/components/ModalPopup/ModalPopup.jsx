@@ -13,12 +13,12 @@ import { useAll } from 'hooks/useAll';
 import { toggleSell } from 'redux/sort/sortSlice';
 import { authOperations } from "redux/auth";
 import { langEN, langUA } from 'utils/languages';
-
+import petsOperations from '../../redux/pets/petsOperations'
 
 const modalRoot = document.querySelector('#modal-root');
 
 
-export const ModalPopup = ({ type, delid, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose , cardtitle, petAvatarURL, category, location, name, birthday, sex, animal, comments, isLike, currentDiv} ) => {
+export const ModalPopup = ({ type, path, delid, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose , cardtitle, petAvatarURL, category, location, name, birthday, sex, animal, comments, isLike, currentDiv} ) => {
 
 const props = {
   type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized, delid
@@ -86,9 +86,19 @@ useEffect(() => {
   }
 
   const removeCard = () => {
-    dispatch(noticesOperations.fetchDeleteNotice(delid))
-    dispatch(setModalClose())
-    onClose()
+
+    if(path === 'notice') {
+
+      dispatch(noticesOperations.fetchDeleteNotice(delid))
+     dispatch(setModalClose())
+     onClose()
+    }
+    else if(path === 'pet') {
+
+      dispatch(petsOperations.removeMyPet(delid))
+     dispatch(setModalClose())
+     onClose()
+    }
 
   }
 
