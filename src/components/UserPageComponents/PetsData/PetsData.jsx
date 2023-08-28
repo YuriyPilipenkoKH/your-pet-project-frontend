@@ -1,6 +1,6 @@
 import { PetsHeader, Title } from "./PetsData.styled";
 import AddPetBtn from "../../AddPetButton/AddPetButton";
-import PetsList from "../PetsList/PetsList";
+// import PetsList from "../PetsList/PetsList";
 
 const PetsData = ({ state }) => {
     return (
@@ -14,7 +14,7 @@ const PetsData = ({ state }) => {
                 <p>There are no animals added yet. Click button to add</p>
             </NoPetsMessageWrapper> */}
             {/* {!!pets.length && <PetsList pets={pets} />} */}
-            <PetsList />
+            {/* <PetsList /> */}
         </>
     );
 };

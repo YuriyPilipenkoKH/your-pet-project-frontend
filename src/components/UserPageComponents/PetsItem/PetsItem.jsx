@@ -12,19 +12,21 @@ import IconButton from '../IconButton/IconButton'
 import avatarDefault2x from '../../../images/Photo_default@2x.jpg';
 import {ReactComponent as DeletePet} from '../../../images/userPageIcons/trash-2.svg'
 
-const PetsItem = () => {
+const PetsItem = ({
+    name, comments, type, id, petAvatarURL, birthday
+}) => {
     return (
         <>
                 <MyPetCard>
                     <PetImage
-                        src={avatarDefault2x}
+                        src={petAvatarURL}
                         alt="mypet's avatar"
                     />
                     <InfoWrap style={{ maxWidth: 580 }}>
                         <NameWrapper>
                             <InfoItem>
                                 <SubTitle>Name:&nbsp;</SubTitle>
-                                <InfoText>Sharik</InfoText>
+                                <InfoText> {name} </InfoText>
                             </InfoItem>
                             <IconButton
                                 type="button"
@@ -33,12 +35,12 @@ const PetsItem = () => {
                         </NameWrapper>
                         <InfoItem>
                             <SubTitle>Date of birth:&nbsp; </SubTitle>
-                            <InfoText>dd.mm.yyy</InfoText>
+                            <InfoText> {birthday} </InfoText>
                         </InfoItem>
                         <InfoItem>
                             <PetComment>
                                 Comments:&nbsp;
-                                <InfoText>Comentar</InfoText>
+                                <InfoText> {comments} </InfoText>
                             </PetComment>
                         </InfoItem>
                     </InfoWrap>

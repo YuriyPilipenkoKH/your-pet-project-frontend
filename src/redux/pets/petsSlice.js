@@ -3,14 +3,39 @@ import petsOperations from './petsOperations';
 const initialState = {
     listPets: [],
     loading: false,
-    category: '',
+    owner: {},
     error: null,
+    reRender: false,
 };
 const petsSlice = createSlice({
     name: 'pets',
     initialState,
     extraReducers: builder => {
         builder
+            .addCase(petsOperations.getPet.pending, state => {
+                state.loading = true;
+                state.error = null;
+                state.reRender = true;
+            })
+            .addCase(
+                petsOperations.getPet.fulfilled,
+                (state, { payload }) => {
+                console.log('payload',payload)
+                    state.loading = false;
+                    state.listPets = payload.pets
+                    state.owner = payload.owner
+                    state.reRender = false;
+
+                }
+            )
+            .addCase(
+                petsOperations.getPet.rejected,
+                (state, { payload }) => {
+                    state.loading = false;
+                    state.error = payload;
+                    state.reRender = false;
+                }
+            )
             .addCase(petsOperations.addMySelfPet.pending, state => {
                 state.loading = true;
                 state.error = null;

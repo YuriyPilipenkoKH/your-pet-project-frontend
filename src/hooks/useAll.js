@@ -3,7 +3,7 @@ import { getFilterByAgeIdx, getFilterByGender,  getNewsFilter, getNoticesFilter 
 import { getLang } from 'redux/lang/langSelectors';
 import { getModalIsOpen } from 'redux/modal/modalSelectors';
 import { getNoticesList } from 'redux/notices/notices-selectors';
-import { getCategory, getPets, getPetsList } from 'redux/pets/petsSelectors';
+import {  getPets, getPetsList, getPetsRerender } from 'redux/pets/petsSelectors';
 import { activeIndex, getSorted } from 'redux/sort/sortSelectors';
 import { getTheme } from 'redux/theme/themeSelectors';
 
@@ -27,7 +27,8 @@ export const useAll= () => {
 
         pets: useSelector(getPets),
         listPets: useSelector(getPetsList),
-        category: useSelector(getCategory),
+        petsRerender: useSelector( getPetsRerender),
+        
   
     };
   };

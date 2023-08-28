@@ -5,7 +5,7 @@ axios.defaults.baseURL = 'https://your-pet-shw3.onrender.com';
 
 const getPet = createAsyncThunk('pets', async (_, thunkAPI) => {
     try {
-        const { data } = await axios.get('/pet');
+        const { data } = await axios.get('/pets');
         return data;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data);
@@ -14,7 +14,7 @@ const getPet = createAsyncThunk('pets', async (_, thunkAPI) => {
 
 const removeMyPet = createAsyncThunk('pets/deletePet', async (id, thunkAPI) => {
     try {
-        const { data } = await axios.delete(`/pet/${id}`);
+        const { data } = await axios.delete(`/pets/${id}`);
         return data;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data);
@@ -22,11 +22,11 @@ const removeMyPet = createAsyncThunk('pets/deletePet', async (id, thunkAPI) => {
 });
 
 const addMySelfPet = createAsyncThunk(
-    'pet/addPet',
+    'pets/addPet',
     async (dataPet, thunkAPI) => {
         console.log('dataPet', dataPet);
         try {
-            const { data } = await axios.post(`/pet`, dataPet);
+            const { data } = await axios.post(`/pets`, dataPet);
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data);
