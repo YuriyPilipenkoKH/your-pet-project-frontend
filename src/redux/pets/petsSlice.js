@@ -15,7 +15,6 @@ const petsSlice = createSlice({
             .addCase(petsOperations.getPet.pending, state => {
                 state.loading = true;
                 state.error = null;
-                state.reRender = true;
             })
             .addCase(
                 petsOperations.getPet.fulfilled,
@@ -24,7 +23,6 @@ const petsSlice = createSlice({
                     state.loading = false;
                     state.listPets = payload.pets
                     state.owner = payload.owner
-                    state.reRender = false;
 
                 }
             )
@@ -33,17 +31,18 @@ const petsSlice = createSlice({
                 (state, { payload }) => {
                     state.loading = false;
                     state.error = payload;
-                    state.reRender = false;
                 }
             )
             .addCase(petsOperations.addMySelfPet.pending, state => {
                 state.loading = true;
                 state.error = null;
+                state.reRender = true;
             })
             .addCase(
                 petsOperations.addMySelfPet.fulfilled,
                 (state, { _ }) => {
                     state.loading = false;
+                    state.reRender = false;
                 }
             )
             .addCase(
@@ -51,6 +50,7 @@ const petsSlice = createSlice({
                 (state, { payload }) => {
                     state.loading = false;
                     state.error = payload;
+                    state.reRender = false;
                 }
             )
             .addCase(petsOperations.removeMyPet.pending, state => {
