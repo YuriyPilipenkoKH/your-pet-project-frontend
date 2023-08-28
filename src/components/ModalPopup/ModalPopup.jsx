@@ -114,7 +114,7 @@ useEffect(() => {
 
 if (type === 1  || type === 4  ){
   return  createPortal(
-    <ModalOverlay className={`modal ${isOpen ? 'active' : ''}`}> 
+    <ModalOverlay className={`modal ${isOpen ? 'active' : 'modal-backdrop'}`}> 
       <ModalContainer 
       {...props}
       >
@@ -132,7 +132,7 @@ if (type === 1  || type === 4  ){
 }
 if ( type === 2  ){
   return  createPortal(
-    <ModalOverlay className={`modal ${isOpen ? 'active' : ''}`}>
+    <ModalOverlay className={`modal ${isOpen ? ['active', 'modal-backdrop'].join(' ') : 'modal-backdrop'}`}>
       <ModalContainer 
       {...props}
       >
@@ -151,7 +151,7 @@ if ( type === 2  ){
 }
 if (type === 3){
   return  createPortal(
-    <ModalOverlay className={`modal ${isOpen ? 'active' : ''}`}>
+    <ModalOverlay className={`modal ${isOpen ? ['active', 'modal-backdrop'].join(' ') : 'modal-backdrop'}`}>
       <ModalContainer3  >
         {image && <ModalImage src={petAvatarURL} alt="Modal Image" />}
         <ModalCategory > {category} </ModalCategory>
@@ -173,9 +173,10 @@ if (type === 3){
         <BtnContainer3 style={{marginTop: 'auto'}}>
         <ContactButton to="mailto:alex@gmail.com" > {lang.contact} </ContactButton>
           <AddFavButton  
+          className='addFav'
           isLike={isLike}
           currentDiv={currentDiv}
-          onClick ={checkRoute}>{isLike === currentDiv ? `${lang.addto}` : `${lang.remove}` } <FaRegHeart/> </AddFavButton>
+          onClick ={checkRoute}>{isLike === currentDiv ? `${lang.remove}` : `${lang.addto}` } <FaRegHeart/> </AddFavButton>
         </BtnContainer3>
         <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
       </ModalContainer3>
@@ -185,7 +186,7 @@ if (type === 3){
 }
 if (type === 5 ){
   return  createPortal(
-    <ModalOverlay className={`modal ${isOpen ? 'active' : ''}`}>
+    <ModalOverlay className={`modal ${isOpen ? ['active', 'modal-backdrop'].join(' ') : 'modal-backdrop'}`}>
       <ModalContainer 
       {...props}
       >

@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import { MdOutlineLogout } from 'react-icons/md';
 import { PhotoWrap, ProfileWrap, StyledLinkOut, UserWrap } from './UserNav.styled';
 import { iconUser } from '../../images/icons';
-import { useSelector } from 'react-redux';
-import { authSelectors } from 'redux/auth';
+
 import { StyledLink } from 'components/Button/Button.styled';
 
 import { modal1, modal5 } from 'modals/modals';
@@ -11,12 +10,15 @@ import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
 import { useAuth } from 'hooks/useAuth';
+import { Avatar } from 'components/UserPageComponents/UserData/UserData.styled';
 
 export const UserNav = ({ onClose }) => {
     const { language } = useAll();
-    const { user } = useAuth();
+    const { user, userName } = useAuth();
     const [lang, setLang] = useState(langUA);
     const avatar = user.avatarURL
+    console.log('user',user)
+    console.log('avatar', avatar)
 
     useEffect(() => {
         setLang(language === 'english' ? langEN : langUA);
@@ -28,7 +30,7 @@ export const UserNav = ({ onClose }) => {
         setShowModal(false);
     };
 
-    const name = useSelector(authSelectors.getUsername);
+  
     const signOut = () => {
         setModals(modal5);
         setShowModal(true);
@@ -39,9 +41,15 @@ export const UserNav = ({ onClose }) => {
             <UserWrap className="UserNav">
                 <ProfileWrap className="useravatar">
                     <StyledLink to="/profile" exact="true">
-                        <PhotoWrap 
-                        src={avatar}  alt = 'alt'/>
-                    {name}{' '}
+                        
+                     {avatar ?   <Avatar style={{width: '50px' , height: '50px'}}
+                                    src={avatar }
+                                    alt="user avatar"
+                                />
+                     :  {iconUser}
+                     }   
+                   
+                    {userName}{' '}
                     </StyledLink>
                 </ProfileWrap>
                 <StyledLinkOut
