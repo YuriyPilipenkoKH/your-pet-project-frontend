@@ -35,9 +35,15 @@
   --background-color: #fef9f9;
   --text-color: #1C1E21;
   --card-color: #fff;
-
+  
   --field-color: #eeeeee;
   --border: 3px solid transparent;
+
+  --background-color-form: #fff;
+  --background-color-input: #fff;
+  --input-text-color: #888888;
+  --placeholder-input-color: #888; 
+  --button-color-option: #54adff;
 
   --main-text:  #001129;
 
@@ -47,8 +53,15 @@
   --background-color: #001129;
   --text-color: #f5f6f7;
   --card-color: #9994;
+
   --field-color: #eee5;
   --border: 3px solid var(--blue);
+
+  --background-color-form: #1E325C;
+  --background-color-input: #1E325C;
+  --input-text-color: white;
+  --placeholder-input-color: #E0FFFF; 
+  --button-color-option: #003366;
   
   --main-text:  #001129;
 }
