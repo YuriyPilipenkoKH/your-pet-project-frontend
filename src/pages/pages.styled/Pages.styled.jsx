@@ -63,8 +63,8 @@ export const HomeWrapper = styled.div`
 `;
 
 export const HomeWrapperTwo = styled.div`
-width: 100%;
-overflow-x: hidden;
+    width: 100%;
+    overflow-x: hidden;
     height: 600px;
     background-image: url('${FormBgImgM}');
     padding: 0px 20px 0 20px;
@@ -106,7 +106,7 @@ overflow-x: hidden;
 export const HomeTitle = styled.h1`
     font-size: 32px;
     font-weight: 700;
-    color: var(--text-color) ;
+    color: var(--text-color);
     transition: all 1s ease-in-out;
 
     @media screen and (min-width: 768px) {
@@ -144,7 +144,7 @@ export const TytleNwes = styled.h2`
     font-weight: 700;
     line-height: 32.78px;
     text-align: center;
-    color: var(--text-color) ;
+    color: var(--text-color);
     transition: all 1s ease-in-out;
     @media screen and (min-width: 768px) {
         font-size: 48px;
@@ -171,8 +171,8 @@ export const SearchForm = styled.form`
         top: 2px;
         right: 10px;
 
-        &>span>svg {
-          scale: 1.5;
+        & > span > svg {
+            scale: 1.5;
         }
     }
 `;
@@ -181,19 +181,18 @@ export const SearchIcon = styled.span`
 `;
 
 export const SearchInput = styled.input`
-  width: 280px;
-  height: 44px;
-  font-size: 16px;
-  padding: 0 30px;
-  border: 1px solid var(--blue);
-  border-radius:50px;
-  color: var(--grey);
+    width: 280px;
+    height: 44px;
+    font-size: 16px;
+    padding: 0 30px;
+    border: 1px solid var(--blue);
+    border-radius: 50px;
+    color: var(--grey);
 
-  &::placeholder {
-    font-size: 14px;
-    line-height: 16.94px;
-    
-  }
+    &::placeholder {
+        font-size: 14px;
+        line-height: 16.94px;
+    }
 
     &::placeholder {
         font-size: 14px;
@@ -248,7 +247,7 @@ export const TitleSponsor = styled.h2`
     font-weight: 700;
     line-height: 32.78px;
     text-align: center;
-    color: var(--text-color) ;
+    color: var(--text-color);
     transition: all 1s ease-in-out;
     @media screen and (min-width: 768px) {
         font-size: 48px;
@@ -330,8 +329,8 @@ export const PaginationButton = styled.button.withConfig({
     border: 1px solid #54adff;
     font-size: 14px;
     @media screen and (min-width: 768px) {
-      font-size: 16px;
-  }
+        font-size: 16px;
+    }
     line-height: 15px;
     padding: 10px 14px;
     border-radius: 50%;
