@@ -13,6 +13,7 @@ export const UserWrap = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
     gap: 20px;
 
     &>.logout{
@@ -44,6 +45,18 @@ export const UserWrap = styled.div`
 
 `
 
+export const StyledUserLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+
+`
+
 export const ProfileWrap = styled.div`
     display: flex;
     align-items: center;
@@ -55,8 +68,12 @@ export const ProfileWrap = styled.div`
     color: var(--yellow);
     
     &>a {
-      
-      color: var(--yellow);
+          color: var(--yellow);
+          display: flex;
+        align-items: center;
+       justify-content: center;
+        gap: 30px;
+
     }
 
     &>svg{
@@ -71,7 +88,6 @@ export const ProfileWrap = styled.div`
           fill: var(--yellow);
       }
     }
-
 
 
 
@@ -98,8 +114,8 @@ transform: rotate(180deg);
 export const PhotoWrap =  styled.img.withConfig({
   shouldForwardProp: prop => isPropValid(prop) && prop !== 'avatar',
 })`
-  width: 40px;
-  height: 40px;
-
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; 
 
 `
