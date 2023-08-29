@@ -20,6 +20,7 @@ import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
+import { Notify } from 'notiflix';
 
 const schema = object({
     name: string()
@@ -86,13 +87,13 @@ export default function RegisterForm() {
 
 
     const deliveryDataUser = (name, email, password) => {
-        dispatch(authOperations.register({name,email,password}))
+        // dispatch(authOperations.register({name,email,password}))
         // .unwrap().then(originalPromiseResult => {
-            // Notify.success(`${originalPromiseResult.user.name} welcome back!`);
+        //     Notify.success(`${originalPromiseResult.user.name} Youre registration is successfull!`);
         //   })
         //   .catch(() => {
-            // Notify.failure('Incorrect login or password');
-        //   });;
+        //     Notify.failure('Incorrect login or password');
+        //   });
 
     };
     const reset = () => {
@@ -302,7 +303,7 @@ export default function RegisterForm() {
                     <InputForAuthorization
                         {...register('confirmPassword')}
                         aria-invalid={confirmPasswordError ? 'true' : 'false'}
-                        placeholder={lang.confirm}
+                        placeholder={lang.confirmPass}
                         type={showTwo ? 'text' : 'password'}
                         value={confirmPassword}
                         title="Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long."

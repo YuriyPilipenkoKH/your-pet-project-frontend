@@ -10,13 +10,14 @@ export const Form = styled.div.withConfig({
 })`
     padding: 40px 12px;
     padding: ${({ addPet }) => addPet && '20px 8px'};
-    background-color: var(--white);
+    background-color: var(--background-color-form);
     border-radius: 40px;
     box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
     text-align: center;
     text-align: ${({ addPet }) => addPet && 'left'};
     margin: 0 auto;
     width: 100%;
+    transition: all 1s ease-in-out;
     @media screen and (min-width: 320px) {
         width: 280px;
     }
@@ -50,7 +51,7 @@ export const Title = styled.h3.withConfig({
     font-family: Manrope;
     font-size: 24px;
     line-height: normal;
-    color: var(--black);
+    color: var(--text-color);
     font-weight: 500;
     text-align: ${({ addPetMoreInformation }) =>
         addPetMoreInformation && 'center'};
@@ -70,11 +71,16 @@ export const InputForAddPet = styled.input`
     width: 100%;
     border-radius: 40px;
     padding: 12px 16px;
-    color: var(--grey);
+    color: var(--input-text-color);
     font-size: 16px;
     line-height: 150%;
     letter-spacing: 0.64px;
     border: 1px solid var(--blue);
+    background-color: var(--background-color-input);
+    transition: all 1s ease-in-out;
+    &::placeholder {
+        color: var(--placeholder-input-color);
+    }
     @media screen and (max-width: 768px) {
         padding: 8px 16px;
         font-size: 14px;
@@ -90,12 +96,16 @@ export const InputForAuthorization = styled.input`
     width: 100%;
     border-radius: 40px;
     padding: 12px 16px;
-    color: var(--grey);
+    color: var(--input-text-color);
     font-size: 16px;
     line-height: 150%;
     letter-spacing: 0.64px;
     border: 1px solid var(--blue);
-
+    background-color: var(--background-color-input);
+    transition: all 1s ease-in-out;
+    &::placeholder {
+        color: var(--placeholder-input-color);
+    }
     &:focus {
         outline: none;
     }
@@ -126,7 +136,6 @@ export const Textarea = styled.textarea.withConfig({
     border-radius: 20px;
     font-family: Manrope;
     padding: 8px 16px;
-    color: var(--grey);
     resize: none;
     height: auto; /* Автоматична висота */
     min-height: 80px;
@@ -136,6 +145,12 @@ export const Textarea = styled.textarea.withConfig({
     border: 1px solid var(--blue);
     overflow-y: hidden;
     overflow-x: hidden;
+    color: var(--input-text-color);
+    background-color: var(--background-color-input);
+    transition: all 1s ease-in-out;
+    &::placeholder {
+        color: var(--placeholder-input-color);
+    }
     @media screen and (min-width: 768px) {
         min-height: ${({ withOutPrice }) => withOutPrice && '182px'};
     }
@@ -410,7 +425,7 @@ export const ButtonOption = styled.button.withConfig({
     align-items: center;
     gap: 12px;
     color: ${props =>
-        props.currentActive === props.active ? 'var(--white)' : 'var(--blue)'};
+        props.currentActive === props.active ? 'var(--white)' : 'var(--button-color-option)'};
     color: ${({ addPetMoreInformation }) =>
         addPetMoreInformation && 'var(--grey)'};
     font-size: 14px;
@@ -517,7 +532,7 @@ export const TypeInput = styled.span.withConfig({
         prop !== 'addImage' &&
         prop !== 'addPetMoreInformation',
 })`
-    color: var(--black);
+    color: var(--text-color);
     display: inline-block;
     font-size: 14px;
     line-height: normal;
