@@ -192,7 +192,9 @@ const UserDataForm = ({ user, onSubmit }) => {
                             {...field}
                         />
                     ))}
-                    <Logout onClick = {signOut}                      
+                    <Logout 
+                    className ="Logoutuser"
+                    onClick = {signOut}                      
             >
                         {/* <LogoutIcon stroke="#54ADFF" /> */}
                         <LogoutIcon />
