@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix';
 
 axios.defaults.baseURL = 'https://your-pet-shw3.onrender.com';
 
@@ -71,21 +72,19 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     }
 });
 
-    const fetchUpdateUser = createAsyncThunk(
-        'auth/update',
-        async (updatedData, thunkAPI) => {
-            try {
-                const { data } = await axios.patch(
-                    '/users/update',
-                    updatedData
-                );
-                return data;
-            } catch (error) {
-                return thunkAPI.rejectWithValue(error.response.data);
-            }
+const fetchUpdateUser = createAsyncThunk(
+    'auth/update',
+    async (updatedData, thunkAPI) => {
+        try {
+            const { data } = await axios.patch('/users/update', updatedData);
+            Notify.success(`The data has been updated`);
+            return data;
+        } catch (error) {
+            Notify.failure('Something went wrong');
+            return thunkAPI.rejectWithValue(error.response.data);
         }
-    );
-
+    }
+);
 
 // const fetchUser = createAsyncThunk("user/fetch", async (_, thunkAPI) => {
 //     try {
@@ -95,7 +94,6 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 //         return thunkAPI.rejectWithValue(error.message);
 //     }
 // });
-
 
 const operations = {
     register,

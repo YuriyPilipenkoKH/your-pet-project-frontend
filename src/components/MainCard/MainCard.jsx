@@ -1,4 +1,4 @@
-import {  useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     iconClock,
     iconFem,
@@ -18,6 +18,7 @@ import { useDispatch } from 'react-redux';
 import operations from 'redux/notices/notices-operations';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
+import { Notify } from 'notiflix';
 // import { setAge } from 'redux/notices/notices-slice';
 
 export const MainCard = ({
@@ -34,13 +35,11 @@ export const MainCard = ({
     birthday,
     type,
     comments,
-   
+
     id,
 }) => {
-    
-
-    const { language} = useAll()
-    const [lang, setLang] = useState(langUA)
+    const { language } = useAll();
+    const [lang, setLang] = useState(langUA);
     const { userId } = useAuth();
     // const [shouldReload, setShouldReload] = useState(false);
     const dispatch = useDispatch();
@@ -48,7 +47,7 @@ export const MainCard = ({
     const [modals, setModals] = useState(modal1);
     const { isLoggedIn } = useAuth();
     const isTrashShown = userId === owner;
-    
+
     const onModalClose = () => {
         setShowModal(false);
     };
@@ -58,8 +57,8 @@ export const MainCard = ({
     }
 
     useEffect(() => {
-      setLang(language === 'english' ?  langEN :  langUA);
-    }, [language])
+        setLang(language === 'english' ? langEN : langUA);
+    }, [language]);
 
     const checkRoute = () => {
         if (!isLoggedIn) {
@@ -67,22 +66,34 @@ export const MainCard = ({
             setShowModal(true);
         } else {
             if (idUsersAddedFavorite.includes(userId)) {
-                dispatch(operations.fetchRemoveFavorite(id));
-              }
-                
-                else {
-                    dispatch(operations.fetchNoticesAddFavorite(id));
-
-                  }
+                dispatch(operations.fetchRemoveFavorite(id))
+                    .then(() => {
+                        Notify.success(
+                            `The animal was successfully removed from favorites`
+                        );
+                    })
+                    .catch(() => {
+                        Notify.failure('Something went wrong');
+                    });
+            } else {
+                dispatch(operations.fetchNoticesAddFavorite(id))
+                    .then(() => {
+                        Notify.success(
+                            `The animal was successfully added from favorites`
+                        );
+                    })
+                    .catch(() => {
+                        Notify.failure('Something went wrong');
+                    });
+            }
         }
     };
 
     const removeCard = () => {
-      setModals(modal2);
-      setShowModal(true);
-    }
+        setModals(modal2);
+        setShowModal(true);
+    };
 
-    
     const onLearnMore = () => {
         setModals(modal3);
         setShowModal(true);
@@ -134,9 +145,10 @@ export const MainCard = ({
                     {iconHeart}
                 </FavButton>
                 {isTrashShown && (
-                    <TrashButton 
-                    onClick ={removeCard}
-                    className="del"> {iconTrash}</TrashButton>
+                    <TrashButton onClick={removeCard} className="del">
+                        {' '}
+                        {iconTrash}
+                    </TrashButton>
                 )}
 
                 <Tab
@@ -178,7 +190,7 @@ export const MainCard = ({
                     comments={comments}
                     isLike={isLike}
                     currentDiv={index + 1}
-                    path= 'notice'
+                    path="notice"
                 />
             )}
         </CardWrapper>

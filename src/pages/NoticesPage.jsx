@@ -63,9 +63,9 @@ export default function NoticesPage() {
     };
     useEffect(() => {
         if (activeIndex === 4) {
-            dispatch(noticesOperations.fetchUserNotices());
+            dispatch(noticesOperations.fetchUserNotices(searchParams));
         } else if (activeIndex === 3) {
-            dispatch(noticesOperations.fetchAllFavorite());
+            dispatch(noticesOperations.fetchAllFavorite(searchParams));
         } else {
             dispatch(noticesOperations.fetchNoticesByCategory(searchParams));
         }
@@ -188,7 +188,6 @@ export default function NoticesPage() {
             </PaginationButton>
         );
     }
-    console.log(filteredNotices());
     return (
         <CommonWrapper className="CommonWrapper">
             <NoticesSearch search={searchParams} />
@@ -204,7 +203,7 @@ export default function NoticesPage() {
                         title={item.title}
                         petAvatarURL={item.petAvatarURL}
                         sex={item.sex}
-                        owner={item.owner}
+                        owner={item.owner._id}
                         idUsersAddedFavorite={item.idUsersAddedFavorite}
                         location={item.location}
                         category={item.category}

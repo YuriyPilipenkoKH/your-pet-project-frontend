@@ -64,7 +64,7 @@ export const TestPage =()=> {
   }}>Contact</ContactButton>
 
 
-  <AddToButton onClick ={()=>  console.log('click')} >Add Pet <AiOutlinePlus/></AddToButton>
+  <AddToButton >Add Pet <AiOutlinePlus/></AddToButton>
 
 
 

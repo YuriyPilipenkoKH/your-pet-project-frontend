@@ -1,4 +1,4 @@
-import {  useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     ButtonSubmit,
     Form,
@@ -28,8 +28,7 @@ const schema = object({
         .min(2, 'Name should be at least 2 characters')
         .max(16, 'Name should not exceed 16 characters')
         .matches(
-             /^[a-zA-Z]{2,16}$/
-,
+            /^[a-zA-Z]{2,16}$/,
             'Name should contain only letters and without spaces'
         ),
     email: string()
@@ -46,9 +45,7 @@ const schema = object({
         ),
 }).required();
 
-
 export default function RegisterForm() {
-
     const dispatch = useDispatch();
     const [showOne, setShowOne] = useState(false);
     const [showTwo, setShowTwo] = useState(false);
@@ -78,23 +75,19 @@ export default function RegisterForm() {
     const handleClickShowOne = () => setShowOne(!showOne);
     const handleClickShowTwo = () => setShowTwo(!showTwo);
 
-    const { language} = useAll()
-    const [lang, setLang] = useState(langUA)
+    const { language } = useAll();
+    const [lang, setLang] = useState(langUA);
 
     useEffect(() => {
-      setLang(language === 'english' ?  langEN :  langUA);
-    }, [language])
-
+        setLang(language === 'english' ? langEN : langUA);
+    }, [language]);
 
     const deliveryDataUser = (name, email, password) => {
-        // dispatch(authOperations.register({name,email,password}))
-        // .unwrap().then(originalPromiseResult => {
-        //     Notify.success(`${originalPromiseResult.user.name} Youre registration is successfull!`);
-        //   })
-        //   .catch(() => {
-        //     Notify.failure('Incorrect login or password');
-        //   });
-
+        dispatch(authOperations.register({ name, email, password }))
+            .unwrap()
+            .catch(() => {
+                Notify.failure('The user already exists');
+            });
     };
     const reset = () => {
         setName('');
@@ -105,10 +98,10 @@ export default function RegisterForm() {
         setIsEmailValid(false);
         setIsPasswordlValid(false);
         setIsConfirmPasswordlValid(false);
-    }
+    };
     const deliveryData = data => {
         if (data.password !== confirmPassword) {
-            setConfirmPasswordError("'Passwords do not match'")
+            setConfirmPasswordError("'Passwords do not match'");
             return;
         }
         const { name, email, password } = data;
@@ -135,11 +128,9 @@ export default function RegisterForm() {
                                 : '1px solid var(--blue)',
                         }}
                         onChange={e => {
-                            const isValid =
-                                 /^[a-zA-Z]{2,16}$/
-.test(
-                                    e.target.value
-                                );
+                            const isValid = /^[a-zA-Z]{2,16}$/.test(
+                                e.target.value
+                            );
                             setIsNameValid(isValid);
                             setName(e.target.value);
                             if (isValid) {
@@ -252,7 +243,10 @@ export default function RegisterForm() {
                                 : '1px solid var(--blue)',
                         }}
                         onChange={e => {
-                            const isValid =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/.test(e.target.value);
+                            const isValid =
+                                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/.test(
+                                    e.target.value
+                                );
                             setIsPasswordlValid(isValid);
                             setPassword(e.target.value);
                             if (isValid) {
@@ -316,15 +310,18 @@ export default function RegisterForm() {
                                 : '1px solid var(--blue)',
                         }}
                         onChange={e => {
-                            const isValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/.test(e.target.value);
+                            const isValid =
+                                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/.test(
+                                    e.target.value
+                                );
                             setIsConfirmPasswordlValid(isValid);
                             if (isValid) {
-                                setConfirmPasswordError("");
+                                setConfirmPasswordError('');
                             }
                             setConfirmPassword(e.target.value);
                         }}
                     ></InputForAuthorization>
-                    {(isConfirmPasswordValid && !confirmPasswordError) && (
+                    {isConfirmPasswordValid && !confirmPasswordError && (
                         <IconOkey
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -363,12 +360,12 @@ export default function RegisterForm() {
                         {iconEyes}
                     </ShowPasswordButton>
                 </LabelForRegistration>
-                <ButtonSubmit type="submit"> { lang.regTitle } </ButtonSubmit>
+                <ButtonSubmit type="submit"> {lang.regTitle} </ButtonSubmit>
                 <Question>
-                {lang.alreadyGot}{' '}
+                    {lang.alreadyGot}{' '}
                     {
                         <LinkToForm href="fwefew" to="/login">
-                           {lang.logBtn}
+                            {lang.logBtn}
                         </LinkToForm>
                     }
                 </Question>
