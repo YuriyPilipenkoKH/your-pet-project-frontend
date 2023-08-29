@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import sponsorsOperations from './sponsorsOperations';
 const initialState = {
     listSponsors: [],
+    loading: false,
 };
 const sponsorsSlice = createSlice({
     name: 'sponsors',
@@ -13,6 +14,7 @@ const sponsorsSlice = createSlice({
           })
           .addCase(sponsorsOperations.fetchSponsors.fulfilled, (state, { payload }) => {
             state.listSponsors = payload;
+            state.loading = false;
           })
           .addCase(sponsorsOperations.fetchSponsors.rejected, (state, { payload }) => {
             state.loading = false;

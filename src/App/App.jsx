@@ -14,16 +14,25 @@ import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 
 import PrivateRoute from 'routes/PrivateRoute';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { authOperations } from 'redux/auth';
 import PublicRoute from 'routes/PublicRoute';
 import { useAll } from 'hooks/useAll';
+import { getRefreshing } from 'redux/auth/auth-selectors';
+import { DotLoader } from 'react-spinners';
+import { getPetsLoading } from 'redux/pets/petsSelectors';
+import { getLoadingNotices } from 'redux/notices/notices-selectors';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
     const dispatch = useDispatch();
-    const {theme, language} = useAll()
-
+    const { theme, language } = useAll();
+    const regreshinggAuth = useSelector(getRefreshing);
+    const loadingPets = useSelector(getPetsLoading);
+    const loadingNotice = useSelector(getLoadingNotices);
+    console.log(loadingNotice);
     document.documentElement.setAttribute('data-theme', theme);
     document.documentElement.setAttribute('data-lang', language);
 
@@ -33,44 +42,88 @@ const App = () => {
 
     return (
         <Container>
-            <Routes>
-                <Route path="/" element={<SharedLayout />}>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+            {regreshinggAuth || loadingPets ? (
+                <DotLoader
+                    style={{
+                        position: 'fixed',
+                        top: '50%',
+                        left: '50%',
+                        zIndex: '999',
+                    }}
+                    color="var(--blue)"
+                    cssOverride={{}}
+                    loading
+                    size={70}
+                />
+            ) : (
+                <Routes>
+                    <Route path="/" element={<SharedLayout />}>
+                        <Route index element={<Home />} />
 
-                    <Route index element={<Home />} />
+                        <Route
+                            path="/register"
+                            element={
+                                <PublicRoute
+                                    redirectTo="/profile"
+                                    component={<RegisterPage />}
+                                />
+                            }
+                        />
 
-                    <Route  path="/register"
-                        element={ <PublicRoute
-                        redirectTo="/profile"
-                        component={<RegisterPage />} /> } />
+                        <Route
+                            path="/login"
+                            element={
+                                <PublicRoute
+                                    redirectTo="/profile"
+                                    component={<LoginPage />}
+                                />
+                            }
+                        />
 
-                    <Route path="/login"  
-                            element={ <PublicRoute
-                            redirectTo="/profile"
-                            component={<LoginPage />} /> } />
+                        <Route
+                            path="/add-pet"
+                            element={
+                                <PrivateRoute
+                                    redirectTo="/login"
+                                    component={<AddPetPage />}
+                                />
+                            }
+                        />
 
-                    <Route path="/add-pet"
-                            element={ <PrivateRoute
-                            redirectTo="/login"
-                            component={<AddPetPage />}/> } />
+                        <Route
+                            path="/profile"
+                            element={
+                                <PrivateRoute
+                                    redirectTo="/login"
+                                    component={<UserPage />}
+                                />
+                            }
+                        />
 
-                    <Route
-                        path="/profile" 
-                            element={ <PrivateRoute
-                            redirectTo="/login"
-                            component={<UserPage />} />  } />
+                        <Route path="/notices" element={<NoticesPage />} />
 
-                    <Route path="/notices" element={<NoticesPage />} />
+                        <Route path="/news" element={<NewsPage />} />
 
-                    <Route path="/news" element={<NewsPage />} />
+                        <Route path="/friends" element={<SponsorsPage />} />
 
-                    <Route path="/friends" element={<SponsorsPage />} />
+                        <Route path="*" element={<NotfoundPage />} />
 
-                    <Route path="*" element={<NotfoundPage />} />
-
-                    <Route path="/test" element={<TestPage />} />
-                    
-                </Route>
-            </Routes>
+                        <Route path="/test" element={<TestPage />} />
+                    </Route>
+                </Routes>
+            )}
         </Container>
     );
 };
