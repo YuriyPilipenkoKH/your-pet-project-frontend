@@ -25,8 +25,6 @@ import { useDispatch } from 'react-redux';
 import { useAll } from 'hooks/useAll';
 import { MdOutlineNightlight } from 'react-icons/md';
 import { MdOutlineLightMode } from 'react-icons/md';
-import { langEN, langUA } from 'utils/languages';
-import { ToastContainer } from 'react-toastify';
 
 export const SharedLayout = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
