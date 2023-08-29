@@ -40,7 +40,8 @@ const langEN = {
 
 
     learnmore: 'Learn more',
-    name: 'Name:',
+    name: 'Name: ',
+    formName: 'Name ',
     age: 'Age',
     type: 'Type',
     place: 'Location',
@@ -173,6 +174,7 @@ const langUA = {
     moreinfo: 'Докладніше',
 
     Name: 'Ім’я:',
+    formName: 'Ім’я ',
     Email: 'Пошта:',
     Birthday: 'Дата народення:',
     Phone: 'Телефон:',
