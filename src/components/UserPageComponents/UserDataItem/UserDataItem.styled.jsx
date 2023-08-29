@@ -8,6 +8,15 @@ export const FormItem = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    &>input::placeholder {
+        color: var(--text-color);
+        transition: all 1s ease-in-out;
+    }
+       &>input {
+        color: var(--text-color);
+        transition: all 1s ease-in-out;
+    }
 `;
 
 export const FormWrapper = styled.div`
@@ -108,6 +117,8 @@ export const InputName = styled.span`
     font-size: 14px;
     line-height: 1.35;
     letter-spacing: 0.04em;
+    color: var(--text-color);
+    transition: all 1s ease-in-out;
     @media screen and (min-width: 768px) {
         font-size: 18px;
     }

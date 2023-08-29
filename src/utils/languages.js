@@ -32,22 +32,23 @@ const langEN = {
     man: 'male',
     fem: 'female',
 
-    Name: 'Name:',
-    Email: 'Name:',
-    Birthday: 'Date of birth',
-    Phone: 'Name:',
-    City: 'Name:',
+    Name: 'Name',
+    Email: 'Email',
+    Birthday: 'Date of birth:',
+    Phone: 'Phone',
+    City: 'Cit',
 
 
     learnmore: 'Learn more',
-    name: 'Name:',
-    age: 'Age:',
-    type: 'Type:',
-    place: 'Location:',
-    sex: 'Gender:',
-    phone: 'Phone:',
+    name: 'Name: ',
+    formName: 'Name ',
+    age: 'Age',
+    type: 'Type',
+    place: 'Location',
+    sex: 'Gender',
+    phone: 'Phone',
     comments: 'Comments:',
-    email: 'Email:',
+    email: 'Email',
     confirmPass: "Confirm password",
 
     confirm: "Confirm",
@@ -58,8 +59,8 @@ const langEN = {
     contact: 'Contact',
 
     info: 'My information:',
-    pets: 'My pets:',
-    city: 'City:',
+    pets: 'My pets',
+    city: 'City',
     birthday: 'Birthday:',
     
     yourpet: 'your pet',
@@ -101,8 +102,24 @@ const langEN = {
     congrats: 'Congrats!',
     registrationsuccess: 'Youre registration is successfull',
     gotoprofile: 'Go to profile',
+
+
+    addpetforsale: 'Add pet for sale',
+    titleofadd: 'Title of add',
+    petsname: 'Pet’s name',
+    breed: 'Type',
+
+    thesex: 'The Sex',
+    price: 'Price',
+    loadimg: 'Load the pet’s image:',
+    location: 'Location',
+
+    male: 'Male',
+    female: 'Female',
+ 
     
-   
+
+              
     
     empty: "List is empty ...",
     add: "Add contact",
@@ -155,11 +172,11 @@ const langUA = {
 
     learnmore: 'Дізнатися більше',
     name: 'Ім’я:',
-    birthday: 'Дата народження:',
-    type: 'Порода:',
-    place: 'Локація:',
-    sex: 'Стать:',
-    phone: 'Phone:',
+    birthday: 'Дата народження',
+    type: 'Порода',
+    place: 'Локація',
+    sex: 'Стать',
+    phone: 'Phone',
     comments: 'Коментарі:',
     email: 'Пошта',
     confirmPass: 'Підтвердити пароль',
@@ -172,7 +189,8 @@ const langUA = {
     details: 'Особисті дані',
     moreinfo: 'Докладніше',
 
-    Name: 'Ім’я::',
+    Name: 'Ім’я:',
+    formName: 'Ім’я ',
     Email: 'Пошта:',
     Birthday: 'Дата народення:',
     Phone: 'Телефон:',
@@ -183,9 +201,9 @@ const langUA = {
     contact: 'Зв’язок',
 
     footerTitle: 'React-телефонна книга-2023',
-    info: 'Моя інформація:',
-    pets: 'МоЇ домашні тварини:',
-    city: 'Місто:',
+    info: 'Моя інформація',
+    pets: 'МоЇ домашні тварини',
+    city: 'Місто',
     
    
     pass: 'Пароль',
@@ -221,9 +239,21 @@ const langUA = {
     registrationsuccess: 'Ваша реєстрація пройшла успішно',
     gotoprofile: 'Перейти в профіль',
 
+    addpetforsale: 'Додайте на продаж',
+    titleofadd: 'Назва оголошення',
+    petsname: 'Ім’я тваринки',
+    breed: 'порода',
+
+    thesex: 'Стать',
+    price: 'Price',
+    loadimg: 'Завантажте фото ',
+    location: 'Локація',
+    male: 'Чол',
+    female: 'Жін',
+    
+
     empty: "Список порожній...",
     add: "Додати контакт",
-    // edit: "РЕДАГУВАТИ",
     delete: "ВИДАЛИТИ",
     avatar: "Аватар",
     set: "Встановити",
@@ -233,4 +263,4 @@ const langUA = {
 
 }
 
-export { langEN, langUA} // {lang.homeBtn}
+export { langEN, langUA}

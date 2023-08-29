@@ -66,7 +66,7 @@ const PetsItem = ({
                             ></IconButton> */}
                         </NameWrapper>
                         <InfoItem>
-                            <SubTitle>{lang.Birthday}</SubTitle>
+                            <SubTitle>{lang.Birthday}</SubTitle>{'  '}
                             <InfoText> {birthday} </InfoText>
                         </InfoItem>
                         <InfoItem>

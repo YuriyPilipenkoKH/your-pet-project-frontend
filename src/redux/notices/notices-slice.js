@@ -35,7 +35,6 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchAllFavorite.fulfilled,
                 (store, { payload }) => {
-                    console.log('payload', payload);
                     store.loading = false;
                     store.list = payload.notices;
                     store.totalPages = payload.totalPages;
@@ -54,8 +53,10 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchAddNotice.fulfilled,
                 (store, { payload }) => {
-                    store.loading = false;
+
                     
+
+
                 }
             )
             .addCase(
@@ -77,9 +78,12 @@ const noticesSlice = createSlice({
                 noticesOperations.fetchNoticesAddFavorite.fulfilled,
                 (store, { payload }) => {
 
+
                     console.log(payload.owner);
 
                     console.log('payload', payload);
+
+
 
                     store.loading = false;
                     store.owner = payload.owner;
@@ -123,6 +127,7 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchUserNotices.fulfilled,
                 (store, { payload }) => {
+                    console.log(payload)
                     store.loading = false;
                     store.list = payload.notices;
                     store.totalPages = payload.totalPages;
@@ -164,7 +169,6 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchNoticesByCategory.fulfilled,
                 (store, { payload }) => {
-                    console.log('payload', payload);
                     store.loading = false;
                     store.list = payload.notices;
                     store.keyword = '';

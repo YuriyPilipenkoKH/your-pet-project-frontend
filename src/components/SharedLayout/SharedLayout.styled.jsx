@@ -12,6 +12,8 @@ export const LogoLink = styled(NavLink)`
     @media screen and (min-width: 768px) {
         width: 162px;
     }
+
+
 `;
 
 export const LayoutWrap = styled.div`
@@ -63,7 +65,7 @@ export const ThemeBtn = styled.button`
     
 
     &> svg {
-        transition:  fill 1s ease-in-out;
+        transition: all 1s ease-in-out;
         fill: var(--text-color);
         }
 
@@ -93,7 +95,7 @@ export const LangBtn = styled.button`
     cursor: pointer;
     color: var(--text-color) ;
     font-weight: 600;
-    
+     transition: all 1s ease-in-out;
 
     &> svg {
         transition:  fill 1s ease-in-out;

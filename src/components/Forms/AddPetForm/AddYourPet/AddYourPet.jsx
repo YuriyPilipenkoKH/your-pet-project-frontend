@@ -5,6 +5,7 @@ import { useLocalStorage } from 'hooks/useLocalStaoreage';
 import { useNavigate } from 'react-router-dom';
 import operations from 'redux/pets/petsOperations';
 import { useDispatch } from 'react-redux';
+import { Notify } from 'notiflix';
 
 export default function AddYourPet({
     children,
@@ -13,11 +14,11 @@ export default function AddYourPet({
     stepNumber,
     state,
     clearStepNumber,
-    clearData
+    clearData,
 }) {
-    const [pet, setPet] = useLocalStorage("dataYourPet", {});
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
+    const [pet, setPet] = useLocalStorage('dataYourPet', {});
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const backLinkLocation = useRef(state?.from ?? '/');
     const deliveryDataPet = data => {
         setPet(prevState => {
@@ -27,11 +28,17 @@ export default function AddYourPet({
             const formData = new FormData();
             for (const key in { ...pet, ...data }) {
                 formData.append(key, { ...pet, ...data }[key]);
-            };
-            dispatch(operations.addMySelfPet(formData));
+            }
+            dispatch(operations.addMySelfPet(formData))
+                .then(() => {
+                    Notify.success(`Pet added successfully`);
+                })
+                .catch(() => {
+                    Notify.failure('Something went wrong');
+                });
             navigate(backLinkLocation.current);
             clearStepNumber();
-            clearData("dataYourPet");
+            clearData('dataYourPet');
         }
     };
     return (

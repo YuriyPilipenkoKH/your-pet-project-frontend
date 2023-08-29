@@ -5,6 +5,7 @@ import { useLocalStorage } from 'hooks/useLocalStaoreage';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import operations from 'redux/notices/notices-operations';
+import { Notify } from 'notiflix';
 
 export default function AddInGoodHandsPet({
     children,
@@ -28,7 +29,12 @@ export default function AddInGoodHandsPet({
             for (const key in { ...pet, ...data }) {
                 formData.append(key, { ...pet, ...data }[key]);
             }
-            dispatch(operations.fetchAddNotice(formData));
+            dispatch(operations.fetchAddNotice(formData)).then(() => {
+                Notify.success(`Pet added successfully`);
+            })
+            .catch(() => {
+                Notify.failure('Something went wrong');
+            });;
             navigate(backLinkLocation.current);
             clearStepNumber();
             clearData("dataSellPet");

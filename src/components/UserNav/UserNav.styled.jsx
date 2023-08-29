@@ -101,6 +101,7 @@ background-color: var(--blue);
 color: var(--white);
 width: 135px;
 transition: all 0.4s ease; 
+width: 140px !important;
 
 ${hoverStylesB} 
 

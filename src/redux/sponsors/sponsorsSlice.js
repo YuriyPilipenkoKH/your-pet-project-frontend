@@ -12,7 +12,6 @@ const sponsorsSlice = createSlice({
             state.loading = true;
           })
           .addCase(sponsorsOperations.fetchSponsors.fulfilled, (state, { payload }) => {
-            console.log(payload);
             state.listSponsors = payload;
           })
           .addCase(sponsorsOperations.fetchSponsors.rejected, (state, { payload }) => {

@@ -24,7 +24,6 @@ const removeMyPet = createAsyncThunk('pets/deletePet', async (id, thunkAPI) => {
 const addMySelfPet = createAsyncThunk(
     'pets/addPet',
     async (dataPet, thunkAPI) => {
-        console.log('dataPet', dataPet);
         try {
             const { data } = await axios.post(`/pets`, dataPet);
             return data;

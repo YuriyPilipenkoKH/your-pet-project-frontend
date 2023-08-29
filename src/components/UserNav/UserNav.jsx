@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
 import { MdOutlineLogout } from 'react-icons/md';
-import { PhotoWrap, ProfileWrap, StyledLinkOut, StyledUserLink, UserWrap } from './UserNav.styled';
+import {
+    PhotoWrap,
+    ProfileWrap,
+    StyledLinkOut,
+    StyledUserLink,
+    UserWrap,
+} from './UserNav.styled';
 import { iconUser } from '../../images/icons';
 
 import { StyledLink } from 'components/Button/Button.styled';
@@ -16,9 +22,7 @@ export const UserNav = ({ onClose }) => {
     const { language } = useAll();
     const { user, userName } = useAuth();
     const [lang, setLang] = useState(langUA);
-    const avatar = user.avatarURL
-    console.log('user',user)
-    console.log('avatar', avatar)
+    const avatar = user.avatarURL;
 
     useEffect(() => {
         setLang(language === 'english' ? langEN : langUA);
@@ -30,7 +34,6 @@ export const UserNav = ({ onClose }) => {
         setShowModal(false);
     };
 
-  
     const signOut = () => {
         setModals(modal5);
         setShowModal(true);
@@ -40,24 +43,20 @@ export const UserNav = ({ onClose }) => {
         <>
             <UserWrap className="UserNav">
                 <ProfileWrap className="useravatar">
-                    <StyledUserLink 
-                    className='userlink'
-                    to="/profile" exact="true">
-                    {/* {iconUser} */}
-                        
-                     {avatar ?   <PhotoWrap 
-                                    src={avatar }
-                                    alt="user avatar"
-                                />
-                     :  {iconUser}
-                     }   
-                   
-                    {userName}{' '}
+                    <StyledUserLink to = '/profile'
+                        className="userlink"
+                        exact="true"
+                    >
+                        {/* {iconUser} */}
+                        {avatar ? (
+                            <PhotoWrap src={avatar} alt="user avatar" />
+                        ) : (
+                            { iconUser }
+                        )}
+                        {userName}{' '}
                     </StyledUserLink>
-
                 </ProfileWrap>
                 <StyledLinkOut
-                    to="/"
                     exact="true"
                     onClick={signOut}
                     className="logout"

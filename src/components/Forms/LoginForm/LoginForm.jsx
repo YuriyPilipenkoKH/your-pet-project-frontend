@@ -1,4 +1,4 @@
-import {  useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     ButtonSubmit,
     Form,
@@ -38,19 +38,18 @@ const schema = object({
 }).required();
 
 export default function LoginForm() {
-
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const [isEmailValid, setIsEmailValid] = useState(false);
     const [isPasswordValid, setIsPasswordlValid] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { language} = useAll()
-    const [lang, setLang] = useState(langUA)
+    const { language } = useAll();
+    const [lang, setLang] = useState(langUA);
 
     useEffect(() => {
-      setLang(language === 'english' ?  langEN :  langUA);
-    }, [language])
+        setLang(language === 'english' ? langEN : langUA);
+    }, [language]);
 
     const {
         register,
@@ -66,13 +65,15 @@ export default function LoginForm() {
     const handleClickShow = () => setShow(!show);
     const deliveryDataUser = (email, password) => {
         dispatch(authOperations.logIn({ email, password }))
-        .unwrap().then(originalPromiseResult => {
-            Notify.success(`${originalPromiseResult.user.name} Welcome back`);
-          })
-          .catch(() => {
-            Notify.failure('Incorrect login or password');
-          });
-
+            .unwrap()
+            .then(originalPromiseResult => {
+                Notify.success(
+                    `${originalPromiseResult.user.name} Welcome back`
+                );
+            })
+            .catch(() => {
+                Notify.failure('Incorrect login or password');
+            });
     };
     const reset = () => {
         setEmail('');

@@ -36,7 +36,8 @@ export const Card = styled.div`
     padding-right: 8px;
     padding-bottom: 24px;
     padding-left: 8px;
-    background: #ffffff;
+    background: var(--background-color-form);
+    transition: all 1s ease-in-out;
     box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
     border-radius: 20px;
     @media screen and (min-width: 768px) {
