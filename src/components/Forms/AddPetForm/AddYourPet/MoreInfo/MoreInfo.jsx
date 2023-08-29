@@ -22,6 +22,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 const schema = object({
     coment: string()
@@ -43,6 +45,13 @@ export default function MoreInfo({
     const [coment, setComent] = useLocalStorage('comentYourPet', '');
     const [imageURL, setImageURL] = useLocalStorage('imageUrlYourPet', '');
     const [imageError, setImageError] = useState(null);
+
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
     const {
         register,
         handleSubmit,
@@ -84,7 +93,7 @@ export default function MoreInfo({
 
     return (
         <Form addPet>
-            <Title addPet>Add pet</Title>
+            <Title addPet>{lang.addPet}</Title>
             {children}
             <form
                 onSubmit={handleSubmit(deliveryData)}

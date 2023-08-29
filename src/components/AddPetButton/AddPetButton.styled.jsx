@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 const Btn = styled(Link)`
     display: flex;
     flex-direction: column;
-    position: absolute;
+    /* position: absolute;
     top: 160px;
     right: 0;
     width: 80px;
-    height: 80px;
-
+    height: 80px; */
+    
     border-radius: 50%;
 
     stroke: #fff;
@@ -68,6 +68,19 @@ const Btn = styled(Link)`
             background: none;
             background-color: #9bd0ff;
         }
+    }
+
+
+    @media screen and ( max-width: 767px ) {
+      position: fixed;
+      left: 60%;
+      bottom: 200px;
+
+       width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      padding: 2px;
+         
     }
 `;
 

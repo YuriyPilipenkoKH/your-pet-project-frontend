@@ -17,7 +17,7 @@ import { ReactComponent as Camera } from '../../../images/userPageIcons/camera.s
 import operations from '../../../redux/auth/auth-operations';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
-import { Notify } from 'notiflix';
+
 
 const UserData = ({ user }) => {
 
