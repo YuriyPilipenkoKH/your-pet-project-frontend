@@ -17,6 +17,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 const schema = object({
     name: string()
@@ -53,6 +55,13 @@ export default function PersonalDetails({
     const [name, setName] = useLocalStorage('nameYourPet', '');
     const [birth, setBirth] = useLocalStorage('birthYourPet', '');
     const [typePet, setTypePet] = useLocalStorage('typePetYourPet', '');
+
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
     const {
         register,
         handleSubmit,
@@ -83,18 +92,18 @@ export default function PersonalDetails({
 
     return (
         <Form addPet>
-            <Title addPet>Add pet</Title>
+            <Title addPet>{lang.addYourPet}</Title>
             {children}
             <form
                 onSubmit={handleSubmit(deliveryData)}
                 style={{ marginTop: '16px' }}
             >
                 <LabelForAdd>
-                    <TypeInput>Pet’s name</TypeInput>
+                    <TypeInput>{lang.petsname} </TypeInput>
                     <InputForAddPet
                         {...register('name')}
                         aria-invalid={errors.name ? 'true' : 'false'}
-                        placeholder="Type name pet"
+                        placeholder={lang.typename}
                         type="text"
                         value={name}
                         style={{
@@ -149,11 +158,11 @@ export default function PersonalDetails({
                     )}
                 </LabelForAdd>
                 <LabelForAdd>
-                    <TypeInput>Date of birth</TypeInput>
+                    <TypeInput>{lang.birthday}</TypeInput>
                     <InputForAddPet
                         {...register('birth')}
                         aria-invalid={errors.birth ? 'true' : 'false'}
-                        placeholder="Type date of birth"
+                        placeholder={lang.typebirth}
                         type="text"
                         value={birth}
                         style={{
@@ -213,7 +222,7 @@ export default function PersonalDetails({
                     <InputForAddPet
                         {...register('typePet')}
                         aria-invalid={errors.typePet ? 'true' : 'false'}
-                        placeholder="Type of pet"
+                        placeholder={lang.typepet}
                         type="text"
                         value={typePet}
                         style={{
@@ -269,10 +278,10 @@ export default function PersonalDetails({
                 </LabelForAdd>
                 <WrapperNextBackButton>
                     <ButtonTransparent addPet onClick={() => beforeForm()}>
-                        <BiArrowBack /> {stepNumber > 1 ? 'Back' : 'Cancel'}
+                        <BiArrowBack /> {stepNumber > 1 ? lang.back : lang.cancel}
                     </ButtonTransparent>
                     <Button stepNumber={stepNumber} addPet type="submit">
-                        {stepNumber > 2 ? 'Done' : 'Next'} {iconPawprint}
+                        {stepNumber > 2 ? lang.done : lang.next} {iconPawprint}
                     </Button>
                 </WrapperNextBackButton>
             </form>

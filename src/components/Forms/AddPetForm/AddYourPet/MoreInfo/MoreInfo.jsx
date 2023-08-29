@@ -101,7 +101,7 @@ export default function MoreInfo({
                 style={{ marginTop: "16px" }}
             >
                 <LabelForAddImage>
-                    <TypeInput addImage>Load the pet’s image:</TypeInput>
+                    <TypeInput addImage>{lang.loadimg}</TypeInput>
                     <ImageWrapper>
                         <InputUploadImage
                             {...register('imageURL')}
@@ -138,14 +138,14 @@ export default function MoreInfo({
                     )}
                 </LabelForAddImage>
                 <LabelForAdd coment>
-                    <TypeInput>Comments</TypeInput>
+                    <TypeInput>{lang.comments}</TypeInput>
                     <Textarea
                         {...register('coment')}
                         aria-invalid={errors.coment ? 'true' : 'false'}
                         {...register('coment', {
                             maxLength: 120,
                         })}
-                        placeholder="Type of pet"
+                        placeholder={lang.typepet}
                         type="text"
                         value={coment}
                         spellCheck="false"
@@ -208,10 +208,10 @@ export default function MoreInfo({
                 </LabelForAdd>
                 <WrapperNextBackButton>
                     <ButtonTransparent addPet onClick={() => beforeForm()}>
-                        <BiArrowBack /> {stepNumber > 1 ? 'Back' : 'Cancel'}
+                        <BiArrowBack /> {stepNumber > 1 ? lang.back : lang.cancel}
                     </ButtonTransparent>
                     <Button stepNumber={stepNumber} addPet type="submit">
-                        {stepNumber > 2 ? 'Done' : 'Next'} {iconPawprint}
+                        {stepNumber > 2 ? lang.done : lang.next} {iconPawprint}
                     </Button>
                 </WrapperNextBackButton>
             </form>

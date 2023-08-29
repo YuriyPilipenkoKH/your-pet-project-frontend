@@ -16,6 +16,13 @@ const langEN = {
     filter: 'Filter',
     filters: 'Filters',
     addPet: 'Add pet',
+    addYourPet: 'Add your pet',
+
+    addLostPet: 'Add lost pet',
+    
+    addLostPet: 'Add lost pet',
+    addLostPet: 'Add lost pet',
+
 
     contactsBtn: 'Contacts',
     logBtn: 'Login',
@@ -116,7 +123,14 @@ const langEN = {
 
     male: 'Male',
     female: 'Female',
- 
+
+    typetitle: 'Type title',
+    typename: 'Type name pet',
+    typebirth: 'Type date of birth',
+    typepet: 'Type of pet',
+    typelocation: 'Type of location',
+
+  
     
 
               
@@ -153,8 +167,12 @@ const langUA = {
 
     filter: 'Фільтр',
     filters: 'Фільтри',
-    addPet: 'Додати',
+    addPet: 'Додати оголошення',
+    addYourPet: 'Додати улюбленця',
+    
+    addLostPet: 'Додайте загублену тварину',
 
+    
     contactsBtn: 'Контакти',
     logBtn: 'Увійти',
     outBtn: 'Вийти',
@@ -171,7 +189,7 @@ const langUA = {
     fem: 'жіночої статі',
 
     learnmore: 'Дізнатися більше',
-    name: 'Ім’я:',
+    name: 'Ім’я',
     birthday: 'Дата народження',
     type: 'Порода',
     place: 'Локація',
@@ -197,7 +215,7 @@ const langUA = {
     City: 'Місто',
 
     addto: 'Додати',
-    remove: 'Видаляти',
+    remove: 'Видалити',
     contact: 'Зв’язок',
 
     footerTitle: 'React-телефонна книга-2023',
@@ -250,6 +268,12 @@ const langUA = {
     location: 'Локація',
     male: 'Чол',
     female: 'Жін',
+
+    typetitle: 'Введіть назву',
+    typename: 'Введіть iм’я улюбленця',
+    typebirth: 'Введіть дату народження',
+    typepet: 'Введіть породу',
+    typelocation: 'Введіть локацію',
     
 
     empty: "Список порожній...",
