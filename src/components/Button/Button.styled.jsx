@@ -452,8 +452,10 @@ outline: none;
 /* background-color: var(--background-link); */
 padding: 4px 16px;
 border-radius: 40px;
-
+transition: all 1s ease-in-out;
 &>svg {
+
+  transition: all 1s ease-in-out;
    fill: var(--text-color) !important;
 }
 
