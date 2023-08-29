@@ -302,7 +302,7 @@ export default function RegisterForm() {
                     <InputForAuthorization
                         {...register('confirmPassword')}
                         aria-invalid={confirmPasswordError ? 'true' : 'false'}
-                        placeholder={lang.confirm}
+                        placeholder={lang.confirmPass}
                         type={showTwo ? 'text' : 'password'}
                         value={confirmPassword}
                         title="Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long."
