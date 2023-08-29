@@ -46,7 +46,8 @@ const UserDataItem = ({
     return (
         <FormWrapper>
             <FormItem>
-                <InputName>{ newLabel }</InputName>
+            {/* <InputName>{ lang[newLabel] }</InputName> */}
+                <InputName>{newLabel}</InputName>
                 <FormLabel htmlFor={id}></FormLabel>
                 {!!isdisabled && (
                     <EditInpuButton

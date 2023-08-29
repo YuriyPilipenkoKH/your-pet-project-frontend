@@ -9,7 +9,7 @@ const langEN = {
     friends: 'Our Friends',
     sell: 'sell',
     lost: 'lost/found',
-    hands: 'in good hands',
+    goodhands: 'in good hands',
     favadds: 'favorite ads',
     myadds: 'my ads',
 
@@ -48,7 +48,10 @@ const langEN = {
     phone: 'Phone:',
     comments: 'Comments:',
     email: 'Email:',
-    confirm: "Confirm password",
+    confirmPass: "Confirm password",
+
+    confirm: "Confirm",
+    edit: 'Edit',
 
     addto: 'Add to',
     remove: 'Remove',
@@ -59,6 +62,10 @@ const langEN = {
     city: 'City:',
     birthday: 'Birthday:',
     
+    yourpet: 'your pet',
+    chooseoption: 'Choose  option',
+    details: 'Personal details',
+    moreinfo: 'More info',
    
 
 
@@ -76,11 +83,30 @@ const langEN = {
     try: "Try again",
     phonebook: "Phonebook",
     number: "Number",
+
+    next: "Next",
+    done: "Done",
+    back: "Back",
+    cancel: 'Cancel',
+    yes: 'Yes',
+
+    alreadyleaving: 'Already leaving?',
+    deleteadverstiment: 'Delete adverstiment?',
+    suretodelete : 'Are you sure you want to delete ',
+    youcant: 'You can’t undo this action. ',
+
+    attention : 'Attention ',
+    reminder : 'We would like to remind you that certain functionality is available only to authorized users.If you have an account, please log in with your credentials. If you do not already have an account, you must register to access these features. ',
+
+    congrats: 'Congrats!',
+    registrationsuccess: 'Youre registration is successfull',
+    gotoprofile: 'Go to profile',
+    
    
     
     empty: "List is empty ...",
     add: "Add contact",
-    edit: "EDIT",
+    // edit: "EDIT",
     delete: "DELETE",
     avatar: "Avatar",
     set: "Set",
@@ -104,7 +130,7 @@ const langUA = {
 
     sell: 'продаж',
     lost: 'бюро знахідок',
-    hands: 'в добрі руки',
+    goodhands: 'в добрі руки',
     favadds: 'улюблені',
     myadds: 'мої доповнення',
 
@@ -136,9 +162,15 @@ const langUA = {
     phone: 'Phone:',
     comments: 'Коментарі:',
     email: 'Пошта',
-    confirm: 'Підтвердити пароль',
+    confirmPass: 'Підтвердити пароль',
 
+    confirm: "Підтвердити",
+    edit: "Редагувати",
 
+    yourpet: 'ваш улюбленець',
+    chooseoption: 'Виберіть опцію',
+    details: 'Особисті дані',
+    moreinfo: 'Докладніше',
 
     Name: 'Ім’я::',
     Email: 'Пошта:',
@@ -168,11 +200,30 @@ const langUA = {
     try: "Спробуйте знову",
     phonebook: "Телефонна книга",
     number: "Номер",
+
+    next: "Далі",
+    done: "Виконанио",
+    back: "Назад",
+    cancel: "Відміна",
+    yes: 'Так',
     
+    alreadyleaving: 'Вже йдете?',
+    deleteadverstiment: 'Видалити оголошення?',
+    suretodelete : 'Ви впевнені, що хочете видалити ',
+    youcant : 'Ви не можете скасувати цю дію. ',
+
     
+    attention : 'Увага',
+    reminder : 'Нагадуємо, що певні функції доступні лише авторизованим користувачам. Якщо у вас є обліковий запис, увійдіть, використовуючи свої облікові дані. Якщо у вас ще немає облікового запису, ви повинні зареєструватися, щоб отримати доступ до цих функцій. ',
+    
+
+    congrats: 'Вітаю!',
+    registrationsuccess: 'Ваша реєстрація пройшла успішно',
+    gotoprofile: 'Перейти в профіль',
+
     empty: "Список порожній...",
     add: "Додати контакт",
-    edit: "РЕДАГУВАТИ",
+    // edit: "РЕДАГУВАТИ",
     delete: "ВИДАЛИТИ",
     avatar: "Аватар",
     set: "Встановити",

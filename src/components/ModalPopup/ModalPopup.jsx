@@ -17,6 +17,7 @@ import petsOperations from '../../redux/pets/petsOperations'
 import { StyledLink } from 'components/Button/Button.styled';
 import { iconPawprint } from 'images/icons';
 import { setRegToZero } from 'redux/auth/auth-slice';
+import { StyledLinkLog, StyledLinkReg } from 'components/AuthNav/AuthNav.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -33,6 +34,7 @@ const { language} = useAll()
 const [lang, setLang] = useState(langUA)
 const { modalIsOpen} = useAll()
 const dispatch = useDispatch()
+
 
 useEffect(() => {
   setLang(language === 'english' ?  langEN :  langUA);
@@ -127,11 +129,13 @@ if (type === 1   ){
       <ModalContainer 
       {...props}
       >
-        <ModalTitle>{title}</ModalTitle>
-        <ModalText>{text}</ModalText>
+        <ModalTitle>{lang.attention}</ModalTitle>
+        <ModalText>{lang.reminder}</ModalText>
         <BtnContainer {...props}>
-          {btn1}
-          {btn2}
+        <StyledLinkLog to="/login" exact="true">
+        {lang.logBtn} {iconPawprint} </StyledLinkLog>
+        <StyledLinkReg to="/register" exact="true">
+                         {lang.regBtn}   </StyledLinkReg>
         </BtnContainer >
         <OnCloseButton onClick={shut}  ><RxCross2/></OnCloseButton>
       </ModalContainer>
@@ -145,12 +149,13 @@ if ( type === 2  ){
       <ModalContainer 
       {...props}
       >
-        <ModalTitle>{title}</ModalTitle>
-        <ModalText>{`Are you sure you want to delete  ${cardtitle || name} ? You can’t undo this action.`}</ModalText>
+        <ModalTitle>{lang.deleteadverstiment} </ModalTitle>
+        <ModalText>{lang.suretodelete} {name || 'Your pet'} ?{lang.youcant} </ModalText>
+      
         
         <BtnContainer {...props}>
-          <ButtonTransparent onClick={shut}>Cacel</ButtonTransparent>
-          <Button onClick={removeCard}>Yes <RiDeleteBin6Line/> </Button>,
+          <ButtonTransparent onClick={shut}>{lang.cancel}</ButtonTransparent>
+          <Button onClick={removeCard}>{lang.yes} <RiDeleteBin6Line/> </Button>,
         </BtnContainer >
         <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
       </ModalContainer>
@@ -199,10 +204,10 @@ if (type === 4  ){
       <ModalContainer 
       {...props}
       >
-        <ModalTitle>{title}</ModalTitle>
-        <ModalText>{text}</ModalText>
+        <ModalTitle>{lang.congrats}</ModalTitle>
+        <ModalText>{lang.registrationsuccess}</ModalText>
         <BtnContainer {...props}>
-        <StyledLink to="/profile" exact="true" onClick={shutRegSuccess} >Go to profile {iconPawprint}</StyledLink>
+        <StyledLink to="/profile" exact="true" onClick={shutRegSuccess} >{lang.gotoprofile} {iconPawprint}</StyledLink>
           {btn2}
         </BtnContainer >
         <OnCloseButton onClick={shutRegSuccess}  ><RxCross2/></OnCloseButton>
@@ -217,10 +222,10 @@ if (type === 5 ){
       <ModalContainer 
       {...props}
       >
-        <ModalTitle>{title}</ModalTitle>
+        <ModalTitle> {lang.alreadyleaving} </ModalTitle>
         <BtnContainer {...props}>
-           <ButtonTransparent onClick={shut}>Cacel</ButtonTransparent>
-           <OutButton  to="/" exact="true" onClick={exit}>  Yes <MdOutlineLogout/> </OutButton>
+           <ButtonTransparent onClick={shut}>{lang.cancel} </ButtonTransparent>
+           <OutButton  to="/" exact="true" onClick={exit}>  {lang.yes} <MdOutlineLogout/> </OutButton>
         </BtnContainer >
         <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
       </ModalContainer>

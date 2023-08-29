@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import {  useEffect, useState } from 'react';
 import {
     ButtonSex,
     Form,
@@ -35,6 +35,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 const schema = object({
     coment: string()
@@ -67,6 +69,14 @@ export default function MoreInfo({
     const [imageError, setImageError] = useState(null);
     const [activeError, setActiveError] = useState(null);
     const [active, setActive] = useLocalStorage('activeHands', '');
+
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
+
     const {
         register,
         handleSubmit,
@@ -343,7 +353,7 @@ export default function MoreInfo({
                 </WrapperForMoreInformation>
                 <WrapperNextBackButton addPetMoreInformation>
                     <ButtonTransparent addPet onClick={() => beforeForm()}>
-                        <BiArrowBack /> {stepNumber > 1 ? 'Back' : 'Cancel'}
+                        <BiArrowBack /> {stepNumber > 1 ? lang.back : lang.cancel}
                     </ButtonTransparent>
                     <Button
                         stepNumber={stepNumber}
@@ -351,7 +361,7 @@ export default function MoreInfo({
                         addPetMoreInformation
                         type="submit"
                     >
-                        {stepNumber > 2 ? 'Done' : 'Next'} {iconPawprint}
+                        {stepNumber > 2 ? lang.done : lang.next} {iconPawprint}
                     </Button>
                 </WrapperNextBackButton>
             </form>

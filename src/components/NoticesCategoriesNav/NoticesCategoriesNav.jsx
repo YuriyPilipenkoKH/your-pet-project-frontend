@@ -48,7 +48,7 @@ export default function NoticesCategoriesNav() {
                         onClick={() => dispatch(toggleInGoodHands())}
                         className={currentIndex === 2 ? 'active' : ''}
                     >
-                        {lang.hands}
+                        {lang.goodhands}
                     </RadioButton>
 
                     {isLoggedIn && (
