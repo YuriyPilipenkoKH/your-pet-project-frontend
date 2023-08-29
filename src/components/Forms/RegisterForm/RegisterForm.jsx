@@ -117,7 +117,7 @@ export default function RegisterForm() {
                     <InputForAuthorization
                         {...register('name')}
                         aria-invalid={errors.name ? 'true' : 'false'}
-                        placeholder={lang.name}
+                        placeholder={lang.formName}
                         type="text"
                         value={name}
                         style={{

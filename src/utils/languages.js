@@ -34,19 +34,20 @@ const langEN = {
 
     Name: 'Name',
     Email: 'Email',
-    Birthday: 'Date of birth',
+    Birthday: 'Date of birth:',
     Phone: 'Phone',
     City: 'Cit',
 
 
     learnmore: 'Learn more',
-    name: 'Name',
+    name: 'Name: ',
+    formName: 'Name ',
     age: 'Age',
     type: 'Type',
     place: 'Location',
     sex: 'Gender',
     phone: 'Phone',
-    comments: 'Comments',
+    comments: 'Comments:',
     email: 'Email',
     confirmPass: "Confirm password",
 
@@ -176,7 +177,7 @@ const langUA = {
     place: 'Локація',
     sex: 'Стать',
     phone: 'Phone',
-    comments: 'Коментарі',
+    comments: 'Коментарі:',
     email: 'Пошта',
     confirmPass: 'Підтвердити пароль',
 
@@ -189,6 +190,7 @@ const langUA = {
     moreinfo: 'Докладніше',
 
     Name: 'Ім’я:',
+    formName: 'Ім’я ',
     Email: 'Пошта:',
     Birthday: 'Дата народення:',
     Phone: 'Телефон:',
