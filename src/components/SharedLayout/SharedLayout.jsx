@@ -21,21 +21,18 @@ import { UserNav } from 'components/UserNav/UserNav';
 import { DotLoader } from 'react-spinners';
 import { toggleLang } from 'redux/lang/langSlice';
 import { toggleTheme } from 'redux/theme/themeSlice';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useAll } from 'hooks/useAll';
-import {MdOutlineNightlight} from 'react-icons/md';
-import {MdOutlineLightMode} from 'react-icons/md';
+import { MdOutlineNightlight } from 'react-icons/md';
+import { MdOutlineLightMode } from 'react-icons/md';
 import { langEN, langUA } from 'utils/languages';
-
 
 export const SharedLayout = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const isMobile = windowWidth <= 768;
     const { isLoggedIn } = useAuth();
     const dispatch = useDispatch();
-    const {theme, language} = useAll()
- 
-
+    const { theme, language } = useAll();
 
     useEffect(() => {
         const handleResize = () => {
@@ -64,29 +61,31 @@ export const SharedLayout = () => {
                 <Nav />
                 <AuthNavWrap className="AuthNavWrap">
                     {isLoggedIn ? <UserNav /> : <AuthNav />}
-                        <ButtonBurger onClick={toggleMenu}>
-                            <RxHamburgerMenu />
-                        </ButtonBurger>
-                    </AuthNavWrap>
-                    <MobileMenu isOpen={isOpen} onClose={toggleMenu} />
-                    <AuthBtnWrap >
-                        <LangBtn
-                         onClick={() => dispatch(toggleLang())}
-                         type="button">
-                         {language === 'english' ?  'EN' :  'UA'}
-                         </LangBtn>
-                         <ThemeBtn
-                         onClick={() => dispatch(toggleTheme())}
-                         type="button"
-                         >
-                           {theme === 'light'
-                           ? <MdOutlineLightMode size={25}/>
-                           : <MdOutlineNightlight size={25}/>
-                           }
-                        </ThemeBtn>
-                    </AuthBtnWrap>
-                </LayoutWrap>
-        
+                    <ButtonBurger onClick={toggleMenu}>
+                        <RxHamburgerMenu />
+                    </ButtonBurger>
+                </AuthNavWrap>
+                <MobileMenu isOpen={isOpen} onClose={toggleMenu} />
+                <AuthBtnWrap>
+                    <LangBtn
+                        onClick={() => dispatch(toggleLang())}
+                        type="button"
+                    >
+                        {language === 'english' ? 'EN' : 'UA'}
+                    </LangBtn>
+                    <ThemeBtn
+                        onClick={() => dispatch(toggleTheme())}
+                        type="button"
+                    >
+                        {theme === 'light' ? (
+                            <MdOutlineLightMode size={25} />
+                        ) : (
+                            <MdOutlineNightlight size={25} />
+                        )}
+                    </ThemeBtn>
+                </AuthBtnWrap>
+            </LayoutWrap>
+
             <Suspense
                 fallback={
                     <DotLoader

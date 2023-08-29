@@ -20,7 +20,6 @@ const petsSlice = createSlice({
             .addCase(
                 petsOperations.getPet.fulfilled,
                 (state, { payload }) => {
-                console.log('payload',payload)
                     state.loading = false;
                     state.listPets = payload.pets
                     state.owner = payload.owner
@@ -61,7 +60,6 @@ const petsSlice = createSlice({
             .addCase(
                 petsOperations.removeMyPet.fulfilled,
                 (state, { payload }) => {
-                    console.log(payload);
                     state.message = payload.message
                     state.reRender = false;
                 }
