@@ -120,13 +120,13 @@ useEffect(() => {
      dispatch(toggleSell())
      dispatch(setModalClose())
      dispatch(authOperations.logOut())
-     .unwrap().then(originalPromiseResult => {
-      console.log('originalPromiseResult', originalPromiseResult)
-      Notify.success(`${originalPromiseResult.user.name} Logout  successfull!`);
-    })
-    .catch(() => {
-      Notify.failure('Incorrect logout operation');
-    });
+    //  .unwrap().then(originalPromiseResult => {
+    //   console.log('originalPromiseResult', originalPromiseResult)
+    //   Notify.success(`${originalPromiseResult.user.name} Logout  successfull!`);
+    // })
+    // .catch(() => {
+    //   Notify.failure('Incorrect logout operation');
+    // });
   }
   // className='modal-backdrop'
 

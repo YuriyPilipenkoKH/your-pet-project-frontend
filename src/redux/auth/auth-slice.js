@@ -11,7 +11,6 @@ const initialState = {
       city: "",
       favorite: [],
       itemsFavorite: [], 
-      message: '',
     },
     
     registrationSuccessful: false,
@@ -20,6 +19,7 @@ const initialState = {
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
+    message: '',
   };
 
 const authSlice = createSlice({
@@ -108,7 +108,7 @@ const authSlice = createSlice({
             state.token = null;
             state.isLoggedIn = false;
             state.user.favorite = [];
-            state.message = action.payload.message
+            
         })
         .addCase(authOperations.logOut.rejected, (state, action) => {
             state.isLoading = false;
