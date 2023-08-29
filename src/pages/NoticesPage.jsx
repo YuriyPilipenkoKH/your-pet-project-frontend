@@ -25,7 +25,7 @@ import { useState } from 'react';
 export default function NoticesPage() {
     const [itemOffset, setItemOffset] = useState(0);
     const [numButtons, setNumButtons] = useState(5);
-    const [page, setPage] = useState(2);
+    const [page, setPage] = useState(1);
     const location = useLocation();
     const {
         filterByAgeIdx,
