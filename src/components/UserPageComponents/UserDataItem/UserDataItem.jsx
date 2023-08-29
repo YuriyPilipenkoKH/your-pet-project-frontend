@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
 import { nanoid } from 'nanoid';
 import { ErrorMessage } from 'formik';
+import {  useEffect, useState } from 'react';
+
 import {
     FormWrapper,
     FormItem,
@@ -12,6 +14,8 @@ import {
     ConfirmIcon,
     ErrorContainer,
 } from './UserDataItem.styled';
+import { langEN, langUA } from 'utils/languages';
+import { useAll } from 'hooks/useAll';
 
 const UserDataItem = ({
     label,
@@ -25,6 +29,14 @@ const UserDataItem = ({
     onSubmit,
     ...props
 }) => {
+    const newLabel = label.slice(0, -1)
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
+   
     const id = useMemo(() => nanoid(), []);
 
     const handleActiveClick = name => {
@@ -34,7 +46,7 @@ const UserDataItem = ({
     return (
         <FormWrapper>
             <FormItem>
-                <InputName>{label}</InputName>
+                <InputName>{ newLabel }</InputName>
                 <FormLabel htmlFor={id}></FormLabel>
                 {!!isdisabled && (
                     <EditInpuButton

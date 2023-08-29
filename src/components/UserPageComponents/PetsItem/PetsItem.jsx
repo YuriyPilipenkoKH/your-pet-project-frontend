@@ -12,9 +12,11 @@ import {
 // import avatarDefault2x from '../../../images/Photo_default@2x.jpg';
 import {ReactComponent as DeletePet} from '../../../images/userPageIcons/trash-2.svg'
 import { Btn } from '../IconButton/IconButton.styled';
-import {  useState } from 'react';
+import {  useEffect, useState } from 'react';
 import { modal1, modal2 } from 'modals/modals';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 
 const PetsItem = ({
@@ -23,6 +25,12 @@ const PetsItem = ({
 
     const [showModal, setShowModal] = useState(false);
     const [modals, setModals] = useState(modal1);
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
 
     const removePet = () => {
         
@@ -43,7 +51,7 @@ const PetsItem = ({
                     <InfoWrap style={{ maxWidth: 580 }}>
                         <NameWrapper>
                             <InfoItem>
-                                <SubTitle>Name:&nbsp;</SubTitle>
+                                <SubTitle>{lang.name}</SubTitle>
                                 <InfoText> {name} </InfoText>
                             </InfoItem>
                             <Btn 
@@ -58,12 +66,12 @@ const PetsItem = ({
                             ></IconButton> */}
                         </NameWrapper>
                         <InfoItem>
-                            <SubTitle>Date of birth:&nbsp; </SubTitle>
+                            <SubTitle>{lang.Birthday}</SubTitle>
                             <InfoText> {birthday} </InfoText>
                         </InfoItem>
                         <InfoItem>
                             <PetComment>
-                                Comments:&nbsp;
+                                {lang.comments}
                                 <InfoText> {comments} </InfoText>
                             </PetComment>
                         </InfoItem>

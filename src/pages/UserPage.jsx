@@ -19,6 +19,7 @@ import { useDispatch } from 'react-redux';
 import petsOperations from '../redux/pets/petsOperations';
 import { useAll } from 'hooks/useAll';
 import { setRegToZero } from 'redux/auth/auth-slice';
+import { langEN, langUA } from 'utils/languages';
 
 const UserPage = () => {
     const location = useLocation();
@@ -28,6 +29,12 @@ const UserPage = () => {
     const dispatch = useDispatch();
     const user = useSelector(getUser);
     // const pets = useSelector(getPets);
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
 
     // console.log(useSelector(getPets))
     useEffect(() => {
@@ -59,7 +66,7 @@ const UserPage = () => {
                 <MainContent>
                     <div>
                         <TitleWrap>
-                            <Title>My information:</Title>
+                            <Title> {lang.info} </Title>
                         </TitleWrap>
                         <Card>
                             <UserData user={user} />

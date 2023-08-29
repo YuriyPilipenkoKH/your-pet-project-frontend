@@ -258,6 +258,12 @@ export const PetList = styled.div`
     font-weight: 600;
 } 
 }
+&>span,  &>p{
+       overflow: hidden;
+        text-overflow: ellipsis; 
+        white-space: nowrap; 
+}
+
 & > p:last-child {
   
     font-size: 14px; 
@@ -270,7 +276,7 @@ export const PetList = styled.div`
     top: 360px;
     left: 40px;
     width: 600px;
-} /* Expand the field to span two columns */
+} 
 
   }
   @media screen and (min-width: 768px) {
@@ -278,10 +284,6 @@ export const PetList = styled.div`
     grid-row-gap : 10px;
 } 
 
-&>span{
-       overflow: hidden;
-        text-overflow: ellipsis; 
-        white-space: nowrap; 
-}
+
 
 `

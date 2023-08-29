@@ -7,6 +7,8 @@ import { ReactComponent as LogoutIcon } from '../../../images/userPageIcons/logo
 import * as Yup from 'yup';
 import {  modal5 } from 'modals/modals';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 
 const cityRegex =
@@ -48,6 +50,12 @@ const UserDataForm = ({ user, onSubmit }) => {
 
     const [showModal, setShowModal] = useState(false);
     const [modals, setModals] = useState(modal5);
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
 
     const [initialState, setInitialState] = useState({
         name: '',
@@ -188,7 +196,7 @@ const UserDataForm = ({ user, onSubmit }) => {
             >
                         {/* <LogoutIcon stroke="#54ADFF" /> */}
                         <LogoutIcon />
-                        Log out
+                        {lang.outBtn}
                     </Logout>
                 </UserForm>
             )}

@@ -21,7 +21,7 @@ const langEN = {
     logBtn: 'Login',
     regBtn: 'Register',
     regTitle: 'Registration',
-    outBtn: 'Logout',
+    outBtn: 'Log Out',
     search: 'Search',
     
     byage: 'By age',
@@ -32,9 +32,16 @@ const langEN = {
     man: 'male',
     fem: 'female',
 
+    Name: 'Name:',
+    Email: 'Name:',
+    Birthday: 'Date of birth',
+    Phone: 'Name:',
+    City: 'Name:',
+
+
     learnmore: 'Learn more',
     name: 'Name:',
-    birthday: 'Age:',
+    age: 'Age:',
     type: 'Type:',
     place: 'Location:',
     sex: 'Gender:',
@@ -46,6 +53,14 @@ const langEN = {
     addto: 'Add to',
     remove: 'Remove',
     contact: 'Contact',
+
+    info: 'My information:',
+    pets: 'My pets:',
+    city: 'City:',
+    birthday: 'Birthday:',
+    
+   
+
 
     footerTitle: 'React-Phonebook-2023',
     sname: "name",
@@ -114,7 +129,7 @@ const langUA = {
 
     learnmore: 'Дізнатися більше',
     name: 'Ім’я:',
-    birthday: 'Вік:',
+    birthday: 'Дата народження:',
     type: 'Порода:',
     place: 'Локація:',
     sex: 'Стать:',
@@ -124,12 +139,21 @@ const langUA = {
     confirm: 'Підтвердити пароль',
 
 
+
+    Name: 'Ім’я::',
+    Email: 'Пошта:',
+    Birthday: 'Дата народення:',
+    Phone: 'Телефон:',
+    City: 'Місто:',
+
     addto: 'Додати',
     remove: 'Видаляти',
     contact: 'Зв’язок',
 
     footerTitle: 'React-телефонна книга-2023',
-    
+    info: 'Моя інформація:',
+    pets: 'МоЇ домашні тварини:',
+    city: 'Місто:',
     
    
     pass: 'Пароль',
