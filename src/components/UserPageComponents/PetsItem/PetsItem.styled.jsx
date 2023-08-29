@@ -8,7 +8,8 @@ export const MyPetCard = styled.li`
 
     margin-bottom: 20px;
 
-    background: #ffffff;
+    background: var(--background-color-form);
+    transition: all 1s ease-in-out;
     box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
     border-radius: 20px;
     width: 100%;
@@ -33,6 +34,9 @@ export const InfoWrap = styled.div`
     }
     @media screen and (min-width: 1280px) {
         width: 580px;
+    }
+    &>div>p {
+        
     }
 `;
 
@@ -59,6 +63,8 @@ export const SubTitle = styled.p`
     font-size: 14px;
     line-height: 1.36;
     letter-spacing: 0.04em;
+    color: var(--text-color);
+    transition: all 1s ease-in-out;
     @media screen and (min-width: 768px) {
         font-weight: 600;
     }
@@ -86,6 +92,8 @@ export const InfoText = styled.span`
     letter-spacing: 0.04em;
     word-break: break-word;
     overflow-wrap: break-word;
+    color: var(--text-color);
+    transition: all 1s ease-in-out;
 `;
 
 export const PetComment = styled.p`
@@ -94,6 +102,8 @@ export const PetComment = styled.p`
     font-size: 14px;
     line-height: 1.36;
     letter-spacing: 0.04em;
+    color: var(--text-color);
+    transition: all 1s ease-in-out;
     @media screen and (min-width: 768px) {
         font-weight: 600;
     }
