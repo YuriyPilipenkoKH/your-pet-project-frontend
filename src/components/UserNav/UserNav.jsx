@@ -45,7 +45,6 @@ export const UserNav = ({ onClose }) => {
                 <ProfileWrap className="useravatar">
                     <StyledUserLink
                         className="userlink"
-                        to="/profile"
                         exact="true"
                     >
                         {/* {iconUser} */}

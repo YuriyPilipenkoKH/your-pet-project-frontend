@@ -368,6 +368,3 @@ export const ModalPopup = ({
 //   // title: PropTypes.string.isRequired,
 //   // text: PropTypes.string.isRequired,
 //   // image: PropTypes.string,
-
-//   onClose: PropTypes.func,
-// };
