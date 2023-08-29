@@ -449,11 +449,12 @@ fill: var(--white);
 export const StyledLogo = styled(NavLink)`
 border: none;
 outline: none;
-background-color: transparent;
-padding: 12px 6px;
+/* background-color: var(--background-link); */
+padding: 4px 16px;
+border-radius: 40px;
 
 &>svg {
-   fill: var(--text-color);
+   fill: var(--text-color) !important;
 }
 
 &>:hover {
