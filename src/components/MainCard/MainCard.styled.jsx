@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 
 // import bgImgD from '../../images/cat-d.png';
@@ -22,13 +23,11 @@ export const CardWrapper = styled.div`
 
 
     @media screen and (min-width: 768px) {
-  
-      width: 336px;
+        width: 336px;
     }
 
       @media screen and (min-width: 1280px) {
-        
-        width: 288px;
+         width: 288px;
     }
 
     &:hover,
@@ -60,7 +59,10 @@ export const Im = styled.div`
 
 
 
-export const ImgWrapper = styled.div`
+export const ImgWrapper = styled.div.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) && prop !== 'active' && prop !== 'photo',
+})`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
@@ -117,7 +119,7 @@ export const ImgWrapper = styled.div`
 }      
    background-image: url(${props => props.photo});
    /* background-image: url(${'bgImgM'}); */
-       background-size: cover;
+    background-size: cover;
     background-position: center;  
  
 
@@ -149,7 +151,6 @@ export const ImgWrapper = styled.div`
       background-image: url(${props => props.photo});
     }
   }
-
 
 `
 export const CardTitle = styled.div`

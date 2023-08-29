@@ -19,7 +19,7 @@ export default function NoticesSearch({search}) {
 
   const dispatch = useDispatch()
   const { activeIndex } = useAll()
-  console.log('activeIndex',activeIndex)
+  // console.log('activeIndex',activeIndex)
   const filter = useSelector(getNoticesFilter)
 
   useEffect(() => {
@@ -30,10 +30,10 @@ export default function NoticesSearch({search}) {
 
     e.preventDefault()
     if(activeIndex === 3){
-      dispatch(noticesOperations.fetchAllFavorite());
+      dispatch(noticesOperations.fetchAllFavorite(search));
   }
    else if(activeIndex === 4){
-      dispatch(noticesOperations.fetchUserNotices());
+      dispatch(noticesOperations.fetchUserNotices(search));
   }
   else{
       dispatch(noticesOperations.fetchNoticesByCategory(search));

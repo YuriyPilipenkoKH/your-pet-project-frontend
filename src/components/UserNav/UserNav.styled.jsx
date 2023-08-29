@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { buttonStyles, hoverStylesB,  ripple } from '../Button/Button.styled';
+import isPropValid from '@emotion/is-prop-valid';
 
 export const UserWrap = styled.div`
 
@@ -12,6 +13,7 @@ export const UserWrap = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
     gap: 20px;
 
     &>.logout{
@@ -43,15 +45,36 @@ export const UserWrap = styled.div`
 
 `
 
+export const StyledUserLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+
+`
+
 export const ProfileWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     max-width: 320px;
     font-size: 20px;
     font-weight: 600;
     color: var(--yellow);
+    
+    &>a {
+          color: var(--yellow);
+          display: flex;
+        align-items: center;
+       justify-content: center;
+        gap: 30px;
+
+    }
 
     &>svg{
           fill: var(--yellow);
@@ -65,7 +88,6 @@ export const ProfileWrap = styled.div`
           fill: var(--yellow);
       }
     }
-
 
 
 
@@ -88,3 +110,12 @@ transform: rotate(180deg);
 }
 
 `;
+
+export const PhotoWrap =  styled.img.withConfig({
+  shouldForwardProp: prop => isPropValid(prop) && prop !== 'avatar',
+})`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; 
+
+`

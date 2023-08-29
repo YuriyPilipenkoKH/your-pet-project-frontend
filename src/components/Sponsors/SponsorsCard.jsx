@@ -66,7 +66,7 @@ export const SponsorCard = ({ item }) => {
                         <SponsorText className="sponsors__address">
                             Adress:
                         </SponsorText>
-                        <Span>{item.address}</Span>
+                        <Span>{item.address ? item.address : "shop online"}</Span>
                     </TextWrap>
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__email">

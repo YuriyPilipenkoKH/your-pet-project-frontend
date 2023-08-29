@@ -36,7 +36,7 @@ export const AddToButton = ({ children, ...props }) => {
 
 
 export const ContactButton = ({ children, ...props }) => {
-  return <StyledContactButton type='button' {...props}> {children}</StyledContactButton>;
+  return <StyledContactButton  {...props}> {children}</StyledContactButton>;
 };
 
 export const LearnButton = ({ children, ...props }) => {

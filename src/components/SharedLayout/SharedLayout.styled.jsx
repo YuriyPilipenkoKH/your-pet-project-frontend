@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-
 export const SharedLayoutWrap = styled.div`
+    background-color: var(--background-color);
+    transition: all 1s ease-in-out;
     width: 100%;
 `;
 
@@ -25,15 +26,18 @@ export const LayoutWrap = styled.div`
 export const AuthNavWrap = styled.div`
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
 `;
 
 export const AuthBtnWrap = styled.div`
     position: absolute;
-    bottom: -20px;
+    bottom: -10px;
     display: flex;
     align-items: center;
     gap: 25px;
+  @media screen and (min-width: 768px) {
+    bottom: -20px;
+  }
 
 
 

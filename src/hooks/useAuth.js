@@ -7,7 +7,8 @@ import {
   getToken,
   getIsLoading,
   getRegistrationSuccessful,
-  getUserId
+  getUserId,
+  getUser
   
 } from '../redux/auth/auth-selectors';
 
@@ -18,7 +19,8 @@ export const useAuth = () => {
 
     isLoggedIn: useSelector(getIsLoggedIn),
     isRefreshing: useSelector(getRefreshing),
-    user: useSelector(getUsername),
+    userName: useSelector(getUsername),
+    user: useSelector(getUser),
     userId: useSelector(getUserId ),
     isLoading: useSelector(getIsLoading),
     isFetching: useSelector(getIsFetching),

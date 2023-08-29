@@ -16,13 +16,13 @@ export const Logout = styled(OutButton)`
     margin: 21px 0 0 2px;
     padding: 0;
     stroke: #54adff;
-    width: 100px;
+    width: 155px ;
 
     font-family: Manrope;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.35;
-    background: transparent;
+    background: none;
     border: none;
     letter-spacing: 0.04em;
     color: #888888;

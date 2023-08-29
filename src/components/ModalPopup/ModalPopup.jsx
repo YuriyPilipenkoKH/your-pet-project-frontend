@@ -13,22 +13,28 @@ import { useAll } from 'hooks/useAll';
 import { toggleSell } from 'redux/sort/sortSlice';
 import { authOperations } from "redux/auth";
 import { langEN, langUA } from 'utils/languages';
-
+import petsOperations from '../../redux/pets/petsOperations'
+import { StyledLink } from 'components/Button/Button.styled';
+import { iconPawprint } from 'images/icons';
+import { setRegToZero } from 'redux/auth/auth-slice';
+import { StyledLinkLog, StyledLinkReg } from 'components/AuthNav/AuthNav.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
 
-export const ModalPopup = ({ type, delid, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose , cardtitle, petAvatarURL, category, location, name, birthday, sex, animal, comments, isLike, currentDiv} ) => {
+export const ModalPopup = ({ type, path, delid, isOpen, checkRoute, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized,  btn1, btn2 , onClose , cardtitle, petAvatarURL, category, location, name, birthday, sex, animal, comments, isLike, currentDiv} ) => {
 
 const props = {
   type, widthm, heightm, widthd, heightd,  title, text, image, btnsizem, btnsized, delid
 }
-console.log('props', props)
+// console.log('props', props)
+console.log('name', name)
 
 const { language} = useAll()
 const [lang, setLang] = useState(langUA)
 const { modalIsOpen} = useAll()
 const dispatch = useDispatch()
+
 
 useEffect(() => {
   setLang(language === 'english' ?  langEN :  langUA);
@@ -84,11 +90,27 @@ useEffect(() => {
     dispatch(setModalClose())
     onClose()
   }
+  const shutRegSuccess = () => {
+    dispatch(setModalClose())
+    dispatch(setRegToZero())
+    onClose()
+
+  }
 
   const removeCard = () => {
-    dispatch(noticesOperations.fetchDeleteNotice(delid))
-    dispatch(setModalClose())
-    onClose()
+
+    if(path === 'notice') {
+
+      dispatch(noticesOperations.fetchDeleteNotice(delid))
+     dispatch(setModalClose())
+     onClose()
+    }
+    else if(path === 'pet') {
+
+      dispatch(petsOperations.removeMyPet(delid))
+     dispatch(setModalClose())
+     onClose()
+    }
 
   }
 
@@ -98,20 +120,22 @@ useEffect(() => {
      dispatch(authOperations.logOut())
     onClose()
   }
+  // className='modal-backdrop'
 
 
-
-if (type === 1  || type === 4  ){
+if (type === 1   ){
   return  createPortal(
-    <ModalOverlay className='modal-backdrop'>
+    <ModalOverlay className={`modal ${isOpen ? 'active' : 'modal-backdrop'}`}> 
       <ModalContainer 
       {...props}
       >
-        <ModalTitle>{title}</ModalTitle>
-        <ModalText>{text}</ModalText>
+        <ModalTitle>{lang.attention}</ModalTitle>
+        <ModalText>{lang.reminder}</ModalText>
         <BtnContainer {...props}>
-          {btn1}
-          {btn2}
+        <StyledLinkLog to="/login" exact="true">
+        {lang.logBtn} {iconPawprint} </StyledLinkLog>
+        <StyledLinkReg to="/register" exact="true">
+                         {lang.regBtn}   </StyledLinkReg>
         </BtnContainer >
         <OnCloseButton onClick={shut}  ><RxCross2/></OnCloseButton>
       </ModalContainer>
@@ -121,16 +145,17 @@ if (type === 1  || type === 4  ){
 }
 if ( type === 2  ){
   return  createPortal(
-    <ModalOverlay className='modal-backdrop'>
+    <ModalOverlay className={`modal ${isOpen ? ['active', 'modal-backdrop'].join(' ') : 'modal-backdrop'}`}>
       <ModalContainer 
       {...props}
       >
-        <ModalTitle>{title}</ModalTitle>
-        <ModalText>{`Are you sure you want to delete  ${cardtitle} ? You can’t undo this action.`}</ModalText>
+        <ModalTitle>{lang.deleteadverstiment} </ModalTitle>
+        <ModalText>{lang.suretodelete} {name || 'Your pet'} ?{lang.youcant} </ModalText>
+      
         
         <BtnContainer {...props}>
-          <ButtonTransparent onClick={shut}>Cacel</ButtonTransparent>
-          <Button onClick={removeCard}>Yes <RiDeleteBin6Line/> </Button>,
+          <ButtonTransparent onClick={shut}>{lang.cancel}</ButtonTransparent>
+          <Button onClick={removeCard}>{lang.yes} <RiDeleteBin6Line/> </Button>,
         </BtnContainer >
         <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
       </ModalContainer>
@@ -140,7 +165,7 @@ if ( type === 2  ){
 }
 if (type === 3){
   return  createPortal(
-    <ModalOverlay className='modal-backdrop'>
+    <ModalOverlay className={`modal ${isOpen ? ['active', 'modal-backdrop'].join(' ') : 'modal-backdrop'}`}>
       <ModalContainer3  >
         {image && <ModalImage src={petAvatarURL} alt="Modal Image" />}
         <ModalCategory > {category} </ModalCategory>
@@ -162,9 +187,10 @@ if (type === 3){
         <BtnContainer3 style={{marginTop: 'auto'}}>
         <ContactButton to="mailto:alex@gmail.com" > {lang.contact} </ContactButton>
           <AddFavButton  
+          className='addFav'
           isLike={isLike}
           currentDiv={currentDiv}
-          onClick ={checkRoute}>{isLike === currentDiv ? `${lang.addto}` : `${lang.remove}` } <FaRegHeart/> </AddFavButton>
+          onClick ={checkRoute}>{isLike === currentDiv ? `${lang.remove}` : `${lang.addto}` } <FaRegHeart/> </AddFavButton>
         </BtnContainer3>
         <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
       </ModalContainer3>
@@ -172,16 +198,34 @@ if (type === 3){
       modalRoot
   );
 }
-if (type === 5 ){
+if (type === 4  ){
   return  createPortal(
-    <ModalOverlay className='modal-backdrop'>
+    <ModalOverlay className={`modal ${isOpen ? 'active' : 'modal-backdrop'}`}> 
       <ModalContainer 
       {...props}
       >
-        <ModalTitle>{title}</ModalTitle>
+        <ModalTitle>{lang.congrats}</ModalTitle>
+        <ModalText>{lang.registrationsuccess}</ModalText>
         <BtnContainer {...props}>
-           <ButtonTransparent onClick={shut}>Cacel</ButtonTransparent>
-           <OutButton  to="/" exact="true" onClick={exit}>  Yes <MdOutlineLogout/> </OutButton>
+        <StyledLink to="/profile" exact="true" onClick={shutRegSuccess} >{lang.gotoprofile} {iconPawprint}</StyledLink>
+          {btn2}
+        </BtnContainer >
+        <OnCloseButton onClick={shutRegSuccess}  ><RxCross2/></OnCloseButton>
+      </ModalContainer>
+    </ModalOverlay>,
+      modalRoot
+  );
+}
+if (type === 5 ){
+  return  createPortal(
+    <ModalOverlay className={`modal ${isOpen ? ['active', 'modal-backdrop'].join(' ') : 'modal-backdrop'}`}>
+      <ModalContainer 
+      {...props}
+      >
+        <ModalTitle> {lang.alreadyleaving} </ModalTitle>
+        <BtnContainer {...props}>
+           <ButtonTransparent onClick={shut}>{lang.cancel} </ButtonTransparent>
+           <OutButton  to="/" exact="true" onClick={exit}>  {lang.yes} <MdOutlineLogout/> </OutButton>
         </BtnContainer >
         <OnCloseButton onClick={shut} ><RxCross2/></OnCloseButton>
       </ModalContainer>

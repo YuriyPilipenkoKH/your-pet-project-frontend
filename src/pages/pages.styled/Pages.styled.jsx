@@ -1,18 +1,12 @@
 import styled from 'styled-components';
 
 import bgImgD from '../../images/home-bg-d.png';
-import bgImgD2 from '../../images/home-bg-d@2x.png';
 import bgImgM from '../../images/home-bg-m.png';
-import bgImgM2 from '../../images/home-bg-m@2x.png';
 import bgImgT from '../../images/home-bg-t.png';
-import bgImgT2 from '../../images/home-bg-m@2x.png';
 
 import FormBgImgD from '../../images/form-bg-d.png';
-import FormBgImgD2 from '../../images/form-bg-d@2x.png';
 import FormBgImgM from '../../images/form-bg-m.png';
-import FormBgImgM2 from '../../images/form-bg-m@2x.png';
 import FormBgImgT from '../../images/form-bg-t.png';
-import FormBgImgT2 from '../../images/form-bg-m@2x.png';
 
 import bgImgNotfoundM from '../../images/notfound-bg-m.png';
 import bgImgNotfoundM2 from '../../images/notfound-bg-m@2x.png';
@@ -28,22 +22,10 @@ export const HomeWrapper = styled.div`
     background-image: url('${bgImgM}');
     padding: 40px 20px 0 20px;
 
-    @media (min-device-pixel-ratio: 2),
-        (min-resolution: 192dpi),
-        (min-resolution: 2dppx) {
-        background-image: url('${bgImgM2}');
-    }
-
     @media screen and (min-width: 768px) {
         padding: 80px 20px 0 20px;
         height: 1024px;
         background-image: url('${bgImgT}');
-
-        @media (min-device-pixel-ratio: 2),
-            (min-resolution: 192dpi),
-            (min-resolution: 2dppx) {
-            background-image: url('${bgImgT2}');
-        }
     }
 
     @media screen and (min-width: 1280px) {
@@ -53,12 +35,6 @@ export const HomeWrapper = styled.div`
         justify-content: start;
         height: 768px;
         background-image: url('${bgImgD}');
-
-        @media (min-device-pixel-ratio: 2),
-            (min-resolution: 192dpi),
-            (min-resolution: 2dppx) {
-            background-image: url('${bgImgD2}');
-        }
     }
 `;
 
@@ -69,22 +45,10 @@ export const HomeWrapperTwo = styled.div`
     background-image: url('${FormBgImgM}');
     padding: 0px 20px 0 20px;
 
-    @media (min-device-pixel-ratio: 2),
-        (min-resolution: 192dpi),
-        (min-resolution: 2dppx) {
-        background-image: url('${FormBgImgM2}');
-    }
-
     @media screen and (min-width: 768px) {
         padding: 40px 20px 0 20px;
-        height: 1200px;
+        height: 800px;
         background-image: url('${FormBgImgT}');
-
-        @media (min-device-pixel-ratio: 2),
-            (min-resolution: 192dpi),
-            (min-resolution: 2dppx) {
-            background-image: url('${FormBgImgT2}');
-        }
     }
 
     @media screen and (min-width: 1280px) {
@@ -94,12 +58,6 @@ export const HomeWrapperTwo = styled.div`
         justify-content: start;
         height: 768px;
         background-image: url('${FormBgImgD}');
-
-        @media (min-device-pixel-ratio: 2),
-            (min-resolution: 192dpi),
-            (min-resolution: 2dppx) {
-            background-image: url('${FormBgImgD2}');
-        }
     }
 `;
 // Home title
@@ -181,13 +139,13 @@ export const SearchIcon = styled.span`
 `;
 
 export const SearchInput = styled.input`
-    width: 280px;
-    height: 44px;
-    font-size: 16px;
-    padding: 0 30px;
-    border: 1px solid var(--blue);
-    border-radius: 50px;
-    color: var(--grey);
+  width: 280px;
+  height: 44px;
+  font-size: 16px;
+  padding: 0 30px;
+  border: 1px solid var(--blue);
+  border-radius:50px;
+  color: var(--grey);
 
     &::placeholder {
         font-size: 14px;
@@ -264,6 +222,7 @@ export const Wrapper = styled.div`
 `;
 //Notfound
 export const Notfound = styled.div`
+    padding-top: 30px;
     height: 600px;
     width: 320px;
     background-image: url('${bgImgNotfoundM}');
@@ -303,7 +262,6 @@ export const Notfound = styled.div`
 `;
 
 export const CommonWrapper = styled.div`
-    min-height: 900px;
     display: grid;
     gap: 24px;
 `;
@@ -311,6 +269,7 @@ export const CommonWrapper = styled.div`
 export const PaginationWrapper = styled.div`
     display: flex;
     gap: 5px;
+    justify-content: center;
     padding-bottom: 40px;
     @media screen and (min-width: 768px) {
         gap: 40px;
@@ -319,10 +278,14 @@ export const PaginationWrapper = styled.div`
 `;
 export const PaginationButton = styled.button.withConfig({
     shouldForwardProp: prop =>
-        isPropValid(prop) && prop !== 'active' && prop !== 'currentButton',
+        isPropValid(prop) &&
+        prop !== 'active' &&
+        prop !== 'currentButton' &&
+        prop !== 'theme',
 })`
     color: ${({ active, currentButton }) =>
         active === currentButton ? 'var(--white)' : 'var(--black)'};
+    color: ${({ theme }) => theme === 'dark' && 'var(--white)'};
     background-color: transparent;
     background-color: ${({ active, currentButton }) =>
         active === currentButton ? 'var(--blue)' : 'transparent'};
@@ -335,6 +298,11 @@ export const PaginationButton = styled.button.withConfig({
     padding: 10px 14px;
     border-radius: 50%;
     cursor: pointer;
+
+    & > svg > path {
+        fill: ${({ theme }) => theme === 'dark' && 'var(--white)'};
+        fill-opacity: ${({ theme }) => theme === 'dark' && '1'};
+    }
 `;
 
 export const ListButtonForPagination = styled.div`

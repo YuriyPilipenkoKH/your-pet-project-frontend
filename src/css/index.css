@@ -59,6 +59,7 @@
   --title-fz: 48px;
   --title-fz-m: 24px;
   --app-title: #001129;
+  --btwidth: 130px;
 
 }
 
@@ -68,7 +69,7 @@
   --title-fz: 40px;
   --title-fz-m: 18px;
   --app-title: #777;
-
+  --btwidth: 150px;
 }
 
 body {

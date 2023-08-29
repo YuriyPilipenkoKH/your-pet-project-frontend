@@ -1,6 +1,6 @@
 const langEN = {
     appTitle: 'Find your favorite pet',
-    appUnderTitle: `Take good care of your small pets`,
+    homeTitle: `Take good care of your small pets`,
     homeBtn: 'Home',
 
     news: 'News',
@@ -9,9 +9,9 @@ const langEN = {
     friends: 'Our Friends',
     sell: 'sell',
     lost: 'lost/found',
-    hands: 'in good hands',
-    favadds: 'favorite adds',
-    myadds: 'my adds',
+    goodhands: 'in good hands',
+    favadds: 'favorite ads',
+    myadds: 'my ads',
 
     filter: 'Filter',
     filters: 'Filters',
@@ -20,7 +20,8 @@ const langEN = {
     contactsBtn: 'Contacts',
     logBtn: 'Login',
     regBtn: 'Register',
-    outBtn: 'Logout',
+    regTitle: 'Registration',
+    outBtn: 'Log Out',
     search: 'Search',
     
     byage: 'By age',
@@ -31,19 +32,42 @@ const langEN = {
     man: 'male',
     fem: 'female',
 
-    learnmore: 'Дізнатися більше',
-    name: 'Ім’я:',
-    birthday: 'Вік:',
-    type: 'Порода:',
-    place: 'Локація:',
-    sex: 'Стать:',
+    Name: 'Name:',
+    Email: 'Name:',
+    Birthday: 'Date of birth',
+    Phone: 'Name:',
+    City: 'Name:',
+
+
+    learnmore: 'Learn more',
+    name: 'Name:',
+    age: 'Age:',
+    type: 'Type:',
+    place: 'Location:',
+    sex: 'Gender:',
     phone: 'Phone:',
-    comments: 'Коментарі:',
-    email: 'Пошта:',
+    comments: 'Comments:',
+    email: 'Email:',
+    confirmPass: "Confirm password",
+
+    confirm: "Confirm",
+    edit: 'Edit',
 
     addto: 'Add to',
     remove: 'Remove',
     contact: 'Contact',
+
+    info: 'My information:',
+    pets: 'My pets:',
+    city: 'City:',
+    birthday: 'Birthday:',
+    
+    yourpet: 'your pet',
+    chooseoption: 'Choose  option',
+    details: 'Personal details',
+    moreinfo: 'More info',
+   
+
 
     footerTitle: 'React-Phonebook-2023',
     sname: "name",
@@ -59,11 +83,30 @@ const langEN = {
     try: "Try again",
     phonebook: "Phonebook",
     number: "Number",
+
+    next: "Next",
+    done: "Done",
+    back: "Back",
+    cancel: 'Cancel',
+    yes: 'Yes',
+
+    alreadyleaving: 'Already leaving?',
+    deleteadverstiment: 'Delete adverstiment?',
+    suretodelete : 'Are you sure you want to delete ',
+    youcant: 'You can’t undo this action. ',
+
+    attention : 'Attention ',
+    reminder : 'We would like to remind you that certain functionality is available only to authorized users.If you have an account, please log in with your credentials. If you do not already have an account, you must register to access these features. ',
+
+    congrats: 'Congrats!',
+    registrationsuccess: 'Youre registration is successfull',
+    gotoprofile: 'Go to profile',
+    
    
     
     empty: "List is empty ...",
     add: "Add contact",
-    edit: "EDIT",
+    // edit: "EDIT",
     delete: "DELETE",
     avatar: "Avatar",
     set: "Set",
@@ -82,12 +125,12 @@ const langUA = {
 
     news: 'Новини',
     find: 'Знайдіть улюбленця',
-    findPet: 'Знайдіть улюбленого вихованця',
+    findPet: 'Знайдіть домашнього улюбленця',
     friends: 'Наші друзі',
 
     sell: 'продаж',
     lost: 'бюро знахідок',
-    hands: 'в добрі руки',
+    goodhands: 'в добрі руки',
     favadds: 'улюблені',
     myadds: 'мої доповнення',
 
@@ -99,6 +142,7 @@ const langUA = {
     logBtn: 'Увійти',
     outBtn: 'Вийти',
     regBtn: 'Реєстрація',
+    regTitle: 'Реєстрація',
     search: 'Пошук',
 
     byage: 'По віку',
@@ -111,21 +155,37 @@ const langUA = {
 
     learnmore: 'Дізнатися більше',
     name: 'Ім’я:',
-    birthday: 'Вік:',
+    birthday: 'Дата народження:',
     type: 'Порода:',
     place: 'Локація:',
     sex: 'Стать:',
     phone: 'Phone:',
     comments: 'Коментарі:',
-    email: 'Пошта:',
+    email: 'Пошта',
+    confirmPass: 'Підтвердити пароль',
 
+    confirm: "Підтвердити",
+    edit: "Редагувати",
+
+    yourpet: 'ваш улюбленець',
+    chooseoption: 'Виберіть опцію',
+    details: 'Особисті дані',
+    moreinfo: 'Докладніше',
+
+    Name: 'Ім’я::',
+    Email: 'Пошта:',
+    Birthday: 'Дата народення:',
+    Phone: 'Телефон:',
+    City: 'Місто:',
 
     addto: 'Додати',
     remove: 'Видаляти',
     contact: 'Зв’язок',
 
     footerTitle: 'React-телефонна книга-2023',
-    
+    info: 'Моя інформація:',
+    pets: 'МоЇ домашні тварини:',
+    city: 'Місто:',
     
    
     pass: 'Пароль',
@@ -140,11 +200,30 @@ const langUA = {
     try: "Спробуйте знову",
     phonebook: "Телефонна книга",
     number: "Номер",
+
+    next: "Далі",
+    done: "Виконанио",
+    back: "Назад",
+    cancel: "Відміна",
+    yes: 'Так',
     
+    alreadyleaving: 'Вже йдете?',
+    deleteadverstiment: 'Видалити оголошення?',
+    suretodelete : 'Ви впевнені, що хочете видалити ',
+    youcant : 'Ви не можете скасувати цю дію. ',
+
     
+    attention : 'Увага',
+    reminder : 'Нагадуємо, що певні функції доступні лише авторизованим користувачам. Якщо у вас є обліковий запис, увійдіть, використовуючи свої облікові дані. Якщо у вас ще немає облікового запису, ви повинні зареєструватися, щоб отримати доступ до цих функцій. ',
+    
+
+    congrats: 'Вітаю!',
+    registrationsuccess: 'Ваша реєстрація пройшла успішно',
+    gotoprofile: 'Перейти в профіль',
+
     empty: "Список порожній...",
     add: "Додати контакт",
-    edit: "РЕДАГУВАТИ",
+    // edit: "РЕДАГУВАТИ",
     delete: "ВИДАЛИТИ",
     avatar: "Аватар",
     set: "Встановити",

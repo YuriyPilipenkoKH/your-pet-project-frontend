@@ -22,6 +22,9 @@ export const TytleNwes = styled.h2`
   color: var(--text-color);
   font-size: var(--title-fz-m);
   transition: all 1s ease-in-out;
+
+   white-space: nowrap; 
+
   @media screen and (min-width: 768px) {
     font-size: var(--title-fz);
     line-height: 65.57px;
@@ -44,6 +47,7 @@ export const SearchInput = styled.input`
   padding-left: 20px;
   border: 1px solid var(--blue);
   border-radius:50px;
+  box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
   
   color: var(--grey);
   &::placeholder {
