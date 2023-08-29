@@ -20,6 +20,7 @@ import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
+import { Notify } from 'notiflix';
 
 const schema = object({
     email: string()
@@ -64,7 +65,14 @@ export default function LoginForm() {
     });
     const handleClickShow = () => setShow(!show);
     const deliveryDataUser = (email, password) => {
-        dispatch(authOperations.logIn({ email, password }));
+        dispatch(authOperations.logIn({ email, password }))
+        .unwrap().then(originalPromiseResult => {
+            Notify.success(`${originalPromiseResult.user.name} Welcome back`);
+          })
+          .catch(() => {
+            Notify.failure('Incorrect login or password');
+          });
+
     };
     const reset = () => {
         setEmail('');

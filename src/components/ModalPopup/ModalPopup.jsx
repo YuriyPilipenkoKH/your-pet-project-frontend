@@ -18,6 +18,7 @@ import { StyledLink } from 'components/Button/Button.styled';
 import { iconPawprint } from 'images/icons';
 import { setRegToZero } from 'redux/auth/auth-slice';
 import { StyledLinkLog, StyledLinkReg } from 'components/AuthNav/AuthNav.styled';
+import { Notify } from 'notiflix';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -115,10 +116,17 @@ useEffect(() => {
   }
 
   const exit = () => {
+    onClose()
      dispatch(toggleSell())
      dispatch(setModalClose())
      dispatch(authOperations.logOut())
-    onClose()
+    //  .unwrap().then(originalPromiseResult => {
+    //   console.log('originalPromiseResult', originalPromiseResult)
+    //   Notify.success(`${originalPromiseResult.user.name} Logout  successfull!`);
+    // })
+    // .catch(() => {
+    //   Notify.failure('Incorrect logout operation');
+    // });
   }
   // className='modal-backdrop'
 

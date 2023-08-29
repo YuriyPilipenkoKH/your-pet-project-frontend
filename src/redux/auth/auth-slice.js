@@ -19,6 +19,7 @@ const initialState = {
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
+    message: '',
   };
 
 const authSlice = createSlice({
@@ -100,12 +101,14 @@ const authSlice = createSlice({
             state.error = null;
         })
         .addCase(authOperations.logOut.fulfilled, (state, action) => {
+            console.log(action)
             state.isLoading = false;
             state.user = {};
             state.registrationSuccessful = false;
             state.token = null;
             state.isLoggedIn = false;
             state.user.favorite = [];
+            
         })
         .addCase(authOperations.logOut.rejected, (state, action) => {
             state.isLoading = false;
