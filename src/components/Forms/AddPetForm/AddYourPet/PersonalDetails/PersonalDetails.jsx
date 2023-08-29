@@ -218,7 +218,7 @@ export default function PersonalDetails({
                     )}
                 </LabelForAdd>
                 <LabelForAdd yourPet>
-                    <TypeInput>Type</TypeInput>
+                    <TypeInput> {lang.type} </TypeInput>
                     <InputForAddPet
                         {...register('typePet')}
                         aria-invalid={errors.typePet ? 'true' : 'false'}

@@ -19,7 +19,7 @@ const AddPetBtn = ({ state }) => {
     return (
         <Btn to={`/add-pet`} state={ state }>
             {screenWidth < 768 && <PlusIcon />}
-            {lang.addPet}
+            {lang.add}
             {screenWidth >= 768 && <PlusSmallIcon />}
         </Btn>
     );

@@ -115,7 +115,7 @@ export default function PersonalDetails({
                     <InputForAddPet
                         {...register('title')}
                         aria-invalid={errors.title ? 'true' : 'false'}
-                        placeholder="Title of add"
+                        placeholder={lang.titleofadd}
                         type="text"
                         value={title}
                         style={{
@@ -174,7 +174,7 @@ export default function PersonalDetails({
                     <InputForAddPet
                         {...register('name')}
                         aria-invalid={errors.name ? 'true' : 'false'}
-                        placeholder="Type name pet"
+                        placeholder={lang.typename}
                         type="text"
                         value={name}
                         style={{
@@ -229,11 +229,11 @@ export default function PersonalDetails({
                     )}
                 </LabelForAdd>
                 <LabelForAdd>
-                    <TypeInput>{lang.birthday}</TypeInput>
+                    <TypeInput>{lang.Birthday}</TypeInput>
                     <InputForAddPet
                         {...register('birth')}
                         aria-invalid={errors.birth ? 'true' : 'false'}
-                        placeholder="Type date of birth"
+                        placeholder={lang.typebirth}
                         type="text"
                         value={birth}
                         style={{
@@ -293,7 +293,7 @@ export default function PersonalDetails({
                     <InputForAddPet
                         {...register('typePet')}
                         aria-invalid={errors.typePet ? 'true' : 'false'}
-                        placeholder="Type of pet"
+                        placeholder={lang.typepet}
                         type="text"
                         value={typePet}
                         style={{

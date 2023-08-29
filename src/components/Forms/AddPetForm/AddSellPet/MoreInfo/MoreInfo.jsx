@@ -230,7 +230,7 @@ export default function MoreInfo({
                                 aria-invalid={
                                     errors.location ? 'true' : 'false'
                                 }
-                                placeholder="Type of location"
+                                placeholder={lang.typelocation}
                                 type="text"
                                 value={location}
                                 style={{

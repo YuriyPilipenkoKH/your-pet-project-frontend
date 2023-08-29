@@ -131,7 +131,7 @@ export default function MoreInfo({
 
     return (
         <Form addPetMoreInformation addPet>
-            <Title addPet addPetMoreInformation>Add in good hands</Title>
+            <Title addPet addPetMoreInformation> {lang.addGood} </Title>
             <WrapperForProgresMoreInformation>
                 {children}
             </WrapperForProgresMoreInformation>
@@ -142,7 +142,7 @@ export default function MoreInfo({
             >
                 <WrapperForMoreInformation addPetMoreInformation>
                     <WrapperForInputInMoreInformationOne>
-                        <TypeInput>The Sex</TypeInput>
+                        <TypeInput> {lang.thesex} </TypeInput>
                         <ListOption addPetMoreInformation>
                             <ItemOption addPetMoreInformation>
                                 <ButtonSex
@@ -152,7 +152,7 @@ export default function MoreInfo({
                                     onClick={() => setActive('female')}
                                     type="button"
                                 >
-                                    {iconFemale} Female
+                                    {iconFemale} {lang.female}
                                 </ButtonSex>
                             </ItemOption>
                             <ItemOption addPetMoreInformation>
@@ -162,7 +162,7 @@ export default function MoreInfo({
                                     onClick={() => setActive('male')}
                                     type="button"
                                 >
-                                    {iconMale} Male
+                                    {iconMale} {lang.male}
                                 </ButtonSex>
                             </ItemOption>
                         </ListOption>
@@ -173,7 +173,7 @@ export default function MoreInfo({
                         )}
                         <LabelForAddImage addPetMoreInformation>
                             <TypeInput addImage addPetMoreInformation>
-                                Load the pet’s image:
+                                {lang.loadimg}
                             </TypeInput>
                             <ImageWrapper>
                                 <InputUploadImage
@@ -214,13 +214,13 @@ export default function MoreInfo({
                     </WrapperForInputInMoreInformationOne>
                     <WrapperForInputInMoreInformationTwo>
                         <LabelForAdd>
-                            <TypeInput>Location</TypeInput>
+                            <TypeInput> {lang.location} </TypeInput>
                             <InputForAddPet
                                 {...register('location')}
                                 aria-invalid={
                                     errors.location ? 'true' : 'false'
                                 }
-                                placeholder="Type of location"
+                                placeholder={lang.typelocation}
                                 type="text"
                                 value={location}
                                 style={{
@@ -277,7 +277,7 @@ export default function MoreInfo({
                             )}
                         </LabelForAdd>
                         <LabelForAdd coment addPetMoreInformation>
-                            <TypeInput>Comments</TypeInput>
+                            <TypeInput> {lang.comments} </TypeInput>
                             <Textarea
                                 withOutPrice
                                 {...register('coment')}
@@ -285,7 +285,7 @@ export default function MoreInfo({
                                 {...register('coment', {
                                     maxLength: 120,
                                 })}
-                                placeholder="Type of pet"
+                                placeholder={lang.typepet}
                                 type="text"
                                 value={coment}
                                 spellCheck="false"

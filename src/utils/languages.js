@@ -17,13 +17,14 @@ const langEN = {
     filters: 'Filters',
     addPet: 'Add pet',
     addYourPet: 'Add your pet',
+    addGood: 'Add in good hands',
+
 
     addLostPet: 'Add lost pet',
+    add: 'Add pet',
     
-    addLostPet: 'Add lost pet',
-    addLostPet: 'Add lost pet',
-
-
+    
+  
     contactsBtn: 'Contacts',
     logBtn: 'Login',
     regBtn: 'Register',
@@ -75,7 +76,6 @@ const langEN = {
     details: 'Personal details',
     moreinfo: 'More info',
    
-
 
     footerTitle: 'React-Phonebook-2023',
     sname: "name",
@@ -129,15 +129,11 @@ const langEN = {
     typebirth: 'Type date of birth',
     typepet: 'Type of pet',
     typelocation: 'Type of location',
-
+    typeofprice: "Type of price" ,
   
-    
 
-              
-    
     empty: "List is empty ...",
-    add: "Add contact",
-    // edit: "EDIT",
+        // edit: "EDIT",
     delete: "DELETE",
     avatar: "Avatar",
     set: "Set",
@@ -169,9 +165,10 @@ const langUA = {
     filters: 'Фільтри',
     addPet: 'Додати оголошення',
     addYourPet: 'Додати улюбленця',
-    
+    addGood: 'Віддати в добрі руки',
     addLostPet: 'Додайте загублену тварину',
 
+    add: 'Додати',
     
     contactsBtn: 'Контакти',
     logBtn: 'Увійти',
@@ -274,10 +271,11 @@ const langUA = {
     typebirth: 'Введіть дату народження',
     typepet: 'Введіть породу',
     typelocation: 'Введіть локацію',
+    typeofprice: '"Введіть  цінy"',
     
 
     empty: "Список порожній...",
-    add: "Додати контакт",
+  
     delete: "ВИДАЛИТИ",
     avatar: "Аватар",
     set: "Встановити",

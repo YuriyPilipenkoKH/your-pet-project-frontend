@@ -564,7 +564,6 @@ export const LabelForAddImage = styled.div.withConfig({
         display: ${({ addPetMoreInformation }) =>
             addPetMoreInformation && 'block'};
     }
-    white-space: nowrap; 
 `;
 
 export const ImageWrapper = styled.div`

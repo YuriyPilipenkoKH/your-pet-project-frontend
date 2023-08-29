@@ -1,4 +1,4 @@
-import React from 'react';
+import {  useEffect, useState } from 'react';
 import {
     ButtonOption,
     Form,
@@ -10,6 +10,8 @@ import {
 import { Button, ButtonTransparent } from '../../../Button/Button';
 import { BiArrowBack } from 'react-icons/bi';
 import { iconPawprint } from '../../../../images/icons';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 export default function ChooseOption({
     children,
@@ -20,9 +22,16 @@ export default function ChooseOption({
     beforeForm,
     stepNumber,
 }) {
+
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
+
     return (
         <Form addPet>
-            <Title addPet>Add pet</Title>
+            <Title addPet> {lang.addPet} </Title>
             {children}
             <ListOption>
                 {arrayOption.map((option, index) => {
@@ -44,14 +53,14 @@ export default function ChooseOption({
             </ListOption>
             <WrapperNextBackButton>
                 <ButtonTransparent addPet onClick={() => beforeForm()}>
-                    <BiArrowBack /> {stepNumber > 1 ? 'Back' : 'Cancel'}
+                    <BiArrowBack /> {stepNumber > 1 ? lang.back : lang.cancel}
                 </ButtonTransparent>
                 <Button
                     stepNumber={stepNumber}
                     addPet
                     onClick={() => nextForm()}
                 >
-                    {stepNumber > 2 ? 'Done' : 'Next'} {iconPawprint}
+                    {stepNumber > 2 ? lang.done : lang.next} {iconPawprint}
                 </Button>
             </WrapperNextBackButton>
         </Form>
