@@ -9,18 +9,26 @@ import {
     Cross,
     Check,
 } from './UserData.styled';
-import { useState } from 'react';
+import {  useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import avatarDefault2x from '../../../images/Photo_default@2x.jpg';
 import UserDataForm from '../UserDataForm/UserDataForm';
 import { ReactComponent as Camera } from '../../../images/userPageIcons/camera.svg';
 import operations from '../../../redux/auth/auth-operations';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 const UserData = ({ user }) => {
 
     const [edit, setEdit] = useState(false);
     const [petPhoto, setFileInput] = useState('');
     const dispatch = useDispatch();
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
 
     const initialValues = {
         petPhoto: user.avatarURL || avatarDefault2x,
@@ -151,14 +159,14 @@ const UserData = ({ user }) => {
                                         onClick={handleAddAvatar}
                                     >
                                         <Check stroke="#00C3AD" />
-                                        Confirm
+                                        {lang.confirm}
                                     </EditButton>
                                     <EditButton
                                         type="button"
                                         onClick={handleCancelAvatar}
                                     >
                                         <Cross />
-                                        Cancel
+                                        {lang.cancel}
                                     </EditButton>
                                 </ConfirmButtonWrap>
                             ) : (
@@ -170,7 +178,7 @@ const UserData = ({ user }) => {
                                         stroke="#54ADFF"
                                         style={{ marginRight: 8 }}
                                     />
-                                    Edit photo
+                                     {lang.edit}
                                 </EditButton>
                             )}
                         </ImageControls>

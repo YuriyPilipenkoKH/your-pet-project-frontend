@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef ,useEffect, useState } from 'react';
 import ChooseOption from './ChooseOption/ChooseOption';
 import ListProgresSteps from './ListSteps/ListProgresSteps';
 import AddYourPet from './AddYourPet/AddYourPet';
@@ -7,12 +7,21 @@ import AddLostPet from './AddLostPet/AddLostPet';
 import AddInGoodHandsPet from './AddInGoodHandsPet/AddInGoodHandsPet';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
 import { useNavigate } from 'react-router-dom';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 export default function AddPetForm({ state }) {
     const [stepNumber, setStepNumber] = useLocalStorage('stepNumber', 1);
     const [active, setActive] = useLocalStorage('active', 1);
     const navigate = useNavigate();
     const backLinkLocation = useRef(state?.from ?? '/');
+
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
     const nextForm = () => {
         setStepNumber(prevState => {
             return prevState + 1;
@@ -38,8 +47,10 @@ export default function AddPetForm({ state }) {
     const activeOption = index => {
         setActive(index + 1);
     };
-    const arraySteps = ['Choose  option', 'Personal details', 'More info'];
-    const arrayOption = ['your pet', 'sell', 'lost/found', 'in good hands'];
+    // const arraySteps = ['Choose  option', 'Personal details', 'More info'];
+    // const arrayOption = ['your pet', 'sell', 'lost/found', 'in good hands'];
+    const arraySteps = [lang.chooseoption, lang.details, lang.moreinfo];
+    const arrayOption = [lang.yourpet, lang.sell, lang.lost, lang.goodhands];
     return (
         <>
             {stepNumber === 1 && (

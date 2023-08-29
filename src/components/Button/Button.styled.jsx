@@ -337,22 +337,11 @@ export const StyledAddFavButton = styled.button.withConfig({
     }
 
     @media screen and ( max-width: 767px ) {
-      position: fixed;
-      left: 60%;
-      bottom: 200px;
 
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      padding: 2px;
-      flex-direction: column-reverse;
-      font-size: 12px;
-      gap: 12px;
-      z-index: 5;
 
-      &>svg{
-        scale: 2;
-      }
+      width: 220px;
+      height: 40px;
+   
       
     }
 `;
@@ -367,7 +356,7 @@ ${buttonStyles}
 ${ripple} 
 ${hoverStylesTrB} 
 background-color: transparent;
-width: 152px;
+width: 220px;
 `;
 
 export const StyledLearnButton = styled.button`
@@ -455,16 +444,16 @@ fill: var(--white);
   transition: all 0.4s ease; 
   background: linear-gradient(to right, var( --gradient-bl), var(--gradient-br));
  }
-`;
+`
 
 export const StyledLogo = styled(NavLink)`
 border: none;
 outline: none;
 background-color: transparent;
-padding: 12px 0;
+padding: 12px 6px;
 
 &>svg {
-   fill-opacity: var(--text-color);
+   fill: var(--text-color);
 }
 
 &>:hover {

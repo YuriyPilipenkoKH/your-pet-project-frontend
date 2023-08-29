@@ -54,9 +54,9 @@ export const ModalContainer = styled.div`
 export const ModalContainer3 = styled.div`
   position: relative;
   width: 280px;
-  height: 800px;
+  height: 760px;
   position: relative;
-  /* display: grid; */
+  display: grid;
   place-items: center;
   gap: 20px;  
   background-color: var(--white);
@@ -183,8 +183,10 @@ export const ModalText = styled.p`
 `;
 
 export const ModalImage = styled.img`
-  max-width: 100%;
-  height: auto;
+  /* max-width: 100%;
+  height: auto; */
+  width:240px;
+  height: 240px;
   border-radius: 0px 0px 40px 40px;
 
   @media screen and (min-width: 768px) {
@@ -256,6 +258,12 @@ export const PetList = styled.div`
     font-weight: 600;
 } 
 }
+&>span,  &>p{
+       overflow: hidden;
+        text-overflow: ellipsis; 
+        white-space: nowrap; 
+}
+
 & > p:last-child {
   
     font-size: 14px; 
@@ -268,7 +276,7 @@ export const PetList = styled.div`
     top: 360px;
     left: 40px;
     width: 600px;
-} /* Expand the field to span two columns */
+} 
 
   }
   @media screen and (min-width: 768px) {
@@ -276,10 +284,6 @@ export const PetList = styled.div`
     grid-row-gap : 10px;
 } 
 
-&>span{
-       overflow: hidden;
-        text-overflow: ellipsis; 
-        white-space: nowrap; 
-}
+
 
 `

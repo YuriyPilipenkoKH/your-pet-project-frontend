@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MdOutlineLogout } from 'react-icons/md';
-import { PhotoWrap, ProfileWrap, StyledLinkOut, UserWrap } from './UserNav.styled';
+import { PhotoWrap, ProfileWrap, StyledLinkOut, StyledUserLink, UserWrap } from './UserNav.styled';
 import { iconUser } from '../../images/icons';
 
 import { StyledLink } from 'components/Button/Button.styled';
@@ -40,9 +40,12 @@ export const UserNav = ({ onClose }) => {
         <>
             <UserWrap className="UserNav">
                 <ProfileWrap className="useravatar">
-                    <StyledLink to="/profile" exact="true">
+                    <StyledUserLink 
+                    className='userlink'
+                    to="/profile" exact="true">
+                    {/* {iconUser} */}
                         
-                     {avatar ?   <Avatar style={{width: '50px' , height: '50px'}}
+                     {avatar ?   <PhotoWrap 
                                     src={avatar }
                                     alt="user avatar"
                                 />
@@ -50,7 +53,8 @@ export const UserNav = ({ onClose }) => {
                      }   
                    
                     {userName}{' '}
-                    </StyledLink>
+                    </StyledUserLink>
+
                 </ProfileWrap>
                 <StyledLinkOut
                     to="/"

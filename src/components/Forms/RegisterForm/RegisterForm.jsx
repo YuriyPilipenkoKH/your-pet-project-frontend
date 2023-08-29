@@ -123,7 +123,7 @@ export default function RegisterForm() {
                     <InputForAuthorization
                         {...register('name')}
                         aria-invalid={errors.name ? 'true' : 'false'}
-                        placeholder="Name"
+                        placeholder={lang.name}
                         type="text"
                         value={name}
                         style={{
@@ -181,7 +181,7 @@ export default function RegisterForm() {
                     <InputForAuthorization
                         {...register('email')}
                         aria-invalid={errors.email ? 'true' : 'false'}
-                        placeholder="Email"
+                        placeholder={lang.email}
                         type="email"
                         value={email}
                         style={{
@@ -239,7 +239,7 @@ export default function RegisterForm() {
                     <InputForAuthorization
                         {...register('password')}
                         aria-invalid={errors.password ? 'true' : 'false'}
-                        placeholder="Password"
+                        placeholder={lang.pass}
                         value={password}
                         title="Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long."
                         type={showOne ? 'text' : 'password'}
@@ -302,7 +302,7 @@ export default function RegisterForm() {
                     <InputForAuthorization
                         {...register('confirmPassword')}
                         aria-invalid={confirmPasswordError ? 'true' : 'false'}
-                        placeholder="Confirm password"
+                        placeholder={lang.confirmPass}
                         type={showTwo ? 'text' : 'password'}
                         value={confirmPassword}
                         title="Password must contain at least one lowercase letter, one uppercase letter, and one digit. It should be 6 to 16 characters long."
@@ -362,12 +362,12 @@ export default function RegisterForm() {
                         {iconEyes}
                     </ShowPasswordButton>
                 </LabelForRegistration>
-                <ButtonSubmit type="submit">Registration</ButtonSubmit>
+                <ButtonSubmit type="submit"> { lang.regTitle } </ButtonSubmit>
                 <Question>
-                    Don't have an account?{' '}
+                {lang.alreadyGot}{' '}
                     {
                         <LinkToForm href="fwefew" to="/login">
-                            Login
+                           {lang.logBtn}
                         </LinkToForm>
                     }
                 </Question>
