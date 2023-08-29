@@ -6,7 +6,7 @@ import { StyledLogo } from '../Button/Button.styled';
 import { iconLogo, iconUser } from '../../images/icons';
 import { RxCross2 } from "react-icons/rx";
 
-import { ProfileWrap, StyledLinkOut } from 'components/UserNav/UserNav.styled';
+import { ProfileWrap, StyledLinkOut, StyledUserLink } from 'components/UserNav/UserNav.styled';
 import {  useSelector } from "react-redux";
 import { authSelectors } from 'redux/auth';
 import { MdOutlineLogout} from "react-icons/md";
@@ -61,10 +61,15 @@ const avatar = user.avatarURL
             ? <AuthNav   onClose={onClose}/> 
             :   <>
                   <ProfileWrap className= "useravatar" > 
-                  {avatar ?   <Avatar style={{width: '50px' , height: '50px'}}
-                                    src={avatar }
-                                    alt="user avatar"
-                                />
+                  {avatar ?   <StyledUserLink 
+                                onClick={onClose}
+                                to = '/profile'  
+                                exact="true" >
+                    <Avatar style={{width: '50px' , height: '50px'}}
+                                      src={avatar }
+                                      alt="user avatar"
+                                  />
+                  </StyledUserLink>
                      :  {iconUser}
                      }   
                   {userName } </ProfileWrap>
