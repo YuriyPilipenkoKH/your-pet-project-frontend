@@ -145,17 +145,18 @@ img {
 }
 
 
-svg.iconLogo {
-  /* color: var(--text-color) ; */
-}
 
 .radio-input~ .box {
-  /* background-color: crimson  !important; */
+
     opacity: 0 ;
 }
 
 .userContact + span{
   color: var(--yellow);
  
+}
+
+.Logoutuser{
+  background-color: transparent !important;
 }
 

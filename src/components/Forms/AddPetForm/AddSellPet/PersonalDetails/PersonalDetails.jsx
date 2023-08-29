@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import {  useEffect, useState } from 'react';
 import {
     Form,
     IconCrossValidate,
@@ -17,6 +17,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 const schema = object({
     title: string()
@@ -63,6 +65,12 @@ export default function PersonalDetails({
     const [name, setName] = useLocalStorage('nameSell', '');
     const [birth, setBirth] = useLocalStorage('birthSell', '');
     const [typePet, setTypePet] = useLocalStorage('typeSell', '');
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
     const {
         register,
         handleSubmit,
@@ -96,14 +104,14 @@ export default function PersonalDetails({
 
     return (
         <Form addPet>
-            <Title addPet>Add pet for sale</Title>
+            <Title addPet>{lang.addpetforsale} </Title>
             {children}
             <form
                 onSubmit={handleSubmit(deliveryData)}
                 style={{ marginTop: '16px' }}
             >
                 <LabelForAdd>
-                    <TypeInput>Title of add</TypeInput>
+                    <TypeInput>{lang.titleofadd}</TypeInput>
                     <InputForAddPet
                         {...register('title')}
                         aria-invalid={errors.title ? 'true' : 'false'}
@@ -162,7 +170,7 @@ export default function PersonalDetails({
                     )}
                 </LabelForAdd>
                 <LabelForAdd>
-                    <TypeInput>Pet’s name</TypeInput>
+                    <TypeInput>{lang.petsname}</TypeInput>
                     <InputForAddPet
                         {...register('name')}
                         aria-invalid={errors.name ? 'true' : 'false'}
@@ -221,7 +229,7 @@ export default function PersonalDetails({
                     )}
                 </LabelForAdd>
                 <LabelForAdd>
-                    <TypeInput>Date of birth</TypeInput>
+                    <TypeInput>{lang.birthday}</TypeInput>
                     <InputForAddPet
                         {...register('birth')}
                         aria-invalid={errors.birth ? 'true' : 'false'}
@@ -281,7 +289,7 @@ export default function PersonalDetails({
                     )}
                 </LabelForAdd>
                 <LabelForAdd yourPet>
-                    <TypeInput>Type</TypeInput>
+                    <TypeInput>{lang.type}</TypeInput>
                     <InputForAddPet
                         {...register('typePet')}
                         aria-invalid={errors.typePet ? 'true' : 'false'}

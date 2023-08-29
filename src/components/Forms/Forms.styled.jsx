@@ -64,6 +64,7 @@ export const Title = styled.h3.withConfig({
         font-size: ${({ addPet }) => addPet && '28px'};
         margin-bottom: ${({ chooseOption }) => chooseOption && '24px'};
     }
+    white-space: nowrap; 
 `;
 
 export const InputForAddPet = styled.input`
@@ -563,6 +564,7 @@ export const LabelForAddImage = styled.div.withConfig({
         display: ${({ addPetMoreInformation }) =>
             addPetMoreInformation && 'block'};
     }
+    white-space: nowrap; 
 `;
 
 export const ImageWrapper = styled.div`

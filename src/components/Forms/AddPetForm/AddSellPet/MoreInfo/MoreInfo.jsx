@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import {  useEffect, useState } from 'react';
 import {
     ButtonSex,
     Form,
@@ -35,6 +35,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 const schema = object({
     coment: string()
@@ -75,6 +77,13 @@ export default function MoreInfo({
     const [imageError, setImageError] = useState(null);
     const [activeError, setActiveError] = useState(null);
     const [active, setActive] = useLocalStorage('activeSell', '');
+
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
     const {
         register,
         handleSubmit,
@@ -132,7 +141,7 @@ export default function MoreInfo({
 
     return (
         <Form addPetMoreInformation addPet>
-            <Title addPet addPetMoreInformation>Add pet for sale</Title>
+            <Title addPet addPetMoreInformation> {lang.addpetforsale} </Title>
             <WrapperForProgresMoreInformation>
                 {children}
             </WrapperForProgresMoreInformation>
@@ -143,7 +152,7 @@ export default function MoreInfo({
             >
                 <WrapperForMoreInformation addPetMoreInformation>
                     <WrapperForInputInMoreInformationOne>
-                        <TypeInput>The Sex</TypeInput>
+                        <TypeInput>{lang.thesex}</TypeInput>
                         <ListOption addPetMoreInformation>
                             <ItemOption addPetMoreInformation>
                                 <ButtonSex
@@ -153,7 +162,7 @@ export default function MoreInfo({
                                     onClick={() => setActive('female')}
                                     type="button"
                                 >
-                                    {iconFemale} Female
+                                    {iconFemale} {lang.female}
                                 </ButtonSex>
                             </ItemOption>
                             <ItemOption addPetMoreInformation>
@@ -163,7 +172,7 @@ export default function MoreInfo({
                                     onClick={() => setActive('male')}
                                     type="button"
                                 >
-                                    {iconMale} Male
+                                    {iconMale} {lang.male}
                                 </ButtonSex>
                             </ItemOption>
                         </ListOption>
@@ -174,7 +183,7 @@ export default function MoreInfo({
                         )}
                         <LabelForAddImage addPetMoreInformation>
                             <TypeInput addImage addPetMoreInformation>
-                                Load the pet’s image:
+                            {lang.loadimg}
                             </TypeInput>
                             <ImageWrapper>
                                 <InputUploadImage
@@ -215,7 +224,7 @@ export default function MoreInfo({
                     </WrapperForInputInMoreInformationOne>
                     <WrapperForInputInMoreInformationTwo>
                         <LabelForAdd>
-                            <TypeInput>Location</TypeInput>
+                            <TypeInput>{lang.location}</TypeInput>
                             <InputForAddPet
                                 {...register('location')}
                                 aria-invalid={
@@ -278,7 +287,7 @@ export default function MoreInfo({
                             )}
                         </LabelForAdd>
                         <LabelForAdd>
-                            <TypeInput>Price</TypeInput>
+                            <TypeInput>{lang.price}</TypeInput>
                             <InputForAddPet
                                 {...register('price')}
                                 aria-invalid={errors.price ? 'true' : 'false'}
@@ -339,7 +348,7 @@ export default function MoreInfo({
                             )}
                         </LabelForAdd>
                         <LabelForAdd coment addPetMoreInformation>
-                            <TypeInput>Comments</TypeInput>
+                            <TypeInput>{lang.comments}</TypeInput>
                             <Textarea
                                 {...register('coment')}
                                 aria-invalid={errors.coment ? 'true' : 'false'}
@@ -414,7 +423,7 @@ export default function MoreInfo({
                 </WrapperForMoreInformation>
                 <WrapperNextBackButton addPetMoreInformation>
                     <ButtonTransparent addPet onClick={() => beforeForm()}>
-                        <BiArrowBack /> {stepNumber > 1 ? 'Back' : 'Cancel'}
+                        <BiArrowBack /> {stepNumber > 1 ? lang.back : lang.cancel}
                     </ButtonTransparent>
                     <Button
                         stepNumber={stepNumber}
@@ -422,7 +431,7 @@ export default function MoreInfo({
                         addPetMoreInformation
                         type="submit"
                     >
-                        {stepNumber > 2 ? 'Done' : 'Next'} {iconPawprint}
+                        {stepNumber > 2 ? lang.done : lang.next} {iconPawprint}
                     </Button>
                 </WrapperNextBackButton>
             </form>
