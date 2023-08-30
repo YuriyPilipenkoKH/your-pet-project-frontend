@@ -22,7 +22,6 @@ import { useAll } from 'hooks/useAll';
 import { getRefreshing } from 'redux/auth/auth-selectors';
 import { DotLoader } from 'react-spinners';
 import { getPetsLoading } from 'redux/pets/petsSelectors';
-import { getLoadingNotices } from 'redux/notices/notices-selectors';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -31,8 +30,6 @@ const App = () => {
     const { theme, language } = useAll();
     const regreshinggAuth = useSelector(getRefreshing);
     const loadingPets = useSelector(getPetsLoading);
-    const loadingNotice = useSelector(getLoadingNotices);
-    console.log(loadingNotice);
     document.documentElement.setAttribute('data-theme', theme);
     document.documentElement.setAttribute('data-lang', language);
 
