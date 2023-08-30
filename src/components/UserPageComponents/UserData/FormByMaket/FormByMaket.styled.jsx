@@ -146,8 +146,9 @@ export const UserPhotoWrap = styled.div`
 
 display: grid;
 place-items: center;
+grid-template-rows: 182px auto;
 gap: 2px;
-height: 220px;
+height: 225px;
 
 
 &>input {
