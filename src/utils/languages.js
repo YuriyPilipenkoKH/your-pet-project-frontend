@@ -261,7 +261,7 @@ const langUA = {
     breed: 'порода',
 
     thesex: 'Стать',
-    price: 'Price',
+    price: 'Ціна',
     loadimg: 'Завантажте фото ',
     location: 'Локація',
     male: 'Чол',

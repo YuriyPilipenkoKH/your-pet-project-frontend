@@ -291,7 +291,7 @@ export default function MoreInfo({
                             <InputForAddPet
                                 {...register('price')}
                                 aria-invalid={errors.price ? 'true' : 'false'}
-                                placeholder="Type of price"
+                                placeholder={lang.typeofprice}
                                 type="text"
                                 value={price}
                                 style={{
@@ -422,10 +422,13 @@ export default function MoreInfo({
                     </WrapperForInputInMoreInformationTwo>
                 </WrapperForMoreInformation>
                 <WrapperNextBackButton addPetMoreInformation>
-                    <ButtonTransparent addPet onClick={() => beforeForm()}>
+                    <ButtonTransparent 
+                    className ="back"
+                    addPet onClick={() => beforeForm()}>
                         <BiArrowBack /> {stepNumber > 1 ? lang.back : lang.cancel}
                     </ButtonTransparent>
-                    <Button
+                    <Button  
+                        className ="done"
                         stepNumber={stepNumber}
                         addPet
                         addPetMoreInformation

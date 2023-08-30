@@ -526,6 +526,18 @@ export const WrapperNextBackButton = styled.div.withConfig({
     @media screen and (min-width: 768px) {
         gap: 10px;
     }
+
+    /* &>button.done {
+        width: 255px;
+        align-self: center;
+    }
+    &>button.back {
+        width: 250px;
+        align-self: center;
+    @media screen and (min-width: 768px) {
+       width: 120px;
+    }
+    } */
 `;
 
 export const TypeInput = styled.span.withConfig({
