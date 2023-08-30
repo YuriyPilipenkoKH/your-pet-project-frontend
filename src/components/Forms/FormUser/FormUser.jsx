@@ -85,7 +85,7 @@ const FormByMaket = () => {
     useEffect(() => {
         setLang(language === 'english' ? langEN : langUA);
     }, [language]);
-    
+
     const signOut = () => {
         setModals(modal5);
         setShowModal(true);
@@ -145,8 +145,6 @@ const FormByMaket = () => {
         setEdit(false);
         setUserPhoto(false);
     };
-
-    // console.log(user.name)
 
     const handleCancelAvatar = e => {
         setUserPhoto();
@@ -253,7 +251,7 @@ const FormByMaket = () => {
                 onSubmit={handleSubmit(deliveryData)}
             >
                 <div>
-                    <LabelStyled>Name:</LabelStyled>
+                    <LabelStyled>{lang.Name}:</LabelStyled>
                     <InputStyled
                         disabled={!showData}
                         {...register('name')}
@@ -282,7 +280,7 @@ const FormByMaket = () => {
                     />
                 </div>
                 <div>
-                    <LabelStyled>Email:</LabelStyled>
+                    <LabelStyled>{lang.Email}:</LabelStyled>
                     <InputStyled
                         disabled={!showData}
                         {...register('email')}
@@ -311,7 +309,7 @@ const FormByMaket = () => {
                     />
                 </div>
                 <div>
-                    <LabelStyled>Birthday:</LabelStyled>
+                    <LabelStyled>{lang.birthday}:</LabelStyled>
                     <InputStyled
                         disabled={!showData}
                         {...register('birthday')}

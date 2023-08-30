@@ -456,7 +456,7 @@ transition: all 1s ease-in-out;
 &>svg {
 
   transition: all 1s ease-in-out;
-   fill: var(--text-color) !important;
+   fill: var(--text-color);
 }
 
 &>:hover {

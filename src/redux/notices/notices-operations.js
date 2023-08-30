@@ -73,7 +73,7 @@ const fetchRemoveFavorite = createAsyncThunk(
     async (favoriteNotices, thunkAPI) => {
         try {
             const { data } = await axios.patch(`/notices/${favoriteNotices}/removeFavorite`);
-            // console.log(data);
+            
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data);
@@ -84,7 +84,7 @@ const fetchRemoveFavorite = createAsyncThunk(
 const fetchNoticesByCategory = createAsyncThunk(
     'notices/noticesAllByCategory',
     async (searchParams ,thunkAPI) => {
-        // console.log('searchParams', searchParams)
+      
         try {
             const { NoticesCategoriesNav, query, page=1 } = searchParams;
             const { data } = await axios.get(`/notices?NoticesCategoriesNav=${NoticesCategoriesNav}&NoticesSearch=${query}&page=${page}`);
@@ -113,7 +113,7 @@ const fetchUserNotices = createAsyncThunk(
 const operations = {
     fetchAllNotices,
     fetchNoticesByCategory,
-    // fetchNoticeById,
+   
     fetchAddNotice,
     fetchAllFavorite,
     fetchDeleteNotice,

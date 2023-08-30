@@ -19,12 +19,12 @@ import operations from 'redux/notices/notices-operations';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
 import { Notify } from 'notiflix';
-// import { setAge } from 'redux/notices/notices-slice';
+
 
 export const MainCard = ({
     index,
     title,
-    // photo,
+    
     name,
     sex,
     owner,
@@ -41,7 +41,7 @@ export const MainCard = ({
     const { language } = useAll();
     const [lang, setLang] = useState(langUA);
     const { userId } = useAuth();
-    // const [shouldReload, setShouldReload] = useState(false);
+
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     const [modals, setModals] = useState(modal1);

@@ -1,4 +1,4 @@
-import UserData from '../components/UserPageComponents/UserData/UserData';
+
 import PetsData from '../components/UserPageComponents/PetsData/PetsData';
 import {
     UserPageWrapper,
@@ -12,8 +12,6 @@ import { useEffect, useState } from 'react';
 import { useAuth } from 'hooks/useAuth';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { modal4 } from 'modals/modals';
-import { getUser } from 'redux/auth/auth-selectors';
-import { useSelector } from 'react-redux';
 import PetsItem from 'components/UserPageComponents/PetsItem/PetsItem';
 import { useDispatch } from 'react-redux';
 import petsOperations from '../redux/pets/petsOperations';
@@ -30,8 +28,8 @@ const UserPage = () => {
     const { listPets, petsRerender } = useAll();
     const [showModal, setShowModal] = useState(true);
     const dispatch = useDispatch();
-    const user = useSelector(getUser);
-    // const pets = useSelector(getPets);
+    
+   
     const { language} = useAll()
     const [lang, setLang] = useState(langUA)
 
@@ -39,13 +37,12 @@ const UserPage = () => {
       setLang(language === 'english' ?  langEN :  langUA);
     }, [language])
 
-    // console.log(useSelector(getPets))
     useEffect(() => {
         const timer = setTimeout(() => {
-            dispatch(petsOperations.getPet()).then(d => console.log(d));
+            dispatch(petsOperations.getPet())
         }, 2000);
         return () => clearTimeout(timer);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+       
     }, [petsRerender]);
 
     useEffect(() => {
@@ -78,7 +75,7 @@ const UserPage = () => {
                     <div style={{ position: 'relative', width: '100%' }}>
                         <PetsData
                             state={{ from: location }}
-                            // pets={pets}
+                          
                         />
                         
 

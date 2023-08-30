@@ -72,7 +72,6 @@ export default function NoticesPage() {
         currentSearchParams.set('page', page);
         setSearchParams(currentSearchParams);
     
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeIndex, filterValue, page]);
 
     const searchParamsNotices = {

@@ -133,6 +133,8 @@ const langEN = {
     typecomment: "Type comment" ,
   
 //{lang.typecomment}
+    temp: "Your favorite pets will be added here",
+    
     empty: "List is empty ...",
         // edit: "EDIT",
     delete: "DELETE",
@@ -276,7 +278,7 @@ const langUA = {
     typecomment: "Введіть коментар" ,
 
     empty: "Список порожній...",
-  
+    temp: "Тут будуть додані ваші улюблені домашні тварини",
     delete: "ВИДАЛИТИ",
     avatar: "Аватар",
     set: "Встановити",

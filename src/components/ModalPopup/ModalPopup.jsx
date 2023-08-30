@@ -170,15 +170,9 @@ export const ModalPopup = ({
         dispatch(toggleSell());
         dispatch(setModalClose());
         dispatch(authOperations.logOut());
-        //  .unwrap().then(originalPromiseResult => {
-        //   console.log('originalPromiseResult', originalPromiseResult)
-        //   Notify.success(`${originalPromiseResult.user.name} Logout  successfull!`);
-        // })
-        // .catch(() => {
-        //   Notify.failure('Incorrect logout operation');
-        // });
+
     };
-    // className='modal-backdrop'
+   
 
     if (type === 1) {
         return createPortal(
@@ -362,9 +356,3 @@ export const ModalPopup = ({
     }
 };
 
-// ModalPopup.propTypes = {
-//   // width: PropTypes.string.isRequired,
-//   // height: PropTypes.string.isRequired,
-//   // title: PropTypes.string.isRequired,
-//   // text: PropTypes.string.isRequired,
-//   // image: PropTypes.string,
