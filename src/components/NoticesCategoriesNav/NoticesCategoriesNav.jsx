@@ -1,22 +1,12 @@
 import {  useEffect, useState } from 'react';
-
-import { useDispatch, useSelector } from 'react-redux';
 import { RadioButton } from '../Button/Button';
 import { NavWrapper } from '../../pages/pages.styled/NoticesPage.styled';
 import { BtnWrap } from './NoticesCategoriesNav.styled';
 import { useAuth } from 'hooks/useAuth';
-import {
-    toggleInGoodHands,
-    toggleLostFound,
-    toggleSell,
-    toggleFavoriteAds,
-    toggleMyAds,
-} from 'redux/sort/sortSlice';
-import { activeIndex } from 'redux/sort/sortSelectors';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
 
-export default function NoticesCategoriesNav() {
+export default function NoticesCategoriesNav({ setActiveIndexFunction, activeIndex }) {
 
     const { language} = useAll()
     const [lang, setLang] = useState(langUA)
@@ -25,44 +15,42 @@ export default function NoticesCategoriesNav() {
       setLang(language === 'english' ?  langEN :  langUA);
     }, [language])
     const { isLoggedIn } = useAuth();
-    const dispatch = useDispatch();
-    const currentIndex = useSelector(activeIndex);
 
     return (
         <>
             <NavWrapper>
                 <BtnWrap>
                     <RadioButton
-                        onClick={() => dispatch(toggleSell())}
-                        className={currentIndex === 0 ? 'active' : ''}
+                        onClick={() => setActiveIndexFunction(0)}
+                        className={activeIndex === 0 ? 'active' : ''}
                     >
                         {lang.sell}
                     </RadioButton>
                     <RadioButton
-                        onClick={() => dispatch(toggleLostFound())}
-                        className={currentIndex === 1 ? 'active' : ''}
+                        onClick={() => setActiveIndexFunction(1)}
+                        className={activeIndex === 1 ? 'active' : ''}
                     >
                         {lang.lost}
                     </RadioButton>
                     <RadioButton
-                        onClick={() => dispatch(toggleInGoodHands())}
-                        className={currentIndex === 2 ? 'active' : ''}
+                        onClick={() => setActiveIndexFunction(2)}
+                        className={activeIndex === 2 ? 'active' : ''}
                     >
                         {lang.goodhands}
                     </RadioButton>
 
                     {isLoggedIn && (
                         <RadioButton
-                            onClick={() => dispatch(toggleFavoriteAds())}
-                            className={currentIndex === 3 ? 'active' : ''}
+                            onClick={() => setActiveIndexFunction(3)}
+                            className={activeIndex === 3 ? 'active' : ''}
                         >
                             {lang.favadds}
                         </RadioButton>
                     )}
                     {isLoggedIn && (
                         <RadioButton
-                            onClick={() => dispatch(toggleMyAds())}
-                            className={currentIndex === 4 ? 'active' : ''}
+                            onClick={() => setActiveIndexFunction(4)}
+                            className={activeIndex === 4 ? 'active' : ''}
                         >
                            {lang.myadds}
                         </RadioButton>
