@@ -50,7 +50,7 @@ export const FormStyled = styled.form`
     & > a.logoutBtn {
         background-color: transparent;
         border: none;
-        color: #333;
+        color: var(--text-color);
         transition: all 0.4ms ease-in-out;
 
         &:hover {
@@ -92,8 +92,7 @@ export const FormStyled = styled.form`
     }
 `;
 export const LabelStyled = styled.label`
-    @media screen and (min-width: 768px) {
-    }
+    color: var(--text-color);
 `;
 
 export const InputStyled = styled.input`
@@ -102,6 +101,8 @@ export const InputStyled = styled.input`
     border: 1px solid var(--blue);
     border-radius: 20px;
     padding: 4px 12px;
+    color: var(--text-color);
+    background-color: var(--background-color-input);
     @media screen and (min-width: 768px) {
         width: 255px;
         height: 30px;
@@ -109,7 +110,7 @@ export const InputStyled = styled.input`
 
     &:disabled {
         background-color: transparent;
-        color: var(--black); /* Змініть колір тексту на свій смак */
+        color: var(--text-color);
     }
 
     &:focus {

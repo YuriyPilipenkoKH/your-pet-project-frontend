@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Notify } from 'notiflix';
 
 axios.defaults.baseURL = 'https://your-pet-shw3.onrender.com';
 
@@ -77,10 +76,8 @@ const fetchUpdateUser = createAsyncThunk(
     async (updatedData, thunkAPI) => {
         try {
             const { data } = await axios.patch('/users/update', updatedData);
-            Notify.success(`The data has been updated`);
             return data;
         } catch (error) {
-            Notify.failure('Something went wrong');
             return thunkAPI.rejectWithValue(error.response.data);
         }
     }

@@ -18,8 +18,7 @@ import { useDispatch } from 'react-redux';
 import operations from 'redux/notices/notices-operations';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
-import { Notify } from 'notiflix';
-// import { setAge } from 'redux/notices/notices-slice';
+import { toast } from 'react-toastify';
 
 export const MainCard = ({
     index,
@@ -68,22 +67,22 @@ export const MainCard = ({
             if (idUsersAddedFavorite.includes(userId)) {
                 dispatch(operations.fetchRemoveFavorite(id))
                     .then(() => {
-                        Notify.success(
+                        toast.success(
                             `The animal was successfully removed from favorites`
                         );
                     })
                     .catch(() => {
-                        Notify.failure('Something went wrong');
+                        toast.error('Something went wrong');
                     });
             } else {
                 dispatch(operations.fetchNoticesAddFavorite(id))
                     .then(() => {
-                        Notify.success(
+                        toast.success(
                             `The animal was successfully added from favorites`
                         );
                     })
                     .catch(() => {
-                        Notify.failure('Something went wrong');
+                        toast.error('Something went wrong');
                     });
             }
         }

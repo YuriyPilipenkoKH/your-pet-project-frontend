@@ -28,6 +28,7 @@ import { useAuth } from 'hooks/useAuth';
 import { object, string } from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { toast } from 'react-toastify';
 
 const schema = object({
     email: string().matches(
@@ -128,7 +129,13 @@ const FormByMaket = () => {
         for (const key in { avatar }) {
             formData.append(key, { avatar }[key]);
         }
-        dispatch(operations.fetchUpdateUser(formData));
+        dispatch(operations.fetchUpdateUser(formData)).unwrap()
+        .then(() => {
+            toast.success(`Photo was successfully updated`);
+        })
+        .catch(() => {
+            toast.error('Something went wrong');
+        });;
         setEdit(false);
         setUserPhoto(false);
     };
@@ -166,7 +173,13 @@ const FormByMaket = () => {
                         { ...data, avatar }[key]
                     );
                 }
-                dispatch(operations.fetchUpdateUser(formData));
+                dispatch(operations.fetchUpdateUser(formData)).unwrap()
+                .then(() => {
+                    toast.success(`The information has been updated`);
+                })
+                .catch(() => {
+                    toast.error('Something went wrong');
+                });
             });
         setShowData(false);
         reset();

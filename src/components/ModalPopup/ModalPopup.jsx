@@ -41,7 +41,7 @@ import {
     StyledLinkLog,
     StyledLinkReg,
 } from 'components/AuthNav/AuthNav.styled';
-import { Notify } from 'notiflix';
+import { toast } from 'react-toastify';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -149,12 +149,12 @@ export const ModalPopup = ({
         if (path === 'notice') {
             dispatch(noticesOperations.fetchDeleteNotice(delid))
                 .then(() => {
-                    Notify.success(
+                    toast.success(
                         `The animal was successfully removed`
                     );
                 })
                 .catch(() => {
-                    Notify.failure('Something went wrong');
+                    toast.error('Something went wrong');
                 });
             dispatch(setModalClose());
             onClose();
