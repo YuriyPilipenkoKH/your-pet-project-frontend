@@ -130,14 +130,18 @@ export const CloseButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  
+  transition: all 0.4s ease-in-out;
+
+
 
   &>svg{
-    color: var(--text-color)!important;
+    color: var(--text-color);
     scale: 2;
+    transition: all 0.4s ease-in-out;
 
     &:hover {
-        color: var(--yellow)!important;
+        color: var(--yellow);
+        transition: all 0.4s ease-in-out;
     }
 
   }

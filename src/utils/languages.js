@@ -130,8 +130,9 @@ const langEN = {
     typepet: 'Type of pet',
     typelocation: 'Type of location',
     typeofprice: "Type of price" ,
+    typecomment: "Type comment" ,
   
-
+//{lang.typecomment}
     empty: "List is empty ...",
         // edit: "EDIT",
     delete: "DELETE",
@@ -271,8 +272,8 @@ const langUA = {
     typebirth: 'Введіть дату народження',
     typepet: 'Введіть породу',
     typelocation: 'Введіть локацію',
-    typeofprice: '"Введіть  цінy"',
-    
+    typeofprice: 'Введіть цінy',
+    typecomment: "Введіть коментар" ,
 
     empty: "Список порожній...",
   

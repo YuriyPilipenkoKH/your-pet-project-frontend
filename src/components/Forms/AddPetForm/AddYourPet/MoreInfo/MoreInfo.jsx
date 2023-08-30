@@ -145,7 +145,7 @@ export default function MoreInfo({
                         {...register('coment', {
                             maxLength: 120,
                         })}
-                        placeholder={lang.typepet}
+                        placeholder={lang.typecomment}
                         type="text"
                         value={coment}
                         spellCheck="false"

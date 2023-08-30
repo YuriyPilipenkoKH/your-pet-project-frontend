@@ -158,10 +158,11 @@ img {
 }
 
 .Logoutuser{
-  background-color: transparent !important;
+  background-color: transparent;
 }
 
 .logout{
-  width: 140px !important;
+  width: 140px ;
+  white-space: nowrap;
 }
 

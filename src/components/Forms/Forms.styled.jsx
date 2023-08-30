@@ -123,6 +123,7 @@ export const InputUploadImage = styled.input`
     opacity: 0;
     width: 112px;
     height: 112px;
+    cursor: pointer;
     @media screen and (min-width: 768px) {
         width: 182px;
         height: 182px;
