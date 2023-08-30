@@ -29,6 +29,8 @@ import { object, string } from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
+import { modal1, modal5 } from 'modals/modals';
+import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 
 const schema = object({
     email: string().matches(
@@ -75,12 +77,23 @@ const FormByMaket = () => {
     const [birth, setBirth] = useState(user.birthday);
     const [location, setLocation] = useState(user.location);
 
+    const [showModal, setShowModal] = useState(false);
+    const [modals, setModals] = useState(modal1);
+
     const { language } = useAll();
     const [lang, setLang] = useState(langUA);
 
     useEffect(() => {
         setLang(language === 'english' ? langEN : langUA);
     }, [language]);
+    
+    const signOut = () => {
+        setModals(modal5);
+        setShowModal(true);
+    };
+    const onModalClose = () => {
+        setShowModal(false);
+    };
 
     useEffect(() => {
         setName(user.name);
@@ -398,7 +411,9 @@ const FormByMaket = () => {
                 </div>
 
                 {!showData ? (
-                    <OutButton className="logoutBtn">
+                    <OutButton
+                    onClick={signOut}
+                     className="logoutBtn">
                         <MdOutlineLogout /> Log Out
                     </OutButton>
                 ) : (
@@ -411,6 +426,13 @@ const FormByMaket = () => {
             <FormEditor onClick={handleData}>
                 {!showData ? iconPen : IconCross}
             </FormEditor>
+            {showModal && (
+                <ModalPopup
+                    {...modals}
+                    onClose={onModalClose}
+                    isOpen={showModal}
+                />
+                )}
         </UserFormWrap>
     );
 };

@@ -79,6 +79,7 @@ export const NameWrapper = styled.div`
 export const InfoItem = styled.div`
     display: flex;
     margin-bottom: 12px;
+    gap: 12px;
     @media screen and (min-width: 768px) {
         margin-bottom: 16px;
     }

@@ -76,7 +76,7 @@ export const FormStyled = styled.form`
             margin: 0;
             position: absolute;
             bottom: 10px;
-            left: 117px;
+            left: 116px;
             width: 255px;
         }
 
