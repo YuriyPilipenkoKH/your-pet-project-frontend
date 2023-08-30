@@ -13,6 +13,14 @@ export const Btn = styled.button`
     background: transparent;
     border: none;
     cursor: pointer;
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+        transition: all 0.4s ease-in-out;
+        &>svg{
+            stroke: var(--yellow);
+        }
+    }
     @media screen and (min-width: 768px) {
         translate: -24px 0;
     }

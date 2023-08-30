@@ -42,7 +42,7 @@ const langEN = {
 
     Name: 'Name',
     Email: 'Email',
-    Birthday: 'Date of birth',
+    Birthday: 'Date of birth:',
     Phone: 'Phone',
     City: 'City',
 
@@ -55,7 +55,7 @@ const langEN = {
     place: 'Location',
     sex: 'Gender',
     phone: 'Phone',
-    comments: 'Comments :',
+    comments: 'Comments:',
     email: 'Email',
     confirmPass: "Confirm password",
 
