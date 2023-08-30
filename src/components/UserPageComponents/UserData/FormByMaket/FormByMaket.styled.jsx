@@ -58,17 +58,19 @@ font-weight: 600;
     border: none;
     color: #333;
     transition: all 0.4ms ease-in-out;
+    box-shadow: var(--shadow-default);
 
     &:hover {
         transition: all 0.4ms ease-in-out;
         color: #eee;
+        box-shadow: var(--shadow-hover);
         &>svg {
             transition: all 0.4ms ease-in-out;
         fill: #eee;
     }
     }  
     &>svg {
-        fill: #333;
+        fill: var(--blue);
     }
 }
 
@@ -128,13 +130,20 @@ export const FormEditor = styled(NavLink)`
 position: absolute;
 top: 10px;
 right: 10px;
+cursor: pointer;
 
+@media screen and (min-width: 768px) {
+    top: 20px;
+   right:20px;
+}
 `
 export const UserPhotoWrap = styled.div`
 
 display: grid;
 place-items: center;
 gap: 16px;
+height: 220px;
+
 
 &>img {
 

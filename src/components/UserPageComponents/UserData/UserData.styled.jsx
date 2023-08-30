@@ -53,7 +53,7 @@ export const ConfirmButtonWrap = styled.div`
 export const EditButton = styled.button`
     display: flex;
     align-items: center;
-    margin-top: 14px;
+    /* margin-top: 14px; */
     border: none;
     padding-top: 0;
     padding-right: 5px;
