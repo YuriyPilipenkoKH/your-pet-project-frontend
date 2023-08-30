@@ -58,12 +58,12 @@ font-weight: 600;
     border: none;
     color: #333;
     transition: all 0.4ms ease-in-out;
-    box-shadow: var(--shadow-default);
+   
 
     &:hover {
         transition: all 0.4ms ease-in-out;
         color: #eee;
-        box-shadow: var(--shadow-hover);
+       
         &>svg {
             transition: all 0.4ms ease-in-out;
         fill: #eee;
@@ -84,8 +84,9 @@ font-weight: 600;
     @media screen and (min-width: 768px) {
         margin: 0 ;
         position: absolute;
-        bottom: 16px;
-        left: 16px;
+        bottom: 10px;
+        left: 117px;
+        width: 255px;
     
     }
 
@@ -136,16 +137,20 @@ cursor: pointer;
     top: 20px;
    right:20px;
 }
+
+&>svg{
+    fill:var(--blue);
+}
 `
 export const UserPhotoWrap = styled.div`
 
 display: grid;
 place-items: center;
-gap: 16px;
+gap: 2px;
 height: 220px;
 
 
-&>img {
+&>input {
 
     width: 180px;
     height: 180px;

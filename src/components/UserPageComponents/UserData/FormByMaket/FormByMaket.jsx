@@ -5,15 +5,18 @@ import { FormEditor, FormStyled, InputStyled, LabelStyled, UserFormWrap, UserPho
 import { iconPen } from 'images/icons'
 import { Button, OutButton } from 'components/Button/Button'
 import { MdOutlineLogout } from 'react-icons/md';
-import { Check, ConfirmButtonWrap, Cross, EditButton, ImageControls } from '../UserData.styled';
+import { Avatar, Check, ConfirmButtonWrap, Cross, EditButton, ImageControls } from '../UserData.styled';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
 import { useDispatch } from 'react-redux';
 import operations from '../../../../redux/auth/auth-operations';
 import { ReactComponent as Camera } from '../../../../images/userPageIcons/camera.svg';
+import avatarDefault2x from '../../../../images/Photo_default@2x.jpg';
+import { useAuth } from 'hooks/useAuth';
 
+const FormByMaket = () => {
 
-const FormByMaket = ({ user }) => {
+  const {user} = useAuth()
   const [edit, setEdit] = useState(false);
   const [petPhoto, setFileInput] = useState('');
   const dispatch = useDispatch();
@@ -24,6 +27,10 @@ const FormByMaket = ({ user }) => {
   useEffect(() => {
     setLang(language === 'english' ?  langEN :  langUA);
   }, [language])
+
+  const initialValues = {
+    petPhoto: user.avatarURL || avatarDefault2x,
+};
 
   const handleAddAvatar = e => {
     setEdit(false);
@@ -58,6 +65,13 @@ const handleClickInput = e => {
 const handleEditBtn = () => {
     document.getElementById('petPhoto').click();
 };
+
+
+const editClick = () => {
+    
+};
+
+
 
 const handleChangeData = data => {
     const updatedData = Object.fromEntries(
@@ -106,7 +120,44 @@ const handleChangeData = data => {
   return (
     <UserFormWrap>
       <UserPhotoWrap  className='UserPhotoWrap' >
-      <img/>
+    
+                                
+      <label htmlFor="petPhoto" style={{ cursor: 'pointer' }}>
+                            {!petPhoto && !user.avatarURL && (
+                                <Avatar
+                                    src={avatarDefault2x}
+                                    alt="user avatar"
+                                />
+                            )}
+                            {!petPhoto && user.avatarURL && (
+                                <Avatar
+                                    src={user.avatarURL}
+                                    alt="user avatar"
+                                />
+                            )}
+                            {!!petPhoto && (
+                                <Avatar
+                                    src={URL.createObjectURL(petPhoto)}
+                                    id="image"
+                                    alt={petPhoto.username}
+                                />
+                            )}
+                      
+                                    <input
+                                        type="file"
+                                        id="petPhoto"
+                                        name="petPhoto"
+                                        accept=".png, .jpg, .jpeg, .webp"
+                                        hidden
+                                        value=""
+                                        onChange={handleClickInput}
+                                    />
+                               
+                           
+                            {/* <ErrorMessage name="user-avatar" component="div" /> */}
+                        </label>
+                               
+                           
       <ImageControls>
                             {edit && petPhoto ? (
                                 <ConfirmButtonWrap>
@@ -162,12 +213,12 @@ const handleChangeData = data => {
         <InputStyled type="text" name="city" />
       </div>
 
-      <OutButton  
+      {/* <OutButton  
       className="logoutBtn" >
-         <MdOutlineLogout /> Log Out</OutButton>
-      {/* <Button
+         <MdOutlineLogout /> Log Out</OutButton> */}
+      <Button
       className="saveBtn"
-      type="submit">Save</Button> */}
+      type="submit">Save</Button>
 
     </FormStyled>
 
