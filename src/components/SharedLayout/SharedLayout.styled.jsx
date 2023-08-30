@@ -5,6 +5,9 @@ export const SharedLayoutWrap = styled.div`
     background-color: var(--background-color);
     transition: all 1s ease-in-out;
     width: 100%;
+      display: grid;
+  place-items: center;
+  gap: 25px
 `;
 
 export const LogoLink = styled(NavLink)`
@@ -95,7 +98,7 @@ export const LangBtn = styled.button`
     cursor: pointer;
     color: var(--text-color) ;
     font-weight: 600;
-     transition: all 1s ease-in-out;
+    
 
     &> svg {
         transition:  fill 1s ease-in-out;

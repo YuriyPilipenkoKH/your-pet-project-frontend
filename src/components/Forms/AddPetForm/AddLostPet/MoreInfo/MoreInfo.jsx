@@ -284,8 +284,7 @@ export default function MoreInfo({
                                 {...register('coment', {
                                     maxLength: 120,
                                 })}
-                                placeholder={lang.typepet}
-                                type="text"
+                                placeholder={lang.typecomment}                                type="text"
                                 value={coment}
                                 spellCheck="false"
                                 data-grame="false"
