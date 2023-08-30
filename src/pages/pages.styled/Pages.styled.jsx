@@ -93,8 +93,12 @@ export const SearchWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 40px;
+    padding-top: 20px;
     gap: 24px;
+    @media screen and (min-width: 768px) {
+        padding-top: 60px;
+        gap: 40px;
+    }
 `;
 
 export const TytleNwes = styled.h2`
@@ -219,7 +223,16 @@ export const Wrapper = styled.div`
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 44px;
+    padding-top: 20px;
+    gap: 24px;
+    @media screen and (min-width: 768px) {
+        padding-top: 60px;
+        gap: 40px;
+    };
+    @media screen and (min-width: 1280px) {
+        padding-top: 60px;
+        gap: 60px;
+    }
 `;
 //Notfound
 export const Notfound = styled.div`
@@ -299,6 +312,11 @@ export const PaginationButton = styled.button.withConfig({
     padding: 10px 14px;
     border-radius: 50%;
     cursor: pointer;
+    transition: all 0.5s;
+    &:hover {
+        color: var(--white);
+        background-color: var(--blue);
+    }
 
     & > svg > path {
         fill: ${({ theme }) => theme === 'dark' && 'var(--white)'};

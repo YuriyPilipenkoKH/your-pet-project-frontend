@@ -17,6 +17,6 @@ export const Nav = ({onClose}) => {
         <NavWrap className='NavWrap'>
         <StyledLink to="/news"  onClick={onClose}> {lang.news} </StyledLink>
         <StyledLink to="/notices"  onClick={onClose}> {lang.find} </StyledLink> 
-        <StyledLink to="/friends"  onClick={onClose}> {lang.friends} </StyledLink> 
+        <StyledLink to="/friends"  onClick={onClose}> {lang.sponsors} </StyledLink> 
         </NavWrap>
     )}

@@ -23,8 +23,9 @@ import { getNewsList } from 'redux/news/newsSelectors';
 import newsOperations from '../redux/news/newsOperations';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
+import notFoundContent from '../images/notFoundContent.png';
 
-export const NewsPage = () => {
+const NewsPage = () => {
     const dispatch = useDispatch();
     const news = useSelector(getNewsList);
     const filter = useSelector(getNewsFilter);
@@ -57,7 +58,7 @@ export const NewsPage = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const filteredNews = () => {
@@ -182,7 +183,7 @@ export const NewsPage = () => {
                     />
                 ))}
             </NewsContainer>
-            {newsSearch.length > 0 && (
+            {newsSearch.length > 0 ? (
                 <PaginationWrapper>
                     <PaginationButton
                         theme={theme}
@@ -215,7 +216,11 @@ export const NewsPage = () => {
                         {iconRowLeft}
                     </PaginationButton>
                 </PaginationWrapper>
+            ) : (
+                <img alt='not found content' src={notFoundContent} />
             )}
         </NewsWrapper>
     );
 };
+
+export default NewsPage;

@@ -28,7 +28,7 @@ import { MdOutlineLightMode } from 'react-icons/md';
 import { langEN, langUA } from 'utils/languages';
 import { ToastContainer } from 'react-toastify';
 
-export const SharedLayout = () => {
+const SharedLayout = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const isMobile = windowWidth <= 768;
     const { isLoggedIn } = useAuth();
@@ -108,3 +108,5 @@ export const SharedLayout = () => {
         </SharedLayoutWrap>
     );
 };
+
+export default SharedLayout;
