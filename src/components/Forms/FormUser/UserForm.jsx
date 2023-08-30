@@ -6,7 +6,7 @@ import {
     LabelStyled,
     UserFormWrap,
     UserPhotoWrap,
-} from './FormUser.styled';
+} from './UserForm.styled';
 import { IconCross, iconPen } from 'images/icons';
 import { Button, OutButton } from 'components/Button/Button';
 import { MdOutlineLogout } from 'react-icons/md';
@@ -58,7 +58,7 @@ const schema = object({
     ),
 }).required();
 
-const FormByMaket = () => {
+const UserForm = () => {
     const { user } = useAuth();
     const [showData, setShowData] = useState(false);
     const [edit, setEdit] = useState(false);
@@ -266,7 +266,7 @@ const FormByMaket = () => {
                 onSubmit={handleSubmit(deliveryData)}
             >
                 <div>
-                    <LabelStyled>Name:</LabelStyled>
+                    <LabelStyled>{lang.nameUser}</LabelStyled>
                     <InputStyled
                         disabled={!showData}
                         {...register('name')}
@@ -295,7 +295,7 @@ const FormByMaket = () => {
                     />
                 </div>
                 <div>
-                    <LabelStyled>Email:</LabelStyled>
+                    <LabelStyled>{lang.emailUser}</LabelStyled>
                     <InputStyled
                         disabled={!showData}
                         {...register('email')}
@@ -324,7 +324,7 @@ const FormByMaket = () => {
                     />
                 </div>
                 <div>
-                    <LabelStyled>Birthday:</LabelStyled>
+                    <LabelStyled>{lang.birthdayUser}</LabelStyled>
                     <InputStyled
                         disabled={!showData}
                         {...register('birthday')}
@@ -353,7 +353,7 @@ const FormByMaket = () => {
                     />
                 </div>
                 <div>
-                    <LabelStyled>Phone:</LabelStyled>
+                    <LabelStyled>{lang.phoneUser}</LabelStyled>
                     <InputStyled
                         disabled={!showData}
                         {...register('phone')}
@@ -382,7 +382,7 @@ const FormByMaket = () => {
                     />
                 </div>
                 <div>
-                    <LabelStyled>City:</LabelStyled>
+                    <LabelStyled>{lang.cityUser}</LabelStyled>
                     <InputStyled
                         disabled={!showData}
                         {...register('location')}
@@ -437,4 +437,4 @@ const FormByMaket = () => {
     );
 };
 
-export default FormByMaket;
+export default UserForm;

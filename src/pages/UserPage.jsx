@@ -20,7 +20,7 @@ import petsOperations from '../redux/pets/petsOperations';
 import { useAll } from 'hooks/useAll';
 import { setRegToZero } from 'redux/auth/auth-slice';
 import { langEN, langUA } from 'utils/languages';
-import FormByMaket from 'components/Forms/FormUser/FormUser';
+import UserForm from 'components/Forms/FormUser/UserForm';
 import { TempPetsItem } from 'components/UserPageComponents/TempPetsItem/TempPetsItem';
 
 
@@ -72,7 +72,7 @@ const UserPage = () => {
                             <Title> {lang.info} </Title>
                         </TitleWrap>
                         <Card>
-                            <FormByMaket/>
+                            <UserForm/>
                         </Card>
                     </div>
                     <div style={{ position: 'relative', width: '100%' }}>

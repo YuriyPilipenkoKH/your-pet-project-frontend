@@ -43,6 +43,7 @@ export const FormStyled = styled.form`
     }
 
     & > div {
+        gap: 5px;
         display: flex;
         justify-content: space-between;
     }
