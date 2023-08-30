@@ -1,22 +1,23 @@
 
 
 import React from 'react'
-import { FormEditor, FormStyled, InputStyled, LabelStyled, UserFormWrap } from './FormByMaket.styled'
+import { FormEditor, FormStyled, InputStyled, LabelStyled, UserFormWrap, UserPhotoWrap } from './FormByMaket.styled'
 import { iconPen } from 'images/icons'
-import { Button } from 'components/Button/Button'
+import { Button, OutButton } from 'components/Button/Button'
+import { MdOutlineLogout } from 'react-icons/md';
+
 
 const FormByMaket = () => {
 
 
-
   return (
     <UserFormWrap>
-      <div>
+      <UserPhotoWrap  className='UserPhotoWrap' >
       <img/>
       <button>Edit photo</button>
-      </div>
+      </UserPhotoWrap>
    
-    <FormStyled>
+    <FormStyled className='FormStyled'>
       <div>
         <LabelStyled >Name:</LabelStyled>
         <InputStyled type="text" name="name"  />
@@ -37,11 +38,16 @@ const FormByMaket = () => {
         <LabelStyled >City:</LabelStyled>
         <InputStyled type="text" name="city" />
       </div>
+
+      <OutButton  
+      className="logoutBtn" >
+         <MdOutlineLogout /> Log Out</OutButton>
+      {/* <Button
+      className="saveBtn"
+      type="submit">Save</Button> */}
+
     </FormStyled>
 
-      <Button
-      className="saveBtn"
-      type="submit">Save</Button>
       <FormEditor>
       {iconPen}
       </FormEditor>
