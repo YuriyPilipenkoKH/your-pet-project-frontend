@@ -5,9 +5,9 @@ export const SharedLayoutWrap = styled.div`
     background-color: var(--background-color);
     transition: all 1s ease-in-out;
     width: 100%;
-      display: grid;
-  place-items: center;
-  gap: 25px
+    display: grid;
+    place-items: center;
+    gap: 25px;
 `;
 
 export const LogoLink = styled(NavLink)`
@@ -15,15 +15,12 @@ export const LogoLink = styled(NavLink)`
     @media screen and (min-width: 768px) {
         width: 162px;
     }
-
-
 `;
 
 export const LayoutWrap = styled.div`
     position: relative;
     width: 100%;
     padding: 20px;
-    padding-top: 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,19 +38,14 @@ export const AuthBtnWrap = styled.div`
     display: flex;
     align-items: center;
     gap: 25px;
-  @media screen and (min-width: 768px) {
-    bottom: -20px;
-  }
-
-
-
+    @media screen and (min-width: 768px) {
+        bottom: -20px;
+    }
 `;
 
-
-
 export const ThemeBtn = styled.button`
-   /* margin-left: auto; */
- 
+    /* margin-left: auto; */
+
     width: 50px;
     height: 50px;
     display: flex;
@@ -65,28 +57,25 @@ export const ThemeBtn = styled.button`
     background-color: transparent;
     transition: all 0.4ms ease-in-out;
     cursor: pointer;
- 
-    
 
-    &> svg {
+    & > svg {
         transition: all 1s ease-in-out;
         fill: var(--text-color);
-        }
+    }
 
-    &:hover{
+    &:hover {
         background-color: #eee5;
 
-
-        &> svg {
-            transition:  fill 1s ease-in-out;
-            fill:  ${props => props.theme === 'light' ? '#eee' : '#222'};
+        & > svg {
+            transition: fill 1s ease-in-out;
+            fill: ${props => (props.theme === 'light' ? '#eee' : '#222')};
         }
     }
-`
+`;
 
 export const LangBtn = styled.button`
     margin-left: auto;
-    width: 50px;   
+    width: 50px;
     height: 50px;
     display: flex;
     align-items: center;
@@ -97,22 +86,20 @@ export const LangBtn = styled.button`
     background-color: transparent;
     transition: all 0.4ms ease-in-out;
     cursor: pointer;
-    color: var(--text-color) ;
+    color: var(--text-color);
     font-weight: 600;
-    
 
-    &> svg {
-        transition:  fill 1s ease-in-out;
+    & > svg {
+        transition: fill 1s ease-in-out;
         fill: var(--text-color);
-        }
+    }
 
-    &:hover{
+    &:hover {
         background-color: #eee5;
 
-
-        &> svg {
-            transition:  fill 1s ease-in-out;
-            fill:  ${props => props.theme === 'light' ? '#eee' : '#222'};
+        & > svg {
+            transition: fill 1s ease-in-out;
+            fill: ${props => (props.theme === 'light' ? '#eee' : '#222')};
         }
     }
-`
+`;
