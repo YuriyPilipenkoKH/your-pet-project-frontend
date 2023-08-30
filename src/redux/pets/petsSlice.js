@@ -14,22 +14,18 @@ const petsSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(petsOperations.getPet.pending, state => {
-                state.loading = true;
                 state.error = null;
             })
             .addCase(
                 petsOperations.getPet.fulfilled,
                 (state, { payload }) => {
-                    state.loading = false;
                     state.listPets = payload.pets
                     state.owner = payload.owner
-
                 }
             )
             .addCase(
                 petsOperations.getPet.rejected,
                 (state, { payload }) => {
-                    state.loading = false;
                     state.error = payload;
                 }
             )
@@ -61,6 +57,7 @@ const petsSlice = createSlice({
                 petsOperations.removeMyPet.fulfilled,
                 (state, { payload }) => {
                     state.message = payload.message
+                    state.loading = false;
                     state.reRender = false;
                 }
             )

@@ -123,6 +123,7 @@ export const InputUploadImage = styled.input`
     opacity: 0;
     width: 112px;
     height: 112px;
+    cursor: pointer;
     @media screen and (min-width: 768px) {
         width: 182px;
         height: 182px;
@@ -525,6 +526,18 @@ export const WrapperNextBackButton = styled.div.withConfig({
     @media screen and (min-width: 768px) {
         gap: 10px;
     }
+
+    /* &>button.done {
+        width: 255px;
+        align-self: center;
+    }
+    &>button.back {
+        width: 250px;
+        align-self: center;
+    @media screen and (min-width: 768px) {
+       width: 120px;
+    }
+    } */
 `;
 
 export const TypeInput = styled.span.withConfig({
@@ -564,7 +577,6 @@ export const LabelForAddImage = styled.div.withConfig({
         display: ${({ addPetMoreInformation }) =>
             addPetMoreInformation && 'block'};
     }
-    white-space: nowrap; 
 `;
 
 export const ImageWrapper = styled.div`

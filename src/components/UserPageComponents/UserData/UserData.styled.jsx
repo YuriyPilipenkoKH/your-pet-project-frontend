@@ -68,8 +68,8 @@ export const EditButton = styled.button`
     letter-spacing: 0.04em;
     box-shadow: none;
     transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    
-
+    color: var(--text-color);
+    transition: all 1s ease-in-out;
     cursor: pointer;
 
     &:hover,

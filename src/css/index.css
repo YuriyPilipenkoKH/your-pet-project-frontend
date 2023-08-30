@@ -102,11 +102,12 @@ body {
   box-sizing: border-box;
 }
 
-ul {
+ul, li {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 
 a {
   text-decoration: none;
@@ -157,6 +158,11 @@ img {
 }
 
 .Logoutuser{
-  background-color: transparent !important;
+  background-color: transparent;
+}
+
+.logout{
+  width: 140px ;
+  white-space: nowrap;
 }
 

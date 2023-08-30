@@ -8,15 +8,11 @@ import {
     UserWrap,
 } from './UserNav.styled';
 import { iconUser } from '../../images/icons';
-
-import { StyledLink } from 'components/Button/Button.styled';
-
 import { modal1, modal5 } from 'modals/modals';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
 import { useAuth } from 'hooks/useAuth';
-import { Avatar } from 'components/UserPageComponents/UserData/UserData.styled';
 
 export const UserNav = ({ onClose }) => {
     const { language } = useAll();

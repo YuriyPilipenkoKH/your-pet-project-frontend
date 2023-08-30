@@ -112,16 +112,21 @@ export const FormInput = styled(Field)`
 `;
 
 export const InputName = styled.span`
-    min-width: 0;
+    max-width: 60px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.35;
     letter-spacing: 0.04em;
     color: var(--text-color);
     transition: all 1s ease-in-out;
     @media screen and (min-width: 768px) {
-        font-size: 18px;
+        font-size: 14px;
+        max-width: 90px;
     }
+
+     overflow: hidden;
+        text-overflow: ellipsis; 
+        white-space: nowrap; 
 `;
 
 export const ErrorContainer = styled.div`

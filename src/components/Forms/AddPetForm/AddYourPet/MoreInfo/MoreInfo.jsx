@@ -22,6 +22,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 const schema = object({
     coment: string()
@@ -43,6 +45,13 @@ export default function MoreInfo({
     const [coment, setComent] = useLocalStorage('comentYourPet', '');
     const [imageURL, setImageURL] = useLocalStorage('imageUrlYourPet', '');
     const [imageError, setImageError] = useState(null);
+
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
     const {
         register,
         handleSubmit,
@@ -84,7 +93,7 @@ export default function MoreInfo({
 
     return (
         <Form addPet>
-            <Title addPet>Add pet</Title>
+            <Title addPet>{lang.addPet}</Title>
             {children}
             <form
                 onSubmit={handleSubmit(deliveryData)}
@@ -92,7 +101,7 @@ export default function MoreInfo({
                 style={{ marginTop: "16px" }}
             >
                 <LabelForAddImage>
-                    <TypeInput addImage>Load the pet’s image:</TypeInput>
+                    <TypeInput addImage>{lang.loadimg}</TypeInput>
                     <ImageWrapper>
                         <InputUploadImage
                             {...register('imageURL')}
@@ -129,14 +138,14 @@ export default function MoreInfo({
                     )}
                 </LabelForAddImage>
                 <LabelForAdd coment>
-                    <TypeInput>Comments</TypeInput>
+                    <TypeInput>{lang.comments}</TypeInput>
                     <Textarea
                         {...register('coment')}
                         aria-invalid={errors.coment ? 'true' : 'false'}
                         {...register('coment', {
                             maxLength: 120,
                         })}
-                        placeholder="Type of pet"
+                        placeholder={lang.typecomment}
                         type="text"
                         value={coment}
                         spellCheck="false"
@@ -199,10 +208,10 @@ export default function MoreInfo({
                 </LabelForAdd>
                 <WrapperNextBackButton>
                     <ButtonTransparent addPet onClick={() => beforeForm()}>
-                        <BiArrowBack /> {stepNumber > 1 ? 'Back' : 'Cancel'}
+                        <BiArrowBack /> {stepNumber > 1 ? lang.back : lang.cancel}
                     </ButtonTransparent>
                     <Button stepNumber={stepNumber} addPet type="submit">
-                        {stepNumber > 2 ? 'Done' : 'Next'} {iconPawprint}
+                        {stepNumber > 2 ? lang.done : lang.next} {iconPawprint}
                     </Button>
                 </WrapperNextBackButton>
             </form>

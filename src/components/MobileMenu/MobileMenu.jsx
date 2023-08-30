@@ -16,8 +16,6 @@ import {
     StyledLinkOut,
     StyledUserLink,
 } from 'components/UserNav/UserNav.styled';
-import { useSelector } from 'react-redux';
-import { authSelectors } from 'redux/auth';
 import { MdOutlineLogout } from 'react-icons/md';
 import { useAuth } from 'hooks/useAuth';
 import {} from 'redux/sort/sortSlice';

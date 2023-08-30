@@ -230,7 +230,7 @@ export default function MoreInfo({
                                 aria-invalid={
                                     errors.location ? 'true' : 'false'
                                 }
-                                placeholder="Type of location"
+                                placeholder={lang.typelocation}
                                 type="text"
                                 value={location}
                                 style={{
@@ -291,7 +291,7 @@ export default function MoreInfo({
                             <InputForAddPet
                                 {...register('price')}
                                 aria-invalid={errors.price ? 'true' : 'false'}
-                                placeholder="Type of price"
+                                placeholder={lang.typeofprice}
                                 type="text"
                                 value={price}
                                 style={{
@@ -355,7 +355,7 @@ export default function MoreInfo({
                                 {...register('coment', {
                                     maxLength: 120,
                                 })}
-                                placeholder="Type of pet"
+                                placeholder={lang.typecomment}
                                 type="text"
                                 value={coment}
                                 spellCheck="false"
@@ -422,10 +422,13 @@ export default function MoreInfo({
                     </WrapperForInputInMoreInformationTwo>
                 </WrapperForMoreInformation>
                 <WrapperNextBackButton addPetMoreInformation>
-                    <ButtonTransparent addPet onClick={() => beforeForm()}>
+                    <ButtonTransparent 
+                    className ="back"
+                    addPet onClick={() => beforeForm()}>
                         <BiArrowBack /> {stepNumber > 1 ? lang.back : lang.cancel}
                     </ButtonTransparent>
-                    <Button
+                    <Button  
+                        className ="done"
                         stepNumber={stepNumber}
                         addPet
                         addPetMoreInformation

@@ -91,7 +91,7 @@ export const ModalPopup = ({
 
     const { language } = useAll();
     const [lang, setLang] = useState(langUA);
-    const { modalIsOpen } = useAll();
+    // const { modalIsOpen } = useAll();
     const dispatch = useDispatch();
 
     useEffect(() => {

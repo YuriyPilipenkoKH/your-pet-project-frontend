@@ -19,6 +19,5 @@ export const authSelectors = {
     getIsFetching,
     getRegistrationSuccessful,
     getUser,
-    
 };
 export default authSelectors;

@@ -5,6 +5,8 @@ export const NavWrap = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+
     @media screen and (max-width: 1279px) {
     display: none;
       
@@ -12,6 +14,16 @@ export const NavWrap = styled.div`
     @media screen and (min-width: 1280px) {
       flex-direction: row;
     }
+    &>a{
+      transition: all 0.4s ease-in-out;
+    }
+      &>a:hover,
+      &>a:focus {
+      transition: all 0.4s ease-in-out;
+      color: var(--yellow);
+      outline: none;
+    }
+
 
     &>a.active {
       color: var(--yellow);

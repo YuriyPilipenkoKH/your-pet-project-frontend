@@ -29,6 +29,7 @@ const UserDataItem = ({
     onSubmit,
     ...props
 }) => {
+    console.log(label)
     const newLabel = label.slice(0, -1)
     const { language} = useAll()
     const [lang, setLang] = useState(langUA)
@@ -47,7 +48,7 @@ const UserDataItem = ({
         <FormWrapper>
             <FormItem>
             {/* <InputName>{ lang[newLabel] }</InputName> */}
-                <InputName>{newLabel}</InputName>
+                <InputName className='InputName'>{lang[newLabel]}</InputName>
                 <FormLabel htmlFor={id}></FormLabel>
                 {!!isdisabled && (
                     <EditInpuButton

@@ -83,7 +83,7 @@ export default function NoticesFilters({ state }) {
                 </FavButton>
 
                 <AddToButton onClick={checkRoute}>
-                    {lang.addPet} <AiOutlinePlus />
+                    {lang.add} <AiOutlinePlus />
                 </AddToButton>
                 {showFilters && (
                     <DropdownMenu>

@@ -8,17 +8,18 @@ const newsSlice = createSlice({
     initialState,
     extraReducers: builder => {
         builder
-        .addCase(newsOperations.fetchNews.pending, (state) => {
-            state.loading = true;
-          })
-          .addCase(newsOperations.fetchNews.fulfilled, (state, { payload }) => {
-            console.log(payload);
-            state.listNews = payload;
-          })
-          .addCase(newsOperations.fetchNews.rejected, (state, { payload }) => {
-            state.loading = false;
-            state.error = payload;
-          });
+            .addCase(
+                newsOperations.fetchNews.fulfilled,
+                (state, { payload }) => {
+                    state.listNews = payload;
+                }
+            )
+            .addCase(
+                newsOperations.fetchNews.rejected,
+                (state, { payload }) => {
+                    state.error = payload;
+                }
+            );
     },
 });
 export default newsSlice.reducer;
