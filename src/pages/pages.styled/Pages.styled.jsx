@@ -18,6 +18,7 @@ import isPropValid from '@emotion/is-prop-valid';
 
 // Home
 export const HomeWrapper = styled.div`
+    width: 100%;
     height: 600px;
     background-image: url('${bgImgM}');
     padding: 40px 20px 0 20px;

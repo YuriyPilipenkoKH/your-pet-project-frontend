@@ -68,9 +68,9 @@ export default function PersonalDetails({
         formState: { errors },
     } = useForm({
         defaultValues: {
-            name: '',
-            birth: '',
-            typePet: '',
+            name: name || '',
+            birth: birth ||'',
+            typePet: typePet || '',
         },
         resolver: yupResolver(schema),
     });

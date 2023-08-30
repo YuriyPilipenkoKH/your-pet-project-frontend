@@ -79,10 +79,10 @@ useEffect(() => {
         formState: { errors },
     } = useForm({
         defaultValues: {
-            title: '',
-            name: '',
-            birth: '',
-            typePet: '',
+            name: name || '',
+            birth: birth ||'',
+            typePet: typePet || '',
+            title: title || '',
         },
         resolver: yupResolver(schema),
     });

@@ -58,8 +58,8 @@ export default function MoreInfo({
         formState: { errors },
     } = useForm({
         defaultValues: {
-            coment: '',
-            imageURL: '',
+            coment: coment || '',
+            imageURL: imageURL || '',
         },
         resolver: yupResolver(schema),
     });

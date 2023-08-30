@@ -20,7 +20,7 @@ import petsOperations from '../redux/pets/petsOperations';
 import { useAll } from 'hooks/useAll';
 import { setRegToZero } from 'redux/auth/auth-slice';
 import { langEN, langUA } from 'utils/languages';
-import FormByMaket from 'components/UserPageComponents/UserData/FormByMaket/FormByMaket';
+import FormByMaket from 'components/Forms/FormUser/FormUser';
 
 const UserPage = () => {
     const location = useLocation();
