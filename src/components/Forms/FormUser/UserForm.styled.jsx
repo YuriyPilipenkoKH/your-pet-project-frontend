@@ -43,6 +43,7 @@ export const FormStyled = styled.form`
     }
 
     & > div {
+        gap: 5px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -53,6 +54,7 @@ export const FormStyled = styled.form`
         background-color: transparent;
         border: none;
         color: var(--button-color-loguut);
+        color: var(--text-color);
         transition: all 0.4ms ease-in-out;
         transition: color 1s ease-in-out;
         &:hover {
@@ -95,6 +97,7 @@ export const FormStyled = styled.form`
 `;
 
 export const LabelStyled = styled.label`
+
   white-space: nowrap;
   overflow: hidden;
   max-width: 60px;
@@ -107,6 +110,9 @@ export const LabelStyled = styled.label`
         font-size: 16px;
         max-width: 95px;
     }
+
+    color: var(--text-color);
+
 `;
 
 export const InputStyled = styled.input`
@@ -116,6 +122,10 @@ export const InputStyled = styled.input`
     border-radius: 20px;
     padding: 4px 12px;
     
+
+    color: var(--text-color);
+    background-color: var(--background-color-input);
+
     @media screen and (min-width: 768px) {
         width: 255px;
         height: 30px;
@@ -123,7 +133,7 @@ export const InputStyled = styled.input`
 
     &:disabled {
         background-color: transparent;
-        color: var(--black); /* Змініть колір тексту на свій смак */
+        color: var(--text-color);
     }
 
     &:focus {

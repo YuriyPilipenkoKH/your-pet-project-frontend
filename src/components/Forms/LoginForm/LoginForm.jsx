@@ -20,7 +20,6 @@ import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
-import { Notify } from 'notiflix';
 import { toast } from 'react-toastify';
 
 const schema = object({
@@ -68,19 +67,10 @@ export default function LoginForm() {
         dispatch(authOperations.logIn({ email, password }))
             .unwrap()
             .then(originalPromiseResult => {
-                toast('🦄 Wow so easy!', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    });
+                toast.success(`Welcome back ${originalPromiseResult.user.name}`);
             })
             .catch(() => {
-                Notify.failure('Incorrect login or password');
+                toast.error('Incorrect login or password');
             });
     };
     const reset = () => {

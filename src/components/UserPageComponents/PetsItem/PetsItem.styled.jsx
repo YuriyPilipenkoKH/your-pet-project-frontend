@@ -64,9 +64,15 @@ export const SubTitle = styled.p`
     line-height: 1.36;
     letter-spacing: 0.04em;
     color: var(--text-color);
+    letter-spacing: 0.56px;
     transition: all 1s ease-in-out;
     @media screen and (min-width: 768px) {
         font-weight: 600;
+        line-height: normal;
+    }
+    @media screen and (min-width: 1280px) {
+        font-size: 16px;
+        letter-spacing: 0.64px;
     }
 `;
 
@@ -79,7 +85,7 @@ export const NameWrapper = styled.div`
 export const InfoItem = styled.div`
     display: flex;
     margin-bottom: 12px;
-    gap: 12px;
+    gap: 3px;
     @media screen and (min-width: 768px) {
         margin-bottom: 16px;
     }
@@ -89,12 +95,16 @@ export const InfoText = styled.span`
     display: inline;
     font-weight: 400;
     font-size: 14px;
-    line-height: 1.36;
-    letter-spacing: 0.04em;
     word-break: break-word;
     overflow-wrap: break-word;
     color: var(--text-color);
+    letter-spacing: 0.56px;
+    line-height: normal;
     transition: all 1s ease-in-out;
+    @media screen and (min-width: 1280px) {
+        font-size: 16px;
+        letter-spacing: 0.64px;
+    }
 `;
 
 export const PetComment = styled.p`

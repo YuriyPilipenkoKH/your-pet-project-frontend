@@ -1,4 +1,5 @@
 
+
 import PetsData from '../components/UserPageComponents/PetsData/PetsData';
 import {
     UserPageWrapper,
@@ -12,13 +13,14 @@ import { useEffect, useState } from 'react';
 import { useAuth } from 'hooks/useAuth';
 import { ModalPopup } from 'components/ModalPopup/ModalPopup';
 import { modal4 } from 'modals/modals';
+
 import PetsItem from 'components/UserPageComponents/PetsItem/PetsItem';
 import { useDispatch } from 'react-redux';
 import petsOperations from '../redux/pets/petsOperations';
 import { useAll } from 'hooks/useAll';
 import { setRegToZero } from 'redux/auth/auth-slice';
 import { langEN, langUA } from 'utils/languages';
-import FormByMaket from 'components/Forms/FormUser/FormUser';
+import UserForm from 'components/Forms/FormUser/UserForm';
 import { TempPetsItem } from 'components/UserPageComponents/TempPetsItem/TempPetsItem';
 
 
@@ -28,14 +30,14 @@ const UserPage = () => {
     const { listPets, petsRerender } = useAll();
     const [showModal, setShowModal] = useState(true);
     const dispatch = useDispatch();
-    
-   
+
     const { language} = useAll()
     const [lang, setLang] = useState(langUA)
 
     useEffect(() => {
       setLang(language === 'english' ?  langEN :  langUA);
     }, [language])
+
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -69,7 +71,7 @@ const UserPage = () => {
                             <Title> {lang.info} </Title>
                         </TitleWrap>
                         <Card>
-                            <FormByMaket/>
+                            <UserForm/>
                         </Card>
                     </div>
                     <div style={{ position: 'relative', width: '100%' }}>

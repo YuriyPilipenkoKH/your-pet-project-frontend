@@ -19,6 +19,12 @@ const langEN = {
     addYourPet: 'Add your pet',
     addGood: 'Add in good hands',
 
+    nameUser: "Name:",
+    emailUser: "Email:",
+    birthdayUser: "Birthday:",
+    phoneUser: "Phone:",
+    cityUser: "City:",
+
 
     addLostPet: 'Add lost pet',
     add: 'Add pet',
@@ -164,6 +170,12 @@ const langUA = {
     favadds: 'улюблені',
     myadds: 'мої доповнення',
 
+    nameUser: "Ім'я:",
+    emailUser: "Пошта:",
+    birthdayUser: "Народився:",
+    phoneUser: "Телефон:",
+    cityUser: "Місто:",
+
     filter: 'Фільтр',
     filters: 'Фільтри',
     addPet: 'Додати оголошення',
@@ -220,7 +232,7 @@ const langUA = {
 
     footerTitle: 'React-телефонна книга-2023',
     info: 'Моя інформація',
-    pets: 'МоЇ домашні тварини',
+    pets: 'Мої домашні тварини',
     city: 'Місто',
     
    

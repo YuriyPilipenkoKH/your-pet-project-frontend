@@ -229,7 +229,7 @@ export const Wrapper = styled.div`
     @media screen and (min-width: 768px) {
         padding-top: 60px;
         gap: 40px;
-    };
+    }
     @media screen and (min-width: 1280px) {
         padding-top: 60px;
         gap: 60px;
@@ -277,6 +277,7 @@ export const Notfound = styled.div`
 `;
 
 export const CommonWrapper = styled.div`
+    width: 100%;
     display: grid;
     gap: 24px;
 `;

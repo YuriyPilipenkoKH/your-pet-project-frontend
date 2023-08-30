@@ -5,7 +5,7 @@ import { useLocalStorage } from 'hooks/useLocalStaoreage';
 import { useNavigate } from 'react-router-dom';
 import operations from 'redux/pets/petsOperations';
 import { useDispatch } from 'react-redux';
-import { Notify } from 'notiflix';
+import { toast } from 'react-toastify';
 
 export default function AddYourPet({
     children,
@@ -30,12 +30,12 @@ export default function AddYourPet({
                 formData.append(key, { ...pet, ...data }[key]);
             }
             dispatch(operations.addMySelfPet(formData))
-                .then(() => {
-                    Notify.success(`Pet added successfully`);
-                })
-                .catch(() => {
-                    Notify.failure('Something went wrong');
-                });
+            .then(() => {
+                toast.success(`Pet added successfully`);
+            })
+            .catch(() => {
+                toast.error('Something went wrong');
+            });
             navigate(backLinkLocation.current);
             clearStepNumber();
             clearData('dataYourPet');

@@ -52,7 +52,7 @@ const PetsItem = ({
                         <NameWrapper>
                             <InfoItem>
                                 <SubTitle>{lang.name}</SubTitle>
-                                <InfoText> {name} </InfoText>
+                                <InfoText>{name} </InfoText>
                             </InfoItem>
                             <Btn 
                             onClick = {removePet}
