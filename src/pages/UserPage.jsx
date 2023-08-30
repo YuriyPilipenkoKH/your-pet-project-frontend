@@ -20,6 +20,7 @@ import petsOperations from '../redux/pets/petsOperations';
 import { useAll } from 'hooks/useAll';
 import { setRegToZero } from 'redux/auth/auth-slice';
 import { langEN, langUA } from 'utils/languages';
+import FormByMaket from 'components/UserPageComponents/UserData/FormByMaket/FormByMaket';
 
 const UserPage = () => {
     const location = useLocation();
@@ -69,7 +70,7 @@ const UserPage = () => {
                             <Title> {lang.info} </Title>
                         </TitleWrap>
                         <Card>
-                            <UserData user={user} />
+                            <FormByMaket/>
                         </Card>
                     </div>
                     <div style={{ position: 'relative', width: '100%' }}>
