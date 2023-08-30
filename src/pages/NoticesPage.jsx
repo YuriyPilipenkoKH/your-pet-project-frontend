@@ -21,6 +21,7 @@ import { useAll } from 'hooks/useAll';
 import { iconRowLeft } from 'images/icons';
 import { useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
+import notFoundContent from '../images/notFoundContent.png';
 
 export default function NoticesPage() {
     const [itemOffset, setItemOffset] = useState(0);
@@ -90,7 +91,7 @@ export default function NoticesPage() {
             );
         }
         //    eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [reRender, page, noticesCategories, pageNotices]);
+    }, [reRender, noticesCategories, pageNotices]);
 
     const filteredNotices = () => {
         if (filterByGender === 'male') {
@@ -112,6 +113,7 @@ export default function NoticesPage() {
         if (totalPages < page) {
             setPage(1);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [totalPages, page]);
 
     function calculateAge(birthday) {
@@ -239,7 +241,7 @@ export default function NoticesPage() {
                     />
                 ))}
             </NoticeContainer>
-            {filteredNotices().length > 0 && (
+            {filteredNotices().length > 0 ? (
                 <PaginationWrapper>
                     <PaginationButton
                         theme={theme}
@@ -272,6 +274,10 @@ export default function NoticesPage() {
                         {iconRowLeft}
                     </PaginationButton>
                 </PaginationWrapper>
+            ) : (
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    <img alt='not found content' src={notFoundContent} />
+                </div>
             )}
         </CommonWrapper>
     );

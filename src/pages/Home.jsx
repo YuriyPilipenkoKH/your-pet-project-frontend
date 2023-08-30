@@ -22,4 +22,4 @@ import { langEN, langUA } from 'utils/languages';
   );
 }
 
-export default Home
+export default Home;

@@ -26,7 +26,7 @@ import { useAll } from 'hooks/useAll';
 import { MdOutlineNightlight } from 'react-icons/md';
 import { MdOutlineLightMode } from 'react-icons/md';
 
-export const SharedLayout = () => {
+const SharedLayout = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const isMobile = windowWidth <= 768;
     const { isLoggedIn } = useAuth();
@@ -106,3 +106,5 @@ export const SharedLayout = () => {
         </SharedLayoutWrap>
     );
 };
+
+export default SharedLayout;

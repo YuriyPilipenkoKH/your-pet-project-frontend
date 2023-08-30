@@ -6,7 +6,7 @@ const langEN = {
     news: 'News',
     find: 'Find pet',
     findPet: 'Find your favorite pet',
-    friends: 'Our Friends',
+    sponsors: 'Our Friends',
     sell: 'sell',
     lost: 'lost/found',
     goodhands: 'in good hands',
@@ -154,7 +154,7 @@ const langUA = {
     news: 'Новини',
     find: 'Знайдіть улюбленця',
     findPet: 'Знайдіть домашнього улюбленця',
-    friends: 'Наші друзі',
+    sponsors: 'Наші друзі',
 
     sell: 'продаж',
     lost: 'бюро знахідок',

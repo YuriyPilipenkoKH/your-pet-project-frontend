@@ -23,6 +23,7 @@ export const LayoutWrap = styled.div`
     position: relative;
     width: 100%;
     padding: 20px;
+    padding-top: 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
