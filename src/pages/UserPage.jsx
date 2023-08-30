@@ -21,6 +21,8 @@ import { useAll } from 'hooks/useAll';
 import { setRegToZero } from 'redux/auth/auth-slice';
 import { langEN, langUA } from 'utils/languages';
 import FormByMaket from 'components/Forms/FormUser/FormUser';
+import { TempPetsItem } from 'components/UserPageComponents/TempPetsItem/TempPetsItem';
+
 
 const UserPage = () => {
     const location = useLocation();
@@ -78,7 +80,9 @@ const UserPage = () => {
                             state={{ from: location }}
                             // pets={pets}
                         />
-                        {listPets.map((item, index) => (
+                        
+
+                        {listPets.length !== 0  ? listPets.map((item, index) => (
                             <PetsItem
                                 key={index}
                                 birthday={item.birthday}
@@ -88,7 +92,10 @@ const UserPage = () => {
                                 id={item._id}
                                 petAvatarURL={item.petAvatarURL}
                             />
-                        ))}
+
+                        ))
+                        : <TempPetsItem></TempPetsItem>
+                    }
                     </div>
                 </MainContent>
             </UserPageWrapper>

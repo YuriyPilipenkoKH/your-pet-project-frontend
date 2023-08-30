@@ -66,3 +66,4 @@ export const Title = styled.p`
         font-size: 28px;
     }
 `;
+
