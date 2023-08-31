@@ -37,6 +37,10 @@ export const StyledLink = styled(NavLink)`
   text-decoration:none;
   font-size: 20px;
   font-weight: 600;
+  transition: all 250ms;
+  &:hover, &:active, &:focus {
+    color: var(--yellow);
+  }
 
 `
 export const ButtonBurger = styled.button`

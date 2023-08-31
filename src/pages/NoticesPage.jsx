@@ -13,30 +13,30 @@ import {
     PaginationButton,
     PaginationWrapper,
 } from './pages.styled/Pages.styled';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { getReRender } from 'redux/notices/notices-selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import noticesOperations from '../redux/notices/notices-operations';
-import { getNoticesFilter } from 'redux/filter/filterSelectors';
 import { useAll } from 'hooks/useAll';
 import { iconRowLeft } from 'images/icons';
 import { useState } from 'react';
+import { useLocalStorage } from 'hooks/useLocalStaoreage';
+import notFoundContent from '../images/notFoundContent.png';
 
 export default function NoticesPage() {
     const [itemOffset, setItemOffset] = useState(0);
     const [numButtons, setNumButtons] = useState(5);
-    const [page, setPage] = useState(1);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const noticesCategories = searchParams.get('NoticesCategoriesNav') ?? '';
+    const queryNotices = searchParams.get('query') ?? '';
+    const pageNotices = searchParams.get('page') ?? '';
+    const [page, setPage] = useLocalStorage("page", 1);
     const location = useLocation();
-    const {
-        filterByAgeIdx,
-        filterByGender,
-        noticesList,
-        activeIndex,
-        totalPages,
-        theme,
-    } = useAll();
+    const { filterByAgeIdx, filterByGender, noticesList, totalPages, theme } =
+        useAll();
+    const [activeIndex, setActiveIndex] = useLocalStorage('activeIndex', 0);
+    const [filterValue, setFilterValue] = useLocalStorage('filterValue', "");
     const dispatch = useDispatch();
-    const filterValue = useSelector(getNoticesFilter);
     const reRender = useSelector(getReRender);
 
     const makeCategory = () => {
@@ -56,21 +56,41 @@ export default function NoticesPage() {
             return 'my-ads';
         }
     };
-    const searchParams = {
-        NoticesCategoriesNav: makeCategory(),
-        query: filterValue,
-        page,
+
+    const setActiveIndexFunction = number => {
+        setActiveIndex(number);
+        setFilterValue("");
+        setPage(1);
+    };
+    const setFilterValueFunction = text => {
+        setFilterValue(text);
+    };
+    useEffect(() => {
+        const currentSearchParams = new URLSearchParams(searchParams.toString());
+        currentSearchParams.set('NoticesCategoriesNav', makeCategory());
+        currentSearchParams.set('query', filterValue);
+        currentSearchParams.set('page', page);
+        setSearchParams(currentSearchParams);
+    
+    }, [activeIndex, filterValue, page]);
+
+    const searchParamsNotices = {
+        NoticesCategoriesNav: noticesCategories,
+        query: queryNotices,
+        page: pageNotices,
     };
     useEffect(() => {
         if (activeIndex === 4) {
-            dispatch(noticesOperations.fetchUserNotices(searchParams));
+            dispatch(noticesOperations.fetchUserNotices(searchParamsNotices));
         } else if (activeIndex === 3) {
-            dispatch(noticesOperations.fetchAllFavorite(searchParams));
+            dispatch(noticesOperations.fetchAllFavorite(searchParamsNotices));
         } else {
-            dispatch(noticesOperations.fetchNoticesByCategory(searchParams));
+            dispatch(
+                noticesOperations.fetchNoticesByCategory(searchParamsNotices)
+            );
         }
         //    eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [reRender, page]);
+    }, [reRender, noticesCategories, pageNotices]);
 
     const filteredNotices = () => {
         if (filterByGender === 'male') {
@@ -92,6 +112,7 @@ export default function NoticesPage() {
         if (totalPages < page) {
             setPage(1);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [totalPages, page]);
 
     function calculateAge(birthday) {
@@ -144,7 +165,7 @@ export default function NoticesPage() {
                 setItemOffset(0);
             }
         }
-    }, [filterValue, itemOffset, noticesList, numButtons, page, totalPages]);
+    }, [filterValue, itemOffset, noticesList, numButtons, page, setPage, totalPages]);
 
     const handlePageClick = newPage => {
         if (newPage >= 1 && newPage <= totalPages) {
@@ -190,9 +211,13 @@ export default function NoticesPage() {
     }
     return (
         <CommonWrapper className="CommonWrapper">
-            <NoticesSearch search={searchParams} />
+            <NoticesSearch activeIndex={activeIndex} filterValue={filterValue} setFilterValueFunction={setFilterValueFunction} search={searchParamsNotices} />
             <NoticesPageWrap>
-                <NoticesCategoriesNav />
+                <NoticesCategoriesNav
+                    activeIndex={activeIndex}
+                    setActiveIndexFunction={setActiveIndexFunction}
+                    search={searchParamsNotices}
+                />
                 <NoticesFilters state={{ from: location }} />
             </NoticesPageWrap>
             <NoticeContainer className="notice-container">
@@ -215,7 +240,7 @@ export default function NoticesPage() {
                     />
                 ))}
             </NoticeContainer>
-            {filteredNotices().length > 0 && (
+            {filteredNotices().length > 0 ? (
                 <PaginationWrapper>
                     <PaginationButton
                         theme={theme}
@@ -248,6 +273,10 @@ export default function NoticesPage() {
                         {iconRowLeft}
                     </PaginationButton>
                 </PaginationWrapper>
+            ) : (
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    <img alt='not found content' src={notFoundContent} />
+                </div>
             )}
         </CommonWrapper>
     );

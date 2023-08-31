@@ -6,7 +6,7 @@ const langEN = {
     news: 'News',
     find: 'Find pet',
     findPet: 'Find your favorite pet',
-    friends: 'Our Friends',
+    sponsors: 'Our Friends',
     sell: 'sell',
     lost: 'lost/found',
     goodhands: 'in good hands',
@@ -18,6 +18,12 @@ const langEN = {
     addPet: 'Add pet',
     addYourPet: 'Add your pet',
     addGood: 'Add in good hands',
+
+    nameUser: "Name:",
+    emailUser: "Email:",
+    birthdayUser: "Birthday:",
+    phoneUser: "Phone:",
+    cityUser: "City:",
 
 
     addLostPet: 'Add lost pet',
@@ -42,7 +48,7 @@ const langEN = {
 
     Name: 'Name',
     Email: 'Email',
-    Birthday: 'Date of birth',
+    Birthday: 'Date of birth:',
     Phone: 'Phone',
     City: 'City',
 
@@ -55,7 +61,7 @@ const langEN = {
     place: 'Location',
     sex: 'Gender',
     phone: 'Phone',
-    comments: 'Comments :',
+    comments: 'Comments:',
     email: 'Email',
     confirmPass: "Confirm password",
 
@@ -133,6 +139,8 @@ const langEN = {
     typecomment: "Type comment" ,
   
 //{lang.typecomment}
+    temp: "Your favorite pets will be added here",
+    
     empty: "List is empty ...",
         // edit: "EDIT",
     delete: "DELETE",
@@ -154,13 +162,19 @@ const langUA = {
     news: 'Новини',
     find: 'Знайдіть улюбленця',
     findPet: 'Знайдіть домашнього улюбленця',
-    friends: 'Наші друзі',
+    sponsors: 'Наші друзі',
 
     sell: 'продаж',
     lost: 'бюро знахідок',
     goodhands: 'в добрі руки',
     favadds: 'улюблені',
     myadds: 'мої доповнення',
+
+    nameUser: "Ім'я:",
+    emailUser: "Пошта:",
+    birthdayUser: "Народився:",
+    phoneUser: "Телефон:",
+    cityUser: "Місто:",
 
     filter: 'Фільтр',
     filters: 'Фільтри',
@@ -218,7 +232,7 @@ const langUA = {
 
     footerTitle: 'React-телефонна книга-2023',
     info: 'Моя інформація',
-    pets: 'МоЇ домашні тварини',
+    pets: 'Мої домашні тварини',
     city: 'Місто',
     
    
@@ -276,7 +290,7 @@ const langUA = {
     typecomment: "Введіть коментар" ,
 
     empty: "Список порожній...",
-  
+    temp: "Тут будуть додані ваші улюблені домашні тварини",
     delete: "ВИДАЛИТИ",
     avatar: "Аватар",
     set: "Встановити",

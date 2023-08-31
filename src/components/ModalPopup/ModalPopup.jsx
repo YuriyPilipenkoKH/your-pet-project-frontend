@@ -41,7 +41,7 @@ import {
     StyledLinkLog,
     StyledLinkReg,
 } from 'components/AuthNav/AuthNav.styled';
-import { Notify } from 'notiflix';
+import { toast } from 'react-toastify';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -149,12 +149,12 @@ export const ModalPopup = ({
         if (path === 'notice') {
             dispatch(noticesOperations.fetchDeleteNotice(delid))
                 .then(() => {
-                    Notify.success(
+                    toast.success(
                         `The animal was successfully removed`
                     );
                 })
                 .catch(() => {
-                    Notify.failure('Something went wrong');
+                    toast.error('Something went wrong');
                 });
             dispatch(setModalClose());
             onClose();
@@ -170,15 +170,9 @@ export const ModalPopup = ({
         dispatch(toggleSell());
         dispatch(setModalClose());
         dispatch(authOperations.logOut());
-        //  .unwrap().then(originalPromiseResult => {
-        //   console.log('originalPromiseResult', originalPromiseResult)
-        //   Notify.success(`${originalPromiseResult.user.name} Logout  successfull!`);
-        // })
-        // .catch(() => {
-        //   Notify.failure('Incorrect logout operation');
-        // });
+
     };
-    // className='modal-backdrop'
+   
 
     if (type === 1) {
         return createPortal(
@@ -362,9 +356,3 @@ export const ModalPopup = ({
     }
 };
 
-// ModalPopup.propTypes = {
-//   // width: PropTypes.string.isRequired,
-//   // height: PropTypes.string.isRequired,
-//   // title: PropTypes.string.isRequired,
-//   // text: PropTypes.string.isRequired,
-//   // image: PropTypes.string,

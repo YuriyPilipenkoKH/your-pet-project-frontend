@@ -39,7 +39,7 @@
   
   --field-color: #eeeeee;
   --border: 3px solid transparent;
-
+  --button-color-loguut: #333;
   --background-color-form: #fff;
   --background-color-input: #fff;
   --input-text-color: #888888;
@@ -58,7 +58,7 @@
 
   --field-color: #eee5;
   --border: 3px solid var(--blue);
-
+  --button-color-loguut: #54adff;
   --background-color-form: #1E325C;
   --background-color-input: #1E325C;
   --input-text-color: white;
@@ -165,4 +165,6 @@ img {
   width: 140px ;
   white-space: nowrap;
 }
+
+
 

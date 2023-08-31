@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Notify } from 'notiflix';
 
 axios.defaults.baseURL = 'https://your-pet-shw3.onrender.com';
 
@@ -21,9 +20,9 @@ const register = createAsyncThunk(
                 '/users/auth/register',
                 credentials
             );
-            // console.log(data);
+           
             token.set(data.token);
-            // Notify.info('Something went wrong. Please, try again later.');
+            
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -37,7 +36,7 @@ const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
         token.set(data.token);
         return data;
     } catch (error) {
-        //   Notify.info('Something went wrong. Please, try again later.');
+       
         return thunkAPI.rejectWithValue(error.message);
     }
 });
@@ -49,7 +48,7 @@ const fetchCurrentUser = createAsyncThunk(
         const persistedToken = state.auth.token;
 
         if (persistedToken === null) {
-            // console.log('Токена нет, уходим из fetchCurrentUser');
+           
             return thunkAPI.rejectWithValue();
         }
 
@@ -77,23 +76,14 @@ const fetchUpdateUser = createAsyncThunk(
     async (updatedData, thunkAPI) => {
         try {
             const { data } = await axios.patch('/users/update', updatedData);
-            Notify.success(`The data has been updated`);
             return data;
         } catch (error) {
-            Notify.failure('Something went wrong');
             return thunkAPI.rejectWithValue(error.response.data);
         }
     }
 );
 
-// const fetchUser = createAsyncThunk("user/fetch", async (_, thunkAPI) => {
-//     try {
-//         await axios.get('/user/fetch');
-//         token.unset();
-//     } catch (error) {
-//         return thunkAPI.rejectWithValue(error.message);
-//     }
-// });
+
 
 const operations = {
     register,
@@ -101,10 +91,7 @@ const operations = {
     fetchCurrentUser,
     logOut,
     fetchUpdateUser,
-    // fetchUser
-    // fetchUpdateAvatar
-    // fetchDeleteUserPet
-    // fetchDeleteUserPet
+   
 };
 
 export default operations;

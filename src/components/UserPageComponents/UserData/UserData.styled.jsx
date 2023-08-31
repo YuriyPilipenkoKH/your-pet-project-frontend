@@ -47,13 +47,13 @@ export const ConfirmButtonWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
 `;
 
 export const EditButton = styled.button`
     display: flex;
     align-items: center;
-    margin-top: 14px;
+    /* margin-top: 14px; */
     border: none;
     padding-top: 0;
     padding-right: 5px;

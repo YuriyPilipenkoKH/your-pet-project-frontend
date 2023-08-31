@@ -52,7 +52,6 @@ const schema = object({
             /^[A-Za-z\s]+$/,
             "The string may contain only letters and spaces. Examples: 'Kyiv,' 'New York,' 'San Francisco.'"
         )
-        .max(120, 'Comment must be at most 120 characters'),
 }).required();
 
 export default function MoreInfo({
@@ -82,10 +81,9 @@ export default function MoreInfo({
         formState: { errors },
     } = useForm({
         defaultValues: {
-            coment: '',
-            imageURL: '',
-            location: '',
-            price: '',
+            coment: coment || '',
+            imageURL: imageURL || '',
+            location: location || '',
         },
         resolver: yupResolver(schema),
     });
@@ -284,8 +282,7 @@ export default function MoreInfo({
                                 {...register('coment', {
                                     maxLength: 120,
                                 })}
-                                placeholder={lang.typepet}
-                                type="text"
+                                placeholder={lang.typecomment}                                type="text"
                                 value={coment}
                                 spellCheck="false"
                                 data-grame="false"

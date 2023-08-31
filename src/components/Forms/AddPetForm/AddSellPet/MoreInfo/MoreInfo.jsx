@@ -1,4 +1,4 @@
-import {  useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     ButtonSex,
     Form,
@@ -51,8 +51,7 @@ const schema = object({
         .matches(
             /^[A-Za-z\s]+$/,
             "The string may contain only letters and spaces. Examples: 'Kyiv,' 'New York,' 'San Francisco.'"
-        )
-        .max(120, 'Comment must be at most 120 characters'),
+        ),
     price: string()
         .required('Price is required')
         .matches(
@@ -78,22 +77,22 @@ export default function MoreInfo({
     const [activeError, setActiveError] = useState(null);
     const [active, setActive] = useLocalStorage('activeSell', '');
 
-    const { language} = useAll()
-    const [lang, setLang] = useState(langUA)
+    const { language } = useAll();
+    const [lang, setLang] = useState(langUA);
 
     useEffect(() => {
-      setLang(language === 'english' ?  langEN :  langUA);
-    }, [language])
+        setLang(language === 'english' ? langEN : langUA);
+    }, [language]);
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm({
         defaultValues: {
-            coment: '',
-            imageURL: '',
-            location: '',
-            price: '',
+            coment: coment || '',
+            imageURL: imageURL || '',
+            location: location || '',
+            price: price || '',
         },
         resolver: yupResolver(schema),
     });
@@ -141,7 +140,10 @@ export default function MoreInfo({
 
     return (
         <Form addPetMoreInformation addPet>
-            <Title addPet addPetMoreInformation> {lang.addpetforsale} </Title>
+            <Title addPet addPetMoreInformation>
+                {' '}
+                {lang.addpetforsale}{' '}
+            </Title>
             <WrapperForProgresMoreInformation>
                 {children}
             </WrapperForProgresMoreInformation>
@@ -183,7 +185,7 @@ export default function MoreInfo({
                         )}
                         <LabelForAddImage addPetMoreInformation>
                             <TypeInput addImage addPetMoreInformation>
-                            {lang.loadimg}
+                                {lang.loadimg}
                             </TypeInput>
                             <ImageWrapper>
                                 <InputUploadImage
@@ -422,13 +424,16 @@ export default function MoreInfo({
                     </WrapperForInputInMoreInformationTwo>
                 </WrapperForMoreInformation>
                 <WrapperNextBackButton addPetMoreInformation>
-                    <ButtonTransparent 
-                    className ="back"
-                    addPet onClick={() => beforeForm()}>
-                        <BiArrowBack /> {stepNumber > 1 ? lang.back : lang.cancel}
+                    <ButtonTransparent
+                        className="back"
+                        addPet
+                        onClick={() => beforeForm()}
+                    >
+                        <BiArrowBack />{' '}
+                        {stepNumber > 1 ? lang.back : lang.cancel}
                     </ButtonTransparent>
-                    <Button  
-                        className ="done"
+                    <Button
+                        className="done"
                         stepNumber={stepNumber}
                         addPet
                         addPetMoreInformation

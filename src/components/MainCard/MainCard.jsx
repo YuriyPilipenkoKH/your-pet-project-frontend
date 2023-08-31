@@ -18,13 +18,14 @@ import { useDispatch } from 'react-redux';
 import operations from 'redux/notices/notices-operations';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
-import { Notify } from 'notiflix';
-// import { setAge } from 'redux/notices/notices-slice';
+
+import { toast } from 'react-toastify';
+
 
 export const MainCard = ({
     index,
     title,
-    // photo,
+    
     name,
     sex,
     owner,
@@ -41,7 +42,7 @@ export const MainCard = ({
     const { language } = useAll();
     const [lang, setLang] = useState(langUA);
     const { userId } = useAuth();
-    // const [shouldReload, setShouldReload] = useState(false);
+
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     const [modals, setModals] = useState(modal1);
@@ -68,22 +69,22 @@ export const MainCard = ({
             if (idUsersAddedFavorite.includes(userId)) {
                 dispatch(operations.fetchRemoveFavorite(id))
                     .then(() => {
-                        Notify.success(
+                        toast.success(
                             `The animal was successfully removed from favorites`
                         );
                     })
                     .catch(() => {
-                        Notify.failure('Something went wrong');
+                        toast.error('Something went wrong');
                     });
             } else {
                 dispatch(operations.fetchNoticesAddFavorite(id))
                     .then(() => {
-                        Notify.success(
+                        toast.success(
                             `The animal was successfully added from favorites`
                         );
                     })
                     .catch(() => {
-                        Notify.failure('Something went wrong');
+                        toast.error('Something went wrong');
                     });
             }
         }

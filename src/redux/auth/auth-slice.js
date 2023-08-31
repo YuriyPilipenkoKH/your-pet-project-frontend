@@ -62,7 +62,7 @@ const authSlice = createSlice({
             })
 
             .addCase(authOperations.logIn.fulfilled, (state, action) => {
-                console.log(action);
+              
                 state.isLoading = false;
                 state.user = action.payload.user;
                 state.token = action.payload.token;
@@ -113,7 +113,7 @@ const authSlice = createSlice({
                 state.isRefreshing = true;
             })
             .addCase(authOperations.logOut.fulfilled, (state, action) => {
-                console.log(action);
+                
                 state.isLoading = false;
                 state.user = {};
                 state.registrationSuccessful = false;
@@ -132,7 +132,6 @@ const authSlice = createSlice({
             .addCase(authOperations.fetchUpdateUser.pending, state => {
                 state.isLoading = true;
                 state.error = null;
-                state.isRefreshing = true;
             })
             .addCase(
                 authOperations.fetchUpdateUser.fulfilled,
@@ -140,14 +139,12 @@ const authSlice = createSlice({
                     state.isLoading = false;
                     state.user = payload;
                     state.error = null;
-                    state.isRefreshing = false;
                 }
             )
             .addCase(
                 authOperations.fetchUpdateUser.rejected,
                 (state, { payload }) => {
                     state.isLoading = false;
-                    state.isRefreshing = false;
                     state.error = payload;
                 }
             );

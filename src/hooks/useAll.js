@@ -4,7 +4,7 @@ import { getLang } from 'redux/lang/langSelectors';
 import { getModalIsOpen } from 'redux/modal/modalSelectors';
 import { getNoticesList, getTotalPages } from 'redux/notices/notices-selectors';
 import {  getPets, getPetsList, getPetsRerender } from 'redux/pets/petsSelectors';
-import { activeIndex, getSorted } from 'redux/sort/sortSelectors';
+import { getSorted } from 'redux/sort/sortSelectors';
 import { getTheme } from 'redux/theme/themeSelectors';
 
 
@@ -14,7 +14,6 @@ export const useAll= () => {
         noticesList: useSelector(getNoticesList),
         totalPages: useSelector(getTotalPages),
         sort: useSelector(getSorted),
-        activeIndex: useSelector(activeIndex),
         modalIsOpen: useSelector(getModalIsOpen),
         
         noticesFilter: useSelector(getNoticesFilter),

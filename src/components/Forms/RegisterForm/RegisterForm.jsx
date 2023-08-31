@@ -20,7 +20,7 @@ import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
-import { Notify } from 'notiflix';
+import { toast } from 'react-toastify';
 
 const schema = object({
     name: string()
@@ -86,7 +86,7 @@ export default function RegisterForm() {
         dispatch(authOperations.register({ name, email, password }))
             .unwrap()
             .catch(() => {
-                Notify.failure('The user already exists');
+                toast.error('The user already exists');
             });
     };
     const reset = () => {

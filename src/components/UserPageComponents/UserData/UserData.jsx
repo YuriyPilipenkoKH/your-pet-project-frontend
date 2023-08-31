@@ -101,14 +101,9 @@ const UserData = ({ user }) => {
                         { name, phone, birthday, location, email, avatar }[key]
                     );
                 }
-                console.log(formData)
+               
                 dispatch(operations.fetchUpdateUser(formData));
-                //  .unwrap().then(originalPromiseResult => {
-                // Notify.success(`${originalPromiseResult.user.name} welcome back!`);
-                //   })
-                //   .catch(() => {
-                // Notify.failure('Incorrect login or password');
-                //   });
+    
             });
     };
 
@@ -150,7 +145,7 @@ const UserData = ({ user }) => {
                                     />
                                 )}
                             </Field>
-                            {/* <ErrorMessage name="user-avatar" component="div" /> */}
+                           
                         </label>
                         <ImageControls>
                             {edit && petPhoto ? (
