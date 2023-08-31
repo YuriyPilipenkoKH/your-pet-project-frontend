@@ -1,7 +1,7 @@
-import { LinkSpan } from 'pages/pages.styled/Pages.styled';
-import { useEffect, useState } from 'react';
+import { Calendar, LinkSpan } from 'pages/pages.styled/Pages.styled';
+import { useState } from 'react';
 import {
-    Date,
+    
     ImgWrap,
     Span,
     SponsorCardTitle,
@@ -23,9 +23,7 @@ export const SponsorCard = ({ item }) => {
     };
 
 
-    const workHours = item.workDays
-
-
+  
     // const workHours = [
     //     { isOpen: false,  },
     //     { isOpen: false,  },
@@ -36,8 +34,7 @@ export const SponsorCard = ({ item }) => {
     //     { isOpen: true, from: '11:00', to: '16:00' },
        
     //   ]
-
-    console.log('item', item.workDays)
+const days = [ 'MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU' ]
     const email = item.email ? item.email : 'notemail@gmail.com';
     const phone = item.phone ? item.phone : 'notphone';
     let fromTime =
@@ -90,9 +87,22 @@ export const SponsorCard = ({ item }) => {
                             {fromTime} {toTime !== "" && "-"} {toTime}
                         </Span>
 
-                        {!showWorkHours && <Date >
+                        {!showWorkHours && (
                             
-                            </Date>}
+                        <Calendar className='Calendar'>
+                        {openDaysCount.map((day, index) => (
+                          <div key={index}>
+                            {day.isOpen && (
+                              <>
+                                <p>{days[index]}</p>
+                                <span>{day.from || "---"}</span>
+                                <span>{day.to || '---'}</span>
+                              </>
+                            )}
+                          </div>
+                        ))}
+                      </Calendar>
+                            )}
                     </TextWrap>
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__address">

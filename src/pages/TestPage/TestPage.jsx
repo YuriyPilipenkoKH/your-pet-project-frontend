@@ -80,3 +80,41 @@ export const TestPage =()=> {
         </TestWrapp>
     )
 }
+
+{/* <>
+                                <div>
+                                    <p>MN</p>
+                                    <span>{"a1"}</span>
+                                
+                                </div>
+                                <div>
+                                    <p>TU</p>
+                                    <span>{"a1"}</span>
+                                
+                                </div>
+                                <div>
+                                    <p>{"mn"}</p>
+                                    <span>{"a1"}</span>
+                                
+                                </div>
+                                <div>
+                                    <p>{"mn"}</p>
+                                    <span>{"a1"}</span>
+                                
+                                </div>
+                                <div>
+                                    <p>{"mn"}</p>
+                                    <span>{"a1"}</span>
+                                
+                                </div>
+                                <div>
+                                    <p>{"mn"}</p>
+                                    <span>{"a1"}</span>
+                                
+                                </div>
+                                <div>
+                                    <p>{"mn"}</p>
+                                    <span>{"a1"}</span>
+                                
+                                </div>
+                            </> */}

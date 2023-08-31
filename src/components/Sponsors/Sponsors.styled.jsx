@@ -48,6 +48,7 @@ export const SponsorImage = styled.img`
 `;
 
 export const SponsorContent = styled.div`
+position: relative;
   display: flex;
   flex-direction: column;
    gap: 12px;
@@ -57,6 +58,7 @@ export const SponsorContent = styled.div`
 
 
 export const TextWrap = styled.div`
+
 width: 125px;
 max-height: 34px;
 display: flex;

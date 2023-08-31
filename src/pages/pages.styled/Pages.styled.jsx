@@ -362,3 +362,17 @@ export const ListButtonForPagination = styled.div`
         gap: 8px;
     }
 `;
+
+export const Calendar = styled.div`
+position: absolute;
+top: 35px;
+width: 120px;
+
+background-color: var(--white);
+border-radius: 8px;
+border: 1px solid var(--blue);
+padding: 12px;
+
+z-index: 2;
+
+`

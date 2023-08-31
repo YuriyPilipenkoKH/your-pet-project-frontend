@@ -50,7 +50,7 @@ export default function NoticesSearch({
     // onSubmit={searchByCategory} className="search-form"
     return (
         <SearchWrapper>
-            <TytleNwes> {lang.findPet} </TytleNwes>/
+            <TytleNwes> {lang.findPet} </TytleNwes>
             <SearchForm onSubmit={searchByCategory} className="search-form">
                 <SearchInput
                     onChange={e => setFilterValueFunction(e.target.value)}
