@@ -22,7 +22,6 @@ export const SponsorCard = ({ item }) => {
       setSelectedDay(selectedDay === index ? null : index);
     };
 
-
   
     // const workHours = [
     //     { isOpen: false,  },
@@ -87,7 +86,11 @@ const days = [ 'MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU' ]
                             {fromTime} {toTime !== "" && "-"} {toTime}
                         </Span>
 
-                        {!showWorkHours && (
+                        {/* {!showWorkHours && (
+                            <></>
+                        )} */}
+
+                        {/* {!showWorkHours && (
                             
                         <Calendar className='Calendar'>
                         {openDaysCount.map((day, index) => (
@@ -102,7 +105,7 @@ const days = [ 'MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU' ]
                           </div>
                         ))}
                       </Calendar>
-                            )}
+                            )} */}
                     </TextWrap>
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__address">
