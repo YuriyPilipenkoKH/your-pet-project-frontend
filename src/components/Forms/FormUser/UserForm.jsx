@@ -86,7 +86,7 @@ const UserForm = () => {
     useEffect(() => {
         setLang(language === 'english' ? langEN : langUA);
     }, [language]);
-    
+
     const signOut = () => {
         setModals(modal5);
         setShowModal(true);
@@ -152,8 +152,6 @@ const UserForm = () => {
         setEdit(false);
         setUserPhoto(false);
     };
-
-    // console.log(user.name)
 
     const handleCancelAvatar = e => {
         setUserPhoto();
@@ -222,6 +220,7 @@ const UserForm = () => {
                         name="userPhoto"
                         accept=".png, .jpg, .jpeg, .webp"
                         hidden
+                        disabled={!showData}
                         value=""
                         onChange={handleClickInput}
                     />
@@ -266,7 +265,8 @@ const UserForm = () => {
                 onSubmit={handleSubmit(deliveryData)}
             >
                 <div>
-                    <LabelStyled>{lang.nameUser}</LabelStyled>
+         <LabelStyled>{lang.nameUser}</LabelStyled>
+         
                     <InputStyled
                         disabled={!showData}
                         {...register('name')}
@@ -295,7 +295,9 @@ const UserForm = () => {
                     />
                 </div>
                 <div>
+
                     <LabelStyled>{lang.emailUser}</LabelStyled>
+              
                     <InputStyled
                         disabled={!showData}
                         {...register('email')}
@@ -324,7 +326,9 @@ const UserForm = () => {
                     />
                 </div>
                 <div>
+
                     <LabelStyled>{lang.birthdayUser}</LabelStyled>
+
                     <InputStyled
                         disabled={!showData}
                         {...register('birthday')}

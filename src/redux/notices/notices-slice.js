@@ -110,7 +110,7 @@ const noticesSlice = createSlice({
             .addCase(
                 noticesOperations.fetchUserNotices.fulfilled,
                 (store, { payload }) => {
-                    console.log(payload)
+                    
                     store.loading = false;
                     store.list = payload.notices;
                     store.totalPages = payload.totalPages;

@@ -43,7 +43,7 @@ export const UserNav = ({ onClose }) => {
                         className="userlink"
                         exact="true"
                     >
-                        {/* {iconUser} */}
+                       
                         {avatar ? (
                             <PhotoWrap src={avatar} alt="user avatar" />
                         ) : (

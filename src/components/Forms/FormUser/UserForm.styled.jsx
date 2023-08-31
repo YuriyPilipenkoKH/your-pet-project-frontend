@@ -45,15 +45,18 @@ export const FormStyled = styled.form`
     & > div {
         gap: 5px;
         display: flex;
+        align-items: center;
         justify-content: space-between;
     }
 
     & > a.logoutBtn {
+        width: 140px;
         background-color: transparent;
         border: none;
+        color: var(--button-color-loguut);
         color: var(--text-color);
         transition: all 0.4ms ease-in-out;
-
+        transition: color 1s ease-in-out;
         &:hover {
             transition: all 0.4ms ease-in-out;
             color: #eee;
@@ -92,8 +95,24 @@ export const FormStyled = styled.form`
         }
     }
 `;
+
 export const LabelStyled = styled.label`
+
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 60px;
+  text-overflow: ellipsis; 
+  font-size: 12px;
+  color: var(--text-color);
+  transition: all 1s ease-in-out;
+
+    @media screen and (min-width: 768px) {
+        font-size: 16px;
+        max-width: 95px;
+    }
+
     color: var(--text-color);
+
 `;
 
 export const InputStyled = styled.input`
@@ -102,8 +121,11 @@ export const InputStyled = styled.input`
     border: 1px solid var(--blue);
     border-radius: 20px;
     padding: 4px 12px;
+    
+
     color: var(--text-color);
     background-color: var(--background-color-input);
+
     @media screen and (min-width: 768px) {
         width: 255px;
         height: 30px;
@@ -124,7 +146,7 @@ export const FormEditor = styled(NavLink)`
     top: 10px;
     right: 10px;
     cursor: pointer;
-
+    transition: all 1s ease-in-out;
     @media screen and (min-width: 768px) {
         top: 20px;
         right: 20px;
@@ -132,6 +154,10 @@ export const FormEditor = styled(NavLink)`
 
     & > svg {
         fill: var(--blue);
+    }
+    &> svg.iconCross{
+        transition: all 1s ease-in-out;
+        stroke: var(--text-color);
     }
 `;
 export const UserPhotoWrap = styled.div`

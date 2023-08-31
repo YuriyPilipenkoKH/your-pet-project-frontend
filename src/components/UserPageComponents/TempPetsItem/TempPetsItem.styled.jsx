@@ -9,7 +9,7 @@ padding-top: 20px;
     padding-left: 20px;
     width: 280px;
     height: 450px;
-    
+    margin-bottom: 50px;
 
     background: var(--background-color-form);
     transition: all 1s ease-in-out;
@@ -37,7 +37,14 @@ padding-top: 20px;
     }
 
     &>h2{
+         transition: all 1s ease-in-out;
         text-align: center;
+        color: var(--text-color);
+
+         @media screen and (min-width: 768px) {
+            text-align: start;
+            width: 400px;
+         }
     }
 
    `

@@ -43,8 +43,6 @@ export const MobileMenu = ({ isOpen, onClose }) => {
         setModals(modal5);
         setShowModal(true);
 
-        // dispatch(toggleSell())
-        // dispatch(authOperations.logOut())
     };
     const onModalClose = () => {
         setShowModal(false);
@@ -55,9 +53,6 @@ export const MobileMenu = ({ isOpen, onClose }) => {
             <MenuHeader className="MenuHeader">
                 <StyledLogo
                     to="/"
-                    onClick={() =>
-                        console.log('name', userName, 'userId', userId)
-                    }
                 >
                     {iconLogo}
                 </StyledLogo>
@@ -114,5 +109,3 @@ export const MobileMenu = ({ isOpen, onClose }) => {
         </MenuWrapp>
     );
 };
-// <AuthNav   onClose={onClose}/>
-// <UserNav   onClose={onClose}/>

@@ -1,12 +1,6 @@
 import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 
-// import bgImgD from '../../images/cat-d.png';
-// import bgImgD2 from '../../images/cat-d@2x.png';
-// import bgImgM from '../../images/cat-m.png';
-// import bgImgM2 from '../../images/cat-m@2x.png';
-// import bgImgT from '../../images/cat-t.png';
-// import bgImgT2 from '../../images/cat-m@2x.png';
 
 export const CardWrapper = styled.div`
     display: flex ;
@@ -49,15 +43,6 @@ export const CardWrapper = styled.div`
     }
 
 `
-
-
-export const Im = styled.div`
-
-    /* grid-row-start: 1;
-    grid-row-end: 3; */
-`
-
-
 
 export const ImgWrapper = styled.div.withConfig({
   shouldForwardProp: prop =>
