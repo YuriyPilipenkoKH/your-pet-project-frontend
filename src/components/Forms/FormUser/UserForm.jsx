@@ -199,7 +199,7 @@ const UserForm = () => {
     return (
         <UserFormWrap>
             <UserPhotoWrap className="UserPhotoWrap">
-                <label htmlFor="userPhoto" style={{ cursor: 'pointer' }}>
+                <label htmlFor="userPhoto" >
                     {!userPhoto && !user.avatarURL && (
                         <Avatar src={avatarDefault2x} alt="user avatar" />
                     )}
@@ -214,7 +214,7 @@ const UserForm = () => {
                         />
                     )}
 
-                    <input
+                    <input  
                         type="file"
                         id="userPhoto"
                         name="userPhoto"

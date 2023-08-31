@@ -52,10 +52,12 @@ export const TextWrap = styled.div`
     display: flex;
     flex-direction: column;
     overflow: hidden;
+   
 `;
 export const Span = styled.span`
     font-size: 12px;
     color: var(--text-color);
+    cursor: pointer;
 `;
 
 export const SponsorText = styled.p`
@@ -71,7 +73,9 @@ export const Date = styled.div`
 
 export const WrapperOclock = styled.div`
     display: flex;
-`;
+    gap: 14px;
+
+ `;
 
 export const Calendar = styled.div`
     position: absolute;
@@ -81,9 +85,10 @@ export const Calendar = styled.div`
     background-color: var(--background-color-form);
     border-radius: 8px;
     border: 1px solid var(--blue);
-    padding: 12px;
+    padding: 12px 8px;
     transition: all 1s ease-in-out;
     z-index: 2;
+    
 `;
 
 export const TextOclock = styled.span`

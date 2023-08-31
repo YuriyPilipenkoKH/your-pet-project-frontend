@@ -1,6 +1,5 @@
 import { LinkSpan } from 'pages/pages.styled/Pages.styled';
 import { useState } from 'react';
-import {  LinkSpan } from 'pages/pages.styled/Pages.styled';
 import {
     ImgWrap,
     Span,
@@ -123,23 +122,23 @@ export const SponsorCard = ({ item }) => {
                                 <Calendar>
                                     <WrapperOclock>
                                         <TextOclock>MN</TextOclock>
-                                        <TextOclock>Close</TextOclock>
+                                        <TextOclock>Closed</TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
                                         <TextOclock>TU</TextOclock>
-                                        <TextOclock>Close</TextOclock>
+                                        <TextOclock>Closed</TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
                                         <TextOclock>WE</TextOclock>
-                                        <TextOclock>Close</TextOclock>
+                                        <TextOclock>Closed</TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
                                         <TextOclock>TH</TextOclock>
-                                        <TextOclock>Close</TextOclock>
+                                        <TextOclock>Closed</TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
                                         <TextOclock>FR</TextOclock>
-                                        <TextOclock>Close</TextOclock>
+                                        <TextOclock>Closed</TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
                                         <TextOclock>SA</TextOclock>
@@ -195,11 +194,11 @@ export const SponsorCard = ({ item }) => {
                                     </WrapperOclock>
                                     <WrapperOclock>
                                         <TextOclock>SA</TextOclock>
-                                        <TextOclock>Close</TextOclock>
+                                        <TextOclock>Closed</TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
                                         <TextOclock>SU</TextOclock>
-                                        <TextOclock>Close</TextOclock>
+                                        <TextOclock>Closed</TextOclock>
                                     </WrapperOclock>
                                 </Calendar>
                             ) : (

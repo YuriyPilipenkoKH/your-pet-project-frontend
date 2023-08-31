@@ -168,12 +168,13 @@ export const ModalPopup = ({
         dispatch(toggleSell());
         dispatch(setModalClose());
         dispatch(authOperations.logOut())
-            .unwrap()
-            .then(originalPromiseResult => {
-                toast.success(
-                    `${originalPromiseResult.user.name} Logout  successfull!`
-                );
-            });
+            // .unwrap()
+            // .then(originalPromiseResult => {
+            //     console.log('originalPromiseResul',originalPromiseResult)
+            //     toast.success(
+            //         `${originalPromiseResult.user?.name} Logout  successfull!`
+            //     );
+            // });
     };
    
 
