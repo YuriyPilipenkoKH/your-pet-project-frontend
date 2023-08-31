@@ -59,10 +59,10 @@ export const SponsorCard = ({ item }) => {
 
                 <SponsorContent className="sponsors-content">
                     <TextWrap onClick={() => setShowWorkHours(!showWorkHours)} className="text-wrap">
-                        <SponsorText className="sponsors__workDays">
+                        <SponsorText showWorkHours={showWorkHours} className="sponsors__workDays">
                             Time: {workSchedule}
                         </SponsorText>
-                        <Span>
+                        <Span  showWorkHours={showWorkHours}>
                             {fromTime} {toTime !== '' && '-'} {toTime}
                         </Span>
                         {showWorkHours &&
