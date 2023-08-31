@@ -17,11 +17,10 @@ In the project directory, you can run:
 ### `npm start`
 
 ## Frontend repository: 
-[[your-pet-shw3.onrender.com/api-docs/](https://yuriypilipenkokh.github.io/your-pet-project-frontend/)][(https://your-pet-shw3.onrender.com/api-docs/](https://yuriypilipenkokh.github.io/your-pet-project-frontend/))
+https://yuriypilipenkokh.github.io/your-pet-project-frontend/
 
 ## Backend repository:
-your-pet-shw3.onrender.com/api-docs/
-[your-pet-shw3.onrender.com/api-docs/](https://github.com/savchyndd/your-pet-project-api)](https://your-pet-shw3.onrender.com/api-docs/)](https://github.com/savchyndd/your-pet-project-api)
+https://github.com/savchyndd/your-pet-project-api
 
 ## Swagger :
 [your-pet-shw3.onrender.com/api-docs/](https://your-pet-shw3.onrender.com/api-docs/)
