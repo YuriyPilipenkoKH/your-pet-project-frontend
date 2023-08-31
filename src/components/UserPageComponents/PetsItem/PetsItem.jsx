@@ -51,7 +51,7 @@ const PetsItem = ({
                     <InfoWrap style={{ maxWidth: 580 }}>
                         <NameWrapper>
                             <InfoItem>
-                                <SubTitle>{lang.name}</SubTitle>
+                                <SubTitle>{lang.nameUser}</SubTitle>
                                 <InfoText>{name} </InfoText>
                             </InfoItem>
                             <Btn 
@@ -66,7 +66,7 @@ const PetsItem = ({
                             ></IconButton> */}
                         </NameWrapper>
                         <InfoItem>
-                            <SubTitle>{lang.Birthday}</SubTitle>{'  '}
+                            <SubTitle>{lang.birthdayUser}</SubTitle>{'  '}
                             <InfoText> {birthday} </InfoText>
                         </InfoItem>
                         <InfoItem>
