@@ -271,6 +271,8 @@ export const Notfound = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    color: var(--text-color);
+    transition: all 1s ease-in-out;
 
     @media (min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),

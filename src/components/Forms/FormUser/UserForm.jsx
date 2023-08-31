@@ -220,6 +220,7 @@ const UserForm = () => {
                         name="userPhoto"
                         accept=".png, .jpg, .jpeg, .webp"
                         hidden
+                        disabled={!showData}
                         value=""
                         onChange={handleClickInput}
                     />

@@ -70,3 +70,11 @@ export const Span = styled.span`
 export const SponsorText = styled.p`
   font-size: 12px;
 `;
+
+
+export const Date = styled.div`
+width: 80px;
+height: 80px;
+background-color: var(--white);
+
+`

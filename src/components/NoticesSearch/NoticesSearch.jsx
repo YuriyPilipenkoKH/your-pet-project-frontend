@@ -1,23 +1,37 @@
 import { useEffect, useState } from 'react';
-import {
-    TytleNwes,
-    SearchWrapper,
-   
-    SearchInput,
-} from './NoticesSearch.styled';
+import { TytleNwes, SearchWrapper, SearchInput } from './NoticesSearch.styled';
 import { BsSearch } from 'react-icons/bs';
+import { RxCross1 } from 'react-icons/rx';
 import { useDispatch } from 'react-redux';
 
 import noticesOperations from '../../redux/notices/notices-operations';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
-import { SearchButton, SearchForm } from 'pages/pages.styled/NoticesPage.styled';
+import {
+    SearchButton,
+    SearchForm,
+} from 'pages/pages.styled/NoticesPage.styled';
+import { IconWrapp, SearchIcon } from 'pages/pages.styled/Pages.styled';
 
-export default function NoticesSearch({ search, setFilterValueFunction, filterValue, activeIndex }) {
-    const { language } = useAll();
+export default function NoticesSearch({
+    search,
+    resetFilterValue,
+    setFilterValueFunction,
+    filterValue,
+    activeIndex,
+}) {
+    const { language, noticesFilter } = useAll();
     const [lang, setLang] = useState(langUA);
 
     const dispatch = useDispatch();
+
+    const clearInput = e => {
+        resetFilterValue();
+        // dispatch(setFilterNews(''))
+    };
+    const onInputChange = e => {
+        // dispatch(setFilterNews(e.target.value))
+    };
 
     useEffect(() => {
         setLang(language === 'english' ? langEN : langUA);
@@ -33,10 +47,10 @@ export default function NoticesSearch({ search, setFilterValueFunction, filterVa
             dispatch(noticesOperations.fetchNoticesByCategory(search));
         }
     };
-
+    // onSubmit={searchByCategory} className="search-form"
     return (
         <SearchWrapper>
-            <TytleNwes> {lang.findPet} </TytleNwes>
+            <TytleNwes> {lang.findPet} </TytleNwes>/
             <SearchForm onSubmit={searchByCategory} className="search-form">
                 <SearchInput
                     onChange={e => setFilterValueFunction(e.target.value)}
@@ -45,11 +59,23 @@ export default function NoticesSearch({ search, setFilterValueFunction, filterVa
                     value={filterValue}
                     placeholder={lang.search}
                 />
-             
-                    <SearchButton className="search-icon">
-                        <BsSearch style={{ color: '#54adff' }} />
-                    </SearchButton>
-               
+                <IconWrapp className="IconWrapp-notices">
+                    {filterValue && (
+                        <SearchIcon
+                            type="button"
+                            onClick={clearInput}
+                            className="search-cross"
+                        >
+                            <RxCross1 style={{ color: '#ffc107' }} />
+                        </SearchIcon>
+                    )}
+                    <SearchIcon type="submit" className="search-lens">
+                        <BsSearch
+                            // onClick={(e) =>   dispatch(setFilterNews(e.target.value))}
+                            style={{ color: '#54adff' }}
+                        />
+                    </SearchIcon>
+                </IconWrapp>
             </SearchForm>
         </SearchWrapper>
     );

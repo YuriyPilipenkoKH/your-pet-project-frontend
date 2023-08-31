@@ -1,6 +1,7 @@
 import { LinkSpan } from 'pages/pages.styled/Pages.styled';
 import { useEffect, useState } from 'react';
 import {
+    Date,
     ImgWrap,
     Span,
     SponsorCardTitle,
@@ -15,6 +16,7 @@ import {
 export const SponsorCard = ({ item }) => {
 
     const [selectedDay, setSelectedDay] = useState(null);
+    const [showWorkHours, setShowWorkHours] = useState(false)
 
     const togglePopup = (index) => {
       setSelectedDay(selectedDay === index ? null : index);
@@ -83,9 +85,14 @@ export const SponsorCard = ({ item }) => {
                             {workSchedule}
                         </SponsorText>
                         {/* <Span> few</Span> */}
-                        <Span>
+                        <Span 
+                        onClick ={() => console.log('data')}>
                             {fromTime} {toTime !== "" && "-"} {toTime}
                         </Span>
+
+                        {!showWorkHours && <Date >
+                            
+                            </Date>}
                     </TextWrap>
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__address">

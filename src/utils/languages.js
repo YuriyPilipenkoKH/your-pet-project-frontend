@@ -137,6 +137,9 @@ const langEN = {
     typelocation: 'Type of location',
     typeofprice: "Type of price" ,
     typecomment: "Type comment" ,
+    oops: "Ooops! This page not found " ,
+  
+
   
 //{lang.typecomment}
     temp: "Your favorite pets will be added here",
@@ -255,7 +258,7 @@ const langUA = {
     cancel: "Відміна",
     yes: 'Так',
     
-    alreadyleaving: 'Вже йдете?',
+    alreadyleaving: 'Вже виходите?',
     deleteadverstiment: 'Видалити оголошення?',
     suretodelete : 'Ви впевнені, що хочете видалити ',
     youcant : 'Ви не можете скасувати цю дію. ',
@@ -289,6 +292,7 @@ const langUA = {
     typeofprice: 'Введіть цінy',
     typecomment: "Введіть коментар" ,
 
+    oops: "Ой! Ця сторінка не знайдена" ,
     empty: "Список порожній...",
     temp: "Тут будуть додані ваші улюблені домашні тварини",
     delete: "ВИДАЛИТИ",
