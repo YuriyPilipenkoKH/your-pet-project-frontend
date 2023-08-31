@@ -1,6 +1,6 @@
 import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
-// import isPropValid from '@emotion/is-prop-valid';
+import isPropValid from '@emotion/is-prop-valid';
 
 export const ModalOverlay = styled.div.withConfig({
     shouldForwardProp: prop =>
@@ -121,7 +121,6 @@ export const BtnContainer = styled.div.withConfig({
     display: flex;
     flex-direction: column;
     gap: 12px;
-
     & > button,
     & > a {
         width: ${props => props.btnsizem};
@@ -129,14 +128,14 @@ export const BtnContainer = styled.div.withConfig({
 
     @media screen and (min-width: 768px) {
         flex-direction: row;
-
         gap: 22px;
-
         & > button,
         & > a {
             width: ${props => props.btnsized};
             gap: ${(props => props.type === 4) ? '20px' : '12px'};
         }
+        width: ${({ btnsized }) => btnsized && '165px'};
+        gap:  ${(props => props.type === 4) ? '20px' : '12px'};
     }
 `;
 
