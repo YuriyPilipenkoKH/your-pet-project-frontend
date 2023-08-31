@@ -213,7 +213,7 @@ export const ModalPopup = ({
                 <ModalContainer {...props}>
                     <ModalTitle>{lang.deleteadverstiment} </ModalTitle>
                     <ModalText>
-                        {lang.suretodelete} {name || 'Your pet'} ?{lang.youcant}{' '}
+                        {lang.suretodelete} {name || 'Your pet'}? {lang.youcant}{' '}
                     </ModalText>
 
                     <BtnContainer {...props}>

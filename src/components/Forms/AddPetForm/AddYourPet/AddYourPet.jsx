@@ -15,11 +15,19 @@ export default function AddYourPet({
     state,
     clearStepNumber,
     clearData,
+    clearInput
 }) {
     const [pet, setPet] = useLocalStorage('dataYourPet', {});
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const backLinkLocation = useRef(state?.from ?? '/');
+    const clearAllInput = () => {
+        clearInput("nameYourPet");
+        clearInput("birthYourPet");
+        clearInput("typePetYourPet");
+        clearInput("comentYourPet");
+        clearInput("imageUrlYourPet");
+    }
     const deliveryDataPet = data => {
         setPet(prevState => {
             return { ...prevState, ...data };
@@ -39,6 +47,7 @@ export default function AddYourPet({
             navigate(backLinkLocation.current);
             clearStepNumber();
             clearData('dataYourPet');
+            clearAllInput();
         }
     };
     return (
