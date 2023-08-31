@@ -97,7 +97,7 @@ export const SearchWrapper = styled.div`
     padding-top: 20px;
     gap: 24px;
     @media screen and (min-width: 768px) {
-        padding-top: 60px;
+        padding-top: 40px;
         gap: 40px;
     }
 `;
@@ -189,11 +189,7 @@ export const TestWrapp = styled.div`
 `;
 //SponsorWrap
 export const SponsorWrap = styled.div`
-    /* display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap; */
+
     display: grid;
     gap: 32px;
     place-items: center;
@@ -205,6 +201,8 @@ export const SponsorWrap = styled.div`
     @media screen and (min-width: 1280px) {
         grid-template-columns: repeat(3, 1fr);
     }
+
+
 `;
 export const TitleSponsor = styled.h2`
     font-size: 24px;
@@ -227,14 +225,19 @@ export const Wrapper = styled.div`
     padding-top: 20px;
     gap: 24px;
     @media screen and (min-width: 768px) {
-        padding-top: 60px;
+        padding-top: 40px;
         gap: 40px;
     }
     @media screen and (min-width: 1280px) {
-        padding-top: 60px;
+        padding-top: 40px;
         gap: 60px;
     }
 `;
+export const LinkSpan = styled.span`
+    color: var(--link-span);
+    font-size: 12px;
+`
+
 //Notfound
 export const Notfound = styled.div`
     padding-top: 30px;
