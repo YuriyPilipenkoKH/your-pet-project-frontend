@@ -2,13 +2,12 @@ import { useEffect, useState } from 'react';
 import {
     TytleNwes,
     SearchWrapper,
-    SearchIcon,
+   
     SearchInput,
 } from './NoticesSearch.styled';
 import { BsSearch } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 
-import { FormButton } from 'components/Button/Button';
 import noticesOperations from '../../redux/notices/notices-operations';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
