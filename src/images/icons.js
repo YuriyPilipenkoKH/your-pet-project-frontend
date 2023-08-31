@@ -176,8 +176,11 @@ export const IconCross = (
         height="24"
         viewBox="0 0 24 24"
         fill="none"
-    >
-        <path d="M19 5L5 19M5.00004 5L19 19" stroke="#F43F5E" />
+        className="iconCross"
+           >
+        <path d="M19 5L5 19M5.00004 5L19 19" 
+        // stroke="#111111"
+         />
     </svg>
 );
 

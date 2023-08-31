@@ -32,17 +32,6 @@ export const UserWrap = styled.div`
 }
 
 
-/* &>.logout {
-   position: absolute;
-    bottom: 20px;
-    right: 50%;
-
-    @media screen and (min-width: 768px) {
-    position: relative;
-    justify-self: start;
-  }
-} */
-
 `
 
 export const StyledUserLink = styled(NavLink)`
@@ -101,7 +90,7 @@ background-color: var(--blue);
 color: var(--white);
 width: 135px;
 transition: all 0.4s ease; 
-width: 140px !important;
+width: 140px ;
 
 ${hoverStylesB} 
 

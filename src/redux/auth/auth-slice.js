@@ -62,7 +62,7 @@ const authSlice = createSlice({
             })
 
             .addCase(authOperations.logIn.fulfilled, (state, action) => {
-                console.log(action);
+              
                 state.isLoading = false;
                 state.user = action.payload.user;
                 state.token = action.payload.token;
@@ -113,7 +113,7 @@ const authSlice = createSlice({
                 state.isRefreshing = true;
             })
             .addCase(authOperations.logOut.fulfilled, (state, action) => {
-                console.log(action);
+                
                 state.isLoading = false;
                 state.user = {};
                 state.registrationSuccessful = false;

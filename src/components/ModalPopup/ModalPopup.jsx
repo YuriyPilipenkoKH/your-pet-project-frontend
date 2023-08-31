@@ -175,7 +175,7 @@ export const ModalPopup = ({
                 );
             });
     };
-    // className='modal-backdrop'
+   
 
     if (type === 1) {
         return createPortal(
@@ -359,9 +359,3 @@ export const ModalPopup = ({
     }
 };
 
-// ModalPopup.propTypes = {
-//   // width: PropTypes.string.isRequired,
-//   // height: PropTypes.string.isRequired,
-//   // title: PropTypes.string.isRequired,
-//   // text: PropTypes.string.isRequired,
-//   // image: PropTypes.string,

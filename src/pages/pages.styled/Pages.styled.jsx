@@ -97,7 +97,7 @@ export const SearchWrapper = styled.div`
     padding-top: 20px;
     gap: 24px;
     @media screen and (min-width: 768px) {
-        padding-top: 60px;
+        padding-top: 40px;
         gap: 40px;
     }
 `;
@@ -127,20 +127,30 @@ export const NewsContainer = styled.div`
 export const SearchForm = styled.form`
     position: relative;
 
-    & > button {
-        padding: 8px;
-        background-color: transparent;
+    &>div  {
         position: absolute;
-        top: 2px;
+        top:8px;
         right: 10px;
-
-        & > span > svg {
-            scale: 1.5;
-        }
     }
 `;
-export const SearchIcon = styled.span`
-    fill: var(--blue);
+export const SearchIcon = styled.button`
+padding: 0;
+margin: 0;
+width: 24px;
+height: 24px;
+cursor: pointer;
+      background-color: transparent;
+            padding: 4px;
+            border: none;
+
+            & > svg {
+                scale: 1.3;
+            }
+
+   &>svg.search-cross{
+    fill: crimson;
+   }        
+ 
 `;
 
 export const SearchInput = styled.input`
@@ -185,15 +195,25 @@ export const TestWrapp = styled.div`
 
     & > button {
         max-width: 160px;
+        
     }
 `;
+
+export const IconWrapp = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 2px;
+&>button>svg{
+    display: flex;
+align-items: center;
+justify-content: center;
+    width: 20px;
+}
+`
 //SponsorWrap
 export const SponsorWrap = styled.div`
-    /* display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap; */
+
     display: grid;
     gap: 32px;
     place-items: center;
@@ -205,6 +225,8 @@ export const SponsorWrap = styled.div`
     @media screen and (min-width: 1280px) {
         grid-template-columns: repeat(3, 1fr);
     }
+
+
 `;
 export const TitleSponsor = styled.h2`
     font-size: 24px;
@@ -227,14 +249,19 @@ export const Wrapper = styled.div`
     padding-top: 20px;
     gap: 24px;
     @media screen and (min-width: 768px) {
-        padding-top: 60px;
+        padding-top: 40px;
         gap: 40px;
     }
     @media screen and (min-width: 1280px) {
-        padding-top: 60px;
+        padding-top: 40px;
         gap: 60px;
     }
 `;
+export const LinkSpan = styled.span`
+    color: var(--link-span);
+    font-size: 12px;
+`
+
 //Notfound
 export const Notfound = styled.div`
     padding-top: 30px;
@@ -244,6 +271,8 @@ export const Notfound = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    color: var(--text-color);
+    transition: all 1s ease-in-out;
 
     @media (min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),

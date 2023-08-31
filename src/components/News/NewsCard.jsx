@@ -12,8 +12,6 @@ import {
 import { format } from 'date-fns';
 
 
-
-
 export const NewsCard = (item) => {
   const formatedDate = format(new Date(item.date), 'dd/MM/yyyy');
   

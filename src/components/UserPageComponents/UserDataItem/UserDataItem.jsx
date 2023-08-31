@@ -46,7 +46,7 @@ const UserDataItem = ({
     return (
         <FormWrapper>
             <FormItem>
-            {/* <InputName>{ lang[newLabel] }</InputName> */}
+        
                 <InputName className='InputName'>{lang[newLabel]}</InputName>
                 <FormLabel htmlFor={id}></FormLabel>
                 {!!isdisabled && (
