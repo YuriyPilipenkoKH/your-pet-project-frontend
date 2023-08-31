@@ -25,6 +25,7 @@ export const SponsorCardTitle = styled.a`
     text-align: center;
     color: var(--text-color);
     height: 40px;
+    transition: all 1s ease-in-out;
 `;
 
 export const WrapContent = styled.div`
@@ -64,6 +65,7 @@ export const Span = styled.span.withConfig({
     color: var(--text-color);
     cursor: pointer;
     color: ${({ showWorkHours  }) => showWorkHours === true && 'var(--blue)'};
+    transition: color 1s ease-in-out;
 `;
 
 export const SponsorText = styled.p.withConfig({
@@ -75,6 +77,9 @@ export const SponsorText = styled.p.withConfig({
     color: var(--text-color);
     cursor: pointer;
     color: ${({ showWorkHours }) => showWorkHours === true && 'var(--blue)'};
+    transition: color 1s ease-in-out;
+    display: flex;
+    gap: 8px;
 `;
 
 export const Date = styled.div`

@@ -28,12 +28,9 @@ const langEN = {
     phoneUser: "Phone:",
     cityUser: "City:",
 
-
     addLostPet: 'Add lost pet',
     add: 'Add pet',
-    
-    
-  
+      
     contactsBtn: 'Contacts',
     logBtn: 'Login',
     regBtn: 'Register',
@@ -54,7 +51,6 @@ const langEN = {
     Birthday: 'Date of birth:',
     Phone: 'Phone',
     City: 'City',
-
 
     learnmore: 'Learn more',
     name: 'Name: ',
@@ -84,8 +80,7 @@ const langEN = {
     chooseoption: 'Choose  option',
     details: 'Personal details',
     moreinfo: 'More info',
-   
-
+  
     footerTitle: 'React-Phonebook-2023',
     sname: "name",
     pass: 'Password',
@@ -142,9 +137,15 @@ const langEN = {
     typecomment: "Type comment" ,
     oops: "Ooops! This page not found " ,
   
+    time: "Time" ,
+    adress: "Adress" ,
+    weekends: "weekends" ,
+    closed: "Зачинено" ,
+    
+    everyday: "everyday" ,
+    daynight: "day and night" ,
 
-  
-//{lang.typecomment}
+ //{lang.typecomment}
     temp: "Your favorite pets will be added here",
     
     empty: "List is empty ...",
@@ -155,8 +156,14 @@ const langEN = {
     settings: "Settings",
     out: "LogOut",
     sorry: "Sorry dude, we couldn't find that page",
-    
-    
+    mn: "MN",
+    tu: "TU",
+    we: "WE",
+    th: "TH",
+    fr: "FR",
+    sa: "SA",
+    su: "SU",
+  
 }
 
 
@@ -242,8 +249,7 @@ const langUA = {
     info: 'Моя інформація',
     pets: 'Мої домашні тварини',
     city: 'Місто',
-    
-   
+     
     pass: 'Пароль',
     regSubmit: "Зареєструватися",
     logSubmit: "Увійти",
@@ -267,12 +273,10 @@ const langUA = {
     deleteadverstiment: 'Видалити оголошення?',
     suretodelete : 'Ви впевнені, що хочете видалити ',
     youcant : 'Ви не можете скасувати цю дію. ',
-
     
     attention : 'Увага',
     reminder : 'Нагадуємо, що певні функції доступні лише авторизованим користувачам. Якщо у вас є обліковий запис, увійдіть, використовуючи свої облікові дані. Якщо у вас ще немає облікового запису, ви повинні зареєструватися, щоб отримати доступ до цих функцій. ',
-    
-
+  
     congrats: 'Вітаю!',
     registrationsuccess: 'Ваша реєстрація пройшла успішно',
     gotoprofile: 'Перейти в профіль',
@@ -296,7 +300,15 @@ const langUA = {
     typelocation: 'Введіть локацію',
     typeofprice: 'Введіть цінy',
     typecomment: "Введіть коментар" ,
-
+    
+    everyday: "щодня" ,
+    daynight: "вдень і вночі" ,
+    
+    time: "Час" ,
+    adress: "Адреса" ,
+    weekends: "вихідні" ,
+    closed: "Зачинено" ,
+    
     oops: "Ой! Ця сторінка не знайдена" ,
     empty: "Список порожній...",
     temp: "Тут будуть додані ваші улюблені домашні тварини",
@@ -306,7 +318,14 @@ const langUA = {
     settings: "Налаштування",
     out: "Вийти",
     sorry: "Вибач чувак, ми не змогли знайти цю сторінку",
-
+    mn: "ПН",
+    tu: "ВТ",
+    we: "СР",
+    th: "ЧТ",
+    fr: "ПТ",
+    sa: "СБ",
+    su: "НД",
+    
 }
 
 export { langEN, langUA}
