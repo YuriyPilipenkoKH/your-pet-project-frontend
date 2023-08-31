@@ -76,6 +76,85 @@ export const TestPage =()=> {
         <ModalPopup {...modals} onClose ={onModalClose} isOpen={showModal}/> //  onClose ={onModalClose}   {...modal1} 
     )}
       
+
+                 {/* {!showWorkHours && (
+                            <>
+                             <p>{item?.workDays ? item.workDays[0].isOpen  :  "closed"}</p>
+                                <span>{item?.workDays ?  item?.workDays[0].from : "---"}</span>
+                                <span>{item.workDays ? item.workDays[0].to : '---'}</span>
+                            </>         )} */}
+
+                        {/* {!showWorkHours && (
+                            <>
+                                {item.workDays ? (
+                                    <>
+                                        <p>{item.workDays[0].isOpen ? "open" : "closed"}</p>
+                                        <span>{item.workDays[0].from || "---"}</span>
+                                        <span>{item.workDays[0].to || '---'}</span>
+                                    </>
+                                ) : (
+                                <p>Hours not available</p>
+                                )}
+                            </>
+                        )} */}
+
+
+                        
+
+                        {/* {!showWorkHours && (
+                            
+                        <Calendar className='Calendar'>
+                        {openDaysCount.map((day, index) => (
+                          <div key={index}>
+                            {day.isOpen && (
+                              <>
+                                <p>{days[index]}</p>
+                                <span>{day.from || "---"}</span>
+                                <span>{day.to || '---'}</span>
+                              </>
+                            )}
+                          </div>
+                        ))}
+                      </Calendar>
+                            )} */}
+         
+         {/* <>
+                                         <div>
+                                             <p>MN</p>
+                                             <span>{"a1"}</span>
+                                         
+                                         </div>
+                                         <div>
+                                             <p>TU</p>
+                                             <span>{"a1"}</span>
+                                         
+                                         </div>
+                                         <div>
+                                             <p>{"mn"}</p>
+                                             <span>{"a1"}</span>
+                                         
+                                         </div>
+                                         <div>
+                                             <p>{"mn"}</p>
+                                             <span>{"a1"}</span>
+                                         
+                                         </div>
+                                         <div>
+                                             <p>{"mn"}</p>
+                                             <span>{"a1"}</span>
+                                         
+                                         </div>
+                                         <div>
+                                             <p>{"mn"}</p>
+                                             <span>{"a1"}</span>
+                                         
+                                         </div>
+                                         <div>
+                                             <p>{"mn"}</p>
+                                             <span>{"a1"}</span>
+                                         
+                                         </div>
+                                     </> */}
             
         </TestWrapp>
     )

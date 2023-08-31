@@ -39,6 +39,10 @@ export default function NoticesPage() {
     const dispatch = useDispatch();
     const reRender = useSelector(getReRender);
 
+    const resetFilterValue =() => {
+        setFilterValue('')
+    }
+
     const makeCategory = () => {
         if (activeIndex === 0) {
             return 'sell';
@@ -211,8 +215,13 @@ export default function NoticesPage() {
     }
     return (
         <CommonWrapper className="CommonWrapper">
-            <NoticesSearch activeIndex={activeIndex} filterValue={filterValue} setFilterValueFunction={setFilterValueFunction} search={searchParamsNotices} />
-            <NoticesPageWrap>
+            <NoticesSearch 
+            resetFilterValue={resetFilterValue}
+            activeIndex={activeIndex} 
+            filterValue={filterValue} 
+            setFilterValueFunction={setFilterValueFunction} 
+            search={searchParamsNotices} />
+            <NoticesPageWrap >
                 <NoticesCategoriesNav
                     activeIndex={activeIndex}
                     setActiveIndexFunction={setActiveIndexFunction}

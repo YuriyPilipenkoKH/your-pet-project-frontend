@@ -61,6 +61,23 @@ export const MainCard = ({
         setLang(language === 'english' ? langEN : langUA);
     }, [language]);
 
+    const translateCategory = (categoryNotice) => {
+        if (categoryNotice === "sell") {
+            return `${lang.sell}`
+        } else if (categoryNotice === "lost/found") {
+            return `${lang.lost}`
+        } else {
+            return `${lang.goodhands}`
+        };
+    }
+    const translateSex = (sexNotice) => {
+        if (sexNotice === "male") {
+            return `${lang.male}`
+        } else {
+            return `${lang.female}`
+        };
+    }
+
     const checkRoute = () => {
         if (!isLoggedIn) {
             setModals(modal1);
@@ -120,20 +137,20 @@ export const MainCard = ({
         // dispatch(setAge(age))
 
         if (!age) {
-            return `1 year`;
+            return `1 ${lang.year}`;
         } else if (age < 1) {
-            return `0 years`;
+            return `0 ${lang.years}`;
         } else if (age === 1) {
-            return `1 year`;
+            return `1 ${lang.year}`;
         } else {
-            return `${age} years`;
+            return `${age} ${lang.years}`;
         }
     }
 
     return (
         <CardWrapper>
             <ImgWrapper photo={petAvatarURL}>
-                <CategoryWrapp className="category"> {category} </CategoryWrapp>
+                <CategoryWrapp className="category"> {translateCategory(category)} </CategoryWrapp>
                 <FavButton
                     className="fav"
                     isLike={isLike}
@@ -164,7 +181,7 @@ export const MainCard = ({
                 ></Tab>
                 <Tab
                     className="tab3"
-                    text={sex}
+                    text={translateSex(sex)}
                     icon={sex === 'male' ? iconMan : iconFem}
                 ></Tab>
             </ImgWrapper>
@@ -182,12 +199,12 @@ export const MainCard = ({
                     delid={id}
                     cardtitle={title}
                     petAvatarURL={petAvatarURL}
-                    category={category}
+                    category={translateCategory(category)}
                     location={location}
                     name={name}
                     birthday={birthday}
                     animal={type}
-                    sex={sex}
+                    sex={translateSex(sex)}
                     comments={comments}
                     isLike={isLike}
                     currentDiv={index + 1}

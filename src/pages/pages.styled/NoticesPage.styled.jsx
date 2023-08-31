@@ -15,14 +15,12 @@ export const NavWrapper = styled.div`
 `;
 
 export const NavWrap = styled.div`
-    /* display:none; */
-    /* margin-top: 8px;
-    margin-bottom: 24px; */
+ 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     flex-wrap: wrap;
-    /* max-width: 210px; */
+
     gap: 8px;
 
     @media screen and (min-width: 768px) {
@@ -60,21 +58,22 @@ export const NoticeContainer = styled.div`
 export const SearchForm = styled.form`
     position: relative;
 
-    &>button {
+   &>div {
         padding: 8px;
         border: none;
         background-color: transparent;
         position: absolute;
-        top:8px;
+        top:10px;
+        right: 10px;
+    }
+
+    &>div.IconWrapp-notices{
+        top:2px;
         right: 10px;
     }
 `;
 export const SearchButton = styled.button`
     position: relative;
+    cursor:pointer;
 
-    &>div  {
-        /* position: absolute;
-        top:8px;
-        right: 10px; */
-    }
 `;

@@ -149,9 +149,7 @@ export const ModalPopup = ({
         if (path === 'notice') {
             dispatch(noticesOperations.fetchDeleteNotice(delid))
                 .then(() => {
-                    toast.success(
-                        `The animal was successfully removed`
-                    );
+                    toast.success(`The animal was successfully removed`);
                 })
                 .catch(() => {
                     toast.error('Something went wrong');
@@ -169,8 +167,14 @@ export const ModalPopup = ({
         onClose();
         dispatch(toggleSell());
         dispatch(setModalClose());
-        dispatch(authOperations.logOut());
-
+        dispatch(authOperations.logOut())
+            // .unwrap()
+            // .then(originalPromiseResult => {
+            //     console.log('originalPromiseResul',originalPromiseResult)
+            //     toast.success(
+            //         `${originalPromiseResult.user?.name} Logout  successfull!`
+            //     );
+            // });
     };
    
 

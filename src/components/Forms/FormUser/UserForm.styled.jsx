@@ -89,9 +89,7 @@ export const FormStyled = styled.form`
             justify-self: end;
             width: 255px;
             height: 40px;
-            /* bottom: 0; */
-            /* margin-left: auto; */
-            /* right: 30px; */
+
         }
     }
 `;

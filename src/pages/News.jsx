@@ -179,13 +179,13 @@ const NewsPage = () => {
                         name="search"
                         placeholder={lang.search}
                     />
-                    <IconWrapp type="button">
+                    <IconWrapp >
                          
                            {filter &&  <SearchIcon
                            type="button"
                            onClick={clearInput}
                            className="search-cross">
-                           <RxCross1 style={{ color: '#f00' }} />
+                           <RxCross1 style={{ color: '#ffc107' }} />
                                                      </SearchIcon>}
                                                      <SearchIcon 
                                                      type="button"

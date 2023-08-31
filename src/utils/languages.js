@@ -3,6 +3,9 @@ const langEN = {
     homeTitle: `Take good care of your small pets`,
     homeBtn: 'Home',
 
+    year: "year",
+    years: "years",
+
     news: 'News',
     find: 'Find pet',
     findPet: 'Find your favorite pet',
@@ -137,6 +140,9 @@ const langEN = {
     typelocation: 'Type of location',
     typeofprice: "Type of price" ,
     typecomment: "Type comment" ,
+    oops: "Ooops! This page not found " ,
+  
+
   
 //{lang.typecomment}
     temp: "Your favorite pets will be added here",
@@ -158,6 +164,8 @@ const langUA = {
     appTitle: 'Знайдіть свого улюбленого вихованця',
     homeTitle: `Подбайте про своїх маленьких домашніх тварин`,
     homeBtn: 'Головна',
+    year: "рік",
+    years: "років",
 
     news: 'Новини',
     find: 'Знайдіть улюбленця',
@@ -206,8 +214,8 @@ const langUA = {
     type: 'Порода',
     place: 'Локація',
     sex: 'Стать',
-    phone: 'Phone',
-    comments: 'Коментарі :',
+    phone: 'Телефон',
+    comments: 'Коментарі:',
     email: 'Пошта',
     confirmPass: 'Підтвердити пароль',
 
@@ -255,7 +263,7 @@ const langUA = {
     cancel: "Відміна",
     yes: 'Так',
     
-    alreadyleaving: 'Вже йдете?',
+    alreadyleaving: 'Вже виходите?',
     deleteadverstiment: 'Видалити оголошення?',
     suretodelete : 'Ви впевнені, що хочете видалити ',
     youcant : 'Ви не можете скасувати цю дію. ',
@@ -278,8 +286,8 @@ const langUA = {
     price: 'Ціна',
     loadimg: 'Завантажте фото ',
     location: 'Локація',
-    male: 'Чол',
-    female: 'Жін',
+    male: 'Чоловік',
+    female: 'Жінка',
 
     typetitle: 'Введіть назву',
     typename: 'Введіть iм’я улюбленця',
@@ -289,6 +297,7 @@ const langUA = {
     typeofprice: 'Введіть цінy',
     typecomment: "Введіть коментар" ,
 
+    oops: "Ой! Ця сторінка не знайдена" ,
     empty: "Список порожній...",
     temp: "Тут будуть додані ваші улюблені домашні тварини",
     delete: "ВИДАЛИТИ",
