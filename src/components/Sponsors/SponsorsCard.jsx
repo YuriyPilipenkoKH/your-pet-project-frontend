@@ -1,7 +1,6 @@
-import { Calendar, LinkSpan } from 'pages/pages.styled/Pages.styled';
+import { LinkSpan } from 'pages/pages.styled/Pages.styled';
 import { useState } from 'react';
 import {
-    
     ImgWrap,
     Span,
     SponsorCardTitle,
@@ -9,31 +8,15 @@ import {
     SponsorContent,
     SponsorImage,
     SponsorText,
+    TextOclock,
     TextWrap,
     WrapContent,
+    WrapperOclock,
+    Calendar,
 } from './Sponsors.styled';
 
 export const SponsorCard = ({ item }) => {
-
-    const [selectedDay, setSelectedDay] = useState(null);
-    const [showWorkHours, setShowWorkHours] = useState(false)
-
-    const togglePopup = (index) => {
-      setSelectedDay(selectedDay === index ? null : index);
-    };
-
-  
-    // const workHours = [
-    //     { isOpen: false,  },
-    //     { isOpen: false,  },
-    //     { isOpen: false,  },
-    //     { isOpen: false,  },
-    //     { isOpen: false,  },
-    //     { isOpen: true, from: '11:00', to: '16:00' },
-    //     { isOpen: true, from: '11:00', to: '16:00' },
-       
-    //   ]
-const days = [ 'MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU' ]
+    const [showWorkHours, setShowWorkHours] = useState(false);
     const email = item.email ? item.email : 'notemail@gmail.com';
     const phone = item.phone ? item.phone : 'notphone';
     let fromTime =
@@ -75,67 +58,189 @@ const days = [ 'MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU' ]
                 </ImgWrap>
 
                 <SponsorContent className="sponsors-content">
-                    <TextWrap className="text-wrap">
+                    <TextWrap onClick={() => setShowWorkHours(!showWorkHours)} className="text-wrap">
                         <SponsorText className="sponsors__workDays">
-                            Time:{' '}
-                            {workSchedule}
+                            Time: {workSchedule}
                         </SponsorText>
-                        {/* <Span> few</Span> */}
-                        <Span 
-                        onClick ={() => console.log('data')}>
-                            {fromTime} {toTime !== "" && "-"} {toTime}
+                        <Span>
+                            {fromTime} {toTime !== '' && '-'} {toTime}
                         </Span>
-
-                        {/* {!showWorkHours && (
-                            <></>
-                        )} */}
-
-                        {/* {!showWorkHours && (
-                            
-                        <Calendar className='Calendar'>
-                        {openDaysCount.map((day, index) => (
-                          <div key={index}>
-                            {day.isOpen && (
-                              <>
-                                <p>{days[index]}</p>
-                                <span>{day.from || "---"}</span>
-                                <span>{day.to || '---'}</span>
-                              </>
-                            )}
-                          </div>
-                        ))}
-                      </Calendar>
-                            )} */}
+                        {showWorkHours &&
+                            (openDaysCount === 7 ? (
+                                <Calendar>
+                                    <WrapperOclock>
+                                        <TextOclock>MN</TextOclock>
+                                        <TextOclock>
+                                            {fromTime} {toTime !== '' && '-'}{' '}
+                                            {toTime}
+                                        </TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>TU</TextOclock>
+                                        <TextOclock>
+                                            {fromTime} {toTime !== '' && '-'}{' '}
+                                            {toTime}
+                                        </TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>WE</TextOclock>
+                                        <TextOclock>
+                                            {fromTime} {toTime !== '' && '-'}{' '}
+                                            {toTime}
+                                        </TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>TH</TextOclock>
+                                        <TextOclock>
+                                            {fromTime} {toTime !== '' && '-'}{' '}
+                                            {toTime}
+                                        </TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>FR</TextOclock>
+                                        <TextOclock>
+                                            {fromTime} {toTime !== '' && '-'}{' '}
+                                            {toTime}
+                                        </TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>SA</TextOclock>
+                                        <TextOclock>
+                                            {fromTime} {toTime !== '' && '-'}{' '}
+                                            {toTime}
+                                        </TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>SU</TextOclock>
+                                        <TextOclock>
+                                            {fromTime} {toTime !== '' && '-'}{' '}
+                                            {toTime}
+                                        </TextOclock>
+                                    </WrapperOclock>
+                                </Calendar>
+                            ) : openDaysCount === 2 ? (
+                                <Calendar>
+                                    <WrapperOclock>
+                                        <TextOclock>MN</TextOclock>
+                                        <TextOclock>Close</TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>TU</TextOclock>
+                                        <TextOclock>Close</TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>WE</TextOclock>
+                                        <TextOclock>Close</TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>TH</TextOclock>
+                                        <TextOclock>Close</TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>FR</TextOclock>
+                                        <TextOclock>Close</TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>SA</TextOclock>
+                                        <TextOclock>
+                                            {fromTime} {toTime !== '' && '-'}{' '}
+                                            {toTime}
+                                        </TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>SU</TextOclock>
+                                        <TextOclock>
+                                            {fromTime} {toTime !== '' && '-'}{' '}
+                                            {toTime}
+                                        </TextOclock>
+                                    </WrapperOclock>
+                                </Calendar>
+                            ) : openDaysCount === 5 ? (
+                                <Calendar>
+                                    <WrapperOclock>
+                                        <TextOclock>MN</TextOclock>
+                                        <TextOclock>
+                                            {fromTime} {toTime !== '' && '-'}{' '}
+                                            {toTime}
+                                        </TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>TU</TextOclock>
+                                        <TextOclock>
+                                            {fromTime} {toTime !== '' && '-'}{' '}
+                                            {toTime}
+                                        </TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>WE</TextOclock>
+                                        <TextOclock>
+                                            {fromTime} {toTime !== '' && '-'}{' '}
+                                            {toTime}
+                                        </TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>TH</TextOclock>
+                                        <TextOclock>
+                                            {fromTime} {toTime !== '' && '-'}{' '}
+                                            {toTime}
+                                        </TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>FR</TextOclock>
+                                        <TextOclock>
+                                            {fromTime} {toTime !== '' && '-'}{' '}
+                                            {toTime}
+                                        </TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>SA</TextOclock>
+                                        <TextOclock>Close</TextOclock>
+                                    </WrapperOclock>
+                                    <WrapperOclock>
+                                        <TextOclock>SU</TextOclock>
+                                        <TextOclock>Close</TextOclock>
+                                    </WrapperOclock>
+                                </Calendar>
+                            ) : (
+                                <Calendar>
+                                    <TextOclock>Work only online</TextOclock>
+                                </Calendar>
+                            ))}
                     </TextWrap>
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__address">
                             Adress:
                         </SponsorText>
                         <LinkSpan>
-                            {item.address 
-                            ?  <a
-                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {item.address}  </a>
-                            : "shop online"}
-                            </LinkSpan>
+                            {item.address ? (
+                                <a
+                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                                        item.address
+                                    )}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {item.address}{' '}
+                                </a>
+                            ) : (
+                                'shop online'
+                            )}
+                        </LinkSpan>
                     </TextWrap>
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__email">
                             Email:
                         </SponsorText>
                         <LinkSpan>
-                        <a href={`mailto:${email}`}>{email}</a>
-                            </LinkSpan>
+                            <a href={`mailto:${email}`}>{email}</a>
+                        </LinkSpan>
                     </TextWrap>
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__phone">
                             Phone:
                         </SponsorText>
                         <LinkSpan>
-                        <a href={`tel:${phone}`}>{phone}</a>
+                            <a href={`tel:${phone}`}>{phone}</a>
                         </LinkSpan>
                     </TextWrap>
                 </SponsorContent>
@@ -143,5 +248,3 @@ const days = [ 'MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU' ]
         </SponsorCardWrapper>
     );
 };
-
-
