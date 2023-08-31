@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import isPropValid from '@emotion/is-prop-valid';
+import isPropValid from '@emotion/is-prop-valid';
 
 export const ModalOverlay = styled.div`
 
@@ -26,11 +26,16 @@ export const ModalOverlay = styled.div`
 }
 `;
 
-export const ModalContainer = styled.div`
+export const ModalContainer = styled.div.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) &&
+      prop !== 'heightm' &&
+      prop !== 'heightd',
+})`
 
   width: 280px;
-  height: ${props => props.heightm} ;
-
+  /* height: ${props => props.heightm} ; */
+  height: ${({ heightm }) => heightm && '445px'};
   position: relative;
   display: grid;
   place-items: center;
@@ -44,8 +49,8 @@ export const ModalContainer = styled.div`
   @media screen and (min-width: 768px) {
     width: 608px;
    
-    height: ${props => props.heightd} ;
-    
+    /* height: ${props => props.heightd} ; */
+    height: ${({ heightd}) => heightd && '429px'};
     padding: 50px 40px;
     border-radius: 40px;
   }
@@ -76,14 +81,21 @@ export const ModalContainer3 = styled.div`
   }
 `;
 
-export const BtnContainer = styled.div`
+export const BtnContainer = styled.div.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) &&
+      prop !== 'btnsizem' &&
+      prop !== 'btnsized' &&
+      prop !== 'type' 
+})`
    
     display: flex;
     flex-direction: column;
     gap: 12px;
 
     &>button, &>a {
-        width: ${props => props.btnsizem};
+        /* width: ${props => props.btnsizem}; */
+        width: ${({ btnsizem}) => btnsizem && '240px'};
     }
     
 
@@ -96,7 +108,8 @@ export const BtnContainer = styled.div`
 
         &>button, &>a {
 
-        width: ${props => props.btnsized};
+        /* width: ${props => props.btnsized}; */
+        width: ${({ btnsized }) => btnsized && '165px'};
         gap:  ${(props => props.type === 4) ? '20px' : '12px'};
     }
   }
@@ -203,8 +216,14 @@ export const ContentWrapp = styled.div`
   gap: 12px;
 `;
 
-export const ModalButton = styled.button`
-  background-color: ${props => props.buttonColor};
+export const ModalButton = styled.button.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) &&
+      prop !== 'buttonColor' 
+})`
+
+  /* background-color: ${props => props.buttonColor}; */
+  background-color: ${({ buttonColor }) => buttonColor && '#13d'};
   color: white;
   padding: 10px 20px;
   border: none;
