@@ -418,7 +418,7 @@ const UserForm = () => {
                     <OutButton
                     onClick={signOut}
                      className="logoutBtn">
-                        <MdOutlineLogout /> Log Out
+                        <MdOutlineLogout /> {lang.out}
                     </OutButton>
                 ) : (
                     <Button className="saveBtn" type="submit">
