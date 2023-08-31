@@ -5,7 +5,7 @@ export const NavWrap = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-
+transition: all 1s ease-in-out;
 
     @media screen and (max-width: 1279px) {
     display: none;
@@ -32,7 +32,7 @@ export const NavWrap = styled.div`
 `
 
 export const StyledLink = styled(NavLink)`
-  
+  text-align: center;
   color: var(--text-color);
   text-decoration:none;
   font-size: 20px;
