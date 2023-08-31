@@ -1,5 +1,5 @@
-import { Calendar, LinkSpan } from 'pages/pages.styled/Pages.styled';
-import { useState } from 'react';
+import {  LinkSpan } from 'pages/pages.styled/Pages.styled';
+
 import {
     
     ImgWrap,
@@ -15,24 +15,7 @@ import {
 
 export const SponsorCard = ({ item }) => {
 
-    const [selectedDay, setSelectedDay] = useState(null);
-    const [showWorkHours, setShowWorkHours] = useState(false)
-
-    const togglePopup = (index) => {
-      setSelectedDay(selectedDay === index ? null : index);
-    };
-
-  
-    // const workHours = [
-    //     { isOpen: false,  },
-    //     { isOpen: false,  },
-    //     { isOpen: false,  },
-    //     { isOpen: false,  },
-    //     { isOpen: false,  },
-    //     { isOpen: true, from: '11:00', to: '16:00' },
-    //     { isOpen: true, from: '11:00', to: '16:00' },
-       
-    //   ]
+ 
 const days = [ 'MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU' ]
     const email = item.email ? item.email : 'notemail@gmail.com';
     const phone = item.phone ? item.phone : 'notphone';
@@ -85,28 +68,9 @@ const days = [ 'MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU' ]
                         onClick ={() => console.log('data')}>
                             {fromTime} {toTime !== "" && "-"} {toTime}
                         </Span>
+                        {/* {item.workDays ?  item.workDays[0].from : 'closed'  } */}
 
-                        {/* {!showWorkHours && (
-                            <></>
-                        )} */}
-
-                        {/* {!showWorkHours && (
-                            
-                        <Calendar className='Calendar'>
-                        {openDaysCount.map((day, index) => (
-                          <div key={index}>
-                            {day.isOpen && (
-                              <>
-                                <p>{days[index]}</p>
-                                <span>{day.from || "---"}</span>
-                                <span>{day.to || '---'}</span>
-                              </>
-                            )}
-                          </div>
-                        ))}
-                      </Calendar>
-                            )} */}
-                    </TextWrap>
+                        </TextWrap>
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__address">
                             Adress:
