@@ -349,10 +349,10 @@ export default function PersonalDetails({
                 </LabelForAdd>
                 <WrapperNextBackButton>
                     <ButtonTransparent addPet onClick={() => beforeForm()}>
-                        <BiArrowBack /> {stepNumber > 1 ? 'Back' : 'Cancel'}
+                        <BiArrowBack /> {stepNumber > 1 ? lang.back : lang.cancel}
                     </ButtonTransparent>
                     <Button stepNumber={stepNumber} addPet type="submit">
-                        {stepNumber > 2 ? 'Done' : 'Next'} {iconPawprint}
+                        {stepNumber > 2 ? lang.done : lang.next} {iconPawprint}
                     </Button>
                 </WrapperNextBackButton>
             </form>

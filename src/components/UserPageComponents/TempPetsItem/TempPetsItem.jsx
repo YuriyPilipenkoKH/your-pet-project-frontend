@@ -21,7 +21,7 @@ export  const TempPetsItem = () => {
             src={PetAvatar}
             alt="mypet's avatar"
             />
-      <h2> { lang.temp } </h2>
+      <h2 style={{ color: "var(--text-color)" }}> { lang.temp } </h2>
     </TempCard>
   )
 }
