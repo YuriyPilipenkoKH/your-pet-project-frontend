@@ -173,9 +173,6 @@ export const ModalPopup = ({
                 toast.success(
                     `${originalPromiseResult.user.name} Logout  successfull!`
                 );
-            })
-            .catch(() => {
-                toast.error('Incorrect logout operation');
             });
     };
     // className='modal-backdrop'
