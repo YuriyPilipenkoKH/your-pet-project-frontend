@@ -376,7 +376,7 @@ export const StyledRadioButton = styled.button`
     /* ${hoverStylesTrB}  */
 
 background-color: var(--light-blue);
-color: var(--blue);
+color: var(--button-color-option);
 transition: all 0.4s ease; 
 border: none;
 height: 35px;

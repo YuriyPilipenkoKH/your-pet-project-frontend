@@ -257,7 +257,7 @@ export const ModalPopup = ({
                             <p> {lang.place} </p> <span> {location} </span>
                             <p> {lang.sex} </p> {sex}
                             <p className="userContact"> {lang.email} </p>{' '}
-                            <span>
+                            <span style={{ textDecoration: "underline" }}>
                                 {' '}
                                 <a href="mailto:alex@gmail.com">
                                     {' '}
@@ -265,7 +265,7 @@ export const ModalPopup = ({
                                 </a>{' '}
                             </span>
                             <p className="userContact"> {lang.phone} </p>{' '}
-                            <span>
+                            <span style={{ textDecoration: "underline" }}>
                                 {' '}
                                 <a href="tel:+380971234567">
                                     {'+380971234567'}
