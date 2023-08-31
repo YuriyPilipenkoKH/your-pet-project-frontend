@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import {
     TytleNwes,
     SearchWrapper,
-    SearchIcon,
+   
     SearchInput,
 } from './NoticesSearch.styled';
 import { BsSearch } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
-import { SearchForm } from 'pages/pages.styled/Pages.styled';
-import { FormButton } from 'components/Button/Button';
+
 import noticesOperations from '../../redux/notices/notices-operations';
 import { useAll } from 'hooks/useAll';
 import { langEN, langUA } from 'utils/languages';
+import { SearchButton, SearchForm } from 'pages/pages.styled/NoticesPage.styled';
 
 export default function NoticesSearch({ search, setFilterValueFunction, filterValue, activeIndex }) {
     const { language } = useAll();
@@ -45,11 +45,11 @@ export default function NoticesSearch({ search, setFilterValueFunction, filterVa
                     value={filterValue}
                     placeholder={lang.search}
                 />
-                <FormButton>
-                    <SearchIcon className="search-icon">
+             
+                    <SearchButton className="search-icon">
                         <BsSearch style={{ color: '#54adff' }} />
-                    </SearchIcon>
-                </FormButton>
+                    </SearchButton>
+               
             </SearchForm>
         </SearchWrapper>
     );

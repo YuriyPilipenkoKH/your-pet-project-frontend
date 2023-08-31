@@ -56,3 +56,25 @@ export const NoticeContainer = styled.div`
     gap: 32px;
     padding-bottom: 30px;
 `;
+
+export const SearchForm = styled.form`
+    position: relative;
+
+    &>button {
+        padding: 8px;
+        border: none;
+        background-color: transparent;
+        position: absolute;
+        top:8px;
+        right: 10px;
+    }
+`;
+export const SearchButton = styled.button`
+    position: relative;
+
+    &>div  {
+        /* position: absolute;
+        top:8px;
+        right: 10px; */
+    }
+`;

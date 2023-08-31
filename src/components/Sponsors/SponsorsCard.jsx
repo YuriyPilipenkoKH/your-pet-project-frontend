@@ -1,3 +1,5 @@
+import { LinkSpan } from 'pages/pages.styled/Pages.styled';
+import { useEffect, useState } from 'react';
 import {
     ImgWrap,
     Span,
@@ -11,6 +13,29 @@ import {
 } from './Sponsors.styled';
 
 export const SponsorCard = ({ item }) => {
+
+    const [selectedDay, setSelectedDay] = useState(null);
+
+    const togglePopup = (index) => {
+      setSelectedDay(selectedDay === index ? null : index);
+    };
+
+
+    const workHours = item.workDays
+
+
+    // const workHours = [
+    //     { isOpen: false,  },
+    //     { isOpen: false,  },
+    //     { isOpen: false,  },
+    //     { isOpen: false,  },
+    //     { isOpen: false,  },
+    //     { isOpen: true, from: '11:00', to: '16:00' },
+    //     { isOpen: true, from: '11:00', to: '16:00' },
+       
+    //   ]
+
+    console.log('item', item.workDays)
     const email = item.email ? item.email : 'notemail@gmail.com';
     const phone = item.phone ? item.phone : 'notphone';
     let fromTime =
@@ -66,22 +91,37 @@ export const SponsorCard = ({ item }) => {
                         <SponsorText className="sponsors__address">
                             Adress:
                         </SponsorText>
-                        <Span>{item.address ? item.address : "shop online"}</Span>
+                        <LinkSpan>
+                            {item.address 
+                            ?  <a
+                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {item.address}  </a>
+                            : "shop online"}
+                            </LinkSpan>
                     </TextWrap>
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__email">
                             Email:
                         </SponsorText>
-                        <Span>{email}</Span>
+                        <LinkSpan>
+                        <a href={`mailto:${email}`}>{email}</a>
+                            </LinkSpan>
                     </TextWrap>
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__phone">
                             Phone:
                         </SponsorText>
-                        <Span>{phone}</Span>
+                        <LinkSpan>
+                        <a href={`tel:${phone}`}>{phone}</a>
+                        </LinkSpan>
                     </TextWrap>
                 </SponsorContent>
             </WrapContent>
         </SponsorCardWrapper>
     );
 };
+
+

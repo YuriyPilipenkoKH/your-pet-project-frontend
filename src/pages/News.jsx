@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BsSearch } from 'react-icons/bs';
+import { RxCross1 } from 'react-icons/rx';
 import { NewsCard } from '../components/News/NewsCard';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+    IconWrapp,
     ListButtonForPagination,
     NewsContainer,
     NewsWrapper,
@@ -15,7 +17,7 @@ import {
     TytleNwes,
 } from './pages.styled/Pages.styled';
 import { StyledLink } from '../components/Button/Button.styled';
-import { FormButton } from 'components/Button/Button';
+
 import { iconRowLeft } from 'images/icons';
 import { setFilterNews } from 'redux/filter/filterSlice';
 import { getNewsFilter } from 'redux/filter/filterSelectors';
@@ -36,6 +38,17 @@ const NewsPage = () => {
     const [numButtons, setNumButtons] = useState(5);
     const { language, theme } = useAll();
     const [lang, setLang] = useState(langUA);
+   
+
+    const onInputChange =(e) => {
+       
+        dispatch(setFilterNews(e.target.value))
+    }
+
+    const clearInput =(e) => {
+        dispatch(setFilterNews(''))
+       
+    }
 
     useEffect(() => {
         setLang(language === 'english' ? langEN : langUA);
@@ -155,19 +168,34 @@ const NewsPage = () => {
                 <StyledLink to="/test" style={{ background: 'transparent' }}>
                     <TytleNwes>{lang.news}</TytleNwes>
                 </StyledLink>
-                <SearchForm className="search-form">
+                <SearchForm 
+                onSubmit={(e) =>   dispatch(setFilterNews(e.target.value))}
+                className="search-form">
                     <SearchInput
-                        onChange={e => dispatch(setFilterNews(e.target.value))}
+                        // onChange={(e) =>   dispatch(setFilterNews(e.target.value))}
+                        onChange={onInputChange}
                         type="text"
                         value={filter}
                         name="search"
                         placeholder={lang.search}
                     />
-                    <FormButton type="button">
-                        <SearchIcon className="search-icon">
-                            <BsSearch style={{ color: '#54adff' }} />
-                        </SearchIcon>
-                    </FormButton>
+                    <IconWrapp type="button">
+                         
+                           {filter &&  <SearchIcon
+                           type="button"
+                           onClick={clearInput}
+                           className="search-cross">
+                           <RxCross1 style={{ color: '#f00' }} />
+                                                     </SearchIcon>}
+                                                     <SearchIcon 
+                                                     type="button"
+                                                     className="search-lens">
+                                <BsSearch 
+                                // onClick={(e) =>   dispatch(setFilterNews(e.target.value))}
+                                style={{ color: '#54adff' }} />
+                                                     </SearchIcon>
+                         
+                    </IconWrapp>
                 </SearchForm>
             </SearchWrapper>
 
