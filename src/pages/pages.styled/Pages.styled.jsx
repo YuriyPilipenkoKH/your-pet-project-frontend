@@ -127,20 +127,30 @@ export const NewsContainer = styled.div`
 export const SearchForm = styled.form`
     position: relative;
 
-    & > button {
-        padding: 8px;
-        background-color: transparent;
+    &>div  {
         position: absolute;
-        top: 2px;
+        top:8px;
         right: 10px;
-
-        & > span > svg {
-            scale: 1.5;
-        }
     }
 `;
-export const SearchIcon = styled.span`
-    fill: var(--blue);
+export const SearchIcon = styled.button`
+padding: 0;
+margin: 0;
+width: 24px;
+height: 24px;
+cursor: pointer;
+      background-color: transparent;
+            padding: 4px;
+            border: none;
+
+            & > svg {
+                scale: 1.3;
+            }
+
+   &>svg.search-cross{
+    fill: crimson;
+   }        
+ 
 `;
 
 export const SearchInput = styled.input`
@@ -185,8 +195,22 @@ export const TestWrapp = styled.div`
 
     & > button {
         max-width: 160px;
+        
     }
 `;
+
+export const IconWrapp = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 2px;
+&>button>svg{
+    display: flex;
+align-items: center;
+justify-content: center;
+    width: 20px;
+}
+`
 //SponsorWrap
 export const SponsorWrap = styled.div`
 
