@@ -215,7 +215,7 @@ const langUA = {
     place: 'Локація',
     sex: 'Стать',
     phone: 'Телефон',
-    comments: 'Коментарі :',
+    comments: 'Коментарі:',
     email: 'Пошта',
     confirmPass: 'Підтвердити пароль',
 
