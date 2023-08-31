@@ -3,6 +3,9 @@ const langEN = {
     homeTitle: `Take good care of your small pets`,
     homeBtn: 'Home',
 
+    year: "year",
+    years: "years",
+
     news: 'News',
     find: 'Find pet',
     findPet: 'Find your favorite pet',
@@ -156,6 +159,8 @@ const langUA = {
     appTitle: 'Знайдіть свого улюбленого вихованця',
     homeTitle: `Подбайте про своїх маленьких домашніх тварин`,
     homeBtn: 'Головна',
+    year: "рік",
+    years: "років",
 
     news: 'Новини',
     find: 'Знайдіть улюбленця',
@@ -204,7 +209,7 @@ const langUA = {
     type: 'Порода',
     place: 'Локація',
     sex: 'Стать',
-    phone: 'Phone',
+    phone: 'Телефон',
     comments: 'Коментарі :',
     email: 'Пошта',
     confirmPass: 'Підтвердити пароль',
@@ -276,8 +281,8 @@ const langUA = {
     price: 'Ціна',
     loadimg: 'Завантажте фото ',
     location: 'Локація',
-    male: 'Чол',
-    female: 'Жін',
+    male: 'Чоловік',
+    female: 'Жінка',
 
     typetitle: 'Введіть назву',
     typename: 'Введіть iм’я улюбленця',

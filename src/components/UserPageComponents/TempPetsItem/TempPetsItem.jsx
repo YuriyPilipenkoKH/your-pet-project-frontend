@@ -12,7 +12,7 @@ export  const TempPetsItem = () => {
             src={PetAvatar}
             alt="mypet's avatar"
             />
-      <h2>Your favorite pets will be added here </h2>
+      <h2 style={{ color: "var(--text-color)" }}>Your favorite pets will be added here </h2>
     </TempCard>
   )
 }
