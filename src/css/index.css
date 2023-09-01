@@ -167,6 +167,8 @@ img {
   width: 140px ;
   white-space: nowrap;
 }
-
+.bear{
+  transform: translate(-50%, -50% );
+}
 
 

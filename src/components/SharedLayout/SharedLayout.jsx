@@ -89,24 +89,26 @@ const SharedLayout = () => {
                 fallback={
                     <>
                         {theme === 'light' ? (
-                            <img
+                            <img className='bear'
                                 src={gifLoaderLight}
                                 style={{
                                     position: 'fixed',
                                     top: '50%',
                                     left: '50%',
                                     zIndex: '999',
+                                    transform: 'translate(-50%,-50%)',
                                 }}
                                 alt="Gif"
                             ></img>
                         ) : (
-                            <img
+                            <img className='bear'
                                 src={gifLoaderDark}
                                 style={{
                                     position: 'fixed',
                                     top: '50%',
                                     left: '50%',
                                     zIndex: '999',
+                                    transform: 'translate(-50%,-50%)', 
                                 }}
                                 alt="Gif"
                             ></img>

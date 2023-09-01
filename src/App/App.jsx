@@ -48,6 +48,7 @@ const App = () => {
                                 top: '50%',
                                 left: '50%',
                                 zIndex: '999',
+                                transform: 'translate(-50%, -50%)' 
                             }}
                             alt="Gif"
                         ></img>
@@ -59,6 +60,7 @@ const App = () => {
                                 top: '50%',
                                 left: '50%',
                                 zIndex: '999',
+                                transform: 'translate(-50%, -50%)' 
                             }}
                             alt="Gif"
                         ></img>
