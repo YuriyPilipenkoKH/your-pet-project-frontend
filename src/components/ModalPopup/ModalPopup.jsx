@@ -149,10 +149,10 @@ export const ModalPopup = ({
         if (path === 'notice') {
             dispatch(noticesOperations.fetchDeleteNotice(delid))
                 .then(() => {
-                    toast.success(`The animal was successfully removed`);
+                    toast.success(lang.animalremoved);
                 })
                 .catch(() => {
-                    toast.error('Something went wrong');
+                    toast.error(lang.wrong);
                 });
             dispatch(setModalClose());
             onClose();
@@ -171,7 +171,7 @@ export const ModalPopup = ({
             .unwrap()
             .then(originalPromiseResult => {
                   toast.success(
-                    `Logout  successfull!`
+                    lang.Logoutsuccess
                 );
             });
     };

@@ -145,11 +145,10 @@ const langEN = {
     everyday: "everyday" ,
     daynight: "day and night" ,
 
- //{lang.typecomment}
     temp: "Your favorite pets will be added here",
     
     empty: "List is empty ...",
-        // edit: "EDIT",
+    // edit: "EDIT",
     delete: "DELETE",
     avatar: "Avatar",
     set: "Set",
@@ -163,7 +162,21 @@ const langEN = {
     fr: "FR",
     sa: "SA",
     su: "SU",
+    
+    
+    //{lang.typecomment}
   
+    Logoutsuccess: "Logout successfull!",
+    Petadded: "Pet added successfully",
+    wrong: "Something went wrong",
+    Photoupdated: "Photo was successfully updated",
+    Infoupdated: "The information has been updated",
+    Welcomeback: "Welcome back",
+    Incorrect: "Incorrect login or password",
+    userexists: "The user already exists",
+    animalremoved: "The animal was successfully removed from favorites",
+    
+ 
 }
 
 
@@ -326,6 +339,15 @@ const langUA = {
     sa: "СБ",
     su: "НД",
     
+    Logoutsuccess: "Вихід успішний!",
+    Petadded: "Домашню тварину додано успішно",
+    wrong: "Щось пішло не так",
+    Photoupdated: "Фото успішно оновлено",
+    Infoupdated: "Інформація оновлена",
+    Welcomeback: "Вітаю Вас",
+    Incorrect: "Неправильний логін або пароль",
+    userexists: "Користувач уже існує",
+    animalremoved: "Тварину успішно видалили з вибраного",
 }
 
 export { langEN, langUA}

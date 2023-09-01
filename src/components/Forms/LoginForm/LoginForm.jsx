@@ -67,10 +67,10 @@ export default function LoginForm() {
         dispatch(authOperations.logIn({ email, password }))
             .unwrap()
             .then(originalPromiseResult => {
-                toast.success(`Welcome back ${originalPromiseResult.user.name}`);
+                toast.success(`${lang.Welcomeback} ${originalPromiseResult.user.name}`);
             })
             .catch(() => {
-                toast.error('Incorrect login or password');
+                toast.error(lang.Incorrect);
             });
     };
     const reset = () => {

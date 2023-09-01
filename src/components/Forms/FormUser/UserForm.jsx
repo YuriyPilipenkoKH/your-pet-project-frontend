@@ -144,10 +144,10 @@ const UserForm = () => {
         }
         dispatch(operations.fetchUpdateUser(formData)).unwrap()
         .then(() => {
-            toast.success(`Photo was successfully updated`);
+            toast.success(lang.Photoupdated);
         })
         .catch(() => {
-            toast.error('Something went wrong');
+            toast.error(lang.wrong);
         });;
         setEdit(false);
         setUserPhoto(false);
@@ -186,10 +186,10 @@ const UserForm = () => {
                 }
                 dispatch(operations.fetchUpdateUser(formData)).unwrap()
                 .then(() => {
-                    toast.success(`The information has been updated`);
+                    toast.success(lang.Infoupdated);
                 })
                 .catch(() => {
-                    toast.error('Something went wrong');
+                    toast.error(lang.wrong);
                 });
             });
         setShowData(false);

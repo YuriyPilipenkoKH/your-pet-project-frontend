@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+
+import {  useEffect, useState , useRef} from 'react';
 import PersonalDetails from './PersonalDetails/PersonalDetails';
 import MoreInfo from './MoreInfo/MoreInfo';
 import { useLocalStorage } from 'hooks/useLocalStaoreage';
@@ -6,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import operations from 'redux/notices/notices-operations';
 import { toast } from 'react-toastify';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 export default function AddInGoodHandsPet({
     children,
@@ -21,6 +24,13 @@ export default function AddInGoodHandsPet({
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const backLinkLocation = useRef(state?.from ?? '/');
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
+
     const clearAllInput = () => {
         clearInput("nameHands");
         clearInput("birthHands");
@@ -42,10 +52,10 @@ export default function AddInGoodHandsPet({
                 formData.append(key, { ...pet, ...data }[key]);
             }
             dispatch(operations.fetchAddNotice(formData)).then(() => {
-                toast.success(`Pet added successfully`);
+                toast.success(lang.Petadded);
             })
             .catch(() => {
-                toast.error('Something went wrong');
+                toast.error(lang.wrong);
             });
             navigate(backLinkLocation.current);
             clearStepNumber();
