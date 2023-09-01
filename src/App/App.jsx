@@ -34,7 +34,8 @@ const App = () => {
 
     useEffect(() => {
         dispatch(authOperations.fetchCurrentUser());
-    }, [dispatch]);
+        localStorage.setItem('theme', JSON.stringify(theme));
+    }, [dispatch, theme]);
 
     return (
         <Container>
