@@ -27,7 +27,6 @@ const LoginPage = lazy(() => import('../pages/LoginPage'));
 const App = () => {
     const dispatch = useDispatch();
     const { theme, language } = useAll();
-    console.log(theme);
     const regreshinggAuth = useSelector(getRefreshing);
     const loadingPets = useSelector(getPetsLoading);
     document.documentElement.setAttribute('data-theme', theme);
