@@ -76,7 +76,7 @@ export const FormStyled = styled.form`
         width: 240px;
         height: 31px;
 
-        @media screen and (min-width: 768px) {
+        @media screen and (min-width: 768px) and (max-width: 1280px) {
             margin: 0;
             position: absolute;
             bottom: 10px;
@@ -85,8 +85,8 @@ export const FormStyled = styled.form`
         }
 
         @media screen and (min-width: 1280px) {
-            position: static;
-            justify-self: end;
+            display: inline-block;
+            margin-right: 0;
             width: 255px;
             height: 40px;
         }

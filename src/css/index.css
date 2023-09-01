@@ -90,13 +90,13 @@
 }
 
 body {
+  overflow-x: hidden;
   background-color: var(--background-color);
   margin: 0;
   padding: 0;
   font-family: -apple-system, Manrope,  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
   transition: all 1s ease-in-out;
 }
 
