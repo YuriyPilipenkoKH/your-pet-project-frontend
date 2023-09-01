@@ -223,7 +223,6 @@ export const ModalPopup = ({
                         <Button onClick={removeCard}>
                             {lang.yes} <RiDeleteBin6Line />{' '}
                         </Button>
-                        ,
                     </BtnContainer>
                     <OnCloseButton onClick={shut}>
                         <RxCross2 />
