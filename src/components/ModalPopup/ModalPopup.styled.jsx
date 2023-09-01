@@ -172,6 +172,7 @@ export const ModalCategory = styled.div`
   left: 20px;
   top: 55px;
   font-size: 14px;
+  color: var(--black);
   font-weight: 600;
   padding: 11px;
   background-color: var(--light-blue);

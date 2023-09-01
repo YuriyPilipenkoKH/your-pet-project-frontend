@@ -18,15 +18,14 @@ import { StyledLogo } from '../Button/Button.styled';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 import { useAuth } from 'hooks/useAuth';
 import { UserNav } from 'components/UserNav/UserNav';
-import { DotLoader } from 'react-spinners';
 import { toggleLang } from 'redux/lang/langSlice';
 import { toggleTheme } from 'redux/theme/themeSlice';
 import { useDispatch } from 'react-redux';
 import { useAll } from 'hooks/useAll';
 import { MdOutlineNightlight } from 'react-icons/md';
 import { MdOutlineLightMode } from 'react-icons/md';
-import { langEN, langUA } from 'utils/languages';
-import { ToastContainer } from 'react-toastify';
+import gifLoaderLight from '../../images/animationLight.gif';
+import gifLoaderDark from '../../images/animationDark.gif';
 
 const SharedLayout = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -88,18 +87,31 @@ const SharedLayout = () => {
             </LayoutWrap>
             <Suspense
                 fallback={
-                    <DotLoader
-                        style={{
-                            position: 'fixed',
-                            top: '50%',
-                            left: '50%',
-                            zIndex: '999',
-                        }}
-                        color="#3682d6"
-                        cssOverride={{}}
-                        loading
-                        size={70}
-                    />
+                    <>
+                        {theme === 'light' ? (
+                            <img
+                                src={gifLoaderLight}
+                                style={{
+                                    position: 'fixed',
+                                    top: '50%',
+                                    left: '50%',
+                                    zIndex: '999',
+                                }}
+                                alt="Gif"
+                            ></img>
+                        ) : (
+                            <img
+                                src={gifLoaderDark}
+                                style={{
+                                    position: 'fixed',
+                                    top: '50%',
+                                    left: '50%',
+                                    zIndex: '999',
+                                }}
+                                alt="Gif"
+                            ></img>
+                        )}
+                    </>
                 }
             >
                 <Outlet />
