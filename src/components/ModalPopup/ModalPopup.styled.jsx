@@ -34,8 +34,8 @@ export const ModalContainer = styled.div.withConfig({
 })`
 
   width: 280px;
-  /* height: ${props => props.heightm} ; */
-  height: ${({ heightm }) => heightm && '445px'};
+  height: ${props => props.heightm} ;
+  /* height: ${({ heightm }) => heightm && '445px'}; */
   position: relative;
   display: grid;
   place-items: center;
@@ -95,8 +95,8 @@ export const BtnContainer = styled.div.withConfig({
     gap: 12px;
 
     &>button, &>a {
-        /* width: ${props => props.btnsizem}; */
-        width: ${({ btnsizem}) => btnsizem && '240px'};
+        width: ${props => props.btnsizem};
+        /* width: ${({ btnsizem}) => btnsizem && '240px'}; */
     }
     
 
@@ -109,8 +109,8 @@ export const BtnContainer = styled.div.withConfig({
 
         &>button, &>a {
 
-        /* width: ${props => props.btnsized}; */
-        width: ${({ btnsized }) => btnsized && '165px'};
+        width: ${props => props.btnsized};
+        /* width: ${({ btnsized }) => btnsized && '165px'}; */
         gap:  ${(props => props.type === 4) ? '20px' : '12px'};
     }
   }
