@@ -44,8 +44,8 @@ export const ModalContainer = styled.div.withConfig({
   padding: 50px 20px;
   border-radius: 20px;
   z-index: 50;
-
-
+  background-color: var(--background-color-form);
+  color: var(--text-color);
   @media screen and (min-width: 768px) {
     width: 608px;
    
@@ -64,7 +64,8 @@ export const ModalContainer3 = styled.div`
   display: grid;
   place-items: center;
   gap: 20px;  
-  background-color: var(--white);
+  background-color: var(--background-color-form);
+  color: var(--text-color);
   padding:40px 20px 20px;
   border-radius: 20px;
   display: flex;
@@ -242,7 +243,7 @@ export const OnCloseButton = styled.button`
   cursor: pointer;
 
   &>svg{
-    color:#222;
+    color: var(--text-color);
     scale: 2;
 
     &:hover {
@@ -302,7 +303,4 @@ export const PetList = styled.div`
     font-size: 16px;
     grid-row-gap : 10px;
 } 
-
-
-
 `

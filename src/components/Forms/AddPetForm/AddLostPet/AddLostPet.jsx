@@ -14,12 +14,24 @@ export default function AddLostPet({
     stepNumber,
     state,
     clearStepNumber,
-    clearData
+    clearData,
+    clearInput
 }) {
     const [pet, setPet] = useLocalStorage("dataYourPet", {});
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const backLinkLocation = useRef(state?.from ?? '/');
+    const clearAllInput = () => {
+        clearInput("nameLost");
+        clearInput("birthLost");
+        clearInput("typeLost");
+        clearInput("comentLost");
+        clearInput("titleLost");
+        clearInput("priceLost");
+        clearInput("locationLost");
+        clearInput("activeLost");
+        clearInput("imageUrlLost");
+    };
     const deliveryDataPet = data => {
         setPet(prevState => {
             return { ...prevState, ...data };
@@ -38,6 +50,7 @@ export default function AddLostPet({
             navigate(backLinkLocation.current);
             clearStepNumber();
             clearData("dataSellPet");
+            clearAllInput();
         }
     };
     return (

@@ -162,7 +162,7 @@ export const MainCard = ({
                     {' '}
                     {iconHeart}
                 </FavButton>
-                {isTrashShown && (
+                {isTrashShown && isLoggedIn && (
                     <TrashButton onClick={removeCard} className="del">
                         {' '}
                         {iconTrash}

@@ -15,12 +15,23 @@ export default function AddSellPet({
     state,
     clearStepNumber,
     clearData,
+    clearInput
 }) {
     const [pet, setPet] = useLocalStorage("dataSellPet", {});
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const backLinkLocation = useRef(state?.from ?? '/');
-    
+    const clearAllInput = () => {
+        clearInput("nameSell");
+        clearInput("birthSell");
+        clearInput("typeSell");
+        clearInput("comentSell");
+        clearInput("titleSell");
+        clearInput("priceSell");
+        clearInput("locationSell");
+        clearInput("activeSell");
+        clearInput("imageUrlSell");
+    };
     const deliveryDataPet = data => {
         setPet(prevState => {
             return { ...prevState, ...data };
@@ -39,6 +50,7 @@ export default function AddSellPet({
             navigate(backLinkLocation.current);
             clearStepNumber();
             clearData("dataSellPet");
+            clearAllInput();
         }
     };
     

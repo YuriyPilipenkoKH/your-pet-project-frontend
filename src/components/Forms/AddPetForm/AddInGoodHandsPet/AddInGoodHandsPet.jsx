@@ -14,12 +14,24 @@ export default function AddInGoodHandsPet({
     stepNumber,
     state,
     clearStepNumber,
-    clearData
+    clearData,
+    clearInput
 }) {
     const [pet, setPet] = useLocalStorage("dataSellPet", {});
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const backLinkLocation = useRef(state?.from ?? '/');
+    const clearAllInput = () => {
+        clearInput("nameHands");
+        clearInput("birthHands");
+        clearInput("typeHands");
+        clearInput("comentHands");
+        clearInput("titleHands");
+        clearInput("priceHands");
+        clearInput("locationHands");
+        clearInput("activeHands");
+        clearInput("imageUrlHands");
+    };
     const deliveryDataPet = data => {
         setPet(prevState => {
             return { ...prevState, ...data };
@@ -38,6 +50,7 @@ export default function AddInGoodHandsPet({
             navigate(backLinkLocation.current);
             clearStepNumber();
             clearData("dataSellPet");
+            clearAllInput();
         }
     };
     return (

@@ -44,11 +44,13 @@ export default function AddPetForm({ state }) {
         JSON.parse(localStorage.getItem(name));
         localStorage.setItem(name, JSON.stringify({ }));
     };
+    const clearInput = (name) => {
+        JSON.parse(localStorage.getItem(name));
+        localStorage.setItem(name, JSON.stringify(""));
+    }
     const activeOption = index => {
         setActive(index + 1);
     };
-    // const arraySteps = ['Choose  option', 'Personal details', 'More info'];
-    // const arrayOption = ['your pet', 'sell', 'lost/found', 'in good hands'];
     const arraySteps = [lang.chooseoption, lang.details, lang.moreinfo];
     const arrayOption = [lang.yourpet, lang.sell, lang.lost, lang.goodhands];
     return (
@@ -76,6 +78,7 @@ export default function AddPetForm({ state }) {
                     state={state}
                     clearStepNumber={clearStepNumber}
                     clearData={clearData}
+                    clearInput={clearInput}
                 >
                     <ListProgresSteps
                         arraySteps={arraySteps}
@@ -91,6 +94,7 @@ export default function AddPetForm({ state }) {
                     state={state}
                     clearStepNumber={clearStepNumber}
                     clearData={clearData}
+                    clearInput={clearInput}
                 >
                     <ListProgresSteps
                         arraySteps={arraySteps}
@@ -106,6 +110,7 @@ export default function AddPetForm({ state }) {
                     state={state}
                     clearStepNumber={clearStepNumber}
                     clearData={clearData}
+                    clearInput={clearInput}
                 >
                     <ListProgresSteps
                         arraySteps={arraySteps}
@@ -121,6 +126,7 @@ export default function AddPetForm({ state }) {
                     state={state}
                     clearStepNumber={clearStepNumber}
                     clearData={clearData}
+                    clearInput={clearInput}
                 >
                     <ListProgresSteps
                         arraySteps={arraySteps}

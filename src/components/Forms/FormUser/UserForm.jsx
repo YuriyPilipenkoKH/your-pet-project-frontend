@@ -7,7 +7,7 @@ import {
     UserFormWrap,
     UserPhotoWrap,
 } from './UserForm.styled';
-import { IconCross, iconPen } from 'images/icons';
+import { IconCrossForSearch, iconPen } from 'images/icons';
 import { Button, OutButton } from 'components/Button/Button';
 import { MdOutlineLogout } from 'react-icons/md';
 import {
@@ -428,7 +428,7 @@ const UserForm = () => {
             </FormStyled>
 
             <FormEditor onClick={handleData}>
-                {!showData ? iconPen : IconCross}
+                {!showData ? iconPen : IconCrossForSearch}
             </FormEditor>
             {showModal && (
                 <ModalPopup
