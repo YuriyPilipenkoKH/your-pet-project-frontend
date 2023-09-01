@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 
 export const SponsorCardWrapper = styled.div`
@@ -24,6 +25,7 @@ export const SponsorCardTitle = styled.a`
     text-align: center;
     color: var(--text-color);
     height: 40px;
+    transition: all 1s ease-in-out;
 `;
 
 export const WrapContent = styled.div`
@@ -54,15 +56,30 @@ export const TextWrap = styled.div`
     overflow: hidden;
    
 `;
-export const Span = styled.span`
+export const Span = styled.span.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop) &&
+        prop !== 'showWorkHours' 
+    })`
     font-size: 12px;
     color: var(--text-color);
     cursor: pointer;
+    color: ${({ showWorkHours  }) => showWorkHours === true && 'var(--blue)'};
+    transition: color 1s ease-in-out;
 `;
 
-export const SponsorText = styled.p`
+export const SponsorText = styled.p.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop) &&
+        prop !== 'showWorkHours' 
+       })`
     font-size: 12px;
     color: var(--text-color);
+    cursor: pointer;
+    color: ${({ showWorkHours }) => showWorkHours === true && 'var(--blue)'};
+    transition: color 1s ease-in-out;
+    display: flex;
+    gap: 8px;
 `;
 
 export const Date = styled.div`
@@ -73,7 +90,7 @@ export const Date = styled.div`
 
 export const WrapperOclock = styled.div`
     display: flex;
-    gap: 14px;
+    gap: 12px;
 
  `;
 
@@ -85,7 +102,7 @@ export const Calendar = styled.div`
     background-color: var(--background-color-form);
     border-radius: 8px;
     border: 1px solid var(--blue);
-    padding: 12px 8px;
+    padding: 12px 7px;
     transition: all 1s ease-in-out;
     z-index: 2;
     

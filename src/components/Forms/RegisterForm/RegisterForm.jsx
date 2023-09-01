@@ -86,7 +86,7 @@ export default function RegisterForm() {
         dispatch(authOperations.register({ name, email, password }))
             .unwrap()
             .catch(() => {
-                toast.error('The user already exists');
+                toast.error(lang.userexists);
             });
     };
     const reset = () => {

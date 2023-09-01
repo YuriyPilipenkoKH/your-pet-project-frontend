@@ -1,5 +1,5 @@
 import { LinkSpan } from 'pages/pages.styled/Pages.styled';
-import { useState } from 'react';
+import {  useEffect, useState } from 'react';
 import {
     ImgWrap,
     Span,
@@ -14,15 +14,25 @@ import {
     WrapperOclock,
     Calendar,
 } from './Sponsors.styled';
+import { useAll } from 'hooks/useAll';
+import { langEN, langUA } from 'utils/languages';
 
 export const SponsorCard = ({ item }) => {
+
     const [showWorkHours, setShowWorkHours] = useState(false);
+    const { language} = useAll()
+    const [lang, setLang] = useState(langUA)
+    
+    useEffect(() => {
+        setLang(language === 'english' ?  langEN :  langUA);
+      }, [language])
+
     const email = item.email ? item.email : 'notemail@gmail.com';
     const phone = item.phone ? item.phone : 'notphone';
     let fromTime =
         (item?.workDays && item.workDays[0]?.from) ||
         (item?.workDays && item.workDays[5]?.from) ||
-        'day and night';
+        lang.daynight;
     let toTime =
         (item?.workDays && item.workDays[0]?.to) ||
         (item?.workDays && item.workDays[5]?.to) ||
@@ -32,12 +42,12 @@ export const SponsorCard = ({ item }) => {
         : 0;
     const workSchedule =
         openDaysCount === 7
-            ? 'everyday'
+            ? lang.everyday
             : openDaysCount === 2
-            ? 'weekends'
+            ? lang.weekends
             : openDaysCount === 5
-            ? 'weekdays'
-            : 'everyday';
+            ? lang.weekends
+            : lang.everyday
     return (
         <SponsorCardWrapper className="sponsors-card">
             <SponsorCardTitle
@@ -59,59 +69,59 @@ export const SponsorCard = ({ item }) => {
 
                 <SponsorContent className="sponsors-content">
                     <TextWrap onClick={() => setShowWorkHours(!showWorkHours)} className="text-wrap">
-                        <SponsorText className="sponsors__workDays">
-                            Time: {workSchedule}
+                        <SponsorText showWorkHours={showWorkHours} className="sponsors__workDays">
+                        {lang.time}: {workSchedule}
                         </SponsorText>
-                        <Span>
+                        <Span  showWorkHours={showWorkHours}>
                             {fromTime} {toTime !== '' && '-'} {toTime}
                         </Span>
                         {showWorkHours &&
                             (openDaysCount === 7 ? (
                                 <Calendar>
                                     <WrapperOclock>
-                                        <TextOclock>MN</TextOclock>
+                                        <TextOclock>{lang.mn}</TextOclock>
                                         <TextOclock>
                                             {fromTime} {toTime !== '' && '-'}{' '}
                                             {toTime}
                                         </TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>TU</TextOclock>
+                                        <TextOclock>{lang.tu}</TextOclock>
                                         <TextOclock>
                                             {fromTime} {toTime !== '' && '-'}{' '}
                                             {toTime}
                                         </TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>WE</TextOclock>
+                                        <TextOclock>{lang.we}</TextOclock>
                                         <TextOclock>
                                             {fromTime} {toTime !== '' && '-'}{' '}
                                             {toTime}
                                         </TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>TH</TextOclock>
+                                        <TextOclock>{lang.th}</TextOclock>
                                         <TextOclock>
                                             {fromTime} {toTime !== '' && '-'}{' '}
                                             {toTime}
                                         </TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>FR</TextOclock>
+                                        <TextOclock>{lang.fr}</TextOclock>
                                         <TextOclock>
                                             {fromTime} {toTime !== '' && '-'}{' '}
                                             {toTime}
                                         </TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>SA</TextOclock>
+                                        <TextOclock>{lang.sa}</TextOclock>
                                         <TextOclock>
                                             {fromTime} {toTime !== '' && '-'}{' '}
                                             {toTime}
                                         </TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>SU</TextOclock>
+                                        <TextOclock>{lang.su}</TextOclock>
                                         <TextOclock>
                                             {fromTime} {toTime !== '' && '-'}{' '}
                                             {toTime}
@@ -121,34 +131,34 @@ export const SponsorCard = ({ item }) => {
                             ) : openDaysCount === 2 ? (
                                 <Calendar>
                                     <WrapperOclock>
-                                        <TextOclock>MN</TextOclock>
-                                        <TextOclock>Closed</TextOclock>
+                                        <TextOclock>{lang.mn}</TextOclock>
+                                        <TextOclock>{lang.closed}</TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>TU</TextOclock>
-                                        <TextOclock>Closed</TextOclock>
+                                        <TextOclock>{lang.tu}</TextOclock>
+                                        <TextOclock>{lang.closed}</TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>WE</TextOclock>
-                                        <TextOclock>Closed</TextOclock>
+                                        <TextOclock>{lang.we}</TextOclock>
+                                        <TextOclock>{lang.closed}</TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>TH</TextOclock>
-                                        <TextOclock>Closed</TextOclock>
+                                        <TextOclock>{lang.th}</TextOclock>
+                                        <TextOclock>{lang.closed}</TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>FR</TextOclock>
-                                        <TextOclock>Closed</TextOclock>
+                                        <TextOclock>{lang.fr}</TextOclock>
+                                        <TextOclock>{lang.closed}</TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>SA</TextOclock>
+                                        <TextOclock>{lang.sa}</TextOclock>
                                         <TextOclock>
                                             {fromTime} {toTime !== '' && '-'}{' '}
                                             {toTime}
                                         </TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>SU</TextOclock>
+                                        <TextOclock>{lang.su}</TextOclock>
                                         <TextOclock>
                                             {fromTime} {toTime !== '' && '-'}{' '}
                                             {toTime}
@@ -158,47 +168,47 @@ export const SponsorCard = ({ item }) => {
                             ) : openDaysCount === 5 ? (
                                 <Calendar>
                                     <WrapperOclock>
-                                        <TextOclock>MN</TextOclock>
+                                        <TextOclock>{lang.mn}</TextOclock>
                                         <TextOclock>
                                             {fromTime} {toTime !== '' && '-'}{' '}
                                             {toTime}
                                         </TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>TU</TextOclock>
+                                        <TextOclock>{lang.tu}</TextOclock>
                                         <TextOclock>
                                             {fromTime} {toTime !== '' && '-'}{' '}
                                             {toTime}
                                         </TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>WE</TextOclock>
+                                        <TextOclock>{lang.we}</TextOclock>
                                         <TextOclock>
                                             {fromTime} {toTime !== '' && '-'}{' '}
                                             {toTime}
                                         </TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>TH</TextOclock>
+                                        <TextOclock>{lang.th}</TextOclock>
                                         <TextOclock>
                                             {fromTime} {toTime !== '' && '-'}{' '}
                                             {toTime}
                                         </TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>FR</TextOclock>
+                                        <TextOclock>{lang.fr}</TextOclock>
                                         <TextOclock>
                                             {fromTime} {toTime !== '' && '-'}{' '}
                                             {toTime}
                                         </TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>SA</TextOclock>
-                                        <TextOclock>Closed</TextOclock>
+                                        <TextOclock>{lang.sa}</TextOclock>
+                                        <TextOclock>{lang.closed}</TextOclock>
                                     </WrapperOclock>
                                     <WrapperOclock>
-                                        <TextOclock>SU</TextOclock>
-                                        <TextOclock>Closed</TextOclock>
+                                        <TextOclock>{lang.su}</TextOclock>
+                                        <TextOclock>{lang.closed}</TextOclock>
                                     </WrapperOclock>
                                 </Calendar>
                             ) : (
@@ -209,7 +219,7 @@ export const SponsorCard = ({ item }) => {
                     </TextWrap>
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__address">
-                            Adress:
+                        {lang.adress}:
                         </SponsorText>
                         <LinkSpan>
                             {item.address ? (
@@ -229,7 +239,7 @@ export const SponsorCard = ({ item }) => {
                     </TextWrap>
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__email">
-                            Email:
+                        {lang.email}:
                         </SponsorText>
                         <LinkSpan>
                             <a href={`mailto:${email}`}>{email}</a>
@@ -237,7 +247,7 @@ export const SponsorCard = ({ item }) => {
                     </TextWrap>
                     <TextWrap className="text-wrap">
                         <SponsorText className="sponsors__phone">
-                            Phone:
+                        {lang.phone}:
                         </SponsorText>
                         <LinkSpan>
                             <a href={`tel:${phone}`}>{phone}</a>

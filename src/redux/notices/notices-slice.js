@@ -46,13 +46,19 @@ const noticesSlice = createSlice({
             )
             .addCase(noticesOperations.fetchAddNotice.pending, store => {
                 store.loading = true;
+                store.reRender = true;
             })
             .addCase(
                 noticesOperations.fetchAddNotice.fulfilled,
                 (store, { payload }) => {
 
+
                     
 
+
+
+                    store.loading = false;
+                    store.reRender = false;
 
                 }
             )
@@ -61,6 +67,7 @@ const noticesSlice = createSlice({
                 (store, { payload }) => {
                     store.loading = false;
                     store.error = payload;
+                    store.reRender = false;
                 }
             )
             .addCase(

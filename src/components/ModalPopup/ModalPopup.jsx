@@ -149,10 +149,10 @@ export const ModalPopup = ({
         if (path === 'notice') {
             dispatch(noticesOperations.fetchDeleteNotice(delid))
                 .then(() => {
-                    toast.success(`The animal was successfully removed`);
+                    toast.success(lang.animalremoved);
                 })
                 .catch(() => {
-                    toast.error('Something went wrong');
+                    toast.error(lang.wrong);
                 });
             dispatch(setModalClose());
             onClose();
@@ -168,13 +168,12 @@ export const ModalPopup = ({
         dispatch(toggleSell());
         dispatch(setModalClose());
         dispatch(authOperations.logOut())
-            // .unwrap()
-            // .then(originalPromiseResult => {
-            //     console.log('originalPromiseResul',originalPromiseResult)
-            //     toast.success(
-            //         `${originalPromiseResult.user?.name} Logout  successfull!`
-            //     );
-            // });
+            .unwrap()
+            .then(originalPromiseResult => {
+                  toast.success(
+                    lang.Logoutsuccess
+                );
+            });
     };
    
 
@@ -214,7 +213,7 @@ export const ModalPopup = ({
                 <ModalContainer {...props}>
                     <ModalTitle>{lang.deleteadverstiment} </ModalTitle>
                     <ModalText>
-                        {lang.suretodelete} {name || 'Your pet'} ?{lang.youcant}{' '}
+                        {lang.suretodelete} {name || 'Your pet'}? {lang.youcant}{' '}
                     </ModalText>
 
                     <BtnContainer {...props}>
@@ -258,7 +257,7 @@ export const ModalPopup = ({
                             <p> {lang.place} </p> <span> {location} </span>
                             <p> {lang.sex} </p> {sex}
                             <p className="userContact"> {lang.email} </p>{' '}
-                            <span>
+                            <span style={{ textDecoration: "underline" }}>
                                 {' '}
                                 <a href="mailto:alex@gmail.com">
                                     {' '}
@@ -266,7 +265,7 @@ export const ModalPopup = ({
                                 </a>{' '}
                             </span>
                             <p className="userContact"> {lang.phone} </p>{' '}
-                            <span>
+                            <span style={{ textDecoration: "underline" }}>
                                 {' '}
                                 <a href="tel:+380971234567">
                                     {'+380971234567'}

@@ -297,7 +297,7 @@ export const StyleAddToButton = styled.button`
 
     @media screen and ( max-width: 767px ) {
       position: fixed;
-      left: 60%;
+      left: 70%;
       bottom: 200px;
 
       width: 80px;
@@ -376,7 +376,7 @@ export const StyledRadioButton = styled.button`
     /* ${hoverStylesTrB}  */
 
 background-color: var(--light-blue);
-color: var(--blue);
+color: var(--button-color-option);
 transition: all 0.4s ease; 
 border: none;
 height: 35px;
@@ -427,14 +427,21 @@ ${gridBtnStyles}
 
 
 
-export const StyledLink = styled(NavLink)`
+export const StyledLink = styled(NavLink).withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) &&
+      prop !== 'btnsizem' &&
+      prop !== 'btnsized' &&
+      prop !== 'type' 
+})`
 ${buttonStyles} 
  ${ripple} 
 
  background-color: var(--blue);
  color: var(--white);
  transition: all 0.4s ease; 
-
+ /* width: ${({ btnsizem}) => btnsizem && '240px'}; */
+     width: ${props => props.btnsizem};
  & >svg {
 
 fill: var(--white);

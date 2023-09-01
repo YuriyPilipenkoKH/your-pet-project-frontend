@@ -7,7 +7,7 @@ import {
     UserFormWrap,
     UserPhotoWrap,
 } from './UserForm.styled';
-import { IconCross, iconPen } from 'images/icons';
+import { IconCrossForSearch, iconPen } from 'images/icons';
 import { Button, OutButton } from 'components/Button/Button';
 import { MdOutlineLogout } from 'react-icons/md';
 import {
@@ -144,10 +144,10 @@ const UserForm = () => {
         }
         dispatch(operations.fetchUpdateUser(formData)).unwrap()
         .then(() => {
-            toast.success(`Photo was successfully updated`);
+            toast.success(lang.Photoupdated);
         })
         .catch(() => {
-            toast.error('Something went wrong');
+            toast.error(lang.wrong);
         });;
         setEdit(false);
         setUserPhoto(false);
@@ -186,10 +186,10 @@ const UserForm = () => {
                 }
                 dispatch(operations.fetchUpdateUser(formData)).unwrap()
                 .then(() => {
-                    toast.success(`The information has been updated`);
+                    toast.success(lang.Infoupdated);
                 })
                 .catch(() => {
-                    toast.error('Something went wrong');
+                    toast.error(lang.wrong);
                 });
             });
         setShowData(false);
@@ -418,7 +418,7 @@ const UserForm = () => {
                     <OutButton
                     onClick={signOut}
                      className="logoutBtn">
-                        <MdOutlineLogout /> Log Out
+                        <MdOutlineLogout /> {lang.out}
                     </OutButton>
                 ) : (
                     <Button className="saveBtn" type="submit">
@@ -428,7 +428,7 @@ const UserForm = () => {
             </FormStyled>
 
             <FormEditor onClick={handleData}>
-                {!showData ? iconPen : IconCross}
+                {!showData ? iconPen : IconCrossForSearch}
             </FormEditor>
             {showModal && (
                 <ModalPopup

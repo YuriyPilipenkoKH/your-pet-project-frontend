@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import isPropValid from '@emotion/is-prop-valid';
+import isPropValid from '@emotion/is-prop-valid';
 
 export const ModalOverlay = styled.div`
 
@@ -26,11 +26,16 @@ export const ModalOverlay = styled.div`
 }
 `;
 
-export const ModalContainer = styled.div`
+export const ModalContainer = styled.div.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) &&
+      prop !== 'heightm' &&
+      prop !== 'heightd',
+})`
 
   width: 280px;
   height: ${props => props.heightm} ;
-
+  /* height: ${({ heightm }) => heightm && '445px'}; */
   position: relative;
   display: grid;
   place-items: center;
@@ -39,13 +44,13 @@ export const ModalContainer = styled.div`
   padding: 50px 20px;
   border-radius: 20px;
   z-index: 50;
-
-
+  background-color: var(--background-color-form);
+  color: var(--text-color);
   @media screen and (min-width: 768px) {
     width: 608px;
    
-    height: ${props => props.heightd} ;
-    
+    /* height: ${props => props.heightd} ; */
+    height: ${({ heightd}) => heightd && '429px'};
     padding: 50px 40px;
     border-radius: 40px;
   }
@@ -59,7 +64,8 @@ export const ModalContainer3 = styled.div`
   display: grid;
   place-items: center;
   gap: 20px;  
-  background-color: var(--white);
+  background-color: var(--background-color-form);
+  color: var(--text-color);
   padding:40px 20px 20px;
   border-radius: 20px;
   display: flex;
@@ -76,7 +82,13 @@ export const ModalContainer3 = styled.div`
   }
 `;
 
-export const BtnContainer = styled.div`
+export const BtnContainer = styled.div.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) &&
+      prop !== 'btnsizem' &&
+      prop !== 'btnsized' &&
+      prop !== 'type' 
+})`
    
     display: flex;
     flex-direction: column;
@@ -84,6 +96,7 @@ export const BtnContainer = styled.div`
 
     &>button, &>a {
         width: ${props => props.btnsizem};
+        /* width: ${({ btnsizem}) => btnsizem && '240px'}; */
     }
     
 
@@ -97,6 +110,7 @@ export const BtnContainer = styled.div`
         &>button, &>a {
 
         width: ${props => props.btnsized};
+        /* width: ${({ btnsized }) => btnsized && '165px'}; */
         gap:  ${(props => props.type === 4) ? '20px' : '12px'};
     }
   }
@@ -203,8 +217,14 @@ export const ContentWrapp = styled.div`
   gap: 12px;
 `;
 
-export const ModalButton = styled.button`
-  background-color: ${props => props.buttonColor};
+export const ModalButton = styled.button.withConfig({
+  shouldForwardProp: prop =>
+      isPropValid(prop) &&
+      prop !== 'buttonColor' 
+})`
+
+  /* background-color: ${props => props.buttonColor}; */
+  background-color: ${({ buttonColor }) => buttonColor && '#13d'};
   color: white;
   padding: 10px 20px;
   border: none;
@@ -223,7 +243,7 @@ export const OnCloseButton = styled.button`
   cursor: pointer;
 
   &>svg{
-    color:#222;
+    color: var(--text-color);
     scale: 2;
 
     &:hover {
@@ -283,7 +303,4 @@ export const PetList = styled.div`
     font-size: 16px;
     grid-row-gap : 10px;
 } 
-
-
-
 `

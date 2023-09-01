@@ -87,21 +87,21 @@ export const MainCard = ({
                 dispatch(operations.fetchRemoveFavorite(id))
                     .then(() => {
                         toast.success(
-                            `The animal was successfully removed from favorites`
+                            lang.animalremoved
                         );
                     })
                     .catch(() => {
-                        toast.error('Something went wrong');
+                        toast.error(lang.wrong);
                     });
             } else {
                 dispatch(operations.fetchNoticesAddFavorite(id))
                     .then(() => {
                         toast.success(
-                            `The animal was successfully added from favorites`
+                            lang.animalremoved
                         );
                     })
                     .catch(() => {
-                        toast.error('Something went wrong');
+                        toast.error(lang.wrong);
                     });
             }
         }
@@ -162,7 +162,7 @@ export const MainCard = ({
                     {' '}
                     {iconHeart}
                 </FavButton>
-                {isTrashShown && (
+                {isTrashShown && isLoggedIn && (
                     <TrashButton onClick={removeCard} className="del">
                         {' '}
                         {iconTrash}

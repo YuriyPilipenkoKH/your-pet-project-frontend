@@ -89,28 +89,23 @@ export const FormStyled = styled.form`
             justify-self: end;
             width: 255px;
             height: 40px;
-
         }
     }
 `;
 
 export const LabelStyled = styled.label`
-
-  white-space: nowrap;
-  overflow: hidden;
-  max-width: 60px;
-  text-overflow: ellipsis; 
-  font-size: 12px;
-  color: var(--text-color);
-  transition: all 1s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 60px;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    color: var(--text-color);
+    transition: all 1s ease-in-out;
 
     @media screen and (min-width: 768px) {
         font-size: 16px;
         max-width: 95px;
     }
-
-    color: var(--text-color);
-
 `;
 
 export const InputStyled = styled.input`
@@ -119,7 +114,10 @@ export const InputStyled = styled.input`
     border: 1px solid var(--blue);
     border-radius: 20px;
     padding: 4px 12px;
-    
+    text-overflow: ellipsis;
+    font-size: 12px;
+    color: var(--text-color);
+    transition: all 1s ease-in-out;
 
     color: var(--text-color);
     background-color: var(--background-color-input);
@@ -127,6 +125,7 @@ export const InputStyled = styled.input`
     @media screen and (min-width: 768px) {
         width: 255px;
         height: 30px;
+        font-size: 16px;
     }
 
     &:disabled {
@@ -153,7 +152,7 @@ export const FormEditor = styled(NavLink)`
     & > svg {
         fill: var(--blue);
     }
-    &> svg.iconCross{
+    & > svg.iconCross {
         transition: all 1s ease-in-out;
         stroke: var(--text-color);
     }
