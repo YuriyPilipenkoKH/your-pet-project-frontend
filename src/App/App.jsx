@@ -9,9 +9,10 @@ import { authOperations } from 'redux/auth';
 import PublicRoute from 'routes/PublicRoute';
 import { useAll } from 'hooks/useAll';
 import { getRefreshing } from 'redux/auth/auth-selectors';
-import { DotLoader } from 'react-spinners';
 import { getPetsLoading } from 'redux/pets/petsSelectors';
 import { ToastContainer } from 'react-toastify';
+import gifLoaderLight from '../images/animationLight.gif';
+import gifLoaderDark from '../images/animationDark.gif';
 import 'react-toastify/dist/ReactToastify.css';
 const Home = lazy(() => import('../pages/Home'));
 const AddPetPage = lazy(() => import('../pages/AddPetPage'));
@@ -38,18 +39,31 @@ const App = () => {
     return (
         <Container>
             {regreshinggAuth || loadingPets ? (
-                <DotLoader
-                    style={{
-                        position: 'fixed',
-                        top: '50%',
-                        left: '50%',
-                        zIndex: '999',
-                    }}
-                    color="var(--blue)"
-                    cssOverride={{}}
-                    loading
-                    size={70}
-                />
+                <>
+                    {theme === 'light' ? (
+                        <img
+                            src={gifLoaderLight}
+                            style={{
+                                position: 'fixed',
+                                top: '50%',
+                                left: '50%',
+                                zIndex: '999',
+                            }}
+                            alt="Gif"
+                        ></img>
+                    ) : (
+                        <img
+                            src={gifLoaderDark}
+                            style={{
+                                position: 'fixed',
+                                top: '50%',
+                                left: '50%',
+                                zIndex: '999',
+                            }}
+                            alt="Gif"
+                        ></img>
+                    )}
+                </>
             ) : (
                 <>
                     <ToastContainer
