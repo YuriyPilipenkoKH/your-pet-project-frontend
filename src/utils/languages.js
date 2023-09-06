@@ -303,8 +303,8 @@ const langUA = {
     price: 'Ціна',
     loadimg: 'Завантажте фото ',
     location: 'Локація',
-    male: 'Чоловік',
-    female: 'Жінка',
+    male: 'Самець',
+    female: 'Самка',
 
     typetitle: 'Введіть назву',
     typename: 'Введіть iм’я улюбленця',
