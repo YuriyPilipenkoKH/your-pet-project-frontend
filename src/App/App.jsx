@@ -29,13 +29,14 @@ const App = () => {
     const { theme, language } = useAll();
     const regreshinggAuth = useSelector(getRefreshing);
     const loadingPets = useSelector(getPetsLoading);
-    document.documentElement.setAttribute('data-theme', theme);
-    document.documentElement.setAttribute('data-lang', language);
+   // Set the data-theme attribute on the <html> element
+   document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || theme);
+   document.documentElement.setAttribute('data-lang',  localStorage.getItem('language')  || language);
 
     useEffect(() => {
         dispatch(authOperations.fetchCurrentUser());
-        localStorage.setItem('theme', JSON.stringify(theme));
-    }, [dispatch, theme]);
+        // localStorage.setItem('theme', JSON.stringify(theme));
+    }, [dispatch]);
 
     return (
         <Container>

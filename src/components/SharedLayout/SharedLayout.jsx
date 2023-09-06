@@ -52,6 +52,24 @@ const SharedLayout = () => {
         setIsOpen(!isOpen);
     };
 
+    const themeInvertor =(theme) => {
+        return  theme === 'light' ?  'dark'  :  'light'
+       }
+       const languageInvertor =(language) => {
+        return  language === 'english' ?  'ukrainian'  :  'english'
+       }
+   
+       const themeMaker =() => {
+         localStorage.setItem('theme', themeInvertor(theme))
+         dispatch(toggleTheme())
+       }
+       const languageMaker =() => {
+         localStorage.setItem('language', languageInvertor(language))
+         dispatch(toggleLang())
+       }
+
+
+
     return (
         <SharedLayoutWrap className="sharedLayout">
             <LayoutWrap className="layoutWrap">
@@ -67,22 +85,22 @@ const SharedLayout = () => {
                 </AuthNavWrap>
                 <MobileMenu isOpen={isOpen} onClose={toggleMenu} />
                 <AuthBtnWrap>
-                    <LangBtn
-                        onClick={() => dispatch(toggleLang())}
-                        type="button"
-                    >
-                        {language === 'english' ? 'EN' : 'UA'}
-                    </LangBtn>
-                    <ThemeBtn
-                        onClick={() => dispatch(toggleTheme())}
-                        type="button"
-                    >
-                        {theme === 'light' ? (
-                            <MdOutlineLightMode size={25} />
-                        ) : (
-                            <MdOutlineNightlight size={25} />
-                        )}
-                    </ThemeBtn>
+                <LangBtn  
+        onClick={languageMaker}
+        type="button">
+        {(localStorage.getItem('language' ) || language) === 'english' ?  'EN' :  'UA'}
+        </LangBtn>
+
+        <ThemeBtn 
+        onClick={themeMaker}
+        type="button"
+      
+        >
+          {(localStorage.getItem('theme') || theme) === 'light'
+          ? <MdOutlineLightMode size={25}/>
+          : <MdOutlineNightlight size={25}/>
+          }
+        </ThemeBtn>
                 </AuthBtnWrap>
             </LayoutWrap>
             <Suspense
