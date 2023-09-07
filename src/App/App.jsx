@@ -35,7 +35,7 @@ const App = () => {
 
     useEffect(() => {
         dispatch(authOperations.fetchCurrentUser());
-        // localStorage.setItem('theme', JSON.stringify(theme));
+     
     }, [dispatch]);
 
     return (
